@@ -3464,9 +3464,9 @@ PlayerTileCollision_CheckCherryAndClimbable_AfterTick:
 	CMP #BackgroundTile_Cherry
 	BNE PlayerTileCollision_Climbable_Exit
 
-  LDA CurrentCharacter
-  CMP #Character_Garfield
-  BNE RegularCherryGrab
+  LDA CharacterSpecialAttribute
+  AND #RandomizePickups
+  BEQ RegularCherryGrab
 
   JMP GarfieldCherryGrab
 
@@ -3617,9 +3617,9 @@ loc_BANK0_9080:
 loc_BANK0_90AE:
 	STA EnemyState, X
 
-  LDA CurrentCharacter
-  CMP #Character_Garfield
-  BNE Regular_loc_BANK0_90AE
+  LDA CharacterSpecialAttribute
+  AND #RandomizePickups
+  BEQ Regular_loc_BANK0_90AE
 
   CPY #$07 ; rocket
   BEQ Regular_loc_BANK0_90AE
