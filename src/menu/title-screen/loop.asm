@@ -103,7 +103,6 @@ UpdateChrTable:
 LeaveTitleScreenChrHandling:
   RTS
 
-; Subroutine with pointers would work here, but I am lazy and this will do for now
 CheckForCheatCode:
   LDY #$00
 CheckForCheatCodeLoop:
@@ -137,7 +136,7 @@ CheatCodeTableCode:
 ; ------------------------------------------------------------
 ; Desc:
 ;       Check for a cheat code according to the index stored in Y
-;       Will applay the cheat code if it match
+;       Will also apply a cheat code if there a match
 ; Params:
 ;         Y = Index of the cheat code to check
 ; ------------------------------------------------------------
