@@ -161,7 +161,7 @@ CheatCheckSubRoutine:
   STA ExtraLivesCheatCounter, Y
   CMP #$06
   BNE LeaveCheatSubRoutine
-  LDA #Music2_BossClearFanfare
+  LDA #Music2_CrystalGetFanfare
   STA MusicQueue2
   LDA CheatCode
   ORA CheatCodeTableCode, Y

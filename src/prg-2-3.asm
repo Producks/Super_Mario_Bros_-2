@@ -4584,6 +4584,9 @@ CharacterYOffsetCrouch:
 	.db $0A ; Toadette
 	.db $0E ; Rosalina
 
+	.db $0A ; Wario
+	.db $0D ; Waluigi
+
 CharacterYOffsetCrouchSmall:
 	.db $04 ; Small Mario
 	.db $07 ; Small Princess
@@ -4599,6 +4602,9 @@ CharacterYOffsetCrouchSmall:
 	.db $06 ; Small Garfield
 	.db $04 ; Small Toadette
 	.db $07 ; Small Rosalina
+
+	.db $04 ; Small Toadette
+	.db $06 ; Small Rosalina
 
 ; This is run when the player is carrying
 ; something, to update its position to
