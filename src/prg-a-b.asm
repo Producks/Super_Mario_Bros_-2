@@ -819,10 +819,13 @@ ApplyCheatCodeStats:
   LDA CheatCode
   AND #DokiDokiRunCheat
   BEQ CheckFloatCheat
-  LDA CharacterSpecialAttribute
+  LDA $7E27
   AND #$7F
   STA CharacterSpecialAttribute
   STA $7E27
+; Player two
+  LDA $7E47
+  AND #$7F
   STA $7E47
 
 CheckFloatCheat:
