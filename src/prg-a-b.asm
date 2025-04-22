@@ -643,11 +643,11 @@ MarioPaletteAlt:
 PrincessPaletteAlt:
 	.db $0F, $06, $27, $36
 ToadPaletteAlt:
-	.db $0F, $01, $2C, $27
+	.db $0F, $16, $30, $27
 LuigiPaletteAlt:
 	.db $0F, $01, $30, $36
 ImajinPaletteAlt:
-	.db $0F, $06, $26, $36
+	.db $0F, $07, $17, $27
 MamaPaletteAlt:
   .db $0F, $00, $10, $36
 PapaPaletteAlt:
@@ -663,9 +663,9 @@ ToadettePaletteAlt:
 RosalinaPaletteAlt:
   .db $0F, $08, $13, $36
 WarioPaletteAlt:
-	.db $0F, $01, $16, $27
+	.db $0F, $07, $16, $36
 WaluigiPaletteAlt:
-  .db $0F, $03, $13, $36
+  .db $0F, $0C, $1C, $36
 
 ;
 ; What is this for? It gets copied to RAM and then...that's all.

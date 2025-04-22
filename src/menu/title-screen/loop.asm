@@ -12,7 +12,7 @@ CheckCursorInputTitleScreen:
   BEQ UpdateSpriteTitleScreen ; Branch to update sprite if no input are set
   LDY CursorLocation
   TYA
-  EOR #$01
+  EOR #$01 ; The cursor can only be 0 or 1, so we just flip the bit everytime we get an input
   STA CursorLocation
   JSR UpdateTextPalette
 
@@ -50,7 +50,7 @@ UpdateShyGuyCrapetLoop:
   DEX
   BNE UpdateShyGuyCrapetLoop
 
-MakeSpriteMoveLeftTitleScreen:
+MakeSpriteMoveLeftTitleScreen: ; This make the bird move, directly decrease X position in the RAM DMA area
   DEC $025B
   DEC $025F
   DEC $0263

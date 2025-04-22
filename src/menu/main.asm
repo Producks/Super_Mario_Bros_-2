@@ -1,5 +1,5 @@
-; All of the title screen code reside here. It's all located in bank D
-; Current address range is $A000-$AFFF
+; All of the title screen code and option select reside here.
+; This all fit in Bank D
 
 .pad $a000, $ff
 

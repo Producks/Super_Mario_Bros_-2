@@ -1,4 +1,5 @@
-; This file contains subroutines that are called by a lot of things
+; This file contains subroutines that are called by the title screen and the option select
+; Some of these subroutines might not even be used anymore
 
 GameplayInputFuncHiTable:
   .db >SoloMode

@@ -898,13 +898,13 @@ CHRStartExpand = $80
 CHRStartOption = $82
 CHRStartOptionAnimation = $88
 
-; Character Select Enum
+; Character Select constants
 SinglePick = $00
 DoublePick = $01
 CursorOverflow = $0C
 MaxCursorIndex = $0B
 
-;GamePlayMode
+; GamePlayMode
 kSoloMode = $00
 kTraditionalMode = $01
 kTagMode = $02
@@ -930,17 +930,18 @@ RegularDig = $00
 RandomizePickups = $04
 RegularPickups = $00
 
+; Constant variable for code
 kCharacterStatsTotal = $18
 
 
-;Sprites Option Select
+; Sprites Option Select
 TotalSizeOptionSelectSprite = $70
 RowNumberToProcessOptionSelect = $0B
 RowNumberToProcessOptionSelectBig = $07
 StartingIndexSpriteOptionSelectY = $20
 StartingIndexSpriteOptionSelectTile = $21
 
-; Cheat
+; Cheats
 ExtraLivesCheat = $01
 ExtraContinuesCheat = $02
 DokiDokiRunCheat = $04
