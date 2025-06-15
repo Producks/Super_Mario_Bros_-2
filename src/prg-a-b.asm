@@ -827,6 +827,9 @@ ApplyCheatCodeStats:
   LDA $7E47
   AND #$7F
   STA $7E47
+  LDY CurrentPlayer
+  BEQ CheckFloatCheat
+  STA CharacterSpecialAttribute
 
 CheckFloatCheat:
 ; Check for all character float cheat
