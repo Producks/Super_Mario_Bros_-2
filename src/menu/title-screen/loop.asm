@@ -4,6 +4,10 @@ TitleScreenLoop:
   LDA Player1JoypadPress
   CMP #ControllerInput_Start
   BNE CheckCursorInputTitleScreen
+  LDA CursorLocation
+  BEQ LeaveTitleScreen
+  JMP TitleScreen_Option
+LeaveTitleScreen:
   JMP TitleScreen_Exit ; Leave the title screen
 
 ; Cursor Logic
@@ -15,7 +19,6 @@ CheckCursorInputTitleScreen:
   EOR #$01 ; The cursor can only be 0 or 1, so we just flip the bit everytime we get an input
   STA CursorLocation
   JSR UpdateTextPalette
-
 
 UpdateSpriteTitleScreen:
   JSR UpdateSpriteTitleScreenRoutine
@@ -173,3 +176,116 @@ ResetCheatCounter:
 
 LeaveCheatSubRoutine:
   RTS
+
+CursorTitleScreenOptionYLookup:
+  .db $0B, $1B, $2B, $3B, $4B, $5B, $6B
+
+CursorTopLeftTitleScreenOption:
+  .db $4C, $C0, $4E, $5A, $C4, $48, $CC
+
+CursorTopRightTitleScreenOption:
+  .db $4C, $C2, $4E, $5C, $C6, $4A, $CE
+
+CursorBottomLeftTitleScreenOption:
+  .db $4D, $C1, $4F, $5B, $C5, $49, $CD
+
+CursorBottomRightTitleScreenOption:
+  .db $4D, $C3, $4F, $5D, $C7, $4B, $CF
+
+CursorFlipTitleScreenOption:
+  .db $40, $00, $40, $00, $00, $00, $00
+
+CursorPaletteTitleScreenOption:
+  .db $0F, $20, $27, $17 ; Star
+  .db $0F, $30, $16, $0F ; 1-UP
+  .db $0F, $30, $16, $03 ; Orb
+  .db $0F, $30, $16, $02 ; Bomb
+  .db $0F, $30, $27, $07 ; Lamp
+  .db $0F, $30, $14, $04 ; Potion
+  .db $0F, $30, $30, $02 ; :)
+
+TitleScreen_Option:
+  LDA #$FF
+  STA PPUScrollXMirror
+  JSR HideAllSprites
+  LDA #CHRBank_FontTitleScreen
+  STA SpriteCHR1
+  LDA #$00
+  STA CursorLocation
+
+CursorHandling_TitleScreen_Option:
+  LDA Player1JoypadPress
+  AND #ControllerInput_Down
+  BEQ CheckUP_TitleScreen_Option
+  INC CursorLocation
+  LDA CursorLocation
+  EOR #$07
+  BNE CheckSideInput_TitleScreen_Option
+  STA CursorLocation
+  BEQ CheckSideInput_TitleScreen_Option
+
+CheckUP_TitleScreen_Option:
+  LDA Player1JoypadPress
+  AND #ControllerInput_Up
+  BEQ CheckSideInput_TitleScreen_Option
+  DEC CursorLocation
+  BPL CheckSideInput_TitleScreen_Option
+  LDA #$06
+  STA CursorLocation
+
+CheckSideInput_TitleScreen_Option:
+  LDA Player1JoypadPress
+  AND #ControllerInput_Left | ControllerInput_Right | ControllerInput_A
+  BEQ CreateCursor_TitleScreen_Option
+
+
+CreateCursor_TitleScreen_Option:
+; Set cursor palette
+  LDA #$3F
+  STA PPUBuffer_301
+  LDA #$10
+  STA PPUBuffer_301 + 1
+  LDA #$04
+  STA PPUBuffer_301 + 2
+  LDA CursorLocation
+  ASL
+  ASL
+  TAY
+  LDX #$00
+SetPaletteCursor_Option_Loop:
+  LDA CursorPaletteTitleScreenOption, Y
+  STA PPUBuffer_301 + 3, X
+  INY
+  INX
+  CPX #$04
+  BNE SetPaletteCursor_Option_Loop
+
+; Set Y position for the sprite
+  LDY CursorLocation
+  LDA CursorTitleScreenOptionYLookup, Y
+  STA $02C0
+  STA $02C4
+  CLC
+  ADC #$08
+  STA $02C8
+  STA $02CC
+
+; Set tiles
+  LDA CursorTopLeftTitleScreenOption, Y
+  STA $02C1
+  LDA CursorTopRightTitleScreenOption, Y
+  STA $02C5
+  LDA CursorBottomLeftTitleScreenOption, Y
+  STA $02C9
+  LDA CursorBottomRightTitleScreenOption, Y
+  STA $02CD
+
+; Set Flip
+  LDA CursorFlipTitleScreenOption, Y
+  STA $02C6
+  STA $02CE
+
+InfiniteLoop:
+  JSR WaitForNMI_Menu
+  JSR TitleScreenCHRHandling
+  JMP CursorHandling_TitleScreen_Option

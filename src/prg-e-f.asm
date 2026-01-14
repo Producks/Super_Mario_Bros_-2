@@ -2009,12 +2009,7 @@ NMI_PauseOrMenu:
   STA MMC3_IRQLatch
   STA MMC3_IRQReload
   STA MMC3_IRQEnable
-;
-;	LDA #$00
-;	STA PPUMASK
-;	STA OAMADDR
-;	LDA #$02
-;	STA OAM_DMA
+
 	JSR ChangeCHRBanks
 
 	JSR UpdatePPUFromBufferWithOptions
@@ -2267,10 +2262,7 @@ NMI_Exit:
 ;
 ResetPPUAddress:
 	LDA PPUSTATUS
-	LDA #$3F
-	STA PPUADDR
 	LDA #$00
-	STA PPUADDR
 	STA PPUADDR
 	STA PPUADDR
 	RTS

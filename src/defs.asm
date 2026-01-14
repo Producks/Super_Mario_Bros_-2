@@ -845,6 +845,8 @@ CHRBank_Animated8 = $26
 CHRBank_TitleScreenBG1 = $28
 CHRBank_TitleScreenBG2 = $2A
 
+CHRBank_FontTitleScreen = $2A
+
 CHRBank_CharacterSelectBG1 = $2C
 CHRBank_CharacterSelectBG2 = $2E
 CHRBank_CharacterSelectSprites = $30

@@ -17,7 +17,7 @@
 
 .include "src/menu/title-screen/irq.asm"
 
-.pad $b0ff, $ff
+;.pad $b0ff, $ff
 
 .include "src/menu/option-select/sprites.asm"
 

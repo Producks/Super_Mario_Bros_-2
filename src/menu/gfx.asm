@@ -156,13 +156,57 @@ TitleLayout:
   .db $26, $BB, $85
   .db $8A, $8B, $8b, $8B, $8D
 
-; 2025
-  .db $21, $BA, $04
-  .db $35, $37, $39, $3B
+;; 2026
+;  .db $21, $BA, $04
+;  .db $35, $37, $39, $3B
+;
+;; By Producks
+;  .db $21, $F3, $0B
+;  .db $30, $32, $33, $34, $36, $38, $3A, $3C, $3E, $3F, $3D
 
-; By Producks
-  .db $21, $F3, $0B
-  .db $40, $42, $FB, $44, $46, $48, $4A, $4C, $4E, $50, $52
+; Birdo eyes top
+  .db $21, $A5, $02
+  .db $31, $33
+
+; Birdo eyes bottom
+  .db $21, $C5, $01
+  .db $FC
+
+; Back to the title screen
+  .db $25, $C4, $18
+  .db $0C, $0A, $0B, $13, $FB, $1D, $17, $FB, $1D, $11, $0E, $FB, $1D, $12
+  .db $1D, $15, $0E, $FB, $1B, $0B, $1C, $0E, $0E, $18
+
+
+; All-Stars Respawn
+  .db $24, $44, $11
+  .db $0A, $15, $15, $24, $1B, $1D, $0A, $1C
+  .db $1B, $FB, $1C, $0E, $1B, $19, $0A, $1F
+  .db $18
+
+; Infinite lives
+  .db $24, $84, $0E
+  .db $12, $18, $10, $12, $18, $12, $1D, $0E, $FB, $15, $12, $20, $0E, $1B 
+
+; Infinite Continues
+  .db $24, $C4, $12
+  .db $12, $18, $10, $12, $18, $12, $1D, $0E, $FB, $0B, $17, $18, $1D, $12
+  .db $18, $1E, $0E, $1B
+
+; Bomb flash
+  .db $25, $04, $0A
+  .db $0C, $17, $16, $0C, $FB, $10, $15, $0A, $1B, $11
+
+; Doki Characters Run
+  .db $25, $44, $13
+  .db $0D, $17, $13, $12, $FB, $0B, $11, $0A, $1C
+  .db $0A, $0B, $1D, $0E, $1C, $1B, $FB, $1C, $1E, $18
+
+; Smooth Transition
+  .db $25, $84, $11
+  .db $1B, $16, $17, $17, $1D, $11, $FB, $1D 
+  .db $1C, $0A, $18, $1B, $12, $1D, $12, $17
+  .db $18
 
 ; Attribute table
 	.db $23, $E8, $07, $30, $23, $00, $00, $DC, $DF, $40

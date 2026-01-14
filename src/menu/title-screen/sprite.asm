@@ -1,19 +1,20 @@
 SpriteTitleScreenDMAInitTable:
-  .db $9C, $D1, $03, $60 ; 1
-  .db $9C, $E9, $03, $70 ; P
-  .db $9C, $E5, $03, $78 ; L
-  .db $9C, $DA, $03, $80 ; A
-  .db $9C, $F2, $03, $88 ; Y
-  .db $9C, $DE, $03, $90 ; E
-  .db $9C, $EB, $03, $98 ; R
+  .db $9C, $EC, $03, $60 ; S
+  .db $9C, $ED, $03, $68 ; T
+  .db $9C, $DA, $03, $70 ; A
+  .db $9C, $EB, $03, $78 ; R
+  .db $9C, $ED, $03, $80 ; T
 
-  .db $AF, $D2, $02, $60 ; 2
-  .db $AF, $E9, $02, $70 ; P
-  .db $AF, $E5, $02, $78 ; L
-  .db $AF, $DA, $02, $80 ; A
-  .db $AF, $F2, $02, $88 ; Y
-  .db $AF, $DE, $02, $90 ; E
-  .db $AF, $EB, $02, $98 ; R
+  .db $9C, $CA, $03, $88 ; 0
+  .db $9C, $CA, $03, $90 ; 0
+
+  .db $AF, $E8, $02, $60 ; O
+  .db $AF, $E9, $02, $68 ; P
+  .db $AF, $ED, $02, $70 ; T
+  .db $AF, $E2, $02, $78 ; I
+  .db $AF, $E8, $02, $80 ; O
+  .db $AF, $E7, $02, $88 ; N
+  .db $AF, $EC, $02, $90 ; S
 
 ; subcon dude
   .db $56, $80, $01, $D7
@@ -42,7 +43,6 @@ SpriteTitleScreenDMAInitTable:
   .db $5E, $90, $00, $1E
   .db $5E, $92, $00, $26
   .db $5E, $94, $00, $2E
-  .db $5E, $96, $00, $36
 
   .db $66, $91, $00, $1E
   .db $66, $93, $00, $26
@@ -62,14 +62,14 @@ SpriteTitleScreenDMAInitTable:
   .db $7E, $98, $00, $1E
   .db $7E, $9A, $00, $26
   .db $7E, $9C, $00, $2E
-  .db $7E, $9E, $00, $36
 
-  .db $66, $BA, $01, $26
-  .db $6E, $BB, $01, $26
-  .db $66, $BE, $01, $2E
-  .db $6E, $BF, $01, $2E
+; Cursor option menu
+  .db $F8, $C0, $00, $10
+  .db $F8, $C2, $00, $18
+  .db $F8, $C1, $00, $10
+  .db $F8, $C3, $00, $18
 
-SpriteDMAInitSize = $D8
+SpriteDMAInitSize = $D0
 
 ; This can be optimize by a lot by only using 1 table,
 ; But I am lazy for now TODO if space needed
