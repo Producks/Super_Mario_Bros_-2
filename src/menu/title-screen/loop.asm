@@ -18,6 +18,7 @@ CheckCursorInputTitleScreen:
   TYA
   EOR #$01 ; The cursor can only be 0 or 1, so we just flip the bit everytime we get an input
   STA CursorLocation
+Wee:
   JSR UpdateTextPalette
 
 UpdateSpriteTitleScreen:
@@ -177,6 +178,14 @@ ResetCheatCounter:
 LeaveCheatSubRoutine:
   RTS
 
+DumpOptionText:
+  .db $24, $5A, $03
+  .db $24, $9A, $03
+  .db $24, $DA, $03
+  .db $25, $1A, $03
+  .db $25, $5A, $03
+  .db $25, $9A, $03
+
 CursorTitleScreenOptionYLookup:
   .db $0B, $1B, $2B, $3B, $4B, $5B, $6B
 
@@ -195,6 +204,9 @@ CursorBottomRightTitleScreenOption:
 CursorFlipTitleScreenOption:
   .db $40, $00, $40, $00, $00, $00, $00
 
+LookupTableEOROptionTitleScreen:
+  .db $01, $02, $04, $08, $10, $20, $40
+
 CursorPaletteTitleScreenOption:
   .db $0F, $20, $27, $17 ; Star
   .db $0F, $30, $16, $0F ; 1-UP
@@ -212,6 +224,7 @@ TitleScreen_Option:
   STA SpriteCHR1
   LDA #$00
   STA CursorLocation
+  JMP CreateCursor_TitleScreen_Option
 
 CursorHandling_TitleScreen_Option:
   LDA Player1JoypadPress
@@ -235,9 +248,16 @@ CheckUP_TitleScreen_Option:
 
 CheckSideInput_TitleScreen_Option:
   LDA Player1JoypadPress
-  AND #ControllerInput_Left | ControllerInput_Right | ControllerInput_A
+  AND #ControllerInput_Left | ControllerInput_Right | ControllerInput_A | ControllerInput_Start
   BEQ CreateCursor_TitleScreen_Option
-
+  LDY CursorLocation
+  CPY #$06
+  BNE SetSettingsTitleScreen
+  JMP BreakOutOfOptionTitleScreen
+SetSettingsTitleScreen:
+  LDA LookupTableEOROptionTitleScreen, Y
+  EOR SettingsTitleScreen
+  STA SettingsTitleScreen
 
 CreateCursor_TitleScreen_Option:
 ; Set cursor palette
@@ -259,6 +279,10 @@ SetPaletteCursor_Option_Loop:
   INX
   CPX #$04
   BNE SetPaletteCursor_Option_Loop
+  LDA byte_RAM_300
+  CLC
+  ADC #$07
+  STA byte_RAM_300
 
 ; Set Y position for the sprite
   LDY CursorLocation
@@ -285,7 +309,99 @@ SetPaletteCursor_Option_Loop:
   STA $02C6
   STA $02CE
 
+; Set deez options
+  LDX byte_RAM_300
+  LDY #$00
+  LDA SettingsTitleScreen
+  STA Player2JoypadHeld ; Use has trown away memory
+DumpOptionsLoop:
+  LDA DumpOptionText, Y
+  STA PPUBuffer_301, X
+  INY
+  INX
+  LDA DumpOptionText, Y
+  STA PPUBuffer_301, X
+  INY
+  INX
+  LDA DumpOptionText, Y
+  STA PPUBuffer_301, X
+  INY
+  INX
+  LSR Player2JoypadHeld
+  BCS YesOptions
+NoOptions:
+  LDA #$18
+  STA PPUBuffer_301, X
+  INX
+  LDA #$17
+  STA PPUBuffer_301, X
+  INX
+  LDA #$FB
+  STA PPUBuffer_301, X
+  INX
+  BNE LoopCheckYesNo
+YesOptions:
+  LDA #$2C
+  STA PPUBuffer_301, X
+  INX
+  LDA #$0E
+  STA PPUBuffer_301, X
+  INX
+  LDA #$1B
+  STA PPUBuffer_301, X
+  INX
+LoopCheckYesNo:
+  CPY #$12
+  BNE DumpOptionsLoop
+  LDA #$00
+  STA PPUBuffer_301, X
+  LDA byte_RAM_300
+  CLC
+  ADC #$25
+  STA byte_RAM_300
+
 InfiniteLoop:
-  JSR WaitForNMI_Menu
   JSR TitleScreenCHRHandling
+  JSR WaitForNMI_Menu
   JMP CursorHandling_TitleScreen_Option
+
+
+BreakOutOfOptionTitleScreen:
+  LDA #$00
+  STA PPUScrollXMirror
+  STA CursorLocation
+  LDA #CHRBank_TitleScreenBG1
+  STA SpriteCHR1
+
+; Restore sprites
+  LDY #$00
+RestoreSpritesTitleScreenLoop:
+  LDA SpriteTitleScreenDMAInitTable, Y
+  STA SpriteDMAArea, Y
+  INY
+  INY
+  INY
+  INY
+  CPY #$D0
+  BNE RestoreSpritesTitleScreenLoop
+
+; Restore birdo palette
+  LDA #$3F
+  STA PPUBuffer_301
+  LDA #$10
+  STA PPUBuffer_301 + 1
+  LDA #$04
+  STA PPUBuffer_301 + 2
+  LDA #$0F
+  STA PPUBuffer_301 + 3
+  LDA #$25
+  STA PPUBuffer_301 + 4
+  LDA #$02
+  STA PPUBuffer_301 + 5
+  LDA #$16
+  STA PPUBuffer_301 + 6
+  LDA #$07
+  STA byte_RAM_300
+  LDY #$01
+  LDA CursorLocation
+  JMP Wee
