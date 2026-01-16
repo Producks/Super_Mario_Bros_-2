@@ -156,13 +156,18 @@ TitleLayout:
   .db $26, $BB, $85
   .db $8A, $8B, $8b, $8B, $8D
 
-;; 2026
-;  .db $21, $BA, $04
-;  .db $35, $37, $39, $3B
-;
-;; By Producks
-;  .db $21, $F3, $0B
-;  .db $30, $32, $33, $34, $36, $38, $3A, $3C, $3E, $3F, $3D
+; Veggie
+  .db $21, $98, $04
+  .db $40, $42, $44, $46
+
+  .db $21, $B8, $04
+  .db $41, $43, $45, $47
+
+  .db $21, $D9, $02
+  .db $4A, $4C
+
+  .db $21, $F9, $02
+  .db $4B, $4D
 
 ; Birdo eyes top
   .db $21, $A5, $02
@@ -209,11 +214,15 @@ TitleLayout:
   .db $18
 
 ; Attribute table
+
 	.db $23, $E8, $07, $30, $23, $00, $00, $DC, $DF, $40
 	.db $23, $F0, $07, $F6, $F2, $F1, $F1, $FF, $FD, $F4
   .db $23, $F8, $48, $0A
 
+
+  .db $23, $DE, $01, $0F
 ; Attribute table second screen
+
   .db $27, $F8, $08
   .db $02, $00, $02, $00, $0A, $0A, $0A, $0A
 
@@ -231,15 +240,15 @@ IFDEF PAD_TITLE_SCREEN_PPU_DATA
 ENDIF
 
 TitleBackgroundPalettes:
-	.db $0F, $30, $12, $0F ; Most of screen, outline, etc.
-	.db $0F, $30, $16, $0F ; Unused
-	.db $0F, $27, $17, $0F ; Logo
-	.db $0F, $29, $1A, $0F ; Copyright, Story
+	.db $0F, $30, $12, $01
+	.db $0F, $30, $16, $0F
+	.db $0F, $27, $17, $07
+	.db $0F, $2B, $1B, $0B
 
 TitleSpritePalettes:
-	.db $0F, $25, $02, $16 ; Unused DDP character palettes
-	.db $0F, $30, $16, $02 ; There are no sprites on the title screen,
-	.db $0F, $30, $12, $0F ; so these are totally unused
+	.db $0F, $25, $02, $16
+	.db $0F, $30, $16, $02
+	.db $0F, $25, $07, $35
 	.db $0F, $30, $23, $0F
 
 ;TitleAttributeData1:

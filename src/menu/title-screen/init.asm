@@ -58,7 +58,7 @@ SetBankNametbleTitleScreen:
   INY
   STY SpriteCHR4
 ;  LDA #$3C
-  LDA #$3E
+  LDA #$3C
   STA BackgroundCHR2
 
   LDA #CHRAnimationSpeedTitleScreen  ; Set chr animation speed for the titlescreen

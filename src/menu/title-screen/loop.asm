@@ -24,7 +24,7 @@ Wee:
 UpdateSpriteTitleScreen:
   JSR UpdateSpriteTitleScreenRoutine
   JSR TitleScreenCHRHandling
-  JSR CheckForCheatCode
+;  JSR CheckForCheatCode
 LoopWait:
   INC TitleScreenSeedCounter
   JSR WaitForNMI_Menu
@@ -36,17 +36,18 @@ LoopWait:
 ; ------------------------------------------------------------
 UpdateSpriteTitleScreenRoutine:
 
-UpdateShyGuyCarpet:
+UpdateSpriteAnimationTitleScreen:
   LDA TitleScreenSeedCounter
   AND #$0F
   EOR #$0F
-  BNE MakeSpriteMoveLeftTitleScreen
-  LDX #$08
+  BNE BirdSpriteLogicTitleScreen
+
+  LDX #$04 ; Number of sprites to animate
   LDY #$00
 UpdateShyGuyCrapetLoop:
-  LDA $0239, Y
-  EOR #$01
-  STA $0239, Y
+  LDA $0231, Y
+  EOR #$04
+  STA $0231, Y
   INY
   INY
   INY
@@ -54,15 +55,11 @@ UpdateShyGuyCrapetLoop:
   DEX
   BNE UpdateShyGuyCrapetLoop
 
-MakeSpriteMoveLeftTitleScreen: ; This make the bird move, directly decrease X position in the RAM DMA area
-  DEC $025B
-  DEC $025F
-  DEC $0263
-  DEC $0267
-  DEC $026B
-  DEC $026F
-  DEC $0273
-  DEC $0277
+BirdSpriteLogicTitleScreen: ; This make the bird move, directly decrease X position in the RAM DMA area
+  DEC $0243
+  DEC $0247
+  DEC $024B
+  DEC $024F
 
 UpdateSpritePalette:
   DEC PaletteTimer
@@ -107,76 +104,58 @@ UpdateChrTable:
 LeaveTitleScreenChrHandling:
   RTS
 
-CheckForCheatCode:
-  LDY #$00
-CheckForCheatCodeLoop:
-  JSR CheatCheckSubRoutine
-  INY
-  CPY #$05
-  BNE CheckForCheatCodeLoop
-  RTS
+;CheckForCheatCode:
+;  LDY #$00
+;CheckForCheatCodeLoop:
+;  JSR CheatCheckSubRoutine
+;  INY
+;  CPY #$05
+;  BNE CheckForCheatCodeLoop
+;  RTS
 
-ExtraLivesCode:
-  .db ControllerInput_Left, ControllerInput_Right, ControllerInput_Left, ControllerInput_Right, ControllerInput_Up, ControllerInput_Down
-
-ExtraContinuesCode:
-  .db ControllerInput_B, ControllerInput_B, ControllerInput_B, ControllerInput_B, ControllerInput_B, ControllerInput_Right
-
-DokiDokiRunCode:
-  .db ControllerInput_Up, ControllerInput_Up, ControllerInput_Down, ControllerInput_Down, ControllerInput_Right, ControllerInput_Right
-
-WarioWaluigiCode:
-  .db ControllerInput_Right, ControllerInput_Right, ControllerInput_Up, ControllerInput_Right, ControllerInput_Right, ControllerInput_Up
-
-AllCharactersFloatCode:
-  .db ControllerInput_Select, ControllerInput_Select, ControllerInput_Select, ControllerInput_Select, ControllerInput_Left, ControllerInput_Select
-
-StartingIndexTableCheats:
-  .db $00, $06, $0C, $12, $18
-
-CheatCodeTableCode:
-  .db ExtraLivesCheat, ExtraContinuesCheat, DokiDokiRunCheat, WarioWaluigiCheat, AllCharactersFloatCheat
-
-; ------------------------------------------------------------
-; Desc:
-;       Check for a cheat code according to the index stored in Y
-;       Will also apply a cheat code if there a match
-; Params:
-;         Y = Index of the cheat code to check
-; ------------------------------------------------------------
-CheatCheckSubRoutine:
-  LDA Player1JoypadPress
-  BEQ LeaveCheatSubRoutine ; If we have no input, leave!
-  LDA StartingIndexTableCheats, Y
-  STA TempVariableCheat
-  LDA ExtraLivesCheatCounter, Y
-  CLC
-  ADC TempVariableCheat
-  TAX ; Now X own the current index we need to check
-
-  LDA Player1JoypadPress
-  CMP ExtraLivesCode, X
-  BNE ResetCheatCounter
-
-  LDA ExtraLivesCheatCounter, Y
-  TAX
-  INX
-  TXA
-  STA ExtraLivesCheatCounter, Y
-  CMP #$06
-  BNE LeaveCheatSubRoutine
-  LDA #Music2_CrystalGetFanfare
-  STA MusicQueue2
-  LDA CheatCode
-  ORA CheatCodeTableCode, Y
-  STA CheatCode
-
-ResetCheatCounter:
-  LDA #$00
-  STA ExtraLivesCheatCounter, Y
-
-LeaveCheatSubRoutine:
-  RTS
+;AllCharactersFloatCode:
+;  .db ControllerInput_Select, ControllerInput_Select, ControllerInput_Select, ControllerInput_Select, ControllerInput_Left, ControllerInput_Select
+;
+;; ------------------------------------------------------------
+;; Desc:
+;;       Check for a cheat code according to the index stored in Y
+;;       Will also apply a cheat code if there a match
+;; Params:
+;;         Y = Index of the cheat code to check
+;; ------------------------------------------------------------
+;CheatCheckSubRoutine:
+;  LDA Player1JoypadPress
+;  BEQ LeaveCheatSubRoutine ; If we have no input, leave!
+;  LDA StartingIndexTableCheats, Y
+;  STA TempVariableCheat
+;  LDA ExtraLivesCheatCounter, Y
+;  CLC
+;  ADC TempVariableCheat
+;  TAX ; Now X own the current index we need to check
+;
+;  LDA Player1JoypadPress
+;  CMP ExtraLivesCode, X
+;  BNE ResetCheatCounter
+;
+;  LDA ExtraLivesCheatCounter, Y
+;  TAX
+;  INX
+;  TXA
+;  STA ExtraLivesCheatCounter, Y
+;  CMP #$06
+;  BNE LeaveCheatSubRoutine
+;  LDA #Music2_CrystalGetFanfare
+;  STA MusicQueue2
+;  LDA CheatCode
+;  ORA CheatCodeTableCode, Y
+;  STA CheatCode
+;
+;ResetCheatCounter:
+;  LDA #$00
+;  STA ExtraLivesCheatCounter, Y
+;
+;LeaveCheatSubRoutine:
+;  RTS
 
 DumpOptionText:
   .db $24, $5A, $03
