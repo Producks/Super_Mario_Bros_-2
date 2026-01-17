@@ -34,7 +34,7 @@ TitleLayout:
   .db $21, $EB, $03, $29, $2B, $2D
 
 ; Stars & clouds
-  .db $22, $67, $02, $B2, $B3
+  .db $22, $47, $02, $B2, $B3
 
   .db $22, $33, $03, $B4, $B6, $B8
   .db $22, $53, $03, $B5, $B7, $B9
@@ -243,13 +243,13 @@ TitleBackgroundPalettes:
 	.db $0F, $30, $12, $01
 	.db $0F, $30, $16, $0F
 	.db $0F, $27, $17, $07
-	.db $0F, $2B, $1B, $0B
+	.db $0F, $2A, $1A, $0A
 
 TitleSpritePalettes:
 	.db $0F, $25, $02, $16
 	.db $0F, $30, $16, $02
 	.db $0F, $25, $07, $35
-	.db $0F, $30, $23, $0F
+	.db $0F, $38, $37, $36
 
 ;TitleAttributeData1:
 ;	.db $23, $CB, $42, $FF

@@ -5,17 +5,17 @@ SpriteTitleScreenDMAInitTable:
   .db $9C, $D7, $03, $78 ; R
   .db $9C, $D3, $03, $80 ; T
 
-  .db $AF, $D9, $02, $60 ; O
-  .db $AF, $DB, $02, $68 ; P
-  .db $AF, $D3, $02, $70 ; T
-  .db $AF, $DD, $02, $78 ; I
-  .db $AF, $D9, $02, $80 ; O
-  .db $AF, $DF, $02, $88 ; N
-  .db $AF, $D1, $02, $90 ; S
+  .db $AF, $F9, $01, $60 ; O
+  .db $AF, $FB, $01, $68 ; P
+  .db $AF, $F3, $01, $70 ; T
+  .db $AF, $FD, $01, $78 ; I
+  .db $AF, $F9, $01, $80 ; O
+  .db $AF, $FF, $01, $88 ; N
+  .db $AF, $F1, $01, $90 ; S
 
 ; subcon dude
-  .db $46, $81, $01, $D7
-  .db $46, $83, $01, $DF
+  .db $1F, $81, $01, $B6
+  .db $1F, $83, $01, $BE
 
 ; Disco Ninji
   .db $1F, $89, $03, $32
@@ -69,35 +69,4 @@ CopyDMADataTitleScreenLoop:
   INY
   CPY #SpriteDMAInitSize
   BNE CopyDMADataTitleScreenLoop
-  RTS
-
-; Faster than using a multiplication subroutine
-DMATextStartingAddress:
-  .db $02, $1E
-
-UpdateTextPalette:
-  LDA DMATextStartingAddress, Y
-  TAY
-  LDA #$02
-  JSR WriteUpdateTextPalette
-  LDY CursorLocation
-  LDA DMATextStartingAddress, Y
-  TAY
-  LDA #$03
-  JSR WriteUpdateTextPalette
-  RTS
-
-; A value to set
-; Y Ram offset
-WriteUpdateTextPalette:
-  LDX #$00
-WriteUpdateTextPaletteLoop:
-  STA SpriteDMAArea, Y
-  INY
-  INY
-  INY
-  INY ; 8 total cycle, better versus CLC ADC TYA LDA
-  INX
-  CPX #$07
-  BNE WriteUpdateTextPaletteLoop
   RTS

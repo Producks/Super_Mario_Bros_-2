@@ -23,7 +23,7 @@ IRQ:
 ;      setup the indirect JMP pointer for the next call.   
 ; ------------------------------------------------------------
 FirstIRQ:
-  LDA #$1B
+  LDA #$1A
   STA MMC3_IRQDisable
   STA MMC3_IRQLatch
   STA MMC3_IRQReload

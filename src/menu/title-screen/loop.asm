@@ -2,29 +2,45 @@ TitleScreenLoop:
 
 ; Input reading
   LDA Player1JoypadPress
-  CMP #ControllerInput_Start
-  BNE CheckCursorInputTitleScreen
+  AND #ControllerInput_Start | ControllerInput_A
+  BEQ CheckCursorInputTitleScreen
   LDA CursorLocation
   BEQ LeaveTitleScreen
+  LDA #SoundEffect1_CherryGet
+  STA SoundEffectQueue1
   JMP TitleScreen_Option
 LeaveTitleScreen:
   JMP TitleScreen_Exit ; Leave the title screen
 
 ; Cursor Logic
 CheckCursorInputTitleScreen:
+  LDA Player1JoypadPress
   AND #ControllerInput_Select | ControllerInput_Down | ControllerInput_Up
   BEQ UpdateSpriteTitleScreen ; Branch to update sprite if no input are set
   LDY CursorLocation
   TYA
   EOR #$01 ; The cursor can only be 0 or 1, so we just flip the bit everytime we get an input
   STA CursorLocation
-Wee:
-  JSR UpdateTextPalette
+UpdateTextPalette:
+  LDY #$00
+UpdateTextPaletteLoop:
+  LDA $0201, Y
+  EOR #$20
+  STA $0201, Y
+  LDA $0202, Y
+  EOR #$02
+  STA $0202, Y
+  INY
+  INY
+  INY
+  INY
+  CPY #$30
+  BNE UpdateTextPaletteLoop
 
 UpdateSpriteTitleScreen:
   JSR UpdateSpriteTitleScreenRoutine
   JSR TitleScreenCHRHandling
-;  JSR CheckForCheatCode
+  JSR CheckForCheatCode
 LoopWait:
   INC TitleScreenSeedCounter
   JSR WaitForNMI_Menu
@@ -35,7 +51,6 @@ LoopWait:
 ; Update sprite palette on a timer
 ; ------------------------------------------------------------
 UpdateSpriteTitleScreenRoutine:
-
 UpdateSpriteAnimationTitleScreen:
   LDA TitleScreenSeedCounter
   AND #$0F
@@ -66,17 +81,37 @@ UpdateSpritePalette:
   BPL LeaveUpdateSpriteTitleScreen
   LDA #SpritePaletteTimer ; Reset back the timer
   STA PaletteTimer
-  LDA #$02
-  STA ScreenUpdateIndex ; Tell the NMI to update the palette
-  LDY TitleScreenPaletteSpriteIndex
-  DEY
-  BPL SetNewPaletteSprite
-  LDY #SpritePaletteStartingIndex
-SetNewPaletteSprite:
-  LDA PaletteColorTableTitleScreen, Y
-  STA PPU_PaletteBuffer + 3
-  STY TitleScreenPaletteSpriteIndex
+
+  LDY byte_RAM_300
+  LDA #$3F
+  STA PPUBuffer_301, Y
+  INY
+  LDA #$1D
+  STA PPUBuffer_301, Y
+  INY
+  LDA #$03
+  STA PPUBuffer_301, Y
+  INY
+
+  LDX TitleScreenPaletteSpriteIndex
+  JSR LowerIndexTitleScreen
+  STX TitleScreenPaletteSpriteIndex
+  JSR LowerIndexTitleScreen
+  JSR LowerIndexTitleScreen
+  STY byte_RAM_300
+  LDA #$00
+  STA PPUBuffer_301, Y
 LeaveUpdateSpriteTitleScreen:
+  RTS
+
+LowerIndexTitleScreen:
+  DEX
+  BPL +
+  LDX #SpritePaletteStartingIndex
++:
+  LDA PaletteColorTableTitleScreen, X
+  STA PPUBuffer_301, Y
+  INY
   RTS
 
 ; ------------------------------------------------------------
@@ -104,58 +139,68 @@ UpdateChrTable:
 LeaveTitleScreenChrHandling:
   RTS
 
-;CheckForCheatCode:
-;  LDY #$00
-;CheckForCheatCodeLoop:
-;  JSR CheatCheckSubRoutine
-;  INY
-;  CPY #$05
-;  BNE CheckForCheatCodeLoop
-;  RTS
+CheckForCheatCode:
+  LDY #$00
+CheckForCheatCodeLoop:
+  JSR CheatCheckSubRoutine
+  INY
+  CPY #$05
+  BNE CheckForCheatCodeLoop
+  RTS
 
-;AllCharactersFloatCode:
-;  .db ControllerInput_Select, ControllerInput_Select, ControllerInput_Select, ControllerInput_Select, ControllerInput_Left, ControllerInput_Select
-;
-;; ------------------------------------------------------------
-;; Desc:
-;;       Check for a cheat code according to the index stored in Y
-;;       Will also apply a cheat code if there a match
-;; Params:
-;;         Y = Index of the cheat code to check
-;; ------------------------------------------------------------
-;CheatCheckSubRoutine:
-;  LDA Player1JoypadPress
-;  BEQ LeaveCheatSubRoutine ; If we have no input, leave!
-;  LDA StartingIndexTableCheats, Y
-;  STA TempVariableCheat
-;  LDA ExtraLivesCheatCounter, Y
-;  CLC
-;  ADC TempVariableCheat
-;  TAX ; Now X own the current index we need to check
-;
-;  LDA Player1JoypadPress
-;  CMP ExtraLivesCode, X
-;  BNE ResetCheatCounter
-;
-;  LDA ExtraLivesCheatCounter, Y
-;  TAX
-;  INX
-;  TXA
-;  STA ExtraLivesCheatCounter, Y
-;  CMP #$06
-;  BNE LeaveCheatSubRoutine
-;  LDA #Music2_CrystalGetFanfare
-;  STA MusicQueue2
-;  LDA CheatCode
-;  ORA CheatCodeTableCode, Y
-;  STA CheatCode
-;
-;ResetCheatCounter:
-;  LDA #$00
-;  STA ExtraLivesCheatCounter, Y
-;
-;LeaveCheatSubRoutine:
-;  RTS
+CheatCodeTableCode:
+  .db $40, $80
+
+StartingIndexTableCheats:
+  .db $00, $06
+
+CheatCodeTable:
+AllCharactersFloatCode:
+  .db ControllerInput_Select, ControllerInput_Select, ControllerInput_Select, ControllerInput_Select, ControllerInput_Left, ControllerInput_Select
+
+PlaceHolderCode:
+  .db ControllerInput_Up, ControllerInput_Up, ControllerInput_Down, ControllerInput_Down, ControllerInput_Left, ControllerInput_Right
+
+; ------------------------------------------------------------
+; Desc:
+;       Check for a cheat code according to the index stored in Y
+;       Will also apply a cheat code if there a match
+; Params:
+;         Y = Index of the cheat code to check
+; ------------------------------------------------------------
+CheatCheckSubRoutine:
+  LDA Player1JoypadPress
+  BEQ LeaveCheatSubRoutine ; If we have no input, leave!
+  LDA StartingIndexTableCheats, Y
+  STA TempVariableCheat
+  LDA ExtraLivesCheatCounter, Y
+  CLC
+  ADC TempVariableCheat
+  TAX ; Now X own the current index we need to check
+
+  LDA Player1JoypadPress
+  CMP CheatCodeTable, X
+  BNE ResetCheatCounter
+
+  LDA ExtraLivesCheatCounter, Y
+  TAX
+  INX
+  TXA
+  STA ExtraLivesCheatCounter, Y
+  CMP #$06
+  BNE LeaveCheatSubRoutine
+  LDA #Music2_CrystalGetFanfare
+  STA MusicQueue2
+  LDA CheatCode
+  ORA CheatCodeTableCode, Y
+  STA CheatCode
+
+ResetCheatCounter:
+  LDA #$00
+  STA ExtraLivesCheatCounter, Y
+
+LeaveCheatSubRoutine:
+  RTS
 
 DumpOptionText:
   .db $24, $5A, $03
@@ -166,19 +211,19 @@ DumpOptionText:
   .db $25, $9A, $03
 
 CursorTitleScreenOptionYLookup:
-  .db $0B, $1B, $2B, $3B, $4B, $5B, $6B
+  .db $09
+  .db $1A
+  .db $2A
+  .db $38
+  .db $49
+  .db $59
+  .db $69
 
-CursorTopLeftTitleScreenOption:
-  .db $4C, $C0, $4E, $5A, $C4, $48, $CC
+CursorLeftTitleScreenOption:
+  .db $4D, $B9, $4F, $5B, $BD, $49, $C1
 
-CursorTopRightTitleScreenOption:
-  .db $4C, $C2, $4E, $5C, $C6, $4A, $CE
-
-CursorBottomLeftTitleScreenOption:
-  .db $4D, $C1, $4F, $5B, $C5, $49, $CD
-
-CursorBottomRightTitleScreenOption:
-  .db $4D, $C3, $4F, $5D, $C7, $4B, $CF
+CursorRightTitleScreenOption:
+  .db $4D, $BB, $4F, $5D, $BF, $4B, $C3
 
 CursorFlipTitleScreenOption:
   .db $40, $00, $40, $00, $00, $00, $00
@@ -227,8 +272,10 @@ CheckUP_TitleScreen_Option:
 
 CheckSideInput_TitleScreen_Option:
   LDA Player1JoypadPress
-  AND #ControllerInput_Left | ControllerInput_Right | ControllerInput_A | ControllerInput_Start
+  AND #ControllerInput_A | ControllerInput_Start
   BEQ CreateCursor_TitleScreen_Option
+  LDA #SoundEffect1_CherryGet
+  STA SoundEffectQueue1
   LDY CursorLocation
   CPY #$06
   BNE SetSettingsTitleScreen
@@ -266,27 +313,18 @@ SetPaletteCursor_Option_Loop:
 ; Set Y position for the sprite
   LDY CursorLocation
   LDA CursorTitleScreenOptionYLookup, Y
-  STA $02C0
-  STA $02C4
-  CLC
-  ADC #$08
-  STA $02C8
-  STA $02CC
+  STA $029C
+  STA $02A0
 
 ; Set tiles
-  LDA CursorTopLeftTitleScreenOption, Y
-  STA $02C1
-  LDA CursorTopRightTitleScreenOption, Y
-  STA $02C5
-  LDA CursorBottomLeftTitleScreenOption, Y
-  STA $02C9
-  LDA CursorBottomRightTitleScreenOption, Y
-  STA $02CD
+  LDA CursorLeftTitleScreenOption, Y
+  STA $029D
+  LDA CursorRightTitleScreenOption, Y
+  STA $02A1
 
 ; Set Flip
   LDA CursorFlipTitleScreenOption, Y
-  STA $02C6
-  STA $02CE
+  STA $02A2
 
 ; Set deez options
   LDX byte_RAM_300
@@ -348,7 +386,6 @@ InfiniteLoop:
 BreakOutOfOptionTitleScreen:
   LDA #$00
   STA PPUScrollXMirror
-  STA CursorLocation
   LDA #CHRBank_TitleScreenBG1
   STA SpriteCHR1
 
@@ -361,7 +398,7 @@ RestoreSpritesTitleScreenLoop:
   INY
   INY
   INY
-  CPY #$D0
+  CPY #$A4
   BNE RestoreSpritesTitleScreenLoop
 
 ; Restore birdo palette
@@ -381,6 +418,6 @@ RestoreSpritesTitleScreenLoop:
   STA PPUBuffer_301 + 6
   LDA #$07
   STA byte_RAM_300
-  LDY #$01
-  LDA CursorLocation
-  JMP Wee
+  LDA #$00
+  STA CursorLocation
+  JMP UpdateTextPalette
