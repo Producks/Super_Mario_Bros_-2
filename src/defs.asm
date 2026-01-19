@@ -943,13 +943,15 @@ RowNumberToProcessOptionSelectBig = $07
 StartingIndexSpriteOptionSelectY = $20
 StartingIndexSpriteOptionSelectTile = $21
 
-; Cheats
-ExtraLivesCheat = $01
-ExtraContinuesCheat = $02
-DokiDokiRunCheat = $04
-WarioWaluigiCheat = $08
+WarioWaluigiCheat = $01
 
-
+; Title screen Options/Cheats
+AllStarsRespawn = $01
+ExtraLivesCheat = $02
+ExtraContinuesCheat = $04
+BombFlash = $08
+DokiDokiRunCheat = $10
+ColorFateOut = $20
 AllCharactersFloatCheat = $40
 PlaceHolderCheat = $80
 

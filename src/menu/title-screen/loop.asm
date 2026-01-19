@@ -149,7 +149,7 @@ CheckForCheatCodeLoop:
   RTS
 
 CheatCodeTableCode:
-  .db $40, $80
+  .db AllCharactersFloatCheat, PlaceHolderCheat
 
 StartingIndexTableCheats:
   .db $00, $06

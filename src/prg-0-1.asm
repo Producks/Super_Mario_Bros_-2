@@ -2024,7 +2024,11 @@ loc_BANK0_8A72:
 LoseALife:
 	LDA #02
 	STA PlayerAnimationFrame
+
 	LDY #$01 ; Set game mode to title card
+  LDA SettingsTitleScreen
+  AND #ExtraLivesCheat
+  BNE SetGameModeAfterDeath
 	DEC ExtraLives
 	BNE SetGameModeAfterDeath
 

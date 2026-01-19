@@ -572,29 +572,13 @@ StartGame:
 	JSR TitleScreen ; The whole title screen is a subroutine, lol
 
 	INC GameMilestoneCounter
-SetNumContinues:
-  LDA CheatCode
-  AND #ExtraContinuesCheat
-  BEQ RegularContinuesCount
 
-  LDA #$07
-  BNE SetNumberOfContinues
-
-RegularContinuesCount:
-	LDA #$02 ; Number of continues on start
 SetNumberOfContinues:
+	LDA #$02 ; Number of continues on start
 	STA Continues
 
 ; We return here after picking "CONTINUE" from the game over menu.
 ContinueGame:
-  LDA CheatCode
-  AND #ExtraLivesCheat
-  BEQ RegularLifeCount
-
-  LDA #$15
-  BNE SetLifeCount
-
-RegularLifeCount:
 	LDA #$03 ; Number of lives to start
 SetLifeCount:
 	STA ExtraLives
@@ -1071,11 +1055,14 @@ ShowCardAfterTransition:
 	JSR PauseScreen_Card
 
 AfterDeathJump:
-IFNDEF CHARACTER_SELECT_AFTER_DEATH
+  LDA SettingsTitleScreen
+  AND #AllStarsRespawn
+  BNE CharRespawn
+
 	JMP StartLevelAfterTitleCard
-ELSE
+CharRespawn:
 	JMP CharacterSelectMenu
-ENDIF
+
 
 
 ResetAreaAndProcessGameMode_NotTitleCard:
@@ -1141,15 +1128,23 @@ loc_BANKF_E6EF:
 	STA PPUBuffer_ContinueRetryText + 3
 	LDA #$00
 	STA byte_RAM_8
-	LDA #ScreenUpdateBuffer_RAM_ContinueRetryText
+
+NormalContinue:
+  LDA SettingsTitleScreen
+  AND #ExtraContinuesCheat
+  BNE loc_BANKF_E717
+
 	DEC Continues
 	BPL loc_BANKF_E717
 
 	LDA #$01
 	STA byte_RAM_8
 	LDA #ScreenUpdateBuffer_Text_Retry
+  BNE SetScreenUpdateContinue
 
 loc_BANKF_E717:
+	LDA #ScreenUpdateBuffer_RAM_ContinueRetryText
+SetScreenUpdateContinue:
 	STA ScreenUpdateIndex
 
 loc_BANKF_E719:

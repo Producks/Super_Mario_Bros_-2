@@ -161,7 +161,7 @@ PlayerYLo:
 	.dsb 1 ; $0032
 ObjectYLo:
 	.dsb 1 ; $0033
-	.dsb 1 ; 1                ; $0034
+	.dsb 1 ; 1                ; $0034`
 CastRollSpriteActive1:
 ExtraLivesCheatCounter:
 	.dsb 1 ; 2                ; $0035
@@ -2259,6 +2259,8 @@ IFDEF CONTROLLER_2_DEBUG
 	CreateObjectAttributes = $7e83
 ENDIF
 
+SkyFlashColors = $7FF0
+
 ItemCarryYOffsetsRAM = $7f00
 ChangeCharacterPoofTimer = $7e81
 CheatCode = $7E80
@@ -2278,7 +2280,6 @@ CharSelectCharacterARGV = $7E26
 PlayerOneStatsRam = $7E10
 PlayerOnePaletteRam = $7E28
 PlayerOneCarryStats = $7E2C
-
 
 PlayerTwoStatsRam = $7E30
 PlayerTwoPaletteRam = $7E48

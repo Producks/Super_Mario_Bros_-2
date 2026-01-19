@@ -12421,12 +12421,6 @@ POWQuakeOffsets:
 	.db $00
 	.db $FD
 
-SkyFlashColors:
-	.db $26
-	.db $26
-	.db $26
-	.db $26
-
 ; =============== S U B R O U T I N E =======================================
 
 AreaSecondaryRoutine:

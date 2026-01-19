@@ -893,12 +893,21 @@ loc_BANKA_8493:
 	BNE loc_BANKA_8493
 
 	; This data is copied, but doesn't appear to be used. Its original purpose is not obvious.
-	LDY #$17
+  LDA SettingsTitleScreen
+  AND #BombFlash
+  TAY
+  LDX #$03
+SkyFlashDump:
+  LDA SkyFlashColorsVanilla, Y
+  STA SkyFlashColors, X
+  INY
+  DEX
+  BPL SkyFlashDump
 loc_BANKA_84A0:
-	LDA MysteryData14439, Y
-	STA MysteryData14439_RAM, Y
-	DEY
-	BPL loc_BANKA_84A0
+;	LDA MysteryData14439, Y
+;	STA MysteryData14439_RAM, Y
+;	DEY
+;	BPL loc_BANKA_84A0
 
 	; Copy object collision hitbox table
 	;
@@ -951,6 +960,19 @@ loc_BANKA_84D7:
 
 	RTS
 
+SkyFlashColorsNoFlash:
+	.db $26
+	.db $26
+	.db $26
+	.db $26
+
+  .db $00, $00, $00, $00 ; Pad bytes for code logic
+
+SkyFlashColorsVanilla:
+	.db $26
+	.db $22
+	.db $2A
+	.db $26
 
 FlyingCarpetAcceleration:
 	.db $00
