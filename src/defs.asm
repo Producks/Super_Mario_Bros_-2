@@ -45,19 +45,21 @@ TransitionType_Rocket = $05
 
 ; enum Characters
 Character_Mario = $00
-Character_Princess = $01
+Character_Luigi = $01
 Character_Toad = $02
-Character_Luigi = $03
+Character_Princess = $03
 Character_Imajin = $04
 Character_Mama = $05
 Character_Papa = $06
 Character_Lina = $07
-Character_Merio = $08
-Character_Garfield = $09
+Character_Wario = $08
+Character_Waluigi = $09
 Character_Toadette = $0A
-Character_Rosalina = $0B
-Character_Wario = $0C
-Character_Waluigi = $0D
+Character_Daisy = $0B
+Character_Merio = $0C
+Character_Garfield = $0D
+Character_Birdo = $0E
+Character_Rosalina = $0F
 
 ; ---------------------------------------------------------------------------
 

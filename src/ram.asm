@@ -2261,6 +2261,8 @@ ENDIF
 
 SkyFlashColors = $7FF0
 
+ColorPaletteBuffer = $7FD0
+
 ItemCarryYOffsetsRAM = $7f00
 ChangeCharacterPoofTimer = $7e81
 CheatCode = $7E80

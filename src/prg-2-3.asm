@@ -4570,9 +4570,9 @@ CreateBullet_Exit:
 
 CharacterYOffsetCrouch:
 	.db $0A ; Mario
-	.db $0E ; Princess
-	.db $0A ; Toad
 	.db $0D ; Luigi
+	.db $0A ; Toad
+	.db $0E ; Princess
 
 	.db $08 ; Imajin
 	.db $0A ; Mama
@@ -4589,9 +4589,9 @@ CharacterYOffsetCrouch:
 
 CharacterYOffsetCrouchSmall:
 	.db $04 ; Small Mario
-	.db $07 ; Small Princess
-	.db $04 ; Small Toad
 	.db $06 ; Small Luigi
+	.db $04 ; Small Toad
+	.db $07 ; Small Princess
 
 	.db $08 ; Small Imajin
 	.db $0A ; Small Mama

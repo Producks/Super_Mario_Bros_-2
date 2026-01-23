@@ -53,177 +53,21 @@ PPUBuffer_CharacterSelect:
 	.db $21, $1D, $83, $8E, $91, $94
 	.db $21, $62, $D1, $FD
 	.db $21, $7D, $D1, $FD
-	.db $22, $63, $C9, $FD, $22, $7C, $C9, $FD, $22, $86, $82, $8A, $8B, $22, $99
-	.db $82, $8A, $8B ; $F
+	.db $22, $63, $C9, $FD
+  .db $22, $7C, $C9, $FD
+  .db $22, $86, $82, $8A, $8B
+  .db $22, $99, $82, $8A, $8B ; $F
 	.db $00
 
-PlayerSelectCursorSprites1:
-	.db $2F, $C3, $03, $48
-	.db $2F, $C5, $03, $50
-	.db $FE, $C7, $03, $00
-	.db $FE, $C9, $03, $00
-
-PlayerSelectMarioSprites1:
-	.db $3F, $00, $00, $48
-	.db $3F, $02, $00, $50
-	.db $4F, $04, $00, $48
-	.db $4F, $06, $00, $50
-
-PlayerSelectLuigiSprites1:
-	.db $3F, $08, $00, $68
-	.db $3F, $0A, $00, $70
-	.db $4F, $0C, $00, $68
-	.db $4F, $0E, $00, $70
-
-PlayerSelectToadSprites1:
-	.db $3F, $10, $00, $88
-	.db $3F, $12, $00, $90
-	.db $4F, $14, $00, $88
-	.db $4F, $16, $00, $90
-
-PlayerSelectPrincessSprites1:
-	.db $3F, $18, $00, $A8
-	.db $3F, $1A, $00, $B0
-	.db $4F, $1C, $00, $A8
-	.db $4F, $1E, $00, $B0
-
-PlayerSelectImajinSprites1:
-	.db $6F, $40, $00, $48
-	.db $6F, $42, $00, $50
-	.db $7F, $44, $00, $48
-	.db $7F, $46, $00, $50
-
-PlayerSelectMamaSprites1:
-	.db $6F, $48, $00, $68
-	.db $6F, $4A, $00, $70
-	.db $7F, $4C, $00, $68
-	.db $7F, $4E, $00, $70
-
-PlayerSelectPapaSprites1:
-	.db $6F, $50, $00, $88
-	.db $6F, $52, $00, $90
-	.db $7F, $54, $00, $88
-	.db $7F, $56, $00, $90
-
-PlayerSelectLinaSprites1:
-	.db $6F, $58, $00, $A8
-	.db $6F, $5A, $00, $B0
-	.db $7F, $5C, $00, $A8
-	.db $7F, $5E, $00, $B0
-
-PlayerSelectMerioSprites1:
-	.db $9F, $80, $00, $48
-	.db $9F, $82, $00, $50
-	.db $AF, $84, $00, $48
-	.db $AF, $86, $00, $50
-
-PlayerSelectGarfieldSprites1:
-	.db $9F, $88, $00, $68
-	.db $9F, $8A, $00, $70
-	.db $AF, $8C, $00, $68
-	.db $AF, $8E, $00, $70
-
-PlayerSelectToadetteSprites1:
-	.db $9F, $90, $00, $88
-	.db $9F, $92, $00, $90
-	.db $AF, $94, $00, $88
-	.db $AF, $96, $00, $90
-
-PlayerSelectRosalinaSprites1:
-	.db $9F, $98, $00, $A8
-	.db $9F, $9A, $00, $B0
-	.db $AF, $9C, $00, $A8
-	.db $AF, $9E, $00, $B0
-
-;;;;;;;;;;;;;;;;;
-PlayerConfirmSpriteArray:
-PlayerSelectMarioSprites2:
-	.db $20
-
-PlayerSelectLuigiSprites2:
-	.db $28
-
-PlayerSelectToadSprites2:
-	.db $30
-
-PlayerSelectPrincessSprites2:
-	.db $38
-
-PlayerSelectImajinSprites2:
-	.db $60
-
-PlayerSelectMamaSprites2:
-	.db $68
-
-PlayerSelectPapaSprites2:
-	.db $70
-
-PlayerSelectLinaSprites2:
-	.db $78
-
-PlayerSelectMerioSprites2:
-	.db $A0
-
-PlayerSelectGarfieldSprites2:
-	.db $A8
-
-PlayerSelectToadetteSprites2:
-	.db $B0
-
-PlayerSelectRosalinaSprites2:
-	.db $B8
-
-CursorPalette:
-  .db $3F, $1C, $04
-  .db $0F, $16, $2A, $02
-  .db $00
-
-PlayerSelectPaletteOffsets:
-	.db (PlayerSelectSpritePalettes_Mario - PlayerSelectSpritePalettes)
-	.db (PlayerSelectSpritePalettes_Luigi - PlayerSelectSpritePalettes)
-	.db (PlayerSelectSpritePalettes_Toad - PlayerSelectSpritePalettes)
-	.db (PlayerSelectSpritePalettes_Princess - PlayerSelectSpritePalettes)
-	.db (PlayerSelectSpritePalettes_Imajin - PlayerSelectSpritePalettes)
-	.db (PlayerSelectSpritePalettes_Mama - PlayerSelectSpritePalettes)
-	.db (PlayerSelectSpritePalettes_Papa - PlayerSelectSpritePalettes)
-	.db (PlayerSelectSpritePalettes_Lina - PlayerSelectSpritePalettes)
-	.db (PlayerSelectSpritePalettes_Merio - PlayerSelectSpritePalettes)
-	.db (PlayerSelectSpritePalettes_Garfield - PlayerSelectSpritePalettes)
-	.db (PlayerSelectSpritePalettes_Toadette - PlayerSelectSpritePalettes)
-	.db (PlayerSelectSpritePalettes_Rosalina - PlayerSelectSpritePalettes)
-	.db (PlayerSelectSpritePalettes_Wario - PlayerSelectSpritePalettes)
-	.db (PlayerSelectSpritePalettes_Waluigi - PlayerSelectSpritePalettes)
-
-PlayerSelectSpritePalettes:
-PlayerSelectSpritePalettes_Mario:
-	.db $0F, $27, $16, $01
-PlayerSelectSpritePalettes_Luigi:
-	.db $0F, $36, $2A, $01
-PlayerSelectSpritePalettes_Toad:
-	.db $0F, $27, $30, $01
-PlayerSelectSpritePalettes_Princess:
-	.db $0F, $36, $25, $07
-PlayerSelectSpritePalettes_Imajin:
-	.db $0F, $30, $27, $01
-PlayerSelectSpritePalettes_Mama:
-	.db $0F, $12, $36, $01
-PlayerSelectSpritePalettes_Papa:
-	.db $0F, $37, $27, $06
-PlayerSelectSpritePalettes_Lina:
-	.db $0F, $25, $36, $06
-PlayerSelectSpritePalettes_Merio:
-	.db $0F, $27, $16, $01
-PlayerSelectSpritePalettes_Garfield:
-	.db $0F, $30, $27, $06
-PlayerSelectSpritePalettes_Toadette:
-	.db $0F, $37, $24, $07
-PlayerSelectSpritePalettes_Rosalina:
-	.db $0F, $36, $2C, $08
-PlayerSelectSpritePalettes_Wario:
-	.db $0F, $37, $27, $06
-PlayerSelectSpritePalettes_Waluigi:
-	.db $0F, $36, $13, $03
-
+;PlayerSelectPalettes_:
+;	.db $0F, $28, $16, $06
+;	.db $0F, $30, $12, $16
+;	.db $0F, $30, $16, $12
+;	.db $0F, $30, $12, $16
+;	.db $0F, $01, $12, $22
+;	.db $0F, $01, $12, $22
+;	.db $0F, $01, $12, $22
+;	.db $0F, $01, $12, $22
 
 PlayerSelectPLetterX:
 	.db $48
@@ -239,6 +83,6 @@ PlayerSelectPNumberX:
 
 ; This table can be used for both
 PlayerSelectCursorY:
-	.db $2F
+	.db $4E
 	.db $5F
   .db $8F

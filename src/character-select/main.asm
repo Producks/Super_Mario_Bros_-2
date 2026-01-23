@@ -1,5 +1,7 @@
 .include "src/character-select/gfx.asm"
 
+.include "src/character-select/characters.asm"
+
 .include "src/character-select/global.asm"
 
 .include "src/character-select/input.asm"

@@ -19,19 +19,15 @@ CharacterSelectMenuAB:
 	STA PPUMASK
 	JSR DisableNMI
 
+; Set CHR bank character select
 	LDA #CHRBank_CharacterSelectSprites
 	STA SpriteCHR1
   LDA #CHRBank_CharacterSelectSprites + 1
   STA SpriteCHR2
-  LDA CheatCode
-  AND #WarioWaluigiCheat
-  BEQ NoCheatGFX
-  LDA #CHRBank_CharacterSelectSprites + 3
-  BNE SetSpriteCHR3CharacterSelect
-NoCheatGFX:
   LDA #CHRBank_CharacterSelectSprites + 2
-SetSpriteCHR3CharacterSelect:
   STA SpriteCHR3
+  LDA #CHRBank_CharacterSelectSprites + 3
+  STA SpriteCHR4
 	LDA #CHRBank_CharacterSelectBG1
 	STA BackgroundCHR1
 	LDA #CHRBank_CharacterSelectBG2
@@ -41,25 +37,16 @@ SetSpriteCHR3CharacterSelect:
 
 	JSR ResetScreenForTitleCard
 
-CopyCursorPalette:
-  LDY #$08
-CopyCursorPaletteLoop:
-  LDA CursorPalette, Y
-  STA PPUBuffer_301, Y
-  DEY
-  BPL CopyCursorPaletteLoop
+;	LDA CharacterSelectBankSwitch
+;	CMP #$A5
+;	BEQ loc_BANKF_E2B2
+;
+;	LDA #PRGBank_A_B
+;	JSR ChangeMappedPRGBank
+;
+;	LDA #$A5
+;	STA CharacterSelectBankSwitch BUG BUG if it break
 
-	LDA CharacterSelectBankSwitch
-	CMP #$A5
-	BEQ loc_BANKF_E2B2
-
-	LDA #PRGBank_A_B
-	JSR ChangeMappedPRGBank
-
-	LDA #$A5
-	STA CharacterSelectBankSwitch
-
-loc_BANKF_E2B2:
 	JSR EnableNMI
 
 	JSR WaitForNMI_TurnOffPPU
@@ -79,16 +66,26 @@ loc_BANKF_E2B2:
 
 	LDA #Music1_CharacterSelect
 	STA MusicQueue1
-	LDA CurrentWorld
-	STA PreviousWorld
 
-	LDY #$CF
-loc_BANKF_E2CA:
-	LDA PlayerSelectCursorSprites1, Y
-	STA SpriteDMAArea, Y
-	DEY
-  CPY #$FF
-	BNE loc_BANKF_E2CA
+  LDY #$00
+  LDX #$00
+DumpSprites_CharacterSelect_Loop:
+	LDA PlayerSelectMarioSprites1, Y
+	STA SpriteDMAArea, X
+  INY
+  INX
+	LDA PlayerSelectMarioSprites1, Y
+	STA SpriteDMAArea, X
+  INY
+  INX
+  LDA #$00
+  STA SpriteDMAArea, X
+  INX
+	LDA PlayerSelectMarioSprites1, Y
+  STA SpriteDMAArea, X
+  INY
+  INX
+	BNE DumpSprites_CharacterSelect_Loop
 
 	JSR EnableNMI
 
@@ -99,7 +96,6 @@ loc_BANKF_E2CA:
 	JSR DisplayLevelTitleCardText
 
 	JSR WaitForNMI
-
 
 ; Init cursor location, determine by what last character was picked
   LDY CurrentcharacterPOne
@@ -117,4 +113,4 @@ loc_BANKF_E2CA:
   LDA CharSelectDoublePickTable, Y
   STA TwoPlayerCharacterSelect
 
-	JMP HandlePlayerOneCursorCharSelect
+	JMP CharacterSelectInputHandler

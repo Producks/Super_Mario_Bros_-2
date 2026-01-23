@@ -191,9 +191,9 @@ BonusChanceSpritePalettes:
 CarryYOffsets:
 CarryYOffsetBigLo:
 	.db $FA ; Mario
-	.db $F6 ; Princess
-	.db $FC ; Toad
 	.db $F7 ; Luigi
+	.db $FC ; Toad
+	.db $F6 ; Princess
   .db $FA ; Imajin
   .db $FA ; Mama
 	.db $FA ; Papa
@@ -207,9 +207,9 @@ CarryYOffsetBigLo:
 
 CarryYOffsetBigHi:
 	.db $FF ; Mario
-	.db $FF ; Princess
-	.db $FF ; Toad
 	.db $FF ; Luigi
+	.db $FF ; Toad
+	.db $FF ; Princess
   .db $FF ; Imajin
   .db $FF ; Mama
 	.db $FF ; Papa
@@ -223,9 +223,9 @@ CarryYOffsetBigHi:
 
 CarryYOffsetSmallLo:
 	.db $02 ; Mario
-	.db $FE ; Princess
-	.db $04 ; Toad
 	.db $FF ; Luigi
+	.db $04 ; Toad
+	.db $FE ; Princess
   .db $FA ; Imajin
   .db $FA ; Mama
 	.db $FA ; Papa
@@ -239,9 +239,9 @@ CarryYOffsetSmallLo:
 
 CarryYOffsetSmallHi:
 	.db $00 ; Mario
-	.db $FF ; Princess
-	.db $00 ; Toad
 	.db $FF ; Luigi
+	.db $00 ; Toad
+	.db $FF ; Princess
   .db $FF ; Imajin
 	.db $FF ; Mama
 	.db $FF ; Papa

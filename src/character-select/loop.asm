@@ -1,217 +1,93 @@
-; For player 1
-SetCursorLocationGFXCharSelect:
+;
+; Helper functions/subroutines/tables
+;
+Math_CharacterSelectInput:
+  .db $01, $FF, $04, $FC
+
+MultiplyBy16:
+  ASL A
+  ASL A
+  ASL A
+  ASL A
+  RTS
+
+;
+; X = Value to set
+;
+SetCharacter_OAM_Palette:
   LDA CursorLocation
-  LSR A
-  LSR A
-  TAX
-  LDA CursorLocation
-  AND #$03
-  TAY
-  LDA PlayerSelectPLetterX, Y
-  STA SpriteDMAArea + 3
-  LDA PlayerSelectPNumberX, Y
-  STA SpriteDMAArea + 7
-  LDA PlayerSelectCursorY, X
-  STA SpriteDMAArea
-  STA SpriteDMAArea + 4
-  RTS
-
-; For player 2
-SetCursorLocationGFXCharSelectPTwo:
-  LDA CursorLocationPTwo
-  LSR A
-  LSR A
-  TAX ; Get these bits XXXX 00XXX
-  LDA CursorLocationPTwo
-  AND #$03
-  TAY ; Extract the least significant nibble
-  LDA PlayerSelectPLetterX, Y
-  STA SpriteDMAArea + 11
-  LDA PlayerSelectPNumberX, Y
-  STA SpriteDMAArea + 15
-  LDA PlayerSelectCursorY, X
-  STA SpriteDMAArea + 8
-  STA SpriteDMAArea + 12
-  RTS
-
-; ------------------------------------------------------------
-; Black out every sprite, except the P1 and P2 cursor
-; ------------------------------------------------------------
-BlackOutAllSpritePalette:
-  LDX #$0B
-  LDY #$02
-BlackOutAllSpritePaletteLoop:
-  TYA
-  CLC
-  ADC #$10
-  TAY
-  LDA #$00
-  STA SpriteDMAArea, Y
-  STA SpriteDMAArea + 4, Y
-  STA SpriteDMAArea + 8, Y
-  STA SpriteDMAArea + 12, Y
-  DEX
-  BPL BlackOutAllSpritePaletteLoop
-  RTS
-
-; ------------------------------------------------------------
-; This function update the sprite that the cursor is pointing
-; at and give it the correct palette according to X.
-; Using X here help us reuse this function for both P1 and P2.
-; Params:
-;         Y = The cursor value
-;         X = Either #$01 P1 or #$02 P2
-; ------------------------------------------------------------
-UpdatePaletteCharacter:
-  LDA DMATableCharacterPalette, Y
+  JSR MultiplyBy16
   TAY
   TXA
-  STA SpriteDMAArea, Y
-  STA SpriteDMAArea + 8, Y
-  STA SpriteDMAArea + 4, Y
-  STA SpriteDMAArea + 12, Y
+  STA SpriteDMAArea + 2, Y
+  STA SpriteDMAArea + 6, Y
+  STA SpriteDMAArea + 10, Y
+  STA SpriteDMAArea + 14, Y
   RTS
 
-; ------------------------------------------------------------
-; Update palette slot 1 with the cursor location.
-; Will update slot 2 with the second cursor if a 2 player mode
-; was selected. There was no good way to split this subroutine.
-; Params:
-;         CursorLocation (RAM)
-;         TwoPlayerCharacterSelect (RAM)
-;         CursorLocationPTwo (RAM)
-; ------------------------------------------------------------
-DumpNewPaletteCharacter:
+; End of helpers
 
-; Handle slot 1 for player 1 cursor
-  LDY CursorLocation
-  JSR GetTrueIndex
-  LDA PlayerSelectPaletteOffsets, Y
+; Looooooooooop
+CharacterSelectMenuLoop:
+	JSR WaitForNMI_TurnOnPPU
+
+  LDX #$00
+  JSR SetCharacter_OAM_Palette
+
+CharacterSelectInputHandler:
+; Handle dpad input
+  LDA Player1JoypadPress
+  LDY #$00
+
+Input_CharacterSelect_Loop:
+  AND #$0F
+  ROR
+  BCC Inc_CharacterSelect_Loop
+  TAX
+  LDA Math_CharacterSelectInput, Y
+  CLC
+  ADC CursorLocation
+  AND #$0F
+  STA CursorLocation
+  LDA #SoundEffect1_CherryGet
+	STA SoundEffectQueue1
+  TXA
+Inc_CharacterSelect_Loop:
+  INY
+  CPY #$04
+  BNE Input_CharacterSelect_Loop
+
+  LDX #$01
+  JSR SetCharacter_OAM_Palette
+
+; Update second palette babyyy
+UpdatePaletteOne_ChararacterSelect:
+;  JSR GetPaletteStartingIndex
+  LDA CursorLocation
+  ASL A
+  ASL A
   TAY
+
   LDA #$3F
   STA PPUBuffer_301
   LDA #$14
   STA PPUBuffer_301 + 1
-  LDA PlayerSelectSpritePalettes, Y
+  LDA #$04
+  STA PPUBuffer_301 + 2
+
+  LDA CharacterPalette, Y
 	STA PPUBuffer_301 + 3
-  LDA PlayerSelectSpritePalettes + 1, Y
+  LDA CharacterPalette + 1, Y
 	STA PPUBuffer_301 + 4
-  LDA PlayerSelectSpritePalettes + 2, Y
+  LDA CharacterPalette + 2, Y
 	STA PPUBuffer_301 + 5
-  LDA PlayerSelectSpritePalettes + 3, Y
+  LDA CharacterPalette + 3, Y
 	STA PPUBuffer_301 + 6
 
-; Check for player 2
-  LDA TwoPlayerCharacterSelect
-  BEQ FinishPlayerOneDumpPalette
-
-; Do player 2 stuff here
-  LDY CursorLocationPTwo
-  JSR GetTrueIndex
-  LDA PlayerSelectPaletteOffsets, Y
-  TAY
-  LDA PlayerSelectSpritePalettes, Y
-	STA PPUBuffer_301 + 7
-  LDA PlayerSelectSpritePalettes + 1, Y
-	STA PPUBuffer_301 + 8
-  LDA PlayerSelectSpritePalettes + 2, Y
-	STA PPUBuffer_301 + 9
-  LDA PlayerSelectSpritePalettes + 3, Y
-	STA PPUBuffer_301 + 10
-  LDA #$00
-  STA PPUBuffer_301 + 11
-  LDA #$08 ; Set the length to 8 because of 2 player
-  STA PPUBuffer_301 + 2
-  LDA #$0B
-  STA byte_RAM_300
-  RTS
-
-FinishPlayerOneDumpPalette:
-  LDA #$04 ; Set the length to 4 because of 2 player
-  STA PPUBuffer_301 + 2
   LDA #$00
 	STA PPUBuffer_301 + 7
   LDA #$07
   STA byte_RAM_300
-  RTS
-
-
-; ------------------------------------------------------------
-; Desc:
-;         Get correct Y position for the pallete, check
-;         for cheat code.
-; params:
-;         Y = Cursor location
-; ------------------------------------------------------------
-GetTrueIndex:
-  LDA CheatCode
-  AND #WarioWaluigiCheat
-  BEQ LeaveGetTrueIndex
-  CPY #Character_Merio
-  BEQ IncrementTrueIndex
-  CPY #Character_Garfield
-  BNE LeaveGetTrueIndex
-
-IncrementTrueIndex:
-  INY
-  INY
-  INY
-  INY
-LeaveGetTrueIndex:
-  RTS
-
-
-CharacterSelectMenuLoop:
-	JSR WaitForNMI_TurnOnPPU
-
-  JSR BlackOutAllSpritePalette
-
-HandlePlayerOneCursorCharSelect:
-  LDA CurrentcharacterPOne
-  BPL CheckForPlayerTwoCharSelect ; Branch if player 1 selected a character
-
-  LDA Player1JoypadPress
-  STA CharSelectInputARGV
-  LDA CursorLocation
-  STA CharSelectCursorARGV
-  JSR ReadInputCharSelect ; Handle cursor for Player 1
-  LDA CharSelectCursorARGV
-  STA CursorLocation
-  JSR SetCursorLocationGFXCharSelect ; Update cursor
-  JSR CheckForConfirmationCharSelect
-
-CheckForPlayerTwoCharSelect:
-; Check for player 2
-  LDA TwoPlayerCharacterSelect
-  BEQ SpritePaletteHandler ; Check if we need to do the second player part
-
-HandlePlayerTwoCursorCharSelect:
-  LDA CurrentCharacterPTwo
-  BPL SpritePaletteHandler ; Branch if player 2 selected a character
-
-  LDA Player2JoypadPress
-  STA CharSelectInputARGV
-  LDA CursorLocationPTwo
-  STA CharSelectCursorARGV
-  JSR ReadInputCharSelect
-  LDA CharSelectCursorARGV
-  STA CursorLocationPTwo
-  JSR SetCursorLocationGFXCharSelectPTwo ; Update cursor
-  JSR CheckForConfirmationCharSelectTwo
-
-SpritePaletteHandler:
-  LDA TwoPlayerCharacterSelect
-  BEQ ApplyPlayerOnePalette ; Check if there 2 player, if not, then skip
-  LDX #$02
-  LDY CursorLocationPTwo
-  JSR UpdatePaletteCharacter
-
-ApplyPlayerOnePalette:
-  LDY CursorLocation
-  LDX #$01
-  JSR UpdatePaletteCharacter
-
-  JSR DumpNewPaletteCharacter ; Dump palette for slot 1 and slot 2
 
 CheckConfirmation:
   LDA CurrentcharacterPOne
