@@ -1,32 +1,3 @@
-;
-; Helper functions/subroutines/tables
-;
-Math_CharacterSelectInput:
-  .db $01, $FF, $04, $FC
-
-MultiplyBy16:
-  ASL A
-  ASL A
-  ASL A
-  ASL A
-  RTS
-
-;
-; X = Value to set
-;
-SetCharacter_OAM_Palette:
-  LDA CursorLocation
-  JSR MultiplyBy16
-  TAY
-  TXA
-  STA SpriteDMAArea + 2, Y
-  STA SpriteDMAArea + 6, Y
-  STA SpriteDMAArea + 10, Y
-  STA SpriteDMAArea + 14, Y
-  RTS
-
-; End of helpers
-
 ; Looooooooooop
 CharacterSelectMenuLoop:
 	JSR WaitForNMI_TurnOnPPU
@@ -90,14 +61,9 @@ UpdatePaletteOne_ChararacterSelect:
   STA byte_RAM_300
 
 CheckConfirmation:
-  LDA CurrentcharacterPOne
-  BMI CharacterSelectMenuLoop ; If player 1 didn't pick, start back the loop
-
-  LDA TwoPlayerCharacterSelect
-  BEQ CharSelectDone ; If there no player 2, leave!
-
-  LDA CurrentCharacterPTwo
-  BMI CharacterSelectMenuLoop ; If player 2 didn't pick, go back
+  LDA Player1JoypadPress
+  AND #ControllerInput_A
+  BEQ CharacterSelectMenuLoop
 
 CharSelectDone:
 	JMP QuitCharacterSelect ; We're done! Time to leave

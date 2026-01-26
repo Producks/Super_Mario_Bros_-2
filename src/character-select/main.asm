@@ -2,9 +2,9 @@
 
 .include "src/character-select/characters.asm"
 
-.include "src/character-select/global.asm"
+.include "src/character-select/tables.asm"
 
-.include "src/character-select/input.asm"
+.include "src/character-select/helpers.asm"
 
 .include "src/character-select/init.asm"
 

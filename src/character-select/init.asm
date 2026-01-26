@@ -33,7 +33,16 @@ CharacterSelectMenuAB:
 	LDA #CHRBank_CharacterSelectBG2
 	STA BackgroundCHR2
 
-	JSR CopyCharacterStatsAndStuff
+;	JSR CopyCharacterStatsAndStuff
+
+DumpCharacterSelectPalette:
+	LDY #$4C
+DumpCharacterSelectPaletteLoop:
+	LDA PlayerSelectPalettes, Y
+	STA PPUBuffer_TitleCardPalette, Y
+	DEY
+	CPY #$FF
+	BNE DumpCharacterSelectPaletteLoop
 
 	JSR ResetScreenForTitleCard
 
@@ -87,16 +96,14 @@ DumpSprites_CharacterSelect_Loop:
   INX
 	BNE DumpSprites_CharacterSelect_Loop
 
+
+  JSR PrintTextCharSelect
+
 	JSR EnableNMI
 
 	JSR WaitForNMI
 
-	LDX CurrentWorld
-	LDY CurrentLevel
-	JSR DisplayLevelTitleCardText
-
-	JSR WaitForNMI
-
+;
 ; Init cursor location, determine by what last character was picked
   LDY CurrentcharacterPOne
   LDA RealCursorIndexTable, Y

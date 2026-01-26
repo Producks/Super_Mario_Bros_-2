@@ -311,165 +311,6 @@ IFDEF CONTROLLER_2_DEBUG
 	JSR CopyCharacterStats
 ENDIF
 
-CopyPlayerOneStats:
-  LDY CurrentcharacterPOne
-  LDA CharacterStatsLo, Y
-  STA FuncLoTemp
-  LDA CharacterStatsHi, Y
-  STA FuncHiTemp
-
-  LDY #$00
-CopyPlayerOneStatsLoop:
-  LDA (FuncLoTemp), Y
-  STA PlayerOneStatsRam, Y 
-  INY
-  CPY #kCharacterStatsTotal
-  BCC CopyPlayerOneStatsLoop
-
-CopyPlayerOnePalette:
-	LDA CurrentcharacterPOne
-	ASL A
-	ASL A
-	TAY
-	LDX #$00
-CopyPlayerOnePaletteLoop:
-  LDA CharacterPalette, Y
-  STA PlayerOnePaletteRam, X
-  INY
-  INX
-  CPX #$04
-  BNE CopyPlayerOnePaletteLoop
-
-CopyPlayerOneCarryStats:
-  LDY CurrentcharacterPOne
-  LDA CarryYOffsetBigLo, Y
-  STA PlayerOneCarryStats
-  LDA CarryYOffsetBigHi, Y 
-  STA PlayerOneCarryStats + 1
-  LDA CarryYOffsetSmallLo, Y
-  STA PlayerOneCarryStats + 2
-  LDA CarryYOffsetSmallHi, Y
-  STA PlayerOneCarryStats + 3
-
-CopyPlayerTwoStats:
-  LDY CurrentCharacterPTwo
-  LDA CharacterStatsLo, Y
-  STA FuncLoTemp
-  LDA CharacterStatsHi, Y
-  STA FuncHiTemp
-
-  LDY #$00
-CopyPlayerTwoStatsLoop:
-  LDA (FuncLoTemp), Y
-  STA PlayerTwoStatsRam, Y 
-  INY
-  CPY #kCharacterStatsTotal
-  BCC CopyPlayerTwoStatsLoop
-
-  LDY CurrentCharacter
-  LDA CharacterStatsLo, Y
-  STA FuncLoTemp
-  LDA CharacterStatsHi, Y
-  STA FuncHiTemp
-
-CopyPlayerTwoPalette:
-	LDA CurrentCharacterPTwo
-	ASL A
-	ASL A
-	TAY
-	LDX #$00
-CopyPlayerTwoPaletteLoop:
-  LDA CharacterPaletteAlt, Y
-  STA PlayerTwoPaletteRam, X
-  INY
-  INX
-  CPX #$04
-  BNE CopyPlayerTwoPaletteLoop
-
-CopyPlayerTwoCarryStats:
-  LDY CurrentCharacterPTwo
-  LDA CarryYOffsetBigLo, Y
-  STA PlayerTwoCarryStats
-  LDA CarryYOffsetBigHi, Y 
-  STA PlayerTwoCarryStats + 1
-  LDA CarryYOffsetSmallLo, Y
-  STA PlayerTwoCarryStats + 2
-  LDA CarryYOffsetSmallHi, Y
-  STA PlayerTwoCarryStats + 3
-
-;	LDX CurrentCharacter
-;	LDY StatOffsets, X
-	LDY #$00
-loc_BANKA_8458:
-	LDA (FuncLoTemp), Y
-	STA CharacterStatsRAM, Y
-	INY
-	CPY #kCharacterStatsTotal
-	BCC loc_BANKA_8458
-
-ApplyCheatCodeStats:
-
-; Check for doki doki run cheat
-  LDA CheatCode
-  AND #DokiDokiRunCheat
-  BEQ CheckFloatCheat
-  LDA $7E27
-  AND #$7F
-  STA CharacterSpecialAttribute
-  STA $7E27
-; Player two
-  LDA $7E47
-  AND #$7F
-  STA $7E47
-  LDY CurrentPlayer
-  BEQ CheckFloatCheat
-  STA CharacterSpecialAttribute
-
-CheckFloatCheat:
-; Check for all character float cheat
-  LDA CheatCode
-  AND #AllCharactersFloatCheat
-  BEQ SetPalette
-  LDA #$FF
-  STA JumpFloatLength
-  STA $7E1D
-  STA $7E3D
-
-SetPalette:
-	LDA CurrentCharacter
-	ASL A
-	ASL A
-	TAY
-
-  LDX CurrentPlayer
-  BEQ SetPlayerOnePalette
-  DEX ; Set back index to 0
-SetPlayerTwoPalette::
-	LDA CharacterPaletteAlt, Y
-	STA RestorePlayerPalette0, X
-	INY
-	INX
-	CPX #$04
-	BCC SetPlayerTwoPalette
-  JMP DumpCharacterSelectPalette
-
-SetPlayerOnePalette:
-	LDA CharacterPalette, Y
-	STA RestorePlayerPalette0, X
-	INY
-	INX
-	CPX #$04
-	BCC SetPlayerOnePalette
-
-DumpCharacterSelectPalette:
-	LDY #$4C
-loc_BANKA_8479:
-	LDA PlayerSelectPalettes, Y
-	STA PPUBuffer_TitleCardPalette, Y
-	DEY
-	CPY #$FF
-	BNE loc_BANKA_8479
-
 	LDY #$B6
 loc_BANKA_8486:
 	LDA BonusChanceReel1Order, Y
@@ -582,18 +423,6 @@ WartOAMOffsets:
 	.db $00
 	.db $E0
 	.db $FF ; Cycled in code ($726B)
-
-PlayerSelectPalettes:
-	.db $3F, $00, $20
-	.db $0F, $28, $16, $06
-	.db $0F, $30, $12, $16
-	.db $0F, $30, $16, $12
-	.db $0F, $30, $12, $16
-	.db $0F, $01, $12, $22
-	.db $0F, $01, $12, $22
-	.db $0F, $01, $12, $22
-	.db $0F, $01, $12, $22
-	.db $00
 
 BonusChanceText_X_1:
 	.db $22, $30, $03
@@ -713,7 +542,7 @@ TitleCardText:
 	.db $24, $CA, $0B
 	.db $FB, $F0, $E8, $EB, $E5, $DD, $FB, $FB, $D1, $F3, $D1
 	; EXTRA LIFE...  0
-	.db $23, $48, $10
+	.db $23, $68, $10
 	.db $DE, $F1, $ED, $EB, $DA, $FB, $E5, $E2, $DF, $DE
 	.db $F9, $F9, $F9, $FB, $FB, $D0
 	.db $00
