@@ -338,6 +338,7 @@ SkyFlashDump:
   INY
   DEX
   BPL SkyFlashDump
+
 loc_BANKA_84A0:
 ;	LDA MysteryData14439, Y
 ;	STA MysteryData14439_RAM, Y

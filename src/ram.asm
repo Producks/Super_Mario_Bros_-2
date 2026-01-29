@@ -1451,41 +1451,56 @@ CharacterSpecialAttribute:
 GroundType:
 	.dsb 1 ; $055e
 PPUBuffer_TitleCardPalette:
+PPU_PaletteBuffer:
 	.dsb 1 ; $055f
 	.dsb 1 ; $0560
 	.dsb 1 ; $0561
+PPU_PaletteBufferBegin:
+PPU_PaletteBufferBackgroundOne:
 	.dsb 1 ; $0562
 	.dsb 1 ; $0563
 	.dsb 1 ; $0564
 	.dsb 1 ; $0565
+PPU_PaletteBufferBackgroundTwo:
 	.dsb 1 ; $0566
 	.dsb 1 ; $0567
 	.dsb 1 ; $0568
 	.dsb 1 ; $0569
+PPU_PaletteBufferBackgroundThree:
 	.dsb 1 ; $056a
 	.dsb 1 ; $056b
 	.dsb 1 ; $056c
 	.dsb 1 ; $056d
+PPU_PaletteBufferBackgroundFour:
 	.dsb 1 ; $056e
 	.dsb 1 ; $056f
 	.dsb 1 ; $0570
 	.dsb 1 ; $0571
+
+PPU_PaletteBufferSpriteOne:
 	.dsb 1 ; $0572
 	.dsb 1 ; $0573
 	.dsb 1 ; $0574
 	.dsb 1 ; $0575
+
+PPU_PaletteBufferSpriteTwo:
 	.dsb 1 ; $0576
 	.dsb 1 ; $0577
 	.dsb 1 ; $0578
 	.dsb 1 ; $0579
+
+PPU_PaletteBufferSpriteThree:
 	.dsb 1 ; $057a
 	.dsb 1 ; $057b
 	.dsb 1 ; $057c
 	.dsb 1 ; $057d
+
+PPU_PaletteBufferSpriteFour:
 	.dsb 1 ; $057e
 	.dsb 1 ; $057f
 	.dsb 1 ; $0580
 	.dsb 1 ; $0581
+PPU_PaletteBufferEnd:
 	.dsb 1 ; $0582
 PPUBuffer_BonusChanceCoinsExtraLife:
 	.dsb 1 ; $0583
@@ -2244,40 +2259,7 @@ RawLevelData = $7800
 
 RawJarData = $7a00
 
-RawEnemyDataAddr = $7b00
-
-;
-; Extra enhancement support for 2P debug mode controls
-; Spread around to some 'for rent' addresses
-;
-IFDEF CONTROLLER_2_DEBUG
-	UpdateJoypadsTemp = $00c6
-	CarryYOffsetsRAM = $7e00
-	StatOffsetsRAM = $7e10
-	ChangeCharacterTimer = $7e80
-	CreateObjectType = $7e82
-	CreateObjectAttributes = $7e83
-ENDIF
-
-SkyFlashColors = $7FF0
-
-ColorPaletteBuffer = $7FD0
-
-ItemCarryYOffsetsRAM = $7f00
-ChangeCharacterPoofTimer = $7e81
-CheatCode = $7E80
-SettingsTitleScreen = $7E80
-
-; Allocate 36 bytes total. 3 bytes for the parameters, 32 bytes for colors and 1 bytes for the terminating 0
-PPU_PaletteBuffer = $7E00
-PPU_PaletteBufferBegin = $7E03
-PPU_PaletteBufferEnd = $7E23
-
-CharSelectInputARGV = $7E24
-CopyCharStatsFuncLo = $7E24
-CopyCharStatsFuncHi = $7E25
-CharSelectCursorARGV = $7E25
-CharSelectCharacterARGV = $7E26
+RawEnemyDataAddr = $7B00
 
 PlayerOneStatsRam = $7E10
 PlayerOnePaletteRam = $7E28
@@ -2286,6 +2268,23 @@ PlayerOneCarryStats = $7E2C
 PlayerTwoStatsRam = $7E30
 PlayerTwoPaletteRam = $7E48
 PlayerTwoCarryStats = $7E4C
+
+CheatCode = $7E80
+SettingsTitleScreen = $7E80
+ChangeCharacterPoofTimer = $7E81
+
+
+; $7F60-$7F9F
+PlayerOneCharacterPaletteRamTable = $7F60
+
+; $7FA0-$7FDF
+PlayerTwoCharacterPaletteRamTable = $7FA0
+
+; $7FE0-$7FFB
+ItemCarryYOffsetsRAM = $7FE0
+
+; $7FFC-$7FFF
+SkyFlashColors = $7FFC
 
 MMC3_BankSelect = $8000
 MMC3_BankData = $8001

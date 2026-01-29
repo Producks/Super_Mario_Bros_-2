@@ -2,6 +2,12 @@
 CharacterSelectMenuLoop:
 	JSR WaitForNMI_TurnOnPPU
 
+  LDA Player1JoypadPress
+  AND #ControllerInput_Select
+  BEQ NormalLoopCharacterSelect
+  JMP MenuCharacterSelectInit
+
+NormalLoopCharacterSelect:
   LDX #$00
   JSR SetCharacter_OAM_Palette
 
@@ -46,13 +52,13 @@ UpdatePaletteOne_ChararacterSelect:
   LDA #$04
   STA PPUBuffer_301 + 2
 
-  LDA CharacterPalette, Y
+  LDA PlayerOneCharacterPaletteRamTable, Y
 	STA PPUBuffer_301 + 3
-  LDA CharacterPalette + 1, Y
+  LDA PlayerOneCharacterPaletteRamTable + 1, Y
 	STA PPUBuffer_301 + 4
-  LDA CharacterPalette + 2, Y
+  LDA PlayerOneCharacterPaletteRamTable + 2, Y
 	STA PPUBuffer_301 + 5
-  LDA CharacterPalette + 3, Y
+  LDA PlayerOneCharacterPaletteRamTable + 3, Y
 	STA PPUBuffer_301 + 6
 
   LDA #$00
