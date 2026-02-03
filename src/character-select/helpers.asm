@@ -69,5 +69,28 @@ PrintWordCharSelectLoop:
 LeavePRintWordCharSelect:
   RTS
 
+
+DumpCharacterSpritesSelect:
+  LDY #$00
+  LDX #$00
+-
+	LDA PlayerSelectMarioSprites1, Y
+	STA SpriteDMAArea, X
+  INY
+  INX
+	LDA PlayerSelectMarioSprites1, Y
+	STA SpriteDMAArea, X
+  INY
+  INX
+  LDA #$00
+  STA SpriteDMAArea, X
+  INX
+	LDA PlayerSelectMarioSprites1, Y
+  STA SpriteDMAArea, X
+  INY
+  INX
+	BNE -
+  RTS
+
 ; End of helpers
 ;Select Character One

@@ -1,4 +1,4 @@
-wee:
+CharacterEditorMenuLoop:
   JSR WaitForNMI_TurnOnPPU
 
   LDA Player1JoypadPress
@@ -7,41 +7,55 @@ wee:
   INC FuncLoTemp
   LDA FuncLoTemp
   CMP #$03
-  BNE UpdateCursorCharacterSelectMenu
+  BNE +
   LDA #$00
   STA FuncLoTemp
-  BEQ UpdateCursorCharacterSelectMenu
+  BEQ +
 
 CheckUPCharacterSelectMenu:
   LDA Player1JoypadPress
   AND #ControllerInput_Up
   BEQ CheckACharacterSelectMenu
   DEC FuncLoTemp
-  BPL UpdateCursorCharacterSelectMenu
+  BPL +
   LDA #$02
   STA FuncLoTemp
-  BNE UpdateCursorCharacterSelectMenu
+  BNE +
 
 CheckACharacterSelectMenu:
   LDA Player1JoypadPress
   AND #ControllerInput_A
-  BEQ wee
+  BEQ CharacterEditorMenuLoop
   LDA FuncLoTemp
-  BEQ CharacterSelectMenuPaletteEditor
+  BEQ PaletteEditorInit
   CMP #$01
   BEQ RestoreDefaultPaletteCharacterEditor
   JMP QuitSubMenuCharacterEditor
 
-UpdateCursorCharacterSelectMenu:
++
   LDY FuncLoTemp
-  LDA CursorYPosition, Y
+  LDA CursorCharSelectMenuYPosition, Y
   STA SpriteDMAArea + 24
-  LDA CursorXPosition, Y
+  LDA #$3C
   STA SpriteDMAArea + 27
-  BNE wee
+
+  BNE CharacterEditorMenuLoop
 
 RestoreDefaultPaletteCharacterEditor:
-  RTS
+  LDA CursorLocation
+  ASL A
+  ASL A
+  TAY
+  LDX #$01
+-
+  LDA CharacterPaletteDefaultTable, Y
+  STA PlayerOneCharacterPaletteRamTable + 1, Y
+  STA PPU_PaletteBufferSpriteOne, X
+  INY
+  INX
+  CPX #$04
+  BNE -
 
-CharacterSelectMenuPaletteEditor:
-  RTS
+  LDA #$02
+  STA ScreenUpdateIndex
+  BNE CharacterEditorMenuLoop

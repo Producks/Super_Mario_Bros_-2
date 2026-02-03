@@ -78,6 +78,7 @@ PlayerSelectPalettes:
 	.db $0F, $30, $12, $16
 	.db $0F, $30, $16, $12
 	.db $0F, $30, $12, $16
+PlayerSelectPalettesSprite:
 	.db $0F, $01, $12, $22
 	.db $0F, $01, $12, $22
 	.db $0F, $01, $12, $22

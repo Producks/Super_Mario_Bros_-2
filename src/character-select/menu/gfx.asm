@@ -34,3 +34,28 @@ ExitMenuText:
 
 CharacterInfoText:
   .db $22, $A9, $0E, $DC, $E1, $DA, $EB, $DA, $DC, $ED, $DE, $EB, $FB, $E2, $E7, $DF, $E8, $00
+
+; Erase section!
+EraseName:
+  .db $20, $EA, $4F, $FA, $00
+
+ErasePaletteEditorText:
+  .db $21, $49, $4E, $FB, $00
+
+EraseRestorePaletteText
+  .db $21, $E9, $4F, $FB, $00
+
+EraseExitMenuText:
+  .db $22, $49, $49, $FB, $00
+
+EraseCharacterInfoText:
+  .db $22, $A9, $4E, $FB, $00
+
+EraseDescriptionLineOne:
+  .db $2A, $E6, $54, $FB, $00
+
+EraseDescriptionLineTwo:
+  .db $2B, $26, $54, $FB, $00
+
+EraseDescriptionLineThree:
+  .db $2B, $66, $54, $FB, $00

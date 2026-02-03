@@ -23,4 +23,6 @@
 
 .include "src/character-select/menu/loop.asm"
 
+.include "src/character-select/menu/palette-editor.asm"
+
 .include "src/character-select/menu/quit.asm"

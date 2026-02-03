@@ -38,3 +38,13 @@ SetSpriteColorPalette:
   INX
   INY
   RTS
+
+GetPaletteCharacterIndexEditor:
+  LDA CursorLocation ; Cursor index for the character we want to update
+  ASL A
+  ASL A
+  CLC
+  ADC FuncHiTemp
+  TAY
+  INY
+  RTS

@@ -2273,6 +2273,8 @@ CheatCode = $7E80
 SettingsTitleScreen = $7E80
 ChangeCharacterPoofTimer = $7E81
 
+HeldTimerFire = $7F5E
+DpadHeldTimer = $7F5F
 
 ; $7F60-$7F9F
 PlayerOneCharacterPaletteRamTable = $7F60

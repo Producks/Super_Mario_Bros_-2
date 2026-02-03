@@ -100,26 +100,7 @@ DumpCharacterSelectPaletteLoop:
 	LDA #Music1_CharacterSelect
 	STA MusicQueue1
 
-  LDY #$00
-  LDX #$00
-DumpSprites_CharacterSelect_Loop:
-	LDA PlayerSelectMarioSprites1, Y
-	STA SpriteDMAArea, X
-  INY
-  INX
-	LDA PlayerSelectMarioSprites1, Y
-	STA SpriteDMAArea, X
-  INY
-  INX
-  LDA #$00
-  STA SpriteDMAArea, X
-  INX
-	LDA PlayerSelectMarioSprites1, Y
-  STA SpriteDMAArea, X
-  INY
-  INX
-	BNE DumpSprites_CharacterSelect_Loop
-
+  JSR DumpCharacterSpritesSelect
 
   JSR PrintTextCharSelect
 

@@ -10,6 +10,8 @@ SpriteTableMenuCharacterSelect:
 
   .db $46, $20, $03, $3C ; Cursor
 
+  .db $F8, $20, $03, $47 ; Sub cursor
+
   .db $26, $40, $00, $B0 ; Top Right
   .db $26, $42, $00, $B8 ; Top Left
   .db $36, $44, $00, $B0 ; Bottom Right
@@ -23,8 +25,11 @@ SpriteTableMenuCharacterSelect:
   .db $26, $7E, $03, $B0 ; Eye
 
 
-CursorYPosition:
-  .db $46, $6E, $86, $26, $26, $26
+CursorCharSelectMenuYPosition:
+  .db $46, $6E, $86
+  
+CursorCharSelectMenuEditorXPosition:
+  .db $47, $70, $97
 
-CursorXPosition:
-  .db $3C, $3C, $3C, $26, $26, $26
+TableSpriteOAMIndexTilePositionCharacterEditor:
+  .db $01, $09, $11

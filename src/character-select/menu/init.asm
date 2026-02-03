@@ -102,13 +102,11 @@ MenuCharacterSelectInit:
   LDA SpriteTableMenuCharacterSelect, Y
   STA SpriteDMAArea, Y
   INY
-  CPY #$40
+  CPY #$44
   BNE -
 
 ; Init character sprites depending on the cursor location
   LDA CursorLocation
-  ASL A
-  ASL A
   ASL A
   ASL A
   TAY
@@ -136,6 +134,8 @@ MenuCharacterSelectInit:
 
   LDA #$30
   STA PPU_PaletteBufferSpriteFour + 1
+  LDA #$16
+  STA PPU_PaletteBufferSpriteFour + 2
 
   LDA #$00
   STA FuncLoTemp ; Hold sub menu cursor

@@ -1,2 +1,41 @@
 QuitSubMenuCharacterEditor:
-  RTS
+  JSR HideAllSprites
+
+  LDA #<EraseName
+  STA FuncLoTemp
+  LDA #>EraseName
+  STA FuncHiTemp
+
+; TODO loop this for space...
+  JSR DumpTextLine
+  JSR DumpTextLine
+  JSR DumpTextLine
+  JSR DumpTextLine
+  JSR DumpTextLine
+  JSR DumpTextLine
+
+; Restore palette time babyyy
+  LDY #$03
+-
+  LDA PlayerSelectPalettesSprite, Y
+  STA PPU_PaletteBufferSpriteOne, Y
+  DEY
+  BPL -
+
+  JSR DumpCharacterSpritesSelect
+
+	LDA #CHRBank_CharacterSelectSprites
+	STA SpriteCHR1
+  LDA #CHRBank_CharacterSelectSprites + 1
+  STA SpriteCHR2
+  LDA #CHRBank_CharacterSelectSprites + 2
+  STA SpriteCHR3
+
+  LDA #$02
+  STA ScreenUpdateIndex
+
+  JSR WaitForNMI
+
+  JSR PrintTextCharSelect
+
+  JMP CharacterSelectMenuLoop
