@@ -5816,12 +5816,12 @@ CHRBank_WorldBossBackground:
 CHRBank_CharacterSize:
 	.db CHRBank_Mario
 	.db CHRBank_MarioSmall
-	.db CHRBank_Princess
-	.db CHRBank_PrincessSmall
-	.db CHRBank_Toad
-	.db CHRBank_ToadSmall
 	.db CHRBank_Luigi
 	.db CHRBank_LuigiSmall
+	.db CHRBank_Toad
+	.db CHRBank_ToadSmall
+	.db CHRBank_Princess
+	.db CHRBank_PrincessSmall
   .db CHRBANK_Imajin
   .db CHRBANK_Imajin ; small
   .db CHRBANK_Mama
@@ -5831,21 +5831,31 @@ CHRBank_CharacterSize:
   .db CHRBANK_Lina
   .db CHRBANK_Lina ; small
 
-  .db CHRBANK_Merio
-  .db CHRBANK_MerioSmall
-  .db CHRBANK_Garfield
-  .db CHRBANK_GarfieldSmall
-  .db CHRBANK_Toadette
-  .db CHRBANK_ToadetteSmall
-  .db CHRBANK_Rosalina
-  .db CHRBANK_RosalinaSmall
-
-; Cheat code character
   .db CHRBANK_Wario
   .db CHRBANK_WarioSmall
 
   .db CHRBANK_Waluigi
   .db CHRBANK_WaluigiSmall
+
+  .db CHRBANK_Toadette
+  .db CHRBANK_ToadetteSmall
+
+  .db CHRBANK_Daisy
+  .db CHRBANK_DaisySmall
+
+  .db CHRBANK_Merio
+  .db CHRBANK_MerioSmall
+
+  .db CHRBANK_Garfield
+  .db CHRBANK_GarfieldSmall
+
+  .db CHRBANK_Birdo
+  .db CHRBANK_Birdo
+
+  .db CHRBANK_Rosalina
+  .db CHRBANK_RosalinaSmall
+
+; Cheat code character
 
 LoadWorldCHRBanks:
 	LDY #CHRBank_CommonEnemies1

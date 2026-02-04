@@ -458,74 +458,74 @@ RosalinaStats:
 	.db $FC ; Running Speed, left - in quicksand
   .db CanRun | Shrink | UpwardFloat | NoStomp | RegularDig | RegularPickups ; Special attributes
 
-; Will fill the first value of each with $0F, so I end up saving 1 byte per palette
+; Used to be 3 bytes only. But working with something that isn't a power of 2 fucking sucks
 CharacterPaletteDefaultTable:
 MarioPalette:
-	.db $01, $16, $27
+	.db $0F, $01, $16, $27
 LuigiPalette:
-	.db $01, $2A, $36
+	.db $0F, $01, $2A, $36
 ToadPalette:
-	.db $01, $30, $27
+	.db $0F, $01, $30, $27
 PrincessPalette:
-	.db $06, $25, $36
+	.db $0F, $06, $25, $36
 ImajinPalette:
-	.db $01, $27, $30
+	.db $0F, $01, $27, $30
 MamaPalette:
-  .db $01, $36, $12
+  .db $0F, $01, $36, $12
 PapaPalette:
-  .db $06, $27, $37
+  .db $0F, $06, $27, $37
 LinaPalette:
-  .db $06, $36, $25
+  .db $0F, $06, $36, $25
 WarioPalette:
-	.db $06, $27, $37
+	.db $0F, $06, $27, $37
 WaluigiPalette:
-  .db $03, $13, $36
+  .db $0F, $03, $13, $36
 ToadettePalette:
-  .db $0D, $24, $36
+  .db $0F, $0D, $24, $36
 DaisyPalette:
-  .db $06, $27, $37
+  .db $0F, $06, $27, $37
 MerioPalette:
-	.db $01, $16, $27
+	.db $0F, $01, $16, $27
 GarfieldPalette:
-  .db $06, $27, $30 
+  .db $0F, $06, $27, $30 
 BirdoPalette:
-  .db $05, $25, $30
+  .db $0F, $05, $25, $30
 RosalinaPalette:
-  .db $08, $2C, $36
+  .db $0F, $08, $2C, $36
 
 ; Player 2 player palette
 MarioPaletteAlt:
-	.db $01, $13, $27
+	.db $0F, $01, $13, $27
 LuigiPaletteAlt:
-	.db $01, $30, $36
+	.db $0F, $01, $30, $36
 ToadPaletteAlt:
-	.db $16, $30, $27
+	.db $0F, $16, $30, $27
 PrincessPaletteAlt:
-	.db $06, $27, $36
+	.db $0F, $06, $27, $36
 ImajinPaletteAlt:
-	.db $07, $17, $27
+	.db $0F, $07, $17, $27
 MamaPaletteAlt:
-  .db $00, $10, $36
+  .db $0F, $00, $10, $36
 PapaPaletteAlt:
-  .db $06, $30, $27
+  .db $0F, $06, $30, $27
 LinaPaletteAlt:
-  .db $08, $28, $36
+  .db $0F, $08, $28, $36
 WarioPaletteAlt:
-	.db $07, $16, $36
+	.db $0F, $07, $16, $36
 WaluigiPaletteAlt:
-  .db $0C, $1C, $36
+  .db $0F, $0C, $1C, $36
 ToadettePaletteAlt:
-  .db $0D, $16, $36
+  .db $0F, $0D, $16, $36
 DaisyPaletteAlt:
-  .db $0D, $16, $36
+  .db $0F, $0D, $16, $36
 MerioPaletteAlt:
-	.db $01, $1A, $27
+	.db $0F, $01, $1A, $27
 GarfieldPaletteAlt:
-  .db $06, $26, $30
+  .db $0F, $06, $26, $30
 BirdoPaletteAlt:
-  .db $06, $26, $30
+  .db $0F, $06, $26, $30
 RosalinaPaletteAlt:
-  .db $08, $13, $36
+  .db $0F, $08, $13, $36
 
 PlayerSelectMarioSprites1:
 	.db $2E, $00, $48

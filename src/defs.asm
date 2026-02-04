@@ -797,28 +797,33 @@ CHRBank_Mario = $00
 CHRBank_Luigi = $01
 CHRBank_Princess = $02
 CHRBank_Toad = $03
-CHRBank_MarioSmall = $04
-CHRBank_LuigiSmall = $05
-CHRBank_PrincessSmall = $06
-CHRBank_ToadSmall = $07
+
 CHRBANK_Imajin = $90
 CHRBANK_Mama = $91
 CHRBANK_Papa = $92
 CHRBANK_Lina = $93
+
+CHRBANK_Wario = $A4
+CHRBANK_Waluigi = $A6
+CHRBANK_Toadette = $97
+CHRBANK_Daisy = $AA
+
 CHRBANK_Merio = $94
 CHRBANK_Garfield = $95
-CHRBANK_Toadette = $97
+CHRBANK_Birdo = $A8
 CHRBANK_Rosalina = $96
+
+CHRBank_MarioSmall = $04
+CHRBank_LuigiSmall = $05
+CHRBank_PrincessSmall = $06
+CHRBank_ToadSmall = $07
+CHRBANK_WarioSmall = $AF
+CHRBANK_WaluigiSmall = $A2
+CHRBANK_ToadetteSmall = $9B
+CHRBANK_DaisySmall = $FF
 CHRBANK_MerioSmall = $98
 CHRBANK_GarfieldSmall = $99
-CHRBANK_ToadetteSmall = $9B
 CHRBANK_RosalinaSmall = $9A
-
-CHRBANK_Waluigi = $A1
-CHRBANK_WaluigiSmall = $A2
-
-CHRBANK_Wario = $A3
-CHRBANK_WarioSmall = $A4
 
 CHRBank_CommonEnemies1 = $08
 CHRBank_CommonEnemies2 = $09

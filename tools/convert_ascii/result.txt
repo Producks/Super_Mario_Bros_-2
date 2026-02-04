@@ -1,1 +1,1 @@
-  .db $XX, $XX, $0B, $E0, $DA, $F2, $FB, $DA, $EC, $FB, $DF, $EE, $DC, $E4, $00
+  .db $XX, $XX, $04, $ED, $E8, $DA, $DD, $00

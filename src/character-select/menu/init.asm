@@ -1,37 +1,5 @@
 MenuCharacterSelectInit:
-; Temp color
-  LDA #$3F
-  STA PPUBuffer_301
-  LDA #$04
-  STA PPUBuffer_301 + 1
-  LDA #$04
-  STA PPUBuffer_301 + 2
-
-  LDA #$0F
-	STA PPUBuffer_301 + 3
-	STA PPUBuffer_301 + 4
-	STA PPUBuffer_301 + 5
-	STA PPUBuffer_301 + 6
-
-  LDA #$3F
-  STA PPUBuffer_301 + 7
-  LDA #$10
-  STA PPUBuffer_301 + 8
-  LDA #$08
-  STA PPUBuffer_301 + 9
-
-  LDA #$0F
-	STA PPUBuffer_301 + 10
-	STA PPUBuffer_301 + 11
-	STA PPUBuffer_301 + 12
-	STA PPUBuffer_301 + 13
-	STA PPUBuffer_301 + 14
-	STA PPUBuffer_301 + 15
-	STA PPUBuffer_301 + 16
-	STA PPUBuffer_301 + 17
-
-  LDA #$00
-	STA PPUBuffer_301 + 18
+; TODO add delete third line here
 
   JSR HideAllSprites
 
@@ -81,7 +49,6 @@ MenuCharacterSelectInit:
   LDA #$3E
   STA SpriteCHR1
 
-
 ; lol saving like 2 bytes over a table
   LDY #$FF
   LDA CursorLocation
@@ -105,6 +72,26 @@ MenuCharacterSelectInit:
   CPY #$44
   BNE -
 
+; Update sprite table to display the correct character on the left
+  LDA CursorLocation
+  AND #$03
+  ASL A
+  ASL A
+  ASL A ; Multiply by 8
+  ORA #$80
+  LDX #$03
+  LDY #$00
+-
+  STA $231, Y
+;  CLC TODO IF this bug restore it
+  ADC #$02
+  INY
+  INY
+  INY
+  INY
+  DEX
+  BPL -
+
 ; Init character sprites depending on the cursor location
   LDA CursorLocation
   ASL A
@@ -119,17 +106,20 @@ MenuCharacterSelectInit:
 
 ; Set new palettes
   LDY FuncLoTemp ; Restore index
+  LDX #$01
   LDA PlayerOneCharacterPaletteRamTable, Y
-  STA PPU_PaletteBufferSpriteOne, Y
+  STA PPU_PaletteBufferSpriteOne, X
   INY
+  INX
 
   LDA PlayerOneCharacterPaletteRamTable, Y
-  STA PPU_PaletteBufferSpriteOne, Y
+  STA PPU_PaletteBufferSpriteOne, X
   STA PPU_PaletteBufferSpriteTwo + 1
   INY
+  INX
 
   LDA PlayerOneCharacterPaletteRamTable, Y
-  STA PPU_PaletteBufferSpriteOne, Y
+  STA PPU_PaletteBufferSpriteOne, X
   STA PPU_PaletteBufferSpriteThree + 1
 
   LDA #$30

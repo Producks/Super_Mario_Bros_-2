@@ -36,28 +36,12 @@ CharacterSelectMenuAB:
 ;	JSR CopyCharacterStatsAndStuff
 
 ; Dump static palette table
-  LDX #$5F
   LDY #$7F
 DumpStaticPaletteTableLoop:
-  LDA CharacterPaletteDefaultTable, X
+  LDA CharacterPaletteDefaultTable, Y
   STA PlayerOneCharacterPaletteRamTable, Y
   DEY
-  DEX
-
-  LDA CharacterPaletteDefaultTable, X
-  STA PlayerOneCharacterPaletteRamTable, Y
-  DEY
-  DEX
-
-  LDA CharacterPaletteDefaultTable, X
-  STA PlayerOneCharacterPaletteRamTable, Y
-  DEX
-  DEY
-
-  LDA #$0F
-  STA PlayerOneCharacterPaletteRamTable, Y
-  DEY
-  BPL DumpStaticPaletteTableLoop
+  BNE DumpStaticPaletteTableLoop
 
 DumpCharacterSelectPalette:
 	LDY #$4C

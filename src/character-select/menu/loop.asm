@@ -1,5 +1,5 @@
 CharacterEditorMenuLoop:
-  JSR WaitForNMI_TurnOnPPU
+  JSR WaitForNMI
 
   LDA Player1JoypadPress
   AND #ControllerInput_Down
@@ -46,13 +46,13 @@ RestoreDefaultPaletteCharacterEditor:
   ASL A
   ASL A
   TAY
-  LDX #$01
+  LDX #$00
 -
   LDA CharacterPaletteDefaultTable, Y
-  STA PlayerOneCharacterPaletteRamTable + 1, Y
+  STA PlayerOneCharacterPaletteRamTable, Y
   STA PPU_PaletteBufferSpriteOne, X
-  INY
   INX
+  INY
   CPX #$04
   BNE -
 

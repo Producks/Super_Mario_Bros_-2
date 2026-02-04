@@ -12,7 +12,7 @@ DumpTextLine:
 +
   STX byte_RAM_300
   INY ; Make it so the index can be re-used!
-  JMP WaitForNMI_TurnOnPPU
+  JMP WaitForNMI
 
 ; Y points to the color value I need to translate to a sprite
 ; X index for sprite DMA OAM 
