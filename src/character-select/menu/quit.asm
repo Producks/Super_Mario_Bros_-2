@@ -1,4 +1,6 @@
 QuitSubMenuCharacterEditor:
+  JSR FadeOutColorsCharacterEditorMenu
+
   JSR HideAllSprites
 
   LDA #<EraseName
@@ -13,14 +15,6 @@ QuitSubMenuCharacterEditor:
   JSR DumpTextLine
   JSR DumpTextLine
   JSR DumpTextLine
-
-; Restore palette time babyyy
-  LDY #$03
--
-  LDA PlayerSelectPalettesSprite, Y
-  STA PPU_PaletteBufferSpriteOne, Y
-  DEY
-  BPL -
 
   JSR DumpCharacterSpritesSelect
 
@@ -37,5 +31,10 @@ QuitSubMenuCharacterEditor:
   JSR WaitForNMI
 
   JSR PrintTextCharSelect
+
+  LDX #$01
+  JSR SetCharacter_OAM_Palette
+
+  JSR FadeInColorsCharacterEditorMenu
 
   JMP CharacterSelectMenuLoop

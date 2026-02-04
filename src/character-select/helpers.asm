@@ -147,7 +147,7 @@ DecLoopDecreaseBrightness:
   BPL DecreaseBrightnessPaletteLoop
   BCS +
 
-BootStrap:
+ColorFade:
   STA FadeType
   LDY #$03
 --

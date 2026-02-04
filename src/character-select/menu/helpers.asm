@@ -62,3 +62,53 @@ SetAllNumberSpritesCharacterPaletteEditor:
   JSR SetSpriteColorPalette
   JSR SetSpriteColorPalette
   RTS
+
+FadeOutColorsCharacterEditorMenu:
+  LDY #$1F
+-
+  LDA PPU_PaletteBufferBegin, Y
+  STA PaletteFadeOutBuffer, Y
+  DEY
+  BPL -
+
+  LDY #$03
+  LDA #$0F
+-
+  STA PaletteFadeoutBufferBG_Two, Y
+  STA PaletteFadeoutBufferSP_One, Y
+  STA PaletteFadeoutBufferSP_Two, Y
+  STA PaletteFadeoutBufferSP_Four, Y
+  DEY
+  BPL -
+  LDA #$0F
+
+  LDA #FadeOut
+  JMP ColorFade
+
+FadeInColorsCharacterEditorMenu:
+	LDY #$1F
+-
+	LDA PlayerSelectPalettesBG, Y
+	STA PaletteFadeOutBuffer, Y
+	DEY
+	BPL -
+
+; Set palette sprite fade in
+  LDA CursorLocation
+  ASL A
+  ASL A
+  TAY
+  LDX #$00
+-
+  LDA PlayerOneCharacterPaletteRamTable, Y
+  STA PaletteFadeoutBufferSP_Two, X
+
+  LDA PlayerSelectPalettesSprite, X
+  STA PaletteFadeoutBufferSP_One, X
+  INX
+  INY
+  CPX #$04
+  BNE -
+
+  LDA #FadeIn
+  JMP ColorFade

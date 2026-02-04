@@ -962,4 +962,8 @@ ColorFateOut = $20
 AllCharactersFloatCheat = $40
 PlaceHolderCheat = $80
 
+; Fade define
+FadeIn = $00
+FadeOut = $01
+
 .endinl

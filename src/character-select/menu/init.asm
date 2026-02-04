@@ -1,26 +1,5 @@
 MenuCharacterSelectInit:
-
-; Copy original buffer to 
-  LDY #$1F
--
-  LDA PPU_PaletteBufferBegin, Y
-  STA PaletteFadeOutBuffer, Y
-  DEY
-  BPL -
-
-  LDY #$03
-  LDA #$0F
--
-  STA PaletteFadeoutBufferBG_Two, Y
-  STA PaletteFadeoutBufferSP_One, Y
-  STA PaletteFadeoutBufferSP_Two, Y
-  STA PaletteFadeoutBufferSP_Four, Y
-  DEY
-  BPL -
-  LDA #$0F
-
-  LDA #$01
-  JSR BootStrap
+  JSR FadeOutColorsCharacterEditorMenu
 
   JSR HideAllSprites
 
@@ -116,30 +95,7 @@ MenuCharacterSelectInit:
 ; Init character sprites depending on the cursor location
   JSR SetAllNumberSpritesCharacterPaletteEditor
 
-
-; Set palette to fade in
-	LDY #$1F
--
-	LDA PlayerSelectPalettesBG, Y
-	STA PaletteFadeOutBuffer, Y
-	DEY
-	BPL -
-
-  LDA CursorLocation
-  ASL A
-  ASL A
-  TAY
-  LDX #$00
--
-  LDA PlayerOneCharacterPaletteRamTable, Y
-  STA PaletteFadeoutBufferSP_Two, X
-  INX
-  INY
-  CPX #$04
-  BNE -
+  JSR FadeInColorsCharacterEditorMenu
 
   LDA #$00
   STA FuncLoTemp ; Hold sub menu cursor
-
-  LDA #$00
-  JSR BootStrap
