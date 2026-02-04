@@ -160,7 +160,7 @@ ColorFade:
   LDA #$02
   STA ScreenUpdateIndex
 -
-  JSR WaitForNMI
+  JSR WaitForNMI_TurnOnPPU
   DEC FadeCounter
   BPL -
   DEY

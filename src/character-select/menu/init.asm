@@ -99,3 +99,4 @@ MenuCharacterSelectInit:
 
   LDA #$00
   STA FuncLoTemp ; Hold sub menu cursor
+

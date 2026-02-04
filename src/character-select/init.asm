@@ -43,6 +43,7 @@ DumpStaticPaletteTableLoop:
   DEY
   BPL DumpStaticPaletteTableLoop
 
+; Temp... TODO dump option instead
 DumpCharacterSelectPalette:
 	LDY #$4C
 DumpCharacterSelectPaletteLoop:
@@ -108,5 +109,18 @@ DumpCharacterSelectPaletteLoop:
   LDY GamePlayMode
   LDA CharSelectDoublePickTable, Y
   STA TwoPlayerCharacterSelect
+
+; Black out palettes & dump new palette
+  LDY #$1F
+-
+  LDA PlayerSelectPalettesBG, Y
+  STA PaletteFadeOutBuffer, Y
+  LDA #$0F
+  STA PPU_PaletteBufferBackgroundOne, Y
+  DEY
+  BPL -
+
+  LDA #FadeIn
+  JSR ColorFade
 
 	JMP CharacterSelectInputHandler

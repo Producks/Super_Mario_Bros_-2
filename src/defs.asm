@@ -894,7 +894,7 @@ SpritePaletteTimer = $06
 SpritePaletteStartingIndex = $0B
 FirstIRQScrollTimer = $02
 SecondIRQScrollTimer = $01
-FadeoutTimer = $04
+FadeoutTimer = $03
 
 ; Option Enum
 BorderPPUBuffer = $03
@@ -965,5 +965,7 @@ PlaceHolderCheat = $80
 ; Fade define
 FadeIn = $00
 FadeOut = $01
+
+AnimationSpeedCharacterEditor = $15
 
 .endinl
