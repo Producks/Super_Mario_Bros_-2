@@ -74,6 +74,7 @@ PPUBuffer_CharacterSelect:
 
 PlayerSelectPalettes:
 	.db $3F, $00, $20
+PlayerSelectPalettesBG:
 	.db $0F, $28, $16, $06
 	.db $0F, $30, $12, $16
 	.db $0F, $30, $16, $12
@@ -82,7 +83,7 @@ PlayerSelectPalettesSprite:
 	.db $0F, $01, $12, $22
 	.db $0F, $01, $12, $22
 	.db $0F, $01, $12, $22
-	.db $0F, $01, $12, $22
+	.db $0F, $30, $16, $22
 	.db $00
 
 PlayerSelectPLetterX:

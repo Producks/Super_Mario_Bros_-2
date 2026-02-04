@@ -539,6 +539,39 @@ DoCharacterSelectMenu:
   JSR CharacterSelectMenuAB
   RTS
 
+;DecreaseBrightnessPalette:
+;  LDX #$1F
+;DecreaseBrightnessPaletteLoop:
+;  LDA PPU_PaletteBufferBegin, X
+;  CMP PaletteFadeOutBuffer, X
+;  BEQ DecLoopDecreaseBrightness
+;  SEC
+;  SBC #$10
+;  BCS SetResultDecDecBrightness
+;  LDA #$0F
+;SetResultDecDecBrightness:
+;  STA PPU_PaletteBufferBegin, X
+;DecLoopDecreaseBrightness:
+;  DEX
+;  BPL DecreaseBrightnessPaletteLoop
+;  RTS
+;
+;BootStrapPaletteFade:
+;  LDY #$03
+;--
+;  LDA #FadeoutTimer
+;  STA FadeCounter
+;  JSR DecreaseBrightnessPaletteG
+;  LDA #$02
+;  STA ScreenUpdateIndex
+;-
+;  JSR WaitForNMI
+;  DEC FadeCounter
+;  BPL -
+;  DEY
+;  BPL --
+;  RTS
+
 ;
 ; This starts the game once `RESET` has done its thing.
 ; We also come here after choosing "RETRY" from the game over menu.

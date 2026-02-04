@@ -16,6 +16,7 @@ CharacterNameLo:
   .db <GarfieldName
   .db <BirdoName
   .db <RosalinaName
+
 CharacterNameHi:
   .db >MarioName
   .db >LuigiName

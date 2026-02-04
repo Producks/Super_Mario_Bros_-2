@@ -137,7 +137,7 @@ LoopFadeIn:
   DEC FadeCounter
   BEQ FadeInDone
   JSR WaitFixedAmountNMI
-  JSR IncreaseBrightnessPalette
+  JSR IncreaseBrightnessPaletteG
   BMI LoopFadeIn
 FadeInDone:
   JSR WaitForNMI_Menu
@@ -147,25 +147,25 @@ FadeInDone:
 ; Increase brightness of every colors until it match with the original
 ; Params: None
 ; ---------------------------------------------------------------------
-IncreaseBrightnessPalette:
+IncreaseBrightnessPaletteG:
   LDY #$1F ; BUG BUG, used to be something else, check later if this bug out and buffer overflow
-IncreaseBrightnessPaletteLoop:
+IncreaseBrightnessPaletteLoopG:
   LDA PPU_PaletteBufferBegin, Y
   CMP #$0F ; Check if black
-  BNE BrightnessAddition
+  BNE BrightnessAdditionG
   LDA (LoPaletteAddress), Y ; Take the palette from the index and get the darkest shade of the color
   AND #$0F
-  BPL SetBrightnessResult ; BUG BUG check if this bug out later
-BrightnessAddition:
+  BPL SetBrightnessResultG ; BUG BUG check if this bug out later
+BrightnessAdditionG:
   CMP (LoPaletteAddress), Y ; Check if the color is already matching with the target color
-  BEQ DecreaseBrightnessLoop
+  BEQ DecreaseBrightnessLoopG
   CLC
   ADC #$10
-SetBrightnessResult:
+SetBrightnessResultG:
   STA PPU_PaletteBufferBegin, Y
-DecreaseBrightnessLoop:
+DecreaseBrightnessLoopG:
   DEY
-  BPL IncreaseBrightnessPaletteLoop
+  BPL IncreaseBrightnessPaletteLoopG
   RTS
 
 ; ------------------------------------------------------------
@@ -187,7 +187,7 @@ DumpPaletteLoop:
   LDA #$04
   STA FadeCounter
 FadeOutLoop:
-  JSR DecreaseBrightnessPalette
+  JSR DecreaseBrightnessPaletteG
   LDA #UpdatePallettePPUBuffer
   STA ScreenUpdateIndex
   JSR WaitFixedAmountNMI
@@ -199,21 +199,21 @@ FadeOutLoop:
 ; Decrease brightness of every colors until it match with the original
 ; Params: None
 ; --------------------------------------------------------------------
-DecreaseBrightnessPalette:
+DecreaseBrightnessPaletteG:
   LDY #$1F
-DecreaseBrightnessPaletteLoop:
+DecreaseBrightnessPaletteLoopG:
   LDA PPU_PaletteBufferBegin, Y
   CMP #$0F
-  BEQ DecLoopDecreaseBrightness
+  BEQ DecLoopDecreaseBrightnessG
   SEC
   SBC #$10
-  BCS SetResultDecDecBrightness
+  BCS SetResultDecDecBrightnessG
   LDA #$0F
-SetResultDecDecBrightness:
+SetResultDecDecBrightnessG:
   STA PPU_PaletteBufferBegin, Y
-DecLoopDecreaseBrightness:
+DecLoopDecreaseBrightnessG:
   DEY
-  BPL DecreaseBrightnessPaletteLoop
+  BPL DecreaseBrightnessPaletteLoopG
   RTS
 
 ; ------------------------------------------------------------

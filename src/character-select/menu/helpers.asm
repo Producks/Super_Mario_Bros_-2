@@ -28,10 +28,12 @@ SetSpriteColorPalette:
   INX
   INX
   INX
+
   LDA PlayerOneCharacterPaletteRamTable, Y
   AND #$0F
   ASL A
   STA SpriteDMAArea, X
+
   INX
   INX
   INX
@@ -47,4 +49,16 @@ GetPaletteCharacterIndexEditor:
   ADC FuncHiTemp
   TAY
   INY
+  RTS
+
+SetAllNumberSpritesCharacterPaletteEditor:
+  LDA CursorLocation
+  ASL A
+  ASL A
+  TAY
+  INY
+  LDX #$01
+  JSR SetSpriteColorPalette
+  JSR SetSpriteColorPalette
+  JSR SetSpriteColorPalette
   RTS

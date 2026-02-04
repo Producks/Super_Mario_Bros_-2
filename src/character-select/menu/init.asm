@@ -1,5 +1,26 @@
 MenuCharacterSelectInit:
-; TODO add delete third line here
+
+; Copy original buffer to 
+  LDY #$1F
+-
+  LDA PPU_PaletteBufferBegin, Y
+  STA PaletteFadeOutBuffer, Y
+  DEY
+  BPL -
+
+  LDY #$03
+  LDA #$0F
+-
+  STA PaletteFadeoutBufferBG_Two, Y
+  STA PaletteFadeoutBufferSP_One, Y
+  STA PaletteFadeoutBufferSP_Two, Y
+  STA PaletteFadeoutBufferSP_Four, Y
+  DEY
+  BPL -
+  LDA #$0F
+
+  LDA #$01
+  JSR BootStrap
 
   JSR HideAllSprites
 
@@ -93,42 +114,32 @@ MenuCharacterSelectInit:
   BPL -
 
 ; Init character sprites depending on the cursor location
+  JSR SetAllNumberSpritesCharacterPaletteEditor
+
+
+; Set palette to fade in
+	LDY #$1F
+-
+	LDA PlayerSelectPalettesBG, Y
+	STA PaletteFadeOutBuffer, Y
+	DEY
+	BPL -
+
   LDA CursorLocation
   ASL A
   ASL A
   TAY
-  INY
-  STY FuncLoTemp ; Store index for later
-  LDX #$01
-  JSR SetSpriteColorPalette
-  JSR SetSpriteColorPalette
-  JSR SetSpriteColorPalette
-
-; Set new palettes
-  LDY FuncLoTemp ; Restore index
-  LDX #$01
+  LDX #$00
+-
   LDA PlayerOneCharacterPaletteRamTable, Y
-  STA PPU_PaletteBufferSpriteOne, X
-  INY
+  STA PaletteFadeoutBufferSP_Two, X
   INX
-
-  LDA PlayerOneCharacterPaletteRamTable, Y
-  STA PPU_PaletteBufferSpriteOne, X
-  STA PPU_PaletteBufferSpriteTwo + 1
   INY
-  INX
-
-  LDA PlayerOneCharacterPaletteRamTable, Y
-  STA PPU_PaletteBufferSpriteOne, X
-  STA PPU_PaletteBufferSpriteThree + 1
-
-  LDA #$30
-  STA PPU_PaletteBufferSpriteFour + 1
-  LDA #$16
-  STA PPU_PaletteBufferSpriteFour + 2
+  CPX #$04
+  BNE -
 
   LDA #$00
   STA FuncLoTemp ; Hold sub menu cursor
 
-	LDA #ScreenUpdateBuffer_RAM_TitleCardPalette ; Then tell it to dump that into the PPU
-	STA ScreenUpdateIndex
+  LDA #$00
+  JSR BootStrap

@@ -145,24 +145,13 @@ IncreaseColorPaletteEditor:
   STA PlayerOneCharacterPaletteRamTable, Y
 
 UpdatePaletteEditor:
-  PHA
+  LDX FuncHiTemp
+  STA PPU_PaletteBufferSpriteTwo + 1, X
 
   LDX FuncHiTemp
   LDA TableSpriteOAMIndexTilePositionCharacterEditor, X
   TAX
   JSR SetSpriteColorPalette
-
-
-  TAX
-  LDA FuncHiTemp
-  ASL A
-  ASL A
-  TAY
-
-  PLA
-  STA PPU_PaletteBufferSpriteOne + 1, Y
-  LDY FuncHiTemp
-  STA PPU_PaletteBufferSpriteOne + 1, Y 
 
   LDA #$02
   STA ScreenUpdateIndex

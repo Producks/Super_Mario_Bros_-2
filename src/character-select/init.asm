@@ -41,7 +41,7 @@ DumpStaticPaletteTableLoop:
   LDA CharacterPaletteDefaultTable, Y
   STA PlayerOneCharacterPaletteRamTable, Y
   DEY
-  BNE DumpStaticPaletteTableLoop
+  BPL DumpStaticPaletteTableLoop
 
 DumpCharacterSelectPalette:
 	LDY #$4C

@@ -92,5 +92,79 @@ DumpCharacterSpritesSelect:
 	BNE -
   RTS
 
+SetCharacterPaletteSlotTwo:
+  LDA CursorLocation
+  ASL A
+  ASL A
+  TAY
+  LDX #$00
+-
+  LDA PlayerOneCharacterPaletteRamTable, Y
+  STA PPU_PaletteBufferSpriteTwo, X
+  INX
+  INY
+  CPX #$04
+  BNE -
+  LDA #$02
+  STA ScreenUpdateIndex
+  RTS
+
+IncreaseBrightnessPalette:
+  LDX #$1F
+IncreaseBrightnessPaletteLoop:
+  LDA PPU_PaletteBufferBegin, X
+  CMP #$0F ; Check if black
+  BNE BrightnessAddition
+  LDA PaletteFadeOutBuffer, X
+  AND #$0F
+  BPL SetBrightnessResult
+BrightnessAddition:
+  CMP PaletteFadeOutBuffer, X
+  BEQ DecreaseBrightnessLoop
+  CLC
+  ADC #$10
+SetBrightnessResult:
+  STA PPU_PaletteBufferBegin, X
+DecreaseBrightnessLoop:
+  DEX
+  BPL IncreaseBrightnessPaletteLoop
+  BCS +
+
+DecreaseBrightnessPalette:
+  LDX #$1F
+DecreaseBrightnessPaletteLoop:
+  LDA PPU_PaletteBufferBegin, X
+  CMP PaletteFadeOutBuffer, X
+  BEQ DecLoopDecreaseBrightness
+  SEC
+  SBC #$10
+  BCS SetResultDecDecBrightness
+  LDA #$0F
+SetResultDecDecBrightness:
+  STA PPU_PaletteBufferBegin, X
+DecLoopDecreaseBrightness:
+  DEX
+  BPL DecreaseBrightnessPaletteLoop
+  BCS +
+
+BootStrap:
+  STA FadeType
+  LDY #$03
+--
+  LDA #FadeoutTimer
+  STA FadeCounter
+  LDA FadeType
+  BEQ IncreaseBrightnessPalette
+  BNE DecreaseBrightnessPalette
++
+  LDA #$02
+  STA ScreenUpdateIndex
+-
+  JSR WaitForNMI
+  DEC FadeCounter
+  BPL -
+  DEY
+  BPL --
+  RTS
+
 ; End of helpers
-;Select Character One

@@ -129,7 +129,6 @@ CastRollSprite2C:
 PPUCtrlSecondIRQ:
 	.dsb 1 ; 5                ; $0024
 CastRollSprite3A:
-FadeCounter:
 	.dsb 1 ; 6                ; $0025
 CastRollSprite3B:
 WaitSpecificAmountOfNMICounter:
@@ -2273,8 +2272,22 @@ CheatCode = $7E80
 SettingsTitleScreen = $7E80
 ChangeCharacterPoofTimer = $7E81
 
-HeldTimerFire = $7F5E
-DpadHeldTimer = $7F5F
+FadeType = $7F2B
+FadeCounterLoop = $7F3C
+FadeCounter = $7F3D
+HeldTimerFire = $7F3E
+DpadHeldTimer = $7F3F
+
+; $7F40-$7F5F
+PaletteFadeOutBuffer = $7F40
+PaletteFadeoutBufferBG_One = $7F40
+PaletteFadeoutBufferBG_Two = $7F44
+PaletteFadeoutBufferBG_Three = $7F48
+PaletteFadeoutBufferBG_Four = $7F4C
+PaletteFadeoutBufferSP_One = $7F50
+PaletteFadeoutBufferSP_Two = $7F54
+PaletteFadeoutBufferSP_Three = $7F58
+PaletteFadeoutBufferSP_Four = $7F5C
 
 ; $7F60-$7F9F
 PlayerOneCharacterPaletteRamTable = $7F60

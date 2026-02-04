@@ -50,11 +50,13 @@ RestoreDefaultPaletteCharacterEditor:
 -
   LDA CharacterPaletteDefaultTable, Y
   STA PlayerOneCharacterPaletteRamTable, Y
-  STA PPU_PaletteBufferSpriteOne, X
+  STA PPU_PaletteBufferSpriteTwo, X
   INX
   INY
   CPX #$04
   BNE -
+
+  JSR SetAllNumberSpritesCharacterPaletteEditor
 
   LDA #$02
   STA ScreenUpdateIndex

@@ -45,26 +45,7 @@ UpdatePaletteOne_ChararacterSelect:
   ASL A
   TAY
 
-  LDA #$3F
-  STA PPUBuffer_301
-  LDA #$14
-  STA PPUBuffer_301 + 1
-  LDA #$04
-  STA PPUBuffer_301 + 2
-
-  LDA PlayerOneCharacterPaletteRamTable, Y
-	STA PPUBuffer_301 + 3
-  LDA PlayerOneCharacterPaletteRamTable + 1, Y
-	STA PPUBuffer_301 + 4
-  LDA PlayerOneCharacterPaletteRamTable + 2, Y
-	STA PPUBuffer_301 + 5
-  LDA PlayerOneCharacterPaletteRamTable + 3, Y
-	STA PPUBuffer_301 + 6
-
-  LDA #$00
-	STA PPUBuffer_301 + 7
-  LDA #$07
-  STA byte_RAM_300
+  JSR SetCharacterPaletteSlotTwo
 
 CheckConfirmation:
   LDA Player1JoypadPress
