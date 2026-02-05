@@ -147,9 +147,9 @@ WaluigiDescription:
   .db $23, $26, $54, $FB, $00
   .db $23, $66, $54, $FB, $00
 ToadetteDescription:
-  .db $22, $E6, $54, $FB, $00
-  .db $23, $26, $54, $FB, $00
-  .db $23, $66, $54, $FB, $00
+  .db $22, $E6, $11, $DC, $DA, $E7, $FB, $DD, $E2, $E0, $FB, $DA, $E7, $F2, $F0, $E1, $DE, $EB, $DE, $F9, $00 ; Can Dig anywhere.
+  .db $23, $26, $12, $E1, $E8, $E5, $DD, $E2, $E7, $E0, $FB, $EE, $E9, $FB, $DD, $E2, $EC, $DA, $DB, $E5, $DE, $00 ; HOLDING UP DISABLE
+  .db $23, $66, $0B, $ED, $E1, $DE, $FB, $DD, $E2, $E0, $E0, $E2, $E7, $E0, $00 ; The digging
 DaisyDescription:
   .db $22, $E6, $54, $FB, $00
   .db $23, $26, $54, $FB, $00
@@ -167,9 +167,9 @@ BirdoDescription:
   .db $23, $26, $54, $FB, $00
   .db $23, $66, $54, $FB, $00
 RosalinaDescription:
-  .db $22, $E6, $54, $FB, $00
-  .db $23, $26, $54, $FB, $00
-  .db $23, $66, $54, $FB, $00
+  .db $22, $E6, $14, $E5, $DE, $EF, $E2, $ED, $DA, $ED, $DE, $FB, $DF, $E8, $EB, $FB, $DA, $FB, $EC, $E1, $E8, $EB, $ED, $00 ; Levitate for a short
+  .db $23, $26, $13, $DD, $EE, $EB, $DA, $ED, $E2, $E8, $E7, $FB, $E2, $E7, $FB, $ED, $E1, $DE, $FB, $DA, $E2, $EB, $00 ; duration in the air
+  .db $23, $66, $0E, $F0, $E1, $DE, $E7, $FB, $E1, $E8, $E5, $DD, $E2, $E7, $E0, $FB, $DA, $00 ; when holding A
 
 PaletteEditorText:
   .db $21, $49, $0E, $E9, $DA, $E5, $DE, $ED, $ED, $DE, $FB, $DE, $DD, $E2, $ED, $E8, $EB, $00
@@ -181,7 +181,8 @@ ExitMenuText:
   .db $22, $49, $09, $DE, $F1, $E2, $ED, $FB, $E6, $DE, $E7, $EE, $00
 
 CharacterInfoText:
-  .db $22, $A9, $0E, $DC, $E1, $DA, $EB, $DA, $DC, $ED, $DE, $EB, $FB, $E2, $E7, $DF, $E8, $00
+  .db $00
+;  .db $22, $A9, $0E, $DC, $E1, $DA, $EB, $DA, $DC, $ED, $DE, $EB, $FB, $E2, $E7, $DF, $E8, $00
 
 ; Erase section!
 EraseName:

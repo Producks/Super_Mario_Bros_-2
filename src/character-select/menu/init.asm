@@ -1,13 +1,23 @@
 MenuCharacterSelectInit:
+
   JSR FadeOutColorsCharacterEditorMenu
 
   JSR HideAllSprites
+
 
 ; Load the name
   LDY CursorLocation
   LDA CharacterNameLo, Y
   STA FuncLoTemp
   LDA CharacterNameHi, Y
+  STA FuncHiTemp
+  LDY #$00
+  JSR DumpTextLine
+
+; Hide bottom line to save space
+  LDA #<EraseDescriptionLineThree
+  STA FuncLoTemp
+  LDA #>EraseDescriptionLineThree
   STA FuncHiTemp
   LDY #$00
   JSR DumpTextLine

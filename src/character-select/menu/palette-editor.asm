@@ -1,4 +1,6 @@
 PaletteEditorInit:
+  LDA #SoundEffect1_CherryGet
+  STA SoundEffectQueue1
   LDA #$00
   STA FuncHiTemp ; Set cursor to 0
   LDA #$22
@@ -48,6 +50,8 @@ UpdateCursorPaletteEditor:
   JMP PaletteEditorCharacterSelectLoop
 
 ExitPaletteEditor:
+  LDA #SoundEffect1_CherryGet
+  STA SoundEffectQueue1
   LDA #$20
   STA SpriteDMAArea + 25 ; Restore back the main cursor to white
   LDA #$F8
@@ -55,6 +59,8 @@ ExitPaletteEditor:
   JMP CharacterEditorMenuLoop
 
 EditColorInit:
+  LDA #SoundEffect1_CherryGet
+  STA SoundEffectQueue1
   LDA #$22
   STA SpriteDMAArea + 29
   LDA #$00
@@ -96,6 +102,8 @@ CheckButtonPressEditorColor:
   BEQ +
   LDA #$20
   STA SpriteDMAArea + 29
+  LDA #SoundEffect1_CherryGet
+  STA SoundEffectQueue1
   JMP UpdateCursorPaletteEditor
 
 +

@@ -52,6 +52,10 @@ ScreenUpdateBufferPointers:
 	.dw PPUBuffer_BonusChanceLayout
 
 PPUBuffer_TitleCard:
+	.db $24, $00, $60, $FF
+	.db $24, $20, $60, $FF
+	.db $24, $40, $60, $FF
+	.db $24, $60, $60, $FF
 	.db $27, $40, $60, $FF
 	.db $27, $60, $60, $FF
 	.db $27, $80, $60, $FF

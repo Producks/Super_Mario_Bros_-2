@@ -15,6 +15,7 @@ QuitSubMenuCharacterEditor:
   JSR DumpTextLine
   JSR DumpTextLine
   JSR DumpTextLine
+  JSR DumpTextLine
 
   JSR DumpCharacterSpritesSelect
 

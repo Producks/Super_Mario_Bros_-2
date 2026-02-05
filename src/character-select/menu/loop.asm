@@ -4,6 +4,8 @@ CharacterEditorMenuLoop:
   LDA Player1JoypadPress
   AND #ControllerInput_Down
   BEQ CheckUPCharacterSelectMenu
+  LDA #SoundEffect1_CherryGet
+  STA SoundEffectQueue1
   INC FuncLoTemp
   LDA FuncLoTemp
   CMP #$03
@@ -16,6 +18,8 @@ CheckUPCharacterSelectMenu:
   LDA Player1JoypadPress
   AND #ControllerInput_Up
   BEQ CheckACharacterSelectMenu
+  LDA #SoundEffect1_CherryGet
+  STA SoundEffectQueue1
   DEC FuncLoTemp
   BPL +
   LDA #$02
@@ -42,6 +46,8 @@ CheckACharacterSelectMenu:
   BNE CharacterEditorMenuLoop
 
 RestoreDefaultPaletteCharacterEditor:
+  LDA #SoundEffect1_EnemyHit
+  STA SoundEffectQueue1
   LDA CursorLocation
   ASL A
   ASL A

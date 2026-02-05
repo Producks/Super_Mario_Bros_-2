@@ -11,6 +11,6 @@ TitleScreen_Exit:
 ; If 2 player is the selection, jump to the option select menu
   BNE GoToOptionSelect 
 ; This is located at the end of option select
+  JMP OptionSelectInit
   JMP CleanupBeforeCharacterSelect
 GoToOptionSelect:
-  JMP OptionSelectInit

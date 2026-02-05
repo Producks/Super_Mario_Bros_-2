@@ -53,4 +53,6 @@ CheckConfirmation:
   BEQ CharacterSelectMenuLoop
 
 CharSelectDone:
+  LDA #SoundEffect1_1UP
+  STA SoundEffectQueue1
 	JMP QuitCharacterSelect ; We're done! Time to leave

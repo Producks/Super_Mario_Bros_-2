@@ -1,5 +1,4 @@
 QuitCharacterSelect:
-
   LDA CursorLocation
   JSR MultiplyBy16
   TAY
@@ -26,6 +25,16 @@ WaitFixedAmountNMICharacterSelect:
 
 	DEC byte_RAM_10
 	BPL WaitFixedAmountNMICharacterSelect
+
+  LDY #$1F
+  LDA #$0F
+-
+  STA PaletteFadeOutBuffer, Y
+  DEY
+  BPL -
+
+  LDA #FadeOut
+  JSR ColorFade
 
 LeaveCharacterSelect:
 	LDA #Music2_StopMusic
