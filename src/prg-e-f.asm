@@ -3347,8 +3347,8 @@ CharacterTiles_Climb:
 	.db $1E ; $29
 
 CharacterTiles_PrincessJumpBody:
-	.db $B4 ; $2a
-	.db $B6 ; $2b
+	.db $34 ; $2a
+	.db $36 ; $2b
 
 DamageInvulnBlinkFrames:
 	.db $01, $01, $01, $02, $02, $04, $04, $04
@@ -3834,7 +3834,7 @@ ObjectAttributeTable:
 	.db ObjAttrib_Palette1 | ObjAttrib_FrontFacing ; $3D Enemy_Key
 	.db ObjAttrib_Palette1 | ObjAttrib_FrontFacing | ObjAttrib_UpsideDown ; $3E Enemy_SubspacePotion
 	.db ObjAttrib_Palette1 | ObjAttrib_Mirrored ; $3F Enemy_Mushroom
-	.db ObjAttrib_Palette1 | ObjAttrib_FrontFacing | ObjAttrib_UpsideDown ; $40 Enemy_Mushroom1up
+	.db ObjAttrib_Palette0 | ObjAttrib_FrontFacing | ObjAttrib_UpsideDown ; $40 Enemy_Mushroom1up
 	.db ObjAttrib_Palette1 | ObjAttrib_Horizontal | ObjAttrib_16x32 ; $41 Enemy_FlyingCarpet
 	.db ObjAttrib_Palette1 | ObjAttrib_16x32 ; $42 Enemy_HawkmouthRight
 	.db ObjAttrib_Palette1 | ObjAttrib_16x32 ; $43 Enemy_HawkmouthLeft

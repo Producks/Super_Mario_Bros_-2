@@ -3385,7 +3385,7 @@ EnemyBehavior_PickUpMushroom:
 	RTS
 
 EnemyBehavior_PickUpMushroom1up:
-	LDA #$09
+	LDA #$08
 	STA ObjectAttributes, X
 
 EnemyBehavior_PickUpNotMushroom:
@@ -5481,14 +5481,14 @@ EnemyTilemap1:
 	.db $6B, $6D ; $42
 	.db $6D, $6F ; $44
 	; Puff of smoke, which can be two sprites tall for doors!
-	.db $3A, $3A ; $46
-	.db $3A, $3A ; $48
-	.db $38, $38 ; $4A
-	.db $38, $38 ; $4C
-	.db $36, $36 ; $4E
-	.db $36, $36 ; $50
-	.db $34, $34 ; $52
-	.db $34, $34 ; $54
+	.db $B6, $B6 ; $46
+	.db $B6, $B6 ; $48
+	.db $B4, $B4 ; $4A
+	.db $B4, $B4 ; $4C
+	.db $B2, $B2 ; $4E
+	.db $B2, $B2 ; $50
+	.db $B0, $B0 ; $52
+	.db $B0, $B0 ; $54
 	; Bullet
 	.db $AE, $FB ; $56
 	.db $AE, $FB ; $58
@@ -5549,7 +5549,7 @@ EnemyTilemap1:
 	; Mushroom
 	.db $A5, $A5 ; $A0
 	; 1-Up
-	.db $B0, $B2 ; $A2
+	.db $38, $3A ; $A2
 	; Stopwatch
 	.db $90, $90 ; $A4
 	; Starman
