@@ -172,36 +172,29 @@ RosalinaDescription:
   .db $23, $66, $0E, $F0, $E1, $DE, $E7, $FB, $E1, $E8, $E5, $DD, $E2, $E7, $E0, $FB, $DA, $00 ; when holding A
 
 PaletteEditorText:
-  .db $21, $49, $0E, $E9, $DA, $E5, $DE, $ED, $ED, $DE, $FB, $DE, $DD, $E2, $ED, $E8, $EB, $00
+  .db $21, $49, $0E, $E9, $DA, $E5, $DE, $ED, $ED, $DE, $FB, $DE, $DD, $E2, $ED, $E8, $EB
 
 RestorePaletteText:
-  .db $21, $E9, $0F, $EB, $DE, $EC, $ED, $E8, $EB, $DE, $FB, $E9, $DA, $E5, $DE, $ED, $ED, $DE, $00
+  .db $21, $E9, $0F, $EB, $DE, $EC, $ED, $E8, $EB, $DE, $FB, $E9, $DA, $E5, $DE, $ED, $ED, $DE
 
 ExitMenuText:
   .db $22, $49, $09, $DE, $F1, $E2, $ED, $FB, $E6, $DE, $E7, $EE, $00
 
-CharacterInfoText:
-  .db $00
-;  .db $22, $A9, $0E, $DC, $E1, $DA, $EB, $DA, $DC, $ED, $DE, $EB, $FB, $E2, $E7, $DF, $E8, $00
-
 ; Erase section!
 EraseName:
-  .db $20, $EA, $4F, $FA, $00
+  .db $20, $EC, $48, $FA
 
 ErasePaletteEditorText:
   .db $21, $49, $4E, $FB, $00
 
 EraseRestorePaletteText
-  .db $21, $E9, $4F, $FB, $00
+  .db $21, $E9, $4F, $FB
 
 EraseExitMenuText:
   .db $22, $49, $49, $FB, $00
 
-EraseCharacterInfoText:
-  .db $22, $A9, $4E, $FB, $00
-
 EraseDescriptionLineOne:
-  .db $2A, $E6, $54, $FB, $00
+  .db $2A, $E6, $54, $FB
 
 EraseDescriptionLineTwo:
   .db $2B, $26, $54, $FB, $00

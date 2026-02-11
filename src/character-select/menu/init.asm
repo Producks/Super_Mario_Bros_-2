@@ -30,15 +30,6 @@ MenuCharacterSelectInit:
   LDY #$00
   JSR DumpTextLine
 
-; Load up the Restore Palette text
-  JSR DumpTextLine
-
-; Load up the Exit Menu text
-  JSR DumpTextLine
-
-; Load up the Character Info text
-  JSR DumpTextLine
-
 ; Dump the character description
   LDY CursorLocation
   LDA CharacterDescriptionLo, Y

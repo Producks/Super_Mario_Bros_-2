@@ -8,11 +8,6 @@ QuitSubMenuCharacterEditor:
   LDA #>EraseName
   STA FuncHiTemp
 
-; TODO loop this for space...
-  JSR DumpTextLine
-  JSR DumpTextLine
-  JSR DumpTextLine
-  JSR DumpTextLine
   JSR DumpTextLine
   JSR DumpTextLine
   JSR DumpTextLine
