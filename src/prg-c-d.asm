@@ -2777,5 +2777,9 @@ byte_BANKC_93A6:
 	.db $7A
 	.db $C8
 	.db $60
+  
+.pad $a000, $ff
 
-.include "src/menu/main.asm"
+.include "src/menus/title-screen/main.asm"
+
+.include "src/menus/option-select/main.asm"

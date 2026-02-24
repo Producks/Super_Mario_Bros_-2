@@ -14,7 +14,7 @@ QuitCharacterSelect:
   DEX
   BPL -
 
-.include "src/character-select/character-setter.asm"
+.include "src/menus/character-select/character-setter.asm"
 
 WaitFixedAmountNMICharSelect:
 	LDA #$40
