@@ -543,38 +543,74 @@ DoCharacterSelectMenu:
   JSR CharacterSelectMenuAB
   RTS
 
-;DecreaseBrightnessPalette:
-;  LDX #$1F
-;DecreaseBrightnessPaletteLoop:
-;  LDA PPU_PaletteBufferBegin, X
-;  CMP PaletteFadeOutBuffer, X
-;  BEQ DecLoopDecreaseBrightness
-;  SEC
-;  SBC #$10
-;  BCS SetResultDecDecBrightness
-;  LDA #$0F
-;SetResultDecDecBrightness:
-;  STA PPU_PaletteBufferBegin, X
-;DecLoopDecreaseBrightness:
-;  DEX
-;  BPL DecreaseBrightnessPaletteLoop
-;  RTS
-;
-;BootStrapPaletteFade:
-;  LDY #$03
-;--
-;  LDA #FadeoutTimer
-;  STA FadeCounter
-;  JSR DecreaseBrightnessPaletteG
-;  LDA #$02
-;  STA ScreenUpdateIndex
-;-
-;  JSR WaitForNMI
-;  DEC FadeCounter
-;  BPL -
-;  DEY
-;  BPL --
-;  RTS
+IncreaseBrightnessPalette:
+  LDX #$1F
+IncreaseBrightnessPaletteLoop:
+  LDA PPU_PaletteBufferBegin, X
+  CMP #$0F ; Check if black
+  BNE BrightnessAddition
+  LDA PaletteFadeOutBuffer, X
+  AND #$0F
+  BPL SetBrightnessResult
+BrightnessAddition:
+  CMP PaletteFadeOutBuffer, X
+  BEQ DecreaseBrightnessLoop
+  CLC
+  ADC #$10
+SetBrightnessResult:
+  STA PPU_PaletteBufferBegin, X
+DecreaseBrightnessLoop:
+  DEX
+  BPL IncreaseBrightnessPaletteLoop
+  BCS +
+
+DecreaseBrightnessPalette:
+  LDX #$1F
+DecreaseBrightnessPaletteLoop:
+  LDA PPU_PaletteBufferBegin, X
+  CMP PaletteFadeOutBuffer, X
+  BEQ DecLoopDecreaseBrightness
+  SEC
+  SBC #$10
+  BCS SetResultDecDecBrightness
+  LDA #$0F
+SetResultDecDecBrightness:
+  STA PPU_PaletteBufferBegin, X
+DecLoopDecreaseBrightness:
+  DEX
+  BPL DecreaseBrightnessPaletteLoop
+  BCS +
+
+ColorFade:
+  STA FadeType
+  LDA #$03
+  STA FadeColorCount
+--
+  LDA #FadeoutTimer
+  STA FadeFrameCounter
+  LDA FadeType
+  BEQ IncreaseBrightnessPalette
+  BNE DecreaseBrightnessPalette
++
+  LDA #$02
+  STA ScreenUpdateIndex
+-
+  JSR FadeOptionalFuncOP ; Optional function call, is RTS most of the time.
+  JSR WaitForNMI_TurnOnPPU
+  DEC FadeFrameCounter
+  BPL -
+  DEC FadeColorCount
+  BPL --
+  RTS
+
+BlackOutDSTPaletterBuffer:
+  LDY #$1F
+  LDA #$0F
+-
+  STA PaletteFadeOutBuffer, Y
+  DEY
+  BPL -
+  RTS
 
 ;
 ; This starts the game once `RESET` has done its thing.
@@ -1732,6 +1768,7 @@ PauseScreen_Card_ScreenReset:
 
 EnableNMI:
 	LDA #PPUCtrl_Base2000 | PPUCtrl_WriteHorizontal | PPUCtrl_Sprite0000 | PPUCtrl_Background1000 | PPUCtrl_SpriteSize8x16 | PPUCtrl_NMIEnabled
+SetEnableNMI:
 	STA PPUCtrlMirror
 	STA PPUCTRL
 	RTS

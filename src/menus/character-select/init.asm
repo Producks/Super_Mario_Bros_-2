@@ -120,6 +120,9 @@ DumpCharacterSelectPaletteLoop:
   DEY
   BPL -
 
+  LDA #RTS_OPCODE
+  STA FadeOptionalFuncOP
+
   LDA #FadeIn
   JSR ColorFade
 

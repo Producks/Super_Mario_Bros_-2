@@ -47,6 +47,15 @@ InitMemoryLoop3:
 ; ------------------------------------------------------------
 ; Graphic initialisation
 ; ------------------------------------------------------------
+DumpPaletteFadeOption:
+  LDA #$3F
+  STA PPUBuffer_TitleCardPalette
+  LDA #$00
+  STA PPUBuffer_TitleCardPalette + 1
+  STA PPU_PaletteBufferEnd
+  LDA #$20
+  STA PPUBuffer_TitleCardPalette + 2
+
 SetBankNametbleTitleScreen:
 	LDY #CHRBank_TitleScreenBG1
   STY SpriteCHR1
@@ -57,7 +66,6 @@ SetBankNametbleTitleScreen:
   STY BackgroundCHR1
   INY
   STY SpriteCHR4
-;  LDA #$3C
   LDA #$3C
   STA BackgroundCHR2
 
@@ -81,26 +89,14 @@ SetBankNametbleTitleScreen:
 	STA PPUADDR
 	STY PPUADDR
 
-InitTitleBackgroundPalettesLoop:
-;	LDA TitleBackgroundPalettes, Y
-  LDA #$0F
-	STA PPUDATA
-	INY
-	CPY #$20
-	BCC InitTitleBackgroundPalettesLoop
-
-
 	LDA #$01
 	STA RAM_PPUDataBufferPointer
 	LDA #$03
 	STA RAM_PPUDataBufferPointer + 1
 	LDA #Stack100_Menu
 	STA StackArea
-	;LDA #PPUCtrl_Base2000 | PPUCtrl_WriteHorizontal | PPUCtrl_Sprite1000 | PPUCtrl_Background1000 | PPUCtrl_SpriteSize8x8 | PPUCtrl_NMIEnabled
-;  LDA #PPUCtrl_Base2000 | PPUCtrl_WriteHorizontal | PPUCtrl_Sprite1000 | PPUCtrl_Background0000 | PPUCtrl_SpriteSize8x8 | PPUCtrl_NMIEnabled
-;	STA PPUCtrlMirror
-;	STA PPUCTRL
-  JSR EnableNMI_Menu
+  LDA #PPUCtrl_Base2000 | PPUCtrl_WriteHorizontal | PPUCtrl_Sprite1000 | PPUCtrl_Background0000 | PPUCtrl_SpriteSize8x16 | PPUCtrl_NMIEnabled
+  JSR SetEnableNMI
   STA PPUCTRLForIRQ
   STA PPUCtrlSecondIRQ
 	JSR WaitForNMI_Menu
@@ -111,23 +107,21 @@ InitTitleBackgroundPalettesLoop:
 	JSR WaitForNMI_Menu
 
   JSR CopyDMADataTableTitleScreen
-	JSR WaitForNMI_Menu_TurnOnPPU
 
-; Fade in the colors
-  LDA #<TitleBackgroundPalettes
-  STA LoPaletteAddress
-  LDA #>TitleBackgroundPalettes
-  STA HiPaletteAddress
-  JSR PaletteFadeIn
+; Dump the title screen palette and #$0F for the SRC
+  LDY #$1F
+-
+  LDA TitleBackgroundPalettes, Y
+  STA PaletteFadeOutBuffer, Y
+  LDA #$0F
+  STA PPU_PaletteBufferBegin, Y
+  DEY
+  BPL -
 
-DumpPPU_BufferInRam:
-  LDY #$00
-DumpPPU_BufferInRamLoop:
-  LDA UpdateTableTitleScreen, Y
-  STA PPU_PaletteBuffer, Y
-  INY
-  CPY #$05
-  BNE DumpPPU_BufferInRamLoop
+  LDA #RTS_OPCODE
+  STA FadeOptionalFuncOP
+  LDA #FadeIn
+  JSR ColorFade
 
 ; Cue the music!
 	LDA #Music1_Title

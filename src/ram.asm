@@ -2272,11 +2272,19 @@ CheatCode = $7E80
 SettingsTitleScreen = $7E80
 ChangeCharacterPoofTimer = $7E81
 
-FadeType = $7F2B
-FadeCounterLoop = $7F3C
-FadeCounter = $7F3D
-HeldTimerFire = $7F3E
-DpadHeldTimer = $7F3F
+HeldTimerFire = $7F37
+DpadHeldTimer = $7F38
+
+FadeCounter = $7F38
+; $7F39-$7F3F
+FadeColorCount = $7F39
+FadeType = $7F3A
+FadeCounterLoop = $7F3B
+FadeFrameCounter = $7F3C
+; Allocate 3 bytes for a function call that can be used to animate between fade
+FadeOptionalFuncOP = $7F3D
+FadeOptionalFuncLo = $7F3E
+FadeOptionalFuncHi = $7F3F
 
 ; $7F40-$7F5F
 PaletteFadeOutBuffer = $7F40

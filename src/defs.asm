@@ -968,4 +968,7 @@ FadeOut = $01
 
 AnimationSpeedCharacterEditor = $15
 
+RTS_OPCODE = $60
+JMP_ABS_OPCODE = $4C
+
 .endinl

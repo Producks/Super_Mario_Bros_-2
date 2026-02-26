@@ -251,27 +251,5 @@ TitleSpritePalettes:
 	.db $0F, $25, $07, $35
 	.db $0F, $38, $37, $36
 
-;TitleAttributeData1:
-;	.db $23, $CB, $42, $FF
-;	.db $23, $D1, $01, $CC
-;	.db $23, $D2, $44, $FF
-;	.db $23, $D6, $01, $33
-;	.db $23, $D9, $01, $CC
-;	.db $23, $DA, $44, $FF
-;
-;TitleAttributeData2:
-;	.db $23, $DE, $01, $33
-;	.db $23, $E1, $01, $CC
-;	.db $23, $E2, $44, $FF
-;	.db $23, $E6, $01, $33
-;	.db $23, $EA, $44, $FF
-;	.db $23, $E9, $01, $CC
-;	.db $23, $EE, $01, $33
-
-UpdateTableTitleScreen:
-  .db $3F, $1D, $01, $27 ; Color palette for the sprite
-  .db $00
-
-
 PaletteColorTableTitleScreen:
   .db $35, $34, $33, $32, $31, $3C, $3B, $3A, $39, $38, $37, $36

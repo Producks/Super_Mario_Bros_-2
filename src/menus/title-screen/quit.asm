@@ -3,14 +3,16 @@ TitleScreen_Exit:
 	STA MusicQueue2
 	JSR WaitForNMI_Menu
 
-  JSR PaletteFadeOut
+  LDY #$1F
+  LDA #$0F
+-
+  STA PaletteFadeOutBuffer, Y
+  DEY
+  BPL -
+
+  LDA #FadeOut
+  JSR ColorFade
 
   SEI ; Disable IRQ
 
-  LDA CursorLocation
-; If 2 player is the selection, jump to the option select menu
-  BNE GoToOptionSelect 
-; This is located at the end of option select
   JMP OptionSelectInit
-  JMP CleanupBeforeCharacterSelect
-GoToOptionSelect:

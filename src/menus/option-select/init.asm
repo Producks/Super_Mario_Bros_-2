@@ -30,7 +30,8 @@ OptionSelectInit:
   STA ScreenUpdateIndex
   LDA PPUSTATUS
 
-  JSR EnableNMI_OptionSelect
+  LDA #PPUCtrl_Base2000 | PPUCtrl_WriteHorizontal | PPUCtrl_Sprite1000 | PPUCtrl_Background0000 | PPUCtrl_SpriteSize8x16 | PPUCtrl_NMIEnabled
+  JSR SetEnableNMI
 
   JSR WaitForNMI_Menu
 
@@ -43,15 +44,23 @@ OptionSelectInit:
 
   JSR DumpSpriteOptionSelect
 
-  JSR WaitForNMI_Menu_TurnOnPPU
+;  Color fade in option-select
+  LDY #$1F
+-
+  LDA OptionMenuBackgroundPalettes, Y
+  STA PaletteFadeOutBuffer, Y
+  DEY
+  BPL -
 
-  ; Fade in the colors
-  LDA #<OptionMenuBackgroundPalettes
-  STA LoPaletteAddress
-  LDA #>OptionMenuBackgroundPalettes
-  STA HiPaletteAddress
-  JSR PaletteFadeIn
+  LDA #JMP_ABS_OPCODE
+  STA FadeOptionalFuncOP
+  LDA #<FrameUpdateOptionSelect
+  STA FadeOptionalFuncLo
+  LDA #>FrameUpdateOptionSelect
+  STA FadeOptionalFuncHi
+
+  LDA #FadeIn
+  JSR ColorFade
+
   LDA #Music1_Subspace
 	STA MusicQueue1
-;  RTS
-;  JMP OptionSelectQuit

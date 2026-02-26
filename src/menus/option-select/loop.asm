@@ -1,6 +1,7 @@
 OptionSelectLoop:
   JSR ReadInputOptionMenu
   JSR FrameUpdateOptionSelect
+  JSR WaitForNMI_Menu
   JMP OptionSelectLoop ; Jump back to the loop
 
 ; Stuff that need to be updated every frame, chr animation, sprites and the seed counter
@@ -8,7 +9,6 @@ FrameUpdateOptionSelect:
   DEC OptionSelectSeedCounter
   JSR OptionMenuAnimationCHRHandling
   JSR UpdateSpriteLogicOptionSelect
-  JSR WaitForNMI_Menu
   RTS
 
 ; Wait a fix amount of NMI, but with the frame update
