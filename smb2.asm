@@ -169,6 +169,7 @@ IFDEF WARIO_WALUIGI
 .incbin "expand_WW.chr"
 ELSE
 .incbin "expand.chr"
+.incbin "data.chr"
 ENDIF
 ;.dsb (16 * $2000), $00
 ENDIF

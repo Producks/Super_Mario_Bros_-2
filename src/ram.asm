@@ -2215,20 +2215,15 @@ MMC5_IRQStatus = $5204
 ; as well as some other junk
 ; $6000-$7FFF
 ;
-
 DecodedLevelData = $6000
 
-ObjectCollisionHitboxLeft_RAM = $7100
-ObjectCollisionHitboxTop_RAM = $7114
-ObjectCollisionHitboxWidth_RAM = $7128
-ObjectCollisionHitboxHeight_RAM = $713c
 
-HawkmouthCollisionHitboxLeft_RAM = $710b
-HawkmouthCollisionHitboxTop_RAM = $711f
 
 ; Copied from bank A
 ; Does anything read this???
-MysteryData14439_RAM = $7150
+;MysteryData14439_RAM = $7150
+
+; $7150-7167 FREE
 
 PPUBuffer_TitleCardText = $7168
 TitleCard_LevelDots = $716b
@@ -2243,48 +2238,59 @@ WarpToWorld_World = $71a6
 PPUBuffer_ContinueRetryBullets = $71a8
 
 ; Copied from bank A
-FlyingCarpetAcceleration_RAM = $71cc
 
 ; Copied from bank F
-EnemyPlayerCollisionTable_RAM = $71d1
+PPUBuffer_BonusChanceLayout = $7400 ; 200 bytes... overflow
 
-PPUBuffer_EndOfLevelDoor = $721b
+RawLevelData = $7800 ; 512 bytes baby. Might increase?
 
-WartOAMOffsets_RAM = $7265
+RawJarData = $7a00 ; 255 bytes to be safe
 
-PPUBuffer_BonusChanceLayout = $7400
+RawEnemyDataAddr = $7B00 ; who knows? probably 255 bytes max
 
-RawLevelData = $7800
 
-RawJarData = $7a00
 
-RawEnemyDataAddr = $7B00
+ObjectCollisionHitboxLeft_RAM = $7E00
+HawkmouthCollisionHitboxLeft_RAM = $7E0b
+ObjectCollisionHitboxTop_RAM = $7E14
+HawkmouthCollisionHitboxTop_RAM = $7E1F
+ObjectCollisionHitboxHeight_RAM = $7E3C
+ObjectCollisionHitboxWidth_RAM = $7E28
 
-PlayerOneStatsRam = $7E10
-PlayerOnePaletteRam = $7E28
-PlayerOneCarryStats = $7E2C
+; $7E50-7E7E Free
 
-PlayerTwoStatsRam = $7E30
-PlayerTwoPaletteRam = $7E48
-PlayerTwoCarryStats = $7E4C
+FlyingCarpetAcceleration_RAM = $7E7F ; 4 bytes
 
-CheatCode = $7E80
-SettingsTitleScreen = $7E80
-ChangeCharacterPoofTimer = $7E81
+EnemyPlayerCollisionTable_RAM = $7E83 ; 74 bytes
 
-HeldTimerFire = $7F37
-DpadHeldTimer = $7F38
+PPUBuffer_EndOfLevelDoor = $7ECD ; 33 bytes
 
-FadeCounter = $7F38
-; $7F39-$7F3F
-FadeColorCount = $7F39
-FadeType = $7F3A
-FadeCounterLoop = $7F3B
-FadeFrameCounter = $7F3C
+WartOAMOffsets_RAM = $7EEE ; 7 bytes
+
+; ~ Random variables $7EF5-$7EFF
+CheatCode = $7EF5
+SettingsTitleScreen = $7EF6
+ChangeCharacterPoofTimer = $7EF7
+DpadHeldTimer = $7EF8 ; volatile ram
+FadeCounter = $7EF8 ; volatile ram
+HeldTimerFire = $7EF9 ; volatile ram
+FadeColorCount = $7EF9 ; volatile ram
+FadeType = $7EFA
+FadeCounterLoop = $7EFB
+FadeFrameCounter = $7EFC
 ; Allocate 3 bytes for a function call that can be used to animate between fade
-FadeOptionalFuncOP = $7F3D
-FadeOptionalFuncLo = $7F3E
-FadeOptionalFuncHi = $7F3F
+FadeOptionalFuncOP = $7EFD
+FadeOptionalFuncLo = $7EFE
+FadeOptionalFuncHi = $7EFF
+
+; Character stats $7F00-$7F3F
+PlayerOneStatsRam = $7F00 ; 24 bytes
+PlayerOnePaletteRam = $7F18 ; 4 bytes
+PlayerOneCarryStats = $7F1C ; 4 bytes
+
+PlayerTwoStatsRam = $7F20 ; 24 bytes
+PlayerTwoPaletteRam = $7F38 ; 4 bytes
+PlayerTwoCarryStats = $7F3C ; 4 bytes
 
 ; $7F40-$7F5F
 PaletteFadeOutBuffer = $7F40

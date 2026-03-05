@@ -52,12 +52,17 @@ AttributeOptionMenu:
 ; Turn Base
 MenuFirstOption:
 ; Option name
+
+TradionalTopGFX:
   .db $20, $64, $18
   .db $6E, $6E, $6E, $6E, $6E, $4A, $6E, $2D, $2B, $20, $22, $25, $2D, $25, $29, $28, $20, $26, $6E, $4D, $6E, $6E, $6E, $6E
 
+TradionalBottomGFX:
   .db $20, $84, $18
   .db $6E, $6E, $6E, $6E, $6E, $4B, $6E, $3D, $3B, $30, $32, $35, $3D, $35, $39, $38, $30, $36, $6E, $4C, $6E, $6E, $6E, $6E
 
+; Players take turns;
+TraditionalFirstTextRow:
   .db $20, $C4, $18
   .db $6E, $0A, $04, $00, $19, $01, $16, $07, $6E, $17, $00, $13, $01, $6E, $17, $08, $16, $05, $07, $0F, $6E, $6E, $6E, $6E
 
@@ -272,3 +277,10 @@ SharedControlPalette:
 ChaosSwapPalette:
   .db $3F, $09, $07, $3D, $2D, $00, $0F, $3D, $2D, $0F
   .db $00
+
+
+PaletteTableOptionSelect:
+  .db $0F, $35, $25, $05 ; 2P Traditional
+  .db $0F, $31, $21, $01 ; 2P Tag Team
+  .db $0F, $39, $29, $09 ; 2P Shared
+  .db $0F, $3D, $2D, $00 ; 2P Chaos

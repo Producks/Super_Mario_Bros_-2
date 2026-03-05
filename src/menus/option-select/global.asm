@@ -48,3 +48,6 @@ WaitForNMI_Menu_Loop:
 	BPL WaitForNMI_Menu_Loop
 
 	RTS
+
+ProtoFunc:
+  
