@@ -2217,39 +2217,35 @@ MMC5_IRQStatus = $5204
 ;
 DecodedLevelData = $6000
 
-
-
-; Copied from bank A
-; Does anything read this???
-;MysteryData14439_RAM = $7150
-
-; $7150-7167 FREE
-
-PPUBuffer_TitleCardText = $7168
-TitleCard_LevelDots = $716b
-TitleCard_World = $717d
-TitleCard_Level = $717f
-TitleCard_ExtraLife_DrawAddress = $7180
-TitleCard_Lives = $7191
-
-PPUBuffer_WarpToWorld = $7194
-WarpToWorld_World = $71a6
-
-PPUBuffer_ContinueRetryBullets = $71a8
-
 ; Copied from bank A
 
 ; Copied from bank F
-PPUBuffer_BonusChanceLayout = $7400 ; 200 bytes... overflow
+PPUBuffer_BonusChanceLayout = $7800 ; 200 bytes... overflow (Can be cutdown by a bunch)
 
-RawLevelData = $7800 ; 512 bytes baby. Might increase?
+RawLevelData = $7A00 ; Blindly copy 255 bytes!
 
-RawJarData = $7a00 ; 255 bytes to be safe
+RawJarData = $7B00 ; 255 bytes to be safe
 
-RawEnemyDataAddr = $7B00 ; who knows? probably 255 bytes max
+RawEnemyDataAddr = $7C00 ; Blindly copy 255 bytes!
 
+; ~~~~~~~~~~~~~~~
+; $7D00-7D9B Free
+; ~~~~~~~~~~~~~~~
 
+; $7D9C-$7DFF
+PPUBuffer_TitleCardText = $7D9C ; 3 bytes
+TitleCard_LevelDots = $7D9F ; 18 bytes
+TitleCard_World = $7DB1 ; 2 bytes
+TitleCard_Level = $7DB3 ; 1 byte
+TitleCard_ExtraLife_DrawAddress = $7DB4 ; 17 bytes
+TitleCard_Lives = $7DC5 ; 3 bytes
 
+PPUBuffer_WarpToWorld = $7DC8 ; 18 bytes
+WarpToWorld_World = $7DDA ; 2 bytes
+
+PPUBuffer_ContinueRetryBullets = $7DDC ; 36 bytes
+
+; $7E00 Section
 ObjectCollisionHitboxLeft_RAM = $7E00
 HawkmouthCollisionHitboxLeft_RAM = $7E0b
 ObjectCollisionHitboxTop_RAM = $7E14
@@ -2257,7 +2253,9 @@ HawkmouthCollisionHitboxTop_RAM = $7E1F
 ObjectCollisionHitboxHeight_RAM = $7E3C
 ObjectCollisionHitboxWidth_RAM = $7E28
 
+; ~~~~~~~~~~~~~~~
 ; $7E50-7E7E Free
+; ~~~~~~~~~~~~~~~
 
 FlyingCarpetAcceleration_RAM = $7E7F ; 4 bytes
 
