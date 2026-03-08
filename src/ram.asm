@@ -2215,7 +2215,18 @@ MMC5_IRQStatus = $5204
 ; as well as some other junk
 ; $6000-$7FFF
 ;
+
+; Take $6000-$6960
+; But does read an extra row $6970...
 DecodedLevelData = $6000
+
+; ~~~~~~~~~~~~~~~~~
+; $6970-$69FF Free
+; ~~~~~~~~~~~~~~~~~
+
+; ~~~~~~~~~~~~~~~~~
+; $6A00-$77FF Free
+; ~~~~~~~~~~~~~~~~~
 
 ; Copied from bank A
 

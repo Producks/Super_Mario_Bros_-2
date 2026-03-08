@@ -333,7 +333,7 @@ loc_BANKA_8493:
   TAY
   LDX #$03
 SkyFlashDump:
-  LDA SkyFlashColorsVanilla, Y
+  LDA SkyFlashColorsNoFlash, Y
   STA SkyFlashColors, X
   INY
   DEX
