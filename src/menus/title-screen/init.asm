@@ -44,6 +44,36 @@ InitMemoryLoop3:
   LDA #PRGBank_C_D
   STA MMC3PRGBankTemp
 
+; Unpack
+  LDA #$00
+  STA MMC3_BankSelect
+  LDA #$BC
+  STA MMC3_BankData
+
+  LDX #$04
+  LDY #$00
+  
+  LDA #$00
+  STA byte_RAM_0
+
+  LDA #$60
+  STA byte_RAM_1
+
+  LDA #$00
+  STA PPUADDR
+  STA PPUADDR
+
+  LDA PPUDATA ; Dummy read
+-
+  LDA PPUDATA
+  STA (byte_RAM_0), Y
+  INC byte_RAM_0
+  BNE -
+  INC byte_RAM_1
+  DEX
+  BNE -
+;  JSR WaitForNMI
+
 ; ------------------------------------------------------------
 ; Graphic initialisation
 ; ------------------------------------------------------------

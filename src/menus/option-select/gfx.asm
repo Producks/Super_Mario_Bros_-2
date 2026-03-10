@@ -278,7 +278,6 @@ ChaosSwapPalette:
   .db $3F, $09, $07, $3D, $2D, $00, $0F, $3D, $2D, $0F
   .db $00
 
-
 PaletteTableOptionSelect:
   .db $0F, $35, $25, $05 ; 2P Traditional
   .db $0F, $31, $21, $01 ; 2P Tag Team
