@@ -35,12 +35,10 @@ OptionSelectInit:
 
   JSR WaitForNMI_Menu
 
-  LDX #TraditionalPPUBuffer
-  STX CursorLocation ; Setup cursor right away
-;  JSR UpdateGFXMenuOption
-  LDA #$04
-  STA ScreenUpdateIndex
-  JSR WaitForNMI_Menu
+  LDA #$00
+  STA CursorLocation ; Setup cursor right away
+
+  JSR InitContextWindow_OptionSelect
 
   JSR DumpSpriteOptionSelect
 

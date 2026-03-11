@@ -49,5 +49,69 @@ WaitForNMI_Menu_Loop:
 
 	RTS
 
-ProtoFunc:
-  
+InitContextWindow_OptionSelect:
+  JSR LoadNew_PTR_OptionSelect
+  LDA #$00
+  STA RowDrawingOptionSelect
+-
+;  JSR LoadContextLine_OptionSelect
+  JSR LoadContextLine_OptionSelect
+  JSR WaitForNMI_Menu
+  LDA RowDrawingOptionSelect
+  CMP #$10
+  BNE -
+  RTS
+
+; Dump all the content in memory so I can use it easily later on
+LoadNew_PTR_OptionSelect:
+  LDA CursorLocation
+  LDA #$03
+  ASL A
+  ASL A
+  ASL A
+  ASL A
+  TAY
+  LDX #$00
+-
+  LDA OptionSelectLoTable, Y
+  STA $6900, X
+  LDA OptionSelectHiTable, Y
+  STA $6910, X
+  INX
+  INY
+  CPX #$10
+  BNE -
+  RTS
+
+LoadContextLine_OptionSelect:
+  LDY RowDrawingOptionSelect ; Load in which row we are
+
+  LDA $6900, Y
+  STA byte_RAM_0
+  LDA $6910, Y
+  STA byte_RAM_1
+
+  LDX byte_RAM_300 ; Load where we are in the buffer
+
+  LDA TileMapFirstOptionSelect, Y
+  STA PPUBuffer_301, X
+  INX
+  LDA TileMapSecondOptionselect, Y
+  STA PPUBuffer_301, X
+  INX
+
+  LDY #$00
+-
+  LDA (byte_RAM_0), Y
+  STA PPUBuffer_301, X
+  CMP #$FF
+  BEQ +
+  INX
+  INY
+  BNE -
++
+  LDA #$00
+  STA PPUBuffer_301, X ; Set terminating 0
+  STX byte_RAM_300
+  INC RowDrawingOptionSelect
+  RTS

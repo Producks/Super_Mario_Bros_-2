@@ -966,6 +966,15 @@ PlaceHolderCheat = $80
 FadeIn = $00
 FadeOut = $01
 
+
+; Option Select defines
+;OriginalWorld = %00000000
+;ExtraWorld = %00000001
+;OnePlayer = %00000000
+;TwoPlayer = %00000010
+;TraditionalOnePlayer = %00000000
+;TagTeamOnePlayer = %00000000
+
 AnimationSpeedCharacterEditor = $15
 
 RTS_OPCODE = $60

@@ -48,219 +48,300 @@ AttributeOptionMenu:
 ; End
 	.db $00
 
-; Traditional 367 large
+; Traditional
 ; Turn Base
 MenuFirstOption:
-; Option name
-
 TradionalTopGFX:
-  .db $20, $64, $18
+  .db $18
   .db $6E, $6E, $6E, $6E, $6E, $4A, $6E, $2D, $2B, $20, $22, $25, $2D, $25, $29, $28, $20, $26, $6E, $4D, $6E, $6E, $6E, $6E
+  .db $FF
 
 TradionalBottomGFX:
-  .db $20, $84, $18
+  .db $18
   .db $6E, $6E, $6E, $6E, $6E, $4B, $6E, $3D, $3B, $30, $32, $35, $3D, $35, $39, $38, $30, $36, $6E, $4C, $6E, $6E, $6E, $6E
+  .db $FF
 
 ; Players take turns;
-TraditionalFirstTextRow:
-  .db $20, $C4, $18
+TradionalFirstLineGFX:
+  .db $18
   .db $6E, $0A, $04, $00, $19, $01, $16, $07, $6E, $17, $00, $13, $01, $6E, $17, $08, $16, $05, $07, $0F, $6E, $6E, $6E, $6E
+  .db $FF
 
-  .db $20, $E4, $18
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E
-
-  .db $21, $04, $18
+TraditionalThirdLineGFX:
+  .db $18
   .db $6E, $11, $01, $00, $17, $12, $0E, $6E, $09, $00, $16, $06, $03, $05, $02, $0E, $6E, $15, $16, $6E, $6E, $6E, $6E, $6E
+  .db $FF
 
-  .db $21, $24, $18
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E
-
-  .db $21, $44, $18
+TraditionalFithLineGFX:
+  .db $18
   .db $6E, $04, $01, $18, $01, $04, $6E, $10, $15, $14, $06, $04, $01, $17, $03, $15, $05, $6E, $07, $09, $00, $06, $07, $6E
+  .db $FF
 
-  .db $21, $64, $18
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E
-
-  .db $21, $84, $18
+TraditionalSeventhLineGFX:
+  .db $18
   .db $6E, $17, $12, $01, $6E, $10, $08, $16, $16, $01, $05, $17, $6E, $06, $04, $00, $19, $01, $16, $1E, $6E, $6E, $84, $85
+  .db $FF
 
-  .db $21, $A4, $18
+TraditionalEightLineGFX:
+  .db $18
   .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $87, $88, $6E, $6E, $9E, $9F, $6E, $94, $95
+  .db $FF
 
-  .db $21, $C4, $18
+TraditionalNinhtLineGFX:
+  .db $18
   .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $82, $83, $6E, $6E, $97, $98, $6E, $6E, $AE, $AF, $6E, $A4, $A5
+  .db $FF
 
-  .db $21, $E4, $18
+TraditionalTenthLineGFX:
+  .db $18
   .db $6E, $6E, $6E, $80, $81, $6E, $6E, $6E, $6E, $6E, $6E, $92, $93, $6E, $6E, $A7, $A8, $6E, $6E, $BE, $BF, $6E, $B4, $B5
+  .db $FF
 
-  .db $22, $04, $18
+TraditionalEleventhLineGFX:
+  .db $18
   .db $6E, $6E, $B0, $90, $91, $B1, $6E, $6E, $6E, $6E, $6E, $A2, $A3, $6E, $6E, $A7, $A8, $6E, $6E, $CA, $CB, $6E, $6E, $86
+  .db $FF
 
-  .db $22, $24, $18
+TraditionalTwelfthLineGFX:
+  .db $18
   .db $6E, $6E, $6E, $A0, $A1, $6E, $6E, $6E, $C9, $D9, $6E, $B2, $B3, $6E, $6E, $A7, $A8, $6E, $6E, $DA, $DB, $6E, $6E, $96
+  .db $FF
 
-  .db $22, $44, $18
+TraditionalThirteenthLineGFX:
+  .db $18
   .db $8A, $8B, $8A, $C8, $C8, $8B, $8A, $8B, $8A, $8B, $8A, $8B, $8A, $8B, $8A, $8B, $8A, $8B, $8A, $8B, $8A, $8B, $8A, $8B
+  .db $FF
 
-  .db $22, $64, $18
+TraditionalFourteenthLineGFX:
+  .db $18
   .db $9A, $9B, $9A, $D8, $D8, $9B, $9A, $9B, $9A, $9B, $9A, $9B, $9A, $9B, $9A, $9B, $9A, $9B, $9A, $9B, $9A, $9B, $9A, $9B
-
-  .db $00 ; Added to remove delay on the init, it draw the entire buffer in one go
+  .db $FF
 
 ; Tag Team
 MenuSecondOption:
-; Option name
-  .db $20, $64, $18
+TagTeamTopGFX:
+  .db $18
   .db $6E, $6E, $6E, $6E, $6E, $6E, $4A, $6E, $2D, $20, $24, $6E, $2D, $23, $20, $27, $6E, $4D, $6E, $6E, $6E, $6E, $6E, $6E
+  .db $FF
 
-  .db $20, $84, $18
+TagTeamBottomGFX:
+  .db $18
   .db $6E, $6E, $6E, $6E, $6E, $6E, $4B, $6E, $3D, $30, $34, $6E, $3D, $33, $30, $37, $6E, $4C, $6E, $6E, $6E, $6E, $6E, $6E
+  .db $FF
 
-  .db $20, $C4, $18
+TagTeamFirstLineGFX:
+  .db $18
   .db $6E, $80, $90, $CC, $CD, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $80, $91, $C6, $C7, $6E, $6E, $6E
+  .db $FF
 
-  .db $20, $E4, $18
+TagTeamSecondLineGFX:
+  .db $18
   .db $6E, $6E, $6E, $DC, $DD, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $D6, $D7, $6E, $6E, $6E
+  .db $FF
 
-  .db $21, $04, $18
+TagTeamThirdLineGFX:
+  .db $18
   .db $6E, $6E, $6E, $EC, $ED, $6E, $6E, $A2, $6E, $8C, $8D, $8E, $8D, $8F, $9C, $6E, $A2, $6E, $6E, $E6, $E7, $6E, $6E, $6E
+  .db $FF
 
-  .db $21, $24, $18
+TagTeamFourthLineGFX:
+  .db $18
   .db $6E, $6E, $6E, $FC, $FD, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $F6, $F7, $6E, $6E, $6E
-;
-  .db $21, $44, $18
+  .db $FF
+
+TagTeamFithLineGFX:
+  .db $18
   .db $6E, $A0, $A1, $A0, $A1, $A0, $A1, $6E, $6E, $A3, $A4, $A5, $A6, $9D, $9E, $6E, $6E, $A0, $A1, $A0, $A1, $A0, $A1, $6E
+  .db $FF
 
-  .db $21, $64, $18
+TagTeamSixthLineGFX:
+  .db $18
   .db $6E, $B0, $B1, $B0, $B1, $B0, $B1, $6E, $6E, $B3, $B4, $B5, $B6, $AD, $AE, $6E, $6E, $B0, $B1, $B0, $B1, $B0, $B1, $6E
-;
-  .db $21, $84, $18
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E
+  .db $FF
 
-  .db $21, $A4, $18
+TagTeamEightLineGFX:
+  .db $18
   .db $6E, $0A, $16, $01, $07, $07, $6E, $07, $01, $04, $01, $10, $17, $6E, $17, $15, $6E, $07, $09, $00, $06, $6E, $6E, $6E
+  .db $FF
 
-  .db $21, $C4, $18
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E
-
-  .db $21, $E4, $18
+TagTeamTenthLineGFX:
+  .db $18
   .db $6E, $06, $04, $00, $19, $01, $16, $07, $6E, $14, $03, $11, $2E, $02, $00, $14, $01, $1E, $6E, $0B, $05, $04, $19, $6E
+  .db $FF
 
-  .db $22, $04, $18
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E
-
-  .db $22, $24, $18
+TagTeamTwelfthLineGFX:
+  .db $18
   .db $6E, $17, $12, $01, $6E, $10, $08, $16, $16, $01, $05, $17, $6E, $06, $04, $00, $19, $01, $16, $6E, $10, $00, $05, $6E
-  
-  .db $22, $44, $18
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E
+  .db $FF
 
-  .db $22, $64, $18
+TagTeamFourteenthLineGFX:
+  .db $18
   .db $6E, $17, $16, $03, $02, $02, $01, $16, $6E, $00, $6E, $07, $09, $00, $06, $1E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E
+  .db $FF
 
-
-; 2P1C
-; Shared Control
 MenuThirdOption:
-; Option name
-  .db $20, $64, $18
+SharedTopGFX:
+  .db $18
   .db $6E, $6E, $6E, $4A, $EE, $2C, $2E, $20, $2B, $23, $22, $EE, $21, $29, $28, $2D, $2B, $29, $26, $EE, $4D, $6E, $6E, $6E
-
-  .db $20, $84, $18
+  .db $FF
+SharedBottomGFX:
+  .db $18
   .db $6E, $6E, $6E, $4B, $EE, $3C, $3E, $30, $3B, $33, $32, $EE, $31, $39, $38, $3D, $3B, $39, $36, $EE, $4C, $6E, $6E, $6E
+  .db $FF
 
-  .db $20, $C4, $18
+SharedOneGFX:
+  .db $18
   .db $6E, $1A, $15, $17, $12, $6E, $06, $04, $00, $19, $01, $16, $07, $6E, $10, $15, $05, $17, $16, $15, $04, $6E, $A6, $A7
+  .db $FF
 
-  .db $20, $E4, $18
+SharedTwoGFX:
+  .db $18
   .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $B6, $B7
+  .db $FF
 
-  .db $21, $04, $18
+SharedThreeGFX:
+  .db $18
   .db $6E, $17, $12, $01, $6E, $07, $00, $14, $01, $6E, $10, $12, $00, $16, $00, $10, $17, $01, $16, $1E, $6E, $6E, $DE, $DF
+  .db $FF
 
-  .db $21, $24, $18
+SharedFourGFX:
+  .db $18
   .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $CE, $CF
+  .db $FF
 
-  .db $21, $44, $18
+SharedFiveGFX:
+  .db $18
   .db $6E, $0A, $04, $00, $19, $01, $16, $6E, $2D, $3E, $6E, $1B, $03, $16, $01, $10, $17, $03, $15, $05, $07, $1E, $DE, $DF
+  .db $FF
 
-  .db $21, $64, $18
+SharedSixGFX:
+  .db $18
   .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $80, $81, $6E, $6E, $82, $83, $6E, $6E, $6E, $6E, $6E, $6E, $84, $85
+  .db $FF
 
-  .db $21, $84, $18
+SharedSevenGFX:
+  .db $18
   .db $6E, $6E, $AC, $AD, $8E, $8E, $8E, $8F, $6E, $6E, $90, $91, $6E, $6E, $92, $93, $6E, $6E, $86, $87, $6E, $6E, $94, $95
+  .db $FF
 
-  .db $21, $A4, $18
+SharedEightGFX:
+  .db $18
   .db $6E, $6E, $BC, $BD, $AE, $AF, $BE, $BF, $6E, $6E, $A0, $A1, $6E, $6E, $A2, $A3, $6E, $6E, $96, $97, $6E, $6E, $A4, $A5
+  .db $FF
 
-  .db $21, $C4, $18
+SharedNineGFX:
+  .db $18
   .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $B0, $B0, $6E, $6E, $B0, $B0, $6E, $6E, $B0, $B0, $6E, $6E, $B0, $B0
+  .db $FF
 
-  .db $21, $E4, $18
+SharedTenGFX:
+  .db $18
   .db $6E, $0A, $04, $00, $19, $01, $16, $6E, $3D, $3E, $6E, $0C, $1F, $1A, $1E, $6E, $6E, $6E, $6E, $6E, $8A, $8B, $6E, $6E
+  .db $FF
 
-  .db $22, $04, $18
+SharedElevenGFX:
+  .db $18
   .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $80, $81, $6E, $6E, $6E, $6E, $88, $89, $6E, $6E, $9A, $9B, $6E, $6E
+  .db $FF
 
-  .db $22, $24, $18
+SharedTwelveGFX:
+  .db $18
   .db $6E, $6E, $8C, $8D, $8E, $8E, $8E, $8F, $6E, $6E, $90, $91, $6E, $E8, $E9, $6E, $98, $99, $6E, $6E, $AA, $AB, $6E, $6E
+  .db $FF
 
-  .db $22, $44, $18
+SharedThirteenGFX:
+  .db $18
   .db $6E, $6E, $9C, $9D, $AE, $AF, $9E, $9F, $6E, $6E, $B1, $B2, $6E, $F8, $F9, $6E, $A8, $A9, $6E, $6E, $BA, $BB, $C8, $C8
+  .db $FF
 
-  .db $22, $64, $18
+SharedFourteenGFX:
+  .db $18
   .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $B3, $B4, $6E, $6E, $C9, $D9, $B8, $B9, $C9, $D9, $6E, $6E, $D8, $D8
+  .db $FF
 
 ; Chaos Swap
 MenuFourthOption:
-; Option name
-  .db $20, $64, $18
+ChaosTopGFX:
+  .db $18
   .db $6E, $6E, $6E, $6E, $6E, $4A, $6E, $21, $2E, $20, $29, $2C, $EE, $2C, $2F, $20, $2A, $6E, $4D, $6E, $6E, $6E, $6E, $6E
+  .db $FF
 
-  .db $20, $84, $18
+ChaosBottomGFX:
+  .db $18
   .db $6E, $6E, $6E, $6E, $6E, $4B, $6E, $31, $3E, $30, $39, $3C, $EE, $3C, $3F, $30, $3A, $6E, $4C, $6E, $6E, $6E, $6E, $6E
+  .db $FF
 
-  .db $20, $C4, $18
+ChaosOneGFX:
+  .db $18
   .db $6E, $1C, $09, $00, $06, $07, $6E, $06, $04, $00, $19, $01, $16, $07, $6E, $6E, $6E, $85, $86, $6E, $83, $93, $6E, $6E
+  .db $FF
 
-  .db $20, $E4, $18
+ChaosTwoGFX:
+  .db $18
   .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $95, $96, $6E, $6E, $6E, $6E, $6E
+  .db $FF
 
-  .db $21, $04, $18
+ChaosThreeGFX:
+  .db $18
   .db $6E, $00, $17, $6E, $16, $00, $05, $11, $15, $14, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $A5, $A6, $6E, $6E, $6E, $6E, $6E
+  .db $FF
 
-  .db $21, $24, $18
+ChaosFourGFX:
+  .db $18
   .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $C0, $C1, $C2, $C3, $6E, $6E, $6E, $6E, $6E, $C0, $C2, $C3
+  .db $FF
 
-  .db $21, $44, $18
+ChaosFiveGFX:
+  .db $18
   .db $6E, $03, $05, $17, $01, $16, $18, $00, $04, $07, $1E, $6E, $D0, $D1, $D2, $D3, $C8, $C8, $C8, $C8, $C8, $D0, $D2, $D3
+  .db $FF
 
-  .db $21, $64, $18
+ChaosSixGFX:
+  .db $18
   .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $82, $6E, $6E, $6E, $6E, $6E
+  .db $FF
 
-  .db $21, $84, $18
+ChaosSevenGFX:
+  .db $18
   .db $6E, $0D, $15, $6E, $09, $00, $16, $05, $03, $05, $02, $07, $1E, $6E, $6E, $6E, $A0, $A1, $6E, $C4, $C5, $6E, $6E, $6E
+  .db $FF
 
-  .db $21, $A4, $18
+ChaosEightGFX:
+  .db $18
   .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $B0, $B1, $6E, $D4, $D5, $6E, $6E, $6E
+  .db $FF
 
-  .db $21, $C4, $18
+ChaosNineGFX:
+  .db $18
   .db $6E, $1D, $15, $15, $11, $6E, $04, $08, $10, $13, $84, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $82, $6E, $6E, $6E, $6E, $6E
+  .db $FF
 
-  .db $21, $E4, $18
+ChaosTenGFX:
+  .db $18
   .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $87, $88, $6E, $83, $94, $6E, $6E
+  .db $FF
 
-  .db $22, $04, $18
+ChaosElevenGFX:
+  .db $18
   .db $6E, $6E, $8A, $8B, $B5, $6E, $6E, $8C, $8D, $8E, $8F, $6E, $6E, $6E, $6E, $6E, $6E, $97, $98, $6E, $6E, $6E, $6E, $6E
+  .db $FF
 
-  .db $22, $24, $18
+ChaosTwelveGFX:
+  .db $18
   .db $6E, $99, $9A, $9B, $B6, $6E, $6E, $9C, $9D, $9E, $9F, $6E, $6E, $6E, $6E, $6E, $6E, $A7, $A8, $6E, $6E, $6E, $6E, $6E
+  .db $FF
 
-  .db $22, $44, $18
+ChaosThirteenGFX:
+  .db $18
   .db $6E, $A9, $AA, $AB, $B7, $6E, $6E, $AC, $AD, $AE, $AF, $6E, $C0, $C1, $C2, $C3, $6E, $6E, $6E, $6E, $6E, $C0, $C2, $C3
+  .db $FF
 
-  .db $22, $64, $18
+ChaosFourteenGFX:
+  .db $18
   .db $6E, $B9, $BA, $BB, $B8, $6E, $6E, $BC, $BD, $BE, $BF, $6E, $D0, $D1, $D2, $D3, $C8, $C8, $C8, $C8, $C8, $D0, $D2, $D3
+  .db $FF
+
+; end of GFX
 
 TraditionalPalette:
   .db $3F, $09, $07, $35, $25, $05, $0F, $35, $25, $0F
@@ -283,3 +364,158 @@ PaletteTableOptionSelect:
   .db $0F, $31, $21, $01 ; 2P Tag Team
   .db $0F, $39, $29, $09 ; 2P Shared
   .db $0F, $3D, $2D, $00 ; 2P Chaos
+
+EmptyLinesOptionSelect:
+  .db $58, $6E, $00
+
+TileMapFirstOptionSelect:
+  .db $20, $20, $20, $20, $21, $21, $21, $21, $21, $21, $21, $21, $22, $22, $22, $22
+
+TileMapSecondOptionselect:
+  .db $64, $84, $C4, $E4, $04, $24, $44, $64, $84, $A4, $C4, $E4, $04, $24, $44, $64
+
+OptionSelectLoTable:
+; Traditional Section
+  .db <TradionalTopGFX
+  .db <TradionalBottomGFX
+  .db <TradionalFirstLineGFX
+  .db <EmptyLinesOptionSelect
+  .db <TraditionalThirdLineGFX
+  .db <EmptyLinesOptionSelect
+  .db <TraditionalFithLineGFX
+  .db <EmptyLinesOptionSelect
+  .db <TraditionalSeventhLineGFX
+  .db <TraditionalEightLineGFX
+  .db <TraditionalNinhtLineGFX
+  .db <TraditionalTenthLineGFX
+  .db <TraditionalEleventhLineGFX
+  .db <TraditionalTwelfthLineGFX
+  .db <TraditionalThirteenthLineGFX
+  .db <TraditionalFourteenthLineGFX
+
+; Tag Team
+  .db <TagTeamTopGFX
+  .db <TagTeamBottomGFX
+  .db <TagTeamFirstLineGFX
+  .db <TagTeamSecondLineGFX
+  .db <TagTeamThirdLineGFX
+  .db <TagTeamFourthLineGFX
+  .db <TagTeamFithLineGFX
+  .db <TagTeamSixthLineGFX
+  .db <EmptyLinesOptionSelect
+  .db <TagTeamEightLineGFX
+  .db <EmptyLinesOptionSelect
+  .db <TagTeamTenthLineGFX
+  .db <EmptyLinesOptionSelect
+  .db <TagTeamTwelfthLineGFX
+  .db <EmptyLinesOptionSelect
+  .db <TagTeamFourteenthLineGFX
+
+; Shared control
+  .db <SharedTopGFX
+  .db <SharedBottomGFX
+  .db <SharedOneGFX
+  .db <SharedTwoGFX
+  .db <SharedThreeGFX
+  .db <SharedFourGFX
+  .db <SharedFiveGFX
+  .db <SharedSixGFX
+  .db <SharedSevenGFX
+  .db <SharedEightGFX
+  .db <SharedNineGFX
+  .db <SharedTenGFX
+  .db <SharedElevenGFX
+  .db <SharedTwelveGFX
+  .db <SharedThirteenGFX
+  .db <SharedFourteenGFX
+
+; Chaos Swap
+  .db <ChaosTopGFX
+  .db <ChaosBottomGFX
+  .db <ChaosOneGFX
+  .db <ChaosTwoGFX
+  .db <ChaosThreeGFX
+  .db <ChaosFourGFX
+  .db <ChaosFiveGFX
+  .db <ChaosSixGFX
+  .db <ChaosSevenGFX
+  .db <ChaosEightGFX
+  .db <ChaosNineGFX
+  .db <ChaosTenGFX
+  .db <ChaosElevenGFX
+  .db <ChaosTwelveGFX
+  .db <ChaosThirteenGFX
+  .db <ChaosFourteenGFX
+
+OptionSelectHiTable:
+; Traditional Section
+  .db >TradionalTopGFX
+  .db >TradionalBottomGFX
+  .db >TradionalFirstLineGFX
+  .db >EmptyLinesOptionSelect
+  .db >TraditionalThirdLineGFX
+  .db >EmptyLinesOptionSelect
+  .db >TraditionalFithLineGFX
+  .db >EmptyLinesOptionSelect
+  .db >TraditionalSeventhLineGFX
+  .db >TraditionalEightLineGFX
+  .db >TraditionalNinhtLineGFX
+  .db >TraditionalTenthLineGFX
+  .db >TraditionalEleventhLineGFX
+  .db >TraditionalTwelfthLineGFX
+  .db >TraditionalThirteenthLineGFX
+  .db >TraditionalFourteenthLineGFX
+
+; Tag Team
+  .db >TagTeamTopGFX
+  .db >TagTeamBottomGFX
+  .db >TagTeamFirstLineGFX
+  .db >TagTeamSecondLineGFX
+  .db >TagTeamThirdLineGFX
+  .db >TagTeamFourthLineGFX
+  .db >TagTeamFithLineGFX
+  .db >TagTeamSixthLineGFX
+  .db >EmptyLinesOptionSelect
+  .db >TagTeamEightLineGFX
+  .db >EmptyLinesOptionSelect
+  .db >TagTeamTenthLineGFX
+  .db >EmptyLinesOptionSelect
+  .db >TagTeamTwelfthLineGFX
+  .db >EmptyLinesOptionSelect
+  .db >TagTeamFourteenthLineGFX
+
+; Shared control
+  .db >SharedTopGFX
+  .db >SharedBottomGFX
+  .db >SharedOneGFX
+  .db >SharedTwoGFX
+  .db >SharedThreeGFX
+  .db >SharedFourGFX
+  .db >SharedFiveGFX
+  .db >SharedSixGFX
+  .db >SharedSevenGFX
+  .db >SharedEightGFX
+  .db >SharedNineGFX
+  .db >SharedTenGFX
+  .db >SharedElevenGFX
+  .db >SharedTwelveGFX
+  .db >SharedThirteenGFX
+  .db >SharedFourteenGFX
+
+; Chaos Swap
+  .db >ChaosTopGFX
+  .db >ChaosBottomGFX
+  .db >ChaosOneGFX
+  .db >ChaosTwoGFX
+  .db >ChaosThreeGFX
+  .db >ChaosFourGFX
+  .db >ChaosFiveGFX
+  .db >ChaosSixGFX
+  .db >ChaosSevenGFX
+  .db >ChaosEightGFX
+  .db >ChaosNineGFX
+  .db >ChaosTenGFX
+  .db >ChaosElevenGFX
+  .db >ChaosTwelveGFX
+  .db >ChaosThirteenGFX
+  .db >ChaosFourteenGFX

@@ -2280,6 +2280,7 @@ WartOAMOffsets_RAM = $7EEE ; 7 bytes
 CheatCode = $7EF5
 SettingsTitleScreen = $7EF6
 ChangeCharacterPoofTimer = $7EF7
+RowDrawingOptionSelect = $7EF8 ; volatile ram
 DpadHeldTimer = $7EF8 ; volatile ram
 FadeCounter = $7EF8 ; volatile ram
 HeldTimerFire = $7EF9 ; volatile ram
