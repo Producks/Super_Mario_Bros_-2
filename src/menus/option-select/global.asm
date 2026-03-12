@@ -54,8 +54,9 @@ InitContextWindow_OptionSelect:
   LDA #$00
   STA RowDrawingOptionSelect
 -
-;  JSR LoadContextLine_OptionSelect
   JSR LoadContextLine_OptionSelect
+  JSR LoadContextLine_OptionSelect
+  JSR FrameUpdateOptionSelect
   JSR WaitForNMI_Menu
   LDA RowDrawingOptionSelect
   CMP #$10
@@ -65,7 +66,6 @@ InitContextWindow_OptionSelect:
 ; Dump all the content in memory so I can use it easily later on
 LoadNew_PTR_OptionSelect:
   LDA CursorLocation
-  LDA #$03
   ASL A
   ASL A
   ASL A

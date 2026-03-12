@@ -343,21 +343,18 @@ ChaosFourteenGFX:
 
 ; end of GFX
 
+ContextWindowModePalette:
 TraditionalPalette:
-  .db $3F, $09, $07, $35, $25, $05, $0F, $35, $25, $0F
-  .db $00
+  .db $0F, $35, $25, $06, $0F, $35, $25, $0F
 
 TagTeamPalette:
-  .db $3F, $09, $07, $31, $21, $01, $0F, $31, $21, $0F
-  .db $00
+  .db $0F, $31, $21, $01, $0F, $31, $21, $0F
 
 SharedControlPalette:
-  .db $3F, $09, $07, $39, $29, $09, $0F, $39, $29, $0F
-  .db $00
+  .db $0F, $39, $29, $09, $0F, $39, $29, $0F
 
 ChaosSwapPalette:
-  .db $3F, $09, $07, $3D, $2D, $00, $0F, $3D, $2D, $0F
-  .db $00
+  .db $0F, $3D, $2D, $00, $0F, $3D, $2D, $0F
 
 PaletteTableOptionSelect:
   .db $0F, $35, $25, $05 ; 2P Traditional
@@ -366,7 +363,7 @@ PaletteTableOptionSelect:
   .db $0F, $3D, $2D, $00 ; 2P Chaos
 
 EmptyLinesOptionSelect:
-  .db $58, $6E, $00
+  .db $58, $6E, $FF
 
 TileMapFirstOptionSelect:
   .db $20, $20, $20, $20, $21, $21, $21, $21, $21, $21, $21, $21, $22, $22, $22, $22
@@ -448,6 +445,7 @@ OptionSelectLoTable:
   .db <ChaosFourteenGFX
 
 OptionSelectHiTable:
+
 ; Traditional Section
   .db >TradionalTopGFX
   .db >TradionalBottomGFX
@@ -519,3 +517,7 @@ OptionSelectHiTable:
   .db >ChaosTwelveGFX
   .db >ChaosThirteenGFX
   .db >ChaosFourteenGFX
+
+
+CHRBankModeSelect:
+  .db CHR_Mode_Traditional, CHR_Mode_TagTeam, CHR_Mode_SharedControl, CHR_Mode_Chaos

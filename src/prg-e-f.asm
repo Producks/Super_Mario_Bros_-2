@@ -533,7 +533,6 @@ PreStartLevel:
 
 	RTS
 
-
 ;
 ; Character select code got moved to bank A/B
 ;

@@ -904,7 +904,10 @@ TwoPOneCPPUBuffer = $02
 ChaosPPUBuffer = $03
 CHRAnimationSpeedOption = $08
 CHRStartExpand = $80
-CHRStartOption = $82
+CHR_Mode_Traditional = $82
+CHR_Mode_TagTeam = $83
+CHR_Mode_SharedControl = $84
+CHR_Mode_Chaos = $85
 CHRStartOptionAnimation = $88
 
 ; Character Select constants
