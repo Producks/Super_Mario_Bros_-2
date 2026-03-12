@@ -369,10 +369,13 @@ OnePlayerFourGFX:
   .db $FF
 
 OnePlayerFiveGFX:
-  .db $49, $6E
-  .db $21, $2D, $02, $94, $95
-  .db $21, $2F, $49, $6E
-  .db $21, $38, $04, $8C, $8D, $6E, $6E
+ ; .db $49, $6E
+ ; .db $21, $2D, $02, $94, $95
+ ; .db $21, $2F, $49, $6E
+ ; .db $21, $38, $04, $8C, $8D, $6E, $6E
+ ; .db $FF
+  .db $18
+  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $94, $95, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $8C, $8D, $6E, $6E
   .db $FF
 
 OnePlayerSixGFX:
@@ -418,6 +421,15 @@ OnePlayerThirteenGFX:
 OnePlayerBottomLinesGFX:
   .db $18
   .db $90, $91, $92, $91, $92, $91, $92, $93, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0
+  .db $FF
+
+TwoPlayerTopGFX:
+  .db $18
+  .db $6E, $6E, $6E, $6E, $6E, $4A, $6E, $29, $28, $23, $6E, $2A, $26, $20, $45, $23, $2B, $6E, $4D, $6E, $6E, $6E, $6E, $6E
+  .db $FF
+TwoPlayerBottomGFX:
+  .db $18
+  .db $6E, $6E, $6E, $6E, $6E, $4B, $6E, $39, $38, $33, $6E, $3A, $36, $30, $46, $33, $3B, $6E, $4C, $6E, $6E, $6E, $6E, $6E
   .db $FF
 
 ; end of GFX
@@ -468,6 +480,25 @@ OptionSelectLoTable:
   .db <OnePlayerThirteenGFX
   .db <OnePlayerBottomLinesGFX
   .db <OnePlayerBottomLinesGFX
+
+; Two Player
+  .db <TwoPlayerTopGFX
+  .db <TwoPlayerBottomGFX
+  .db <EmptyLinesOptionSelect
+  .db <EmptyLinesOptionSelect
+  .db <EmptyLinesOptionSelect
+  .db <EmptyLinesOptionSelect
+  .db <EmptyLinesOptionSelect
+  .db <EmptyLinesOptionSelect
+  .db <EmptyLinesOptionSelect
+  .db <EmptyLinesOptionSelect
+  .db <EmptyLinesOptionSelect
+  .db <EmptyLinesOptionSelect
+  .db <EmptyLinesOptionSelect
+  .db <EmptyLinesOptionSelect
+  .db <EmptyLinesOptionSelect
+  .db <EmptyLinesOptionSelect
+
 
 ; Traditional Section
   .db <TradionalTopGFX
@@ -560,6 +591,24 @@ OptionSelectHiTable:
   .db >OnePlayerThirteenGFX
   .db >OnePlayerBottomLinesGFX
   .db >OnePlayerBottomLinesGFX
+
+; Two Player
+  .db >TwoPlayerTopGFX
+  .db >TwoPlayerBottomGFX
+  .db >EmptyLinesOptionSelect
+  .db >EmptyLinesOptionSelect
+  .db >EmptyLinesOptionSelect
+  .db >EmptyLinesOptionSelect
+  .db >EmptyLinesOptionSelect
+  .db >EmptyLinesOptionSelect
+  .db >EmptyLinesOptionSelect
+  .db >EmptyLinesOptionSelect
+  .db >EmptyLinesOptionSelect
+  .db >EmptyLinesOptionSelect
+  .db >EmptyLinesOptionSelect
+  .db >EmptyLinesOptionSelect
+  .db >EmptyLinesOptionSelect
+  .db >EmptyLinesOptionSelect
 
 ; Traditional Section
   .db >TradionalTopGFX
