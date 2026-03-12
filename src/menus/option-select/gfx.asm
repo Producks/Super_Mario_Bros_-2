@@ -341,6 +341,85 @@ ChaosFourteenGFX:
   .db $6E, $B9, $BA, $BB, $B8, $6E, $6E, $BC, $BD, $BE, $BF, $6E, $D0, $D1, $D2, $D3, $C8, $C8, $C8, $C8, $C8, $D0, $D2, $D3
   .db $FF
 
+OnePlayerTopGFX:
+  .db $18
+  .db $6E, $6E, $6E, $6E, $6E, $4A, $6E, $29, $28, $23, $6E, $2A, $26, $20, $45, $23, $2B, $6E, $4D, $6E, $6E, $6E, $6E, $6E
+  .db $FF
+OnePlayerBottomGFX:
+  .db $18
+  .db $6E, $6E, $6E, $6E, $6E, $4B, $6E, $39, $38, $33, $6E, $3A, $36, $30, $46, $33, $3B, $6E, $4C, $6E, $6E, $6E, $6E, $6E
+  .db $FF
+
+OnePlayerTwoGFX:
+  .db $48, $6E
+  .db $20, $CC, $03, $86, $87, $88
+  .db $20, $CF, $4D, $6E
+  .db $FF
+
+OnePlayerThirdGFX:
+  .db $0E
+  .db $6E, $6E, $6E, $A8, $A9, $6E, $6E, $6E, $96, $97, $98, $6E, $86, $88
+  .db $20, $F2, $4A, $6E
+  .db $FF
+
+OnePlayerFourGFX:
+  .db $0E
+  .db $6E, $6E, $6E, $B8, $B9, $6E, $6E, $6E, $6E, $84, $85, $6E, $96, $98
+  .db $21, $12, $4A, $6E
+  .db $FF
+
+OnePlayerFiveGFX:
+  .db $49, $6E
+  .db $21, $2D, $02, $94, $95
+  .db $21, $2F, $49, $6E
+  .db $21, $38, $04, $8C, $8D, $6E, $6E
+  .db $FF
+
+OnePlayerSixGFX:
+  .db $18
+  .db $6E, $6E, $6E, $A6, $A7, $6E, $6E, $6E, $6E, $A4, $A5, $6E, $6E, $6E, $E1, $E2, $6E, $6E, $6E, $6E, $9C, $9D, $6E, $6E
+  .db $FF
+
+OnePlayerSevenGFX:
+  .db $10, $6E, $6E, $6E, $B6, $B7, $6E, $6E, $6E, $6E, $B4, $B5, $6E, $6E, $6E, $F1, $F2
+  .db $21, $74, $48, $6E
+  .db $FF
+
+OnePlayerEightGFX:
+  .db $06, $6E, $6E, $80, $81, $82, $83
+  .db $21, $8A, $52, $6E
+  .db $FF
+
+OnePlayerNineGFX:
+  .db $06, $6E, $6E, $90, $91, $92, $93
+  .db $21, $AA, $52, $6E
+  .db $FF
+
+OnePlayerTenGFX:
+  .db $08, $6E, $6E, $90, $91, $92, $93, $C9, $D9
+  .db $21, $CC, $50, $6E
+  .db $FF
+
+OnePlayerElevenGFX:
+  .db $08, $80, $81, $82, $81, $82, $81, $82, $83
+  .db $21, $EC, $50, $6E
+  .db $FF
+
+OnePlayerTwelveGFX:
+  .db $11, $90, $91, $92, $91, $92, $91, $92, $93, $6E, $6E, $6E, $6E, $6E, $89, $8A, $8A, $8B
+  .db $22, $15, $47, $6E
+  .db $FF
+
+OnePlayerThirteenGFX:
+  .db $11, $90, $91, $92, $91, $92, $91, $92, $93, $E0, $E0, $E0, $E0, $E0, $99, $9A, $9A, $9B
+  .db $22, $35, $47, $E0
+  .db $FF
+
+OnePlayerBottomLinesGFX:
+  .db $18
+  .db $90, $91, $92, $91, $92, $91, $92, $93, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0
+  .db $FF
+
 ; end of GFX
 
 ContextWindowModePalette:
@@ -372,6 +451,24 @@ TileMapSecondOptionselect:
   .db $64, $84, $C4, $E4, $04, $24, $44, $64, $84, $A4, $C4, $E4, $04, $24, $44, $64
 
 OptionSelectLoTable:
+; One Player
+  .db <OnePlayerTopGFX
+  .db <OnePlayerBottomGFX
+  .db <OnePlayerTwoGFX
+  .db <OnePlayerThirdGFX
+  .db <OnePlayerFourGFX
+  .db <OnePlayerFiveGFX
+  .db <OnePlayerSixGFX
+  .db <OnePlayerSevenGFX
+  .db <OnePlayerEightGFX
+  .db <OnePlayerNineGFX
+  .db <OnePlayerTenGFX
+  .db <OnePlayerElevenGFX
+  .db <OnePlayerTwelveGFX
+  .db <OnePlayerThirteenGFX
+  .db <OnePlayerBottomLinesGFX
+  .db <OnePlayerBottomLinesGFX
+
 ; Traditional Section
   .db <TradionalTopGFX
   .db <TradionalBottomGFX
@@ -445,6 +542,24 @@ OptionSelectLoTable:
   .db <ChaosFourteenGFX
 
 OptionSelectHiTable:
+
+; One Player
+  .db >OnePlayerTopGFX
+  .db >OnePlayerBottomGFX
+  .db >OnePlayerTwoGFX
+  .db >OnePlayerThirdGFX
+  .db >OnePlayerFourGFX
+  .db >OnePlayerFiveGFX
+  .db >OnePlayerSixGFX
+  .db >OnePlayerSevenGFX
+  .db >OnePlayerEightGFX
+  .db >OnePlayerNineGFX
+  .db >OnePlayerTenGFX
+  .db >OnePlayerElevenGFX
+  .db >OnePlayerTwelveGFX
+  .db >OnePlayerThirteenGFX
+  .db >OnePlayerBottomLinesGFX
+  .db >OnePlayerBottomLinesGFX
 
 ; Traditional Section
   .db >TradionalTopGFX
@@ -520,4 +635,4 @@ OptionSelectHiTable:
 
 
 CHRBankModeSelect:
-  .db CHR_Mode_Traditional, CHR_Mode_TagTeam, CHR_Mode_SharedControl, CHR_Mode_Chaos
+  .db CHR_Mode_OnePlayer, CHR_Mode_TwoPlayer, CHR_Mode_Traditional, CHR_Mode_TagTeam, CHR_Mode_SharedControl, CHR_Mode_Chaos

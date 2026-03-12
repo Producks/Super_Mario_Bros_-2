@@ -10,7 +10,7 @@ OptionSelectInit:
   STA SpriteCHR1
   LDA #CHRStartExpand + 1
   STA SpriteCHR2
-  LDA #CHR_Mode_Traditional
+  LDA #CHR_Mode_OnePlayer
   STA SpriteCHR3
   LDA #CHRStartOptionAnimation
   STA SpriteCHR4

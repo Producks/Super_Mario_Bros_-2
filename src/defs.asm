@@ -908,6 +908,8 @@ CHR_Mode_Traditional = $82
 CHR_Mode_TagTeam = $83
 CHR_Mode_SharedControl = $84
 CHR_Mode_Chaos = $85
+CHR_Mode_TwoPlayer = $86
+CHR_Mode_OnePlayer = $87
 CHRStartOptionAnimation = $88
 
 ; Character Select constants
