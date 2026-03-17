@@ -425,13 +425,74 @@ OnePlayerBottomLinesGFX:
 
 TwoPlayerTopGFX:
   .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $4A, $6E, $29, $28, $23, $6E, $2A, $26, $20, $45, $23, $2B, $6E, $4D, $6E, $6E, $6E, $6E, $6E
+  .db $6E, $6E, $6E, $6E, $6E, $4A, $6E, $2D, $2F, $29, $6E, $2A, $26, $20, $45, $23, $2B, $6E, $4D, $6E, $6E, $6E, $6E, $6E
   .db $FF
 TwoPlayerBottomGFX:
   .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $4B, $6E, $39, $38, $33, $6E, $3A, $36, $30, $46, $33, $3B, $6E, $4C, $6E, $6E, $6E, $6E, $6E
+  .db $6E, $6E, $6E, $6E, $6E, $4B, $6E, $3D, $3F, $39, $6E, $3A, $36, $30, $46, $33, $3B, $6E, $4C, $6E, $6E, $6E, $6E, $6E
   .db $FF
 
+TwoPlayerLineTwoGFX:
+  .db $07, $6E, $6E, $6E, $8A, $8B, $8C, $8D
+  .db $20, $EB, $51, $6E
+  .db $FF
+
+TwoPlayerLineThreeGFX:
+  .db $18
+  .db $6E, $6E, $6E, $9A, $9B, $9C, $9D, $6E, $6E, $6E, $90, $91, $92, $93, $6E, $6E, $6E, $6E, $8A, $8B, $8C, $8D, $6E, $6E
+  .db $FF
+
+TwoPlayerLineFourGFX:
+  .db $18
+  .db $6E, $6E, $6E, $AA, $AB, $AC, $AD, $6E, $6E, $6E, $A0, $A1, $A2, $A3, $6E, $6E, $6E, $6E, $9A, $9B, $9C, $9D, $6E, $6E
+  .db $FF
+
+TwoPlayerLineFiveGFX:
+  .db $18
+  .db $6E, $6E, $6E, $BA, $BB, $BC, $BD, $6E, $6E, $6E, $B0, $B1, $B2, $B3, $6E, $6E, $6E, $6E, $AA, $AB, $AC, $AD, $6E, $6E
+  .db $FF
+
+TwoPlayerLineSixGFX:
+  .db $18
+  .db $6E, $6E, $8E, $8F, $6E, $6E, $6E, $88, $89, $88, $89, $88, $89, $88, $89, $88, $89, $6E, $BA, $BB, $BC, $BD, $6E, $6E
+  .db $FF
+
+TwoPlayerLineSevenGFX:
+  .db $18
+  .db $6E, $6E, $9E, $9F, $6E, $6E, $6E, $98, $99, $98, $99, $98, $99, $98, $99, $98, $99, $6E, $6E, $94, $95, $96, $97, $6E
+  .db $FF
+
+TwoPlayerLineEightGFX:
+  .db $06, $6E, $6E, $AE, $AF, $CA, $CB
+  .db $21, $AA, $4D, $6E
+  .db $21, $B7, $05, $A4, $A5, $A6, $A7, $6E
+  .db $FF
+
+TwoPlayerLineNineGFX:
+  .db $06, $6E, $6E, $BE, $BF, $DA, $DB
+  .db $21, $CA, $4D, $6E
+  .db $21, $D7, $05, $B4, $B5, $B6, $B7, $6E
+  .db $FF
+
+TwoPlayerLineElevenGFX:
+  .db $18
+  .db $6E, $C8, $6E, $C8, $6E, $C8, $6E, $C8, $6E, $C8, $6E, $C8, $6E, $C8, $6E, $C8, $6E, $C8, $6E, $C8, $6E, $C8, $6E, $C8
+  .db $FF
+
+TwoPlayerLineTwelveGFX:
+  .db $18
+  .db $6E, $D8, $6E, $D8, $6E, $D8, $6E, $D8, $6E, $D8, $6E, $D8, $6E, $D8, $6E, $D8, $6E, $D8, $6E, $D8, $6E, $D8, $6E, $D8
+  .db $FF
+
+TwoPlayerThirteenGFX:
+  .db $18
+  .db $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8
+  .db $FF
+
+TwoPlayerBottomLinesGFX:
+  .db $18
+  .db $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9
+  .db $FF
 ; end of GFX
 
 ContextWindowModePalette:
@@ -485,19 +546,19 @@ OptionSelectLoTable:
   .db <TwoPlayerTopGFX
   .db <TwoPlayerBottomGFX
   .db <EmptyLinesOptionSelect
+  .db <TwoPlayerLineTwoGFX
+  .db <TwoPlayerLineThreeGFX
+  .db <TwoPlayerLineFourGFX
+  .db <TwoPlayerLineFiveGFX
+  .db <TwoPlayerLineSixGFX
+  .db <TwoPlayerLineSevenGFX
+  .db <TwoPlayerLineEightGFX
+  .db <TwoPlayerLineNineGFX
   .db <EmptyLinesOptionSelect
-  .db <EmptyLinesOptionSelect
-  .db <EmptyLinesOptionSelect
-  .db <EmptyLinesOptionSelect
-  .db <EmptyLinesOptionSelect
-  .db <EmptyLinesOptionSelect
-  .db <EmptyLinesOptionSelect
-  .db <EmptyLinesOptionSelect
-  .db <EmptyLinesOptionSelect
-  .db <EmptyLinesOptionSelect
-  .db <EmptyLinesOptionSelect
-  .db <EmptyLinesOptionSelect
-  .db <EmptyLinesOptionSelect
+  .db <TwoPlayerLineElevenGFX
+  .db <TwoPlayerLineTwelveGFX
+  .db <TwoPlayerThirteenGFX
+  .db <TwoPlayerBottomLinesGFX
 
 
 ; Traditional Section
@@ -596,19 +657,19 @@ OptionSelectHiTable:
   .db >TwoPlayerTopGFX
   .db >TwoPlayerBottomGFX
   .db >EmptyLinesOptionSelect
+  .db >TwoPlayerLineTwoGFX
+  .db >TwoPlayerLineThreeGFX
+  .db >TwoPlayerLineFourGFX
+  .db >TwoPlayerLineFiveGFX
+  .db >TwoPlayerLineSixGFX
+  .db >TwoPlayerLineSevenGFX
+  .db >TwoPlayerLineEightGFX
+  .db >TwoPlayerLineNineGFX
   .db >EmptyLinesOptionSelect
-  .db >EmptyLinesOptionSelect
-  .db >EmptyLinesOptionSelect
-  .db >EmptyLinesOptionSelect
-  .db >EmptyLinesOptionSelect
-  .db >EmptyLinesOptionSelect
-  .db >EmptyLinesOptionSelect
-  .db >EmptyLinesOptionSelect
-  .db >EmptyLinesOptionSelect
-  .db >EmptyLinesOptionSelect
-  .db >EmptyLinesOptionSelect
-  .db >EmptyLinesOptionSelect
-  .db >EmptyLinesOptionSelect
+  .db >TwoPlayerLineElevenGFX
+  .db >TwoPlayerLineTwelveGFX
+  .db >TwoPlayerThirteenGFX
+  .db >TwoPlayerBottomLinesGFX
 
 ; Traditional Section
   .db >TradionalTopGFX
