@@ -2818,6 +2818,28 @@ UpdatePlayerAnimationFrame:
 ExitPlayerWalkJumpAnim:
 	RTS
 
+UpThrowXVelocity:
+	.db $00 ; standing, left (blocks)
+	.db $00 ; standing, right (blocks)
+
+	.db $F0 ; moving, left (blocks)
+	.db $10 ; moving, right (blocks)
+
+	.db $00 ; standing, left (projectiles)
+	.db $00 ; standing, right (projectiles)
+
+	.db $F0 ; moving, left (projectiles)
+	.db $10 ; moving, right (projectiles)
+
+UpThrowYVelocity:
+	.db $C8 ; standing (blocks)
+	.db $C8 ; moving (blocks)
+	.db $C8 ; standing (projectiles)
+	.db $C8 ; moving (projectiles)
+
+UpSoftThrowOffset:
+  .db $FF
+  .db $01
 
 ThrowXVelocity:
 	.db $00 ; standing, left (blocks)
@@ -2998,7 +3020,17 @@ loc_BANK0_8E6F:
 	BNE loc_BANK0_8E89
 
 	LDY PlayerDirection
+  LDA CurrentCharacter
+  CMP #Character_Wario
+  BNE +
+  LDA Player1JoypadHeld
+  AND #ControllerInput_Up
+  BEQ +
+  LDA UpSoftThrowOffset, Y
+  BNE SoftThrowLogic
++
 	LDA SoftThrowOffset, Y
+SoftThrowLogic:
 	CLC
 	ADC ObjectXLo, X
 	STA ObjectXLo, X
@@ -3013,6 +3045,29 @@ loc_BANK0_8E87:
 	STA ObjectXHi, X
 
 loc_BANK0_8E89:
+  LDA CurrentCharacter
+  CMP #Character_Wario
+  BNE NormalThrow
+  LDA Player1JoypadHeld
+  AND #ControllerInput_Up
+  BEQ NormalThrow
+WarrioUpThrow:
+	LDY byte_RAM_1
+	LDA UpThrowYVelocity, Y
+	STA ObjectYVelocity, X
+	LDA byte_RAM_1
+	ASL A
+	ORA PlayerDirection
+	TAY
+	LDA UpThrowXVelocity, Y
+	STA ObjectXVelocity, X
+	LDA #$01
+	STA ObjectProjectileTimer, X
+	LSR A
+	STA ObjectBeingCarriedTimer, X
+	RTS
+
+NormalThrow
 	LDY byte_RAM_1
 	LDA ThrowYVelocity, Y
 	STA ObjectYVelocity, X
@@ -4985,7 +5040,7 @@ IFNDEF ENABLE_TILE_ATTRIBUTES_TABLE
 IFNDEF ROBUST_TRANSITION_SEARCH
 
 ; Unused space in the original ($95C3 - $95FF)
-unusedSpace $9600, $FF
+;unusedSpace $9600, $FF
 ENDIF
 ENDIF
 

@@ -273,7 +273,7 @@ WarioStats:
 	.db $E8 ; Running Speed, left - no object
 	.db $E8 ; Running Speed, left - with object
 	.db $FC ; Running Speed, left - in quicksand
-  .db CanRun | Shrink | RegularFloat | StompEnemies | RegularDig | RegularPickups ; Special attributes
+  .db CanRun | Shrink | RegularFloat | NoStomp | RegularDig | RegularPickups ; Special attributes
 
 WaluigiStats:
 	.db $00 ; Pick-up Speed, frame 1/6 - pulling
