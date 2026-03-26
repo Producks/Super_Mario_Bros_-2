@@ -944,6 +944,9 @@ RegularDig = $00
 RandomizePickups = $04
 RegularPickups = $00
 
+UpThrow = $02
+RegularThrow = $00
+
 ; Constant variable for code
 kCharacterStatsTotal = $18
 

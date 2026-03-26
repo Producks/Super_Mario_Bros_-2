@@ -3020,9 +3020,9 @@ loc_BANK0_8E6F:
 	BNE loc_BANK0_8E89
 
 	LDY PlayerDirection
-  LDA CurrentCharacter
-  CMP #Character_Wario
-  BNE +
+  LDA CharacterSpecialAttribute
+  AND #UpThrow
+  BEQ +
   LDA Player1JoypadHeld
   AND #ControllerInput_Up
   BEQ +
@@ -3045,9 +3045,9 @@ loc_BANK0_8E87:
 	STA ObjectXHi, X
 
 loc_BANK0_8E89:
-  LDA CurrentCharacter
-  CMP #Character_Wario
-  BNE NormalThrow
+  LDA CharacterSpecialAttribute
+  AND #UpThrow
+  BEQ NormalThrow
   LDA Player1JoypadHeld
   AND #ControllerInput_Up
   BEQ NormalThrow

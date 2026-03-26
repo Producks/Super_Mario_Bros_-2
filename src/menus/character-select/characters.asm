@@ -65,7 +65,7 @@ MarioStats:
 	.db $E8 ; Running Speed, left - no object
 	.db $E8 ; Running Speed, left - with object
 	.db $FC ; Running Speed, left - in quicksand
-  .db CanRun | Shrink | RegularFloat | NoStomp | RegularDig | RegularPickups ; Special attributes
+  .db CanRun | Shrink | RegularFloat | NoStomp | RegularDig | RegularPickups | RegularThrow  ; Special attributes
 
 ToadStats:
 	.db $00 ; Pick-up Speed, frame 1/6 - pulling
@@ -91,7 +91,7 @@ ToadStats:
 	.db $E8 ; Running Speed, left - no object
 	.db $E3 ; Running Speed, left - with object
 	.db $FC ; Running Speed, left - in quicksand
-  .db CanRun | Shrink | RegularFloat | NoStomp | RegularDig | RegularPickups ; Special attributes
+  .db CanRun | Shrink | RegularFloat | NoStomp | RegularDig | RegularPickups | RegularThrow  ; Special attributes
 
 LuigiStats:
 	.db $00 ; Pick-up Speed, frame 1/6 - pulling
@@ -117,7 +117,7 @@ LuigiStats:
 	.db $E8 ; Running Speed, left - no object
 	.db $EA ; Running Speed, left - with object
 	.db $FC ; Running Speed, left - in quicksand
-  .db CanRun | Shrink | RegularFloat | NoStomp | RegularDig | RegularPickups ; Special attributes
+  .db CanRun | Shrink | RegularFloat | NoStomp | RegularDig | RegularPickups | RegularThrow  ; Special attributes
 
 PrincessStats:
 	.db $00 ; Pick-up Speed, frame 1/6 - pulling
@@ -143,7 +143,7 @@ PrincessStats:
 	.db $E8 ; Running Speed, left - no object
 	.db $EB ; Running Speed, left - with object
 	.db $FC ; Running Speed, left - in quicksand
-  .db CanRun | Shrink | RegularFloat | NoStomp | RegularDig | RegularPickups ; Special attributes
+  .db CanRun | Shrink | RegularFloat | NoStomp | RegularDig | RegularPickups | RegularThrow  ; Special attributes
 
 ImajinStats:
 	.db $00 ; Pick-up Speed, frame 1/6 - pulling
@@ -169,7 +169,7 @@ ImajinStats:
 	.db $E8 ; Running Speed, left - no object
 	.db $E8 ; Running Speed, left - with object
 	.db $FC ; Running Speed, left - in quicksand
-  .db CannotRun | DoesNotShrink | RegularFloat | NoStomp | RegularDig | RegularPickups ; Special attributes
+  .db CannotRun | DoesNotShrink | RegularFloat | NoStomp | RegularDig | RegularPickups | RegularThrow  ; Special attributes
 
 MamaStats:
 	.db $00 ; Pick-up Speed, frame 1/6 - pulling
@@ -195,7 +195,7 @@ MamaStats:
 	.db $E8 ; Running Speed, left - no object
 	.db $EA ; Running Speed, left - with object
 	.db $FC ; Running Speed, left - in quicksand
-  .db CannotRun | DoesNotShrink | RegularFloat | NoStomp | RegularDig | RegularPickups ; Special attributes
+  .db CannotRun | DoesNotShrink | RegularFloat | NoStomp | RegularDig | RegularPickups | RegularThrow  ; Special attributes
 
 PapaStats:
 	.db $00 ; Pick-up Speed, frame 1/6 - pulling
@@ -221,7 +221,7 @@ PapaStats:
 	.db $E8 ; Running Speed, left - no object
 	.db $E3 ; Running Speed, left - with object
 	.db $FC ; Running Speed, left - in quicksand
-  .db CannotRun | DoesNotShrink | RegularFloat | NoStomp | RegularDig | RegularPickups ; Special attributes
+  .db CannotRun | DoesNotShrink | RegularFloat | NoStomp | RegularDig | RegularPickups | RegularThrow  ; Special attributes
 
 LinaStats:
 	.db $00 ; Pick-up Speed, frame 1/6 - pulling
@@ -247,7 +247,7 @@ LinaStats:
 	.db $E8 ; Running Speed, left - no object
 	.db $EB ; Running Speed, left - with object
 	.db $FC ; Running Speed, left - in quicksand
-  .db CannotRun | DoesNotShrink | RegularFloat | NoStomp | RegularDig | RegularPickups ; Special attributes
+  .db CannotRun | DoesNotShrink | RegularFloat | NoStomp | RegularDig | RegularPickups | RegularThrow  ; Special attributes
 
 WarioStats:
 	.db $00 ; Pick-up Speed, frame 1/6 - pulling
@@ -273,7 +273,7 @@ WarioStats:
 	.db $E8 ; Running Speed, left - no object
 	.db $E8 ; Running Speed, left - with object
 	.db $FC ; Running Speed, left - in quicksand
-  .db CanRun | Shrink | RegularFloat | NoStomp | RegularDig | RegularPickups ; Special attributes
+  .db CanRun | Shrink | RegularFloat | NoStomp | RegularDig | RegularPickups | UpThrow  ; Special attributes
 
 WaluigiStats:
 	.db $00 ; Pick-up Speed, frame 1/6 - pulling
@@ -299,7 +299,7 @@ WaluigiStats:
 	.db $E8 ; Running Speed, left - no object
 	.db $EA ; Running Speed, left - with object
 	.db $FC ; Running Speed, left - in quicksand
-  .db CanRun | Shrink | RegularFloat | NoStomp | RegularDig | RandomizePickups  ; Special attributes
+  .db CanRun | Shrink | RegularFloat | NoStomp | RegularDig | RandomizePickups | RegularThrow   ; Special attributes
 
 ToadetteStats:
 	.db $00 ; Pick-up Speed, frame 1/6 - pulling
@@ -325,7 +325,7 @@ ToadetteStats:
 	.db $E8 ; Running Speed, left - no object
 	.db $E3 ; Running Speed, left - with object
 	.db $FC ; Running Speed, left - in quicksand
-  .db CanRun | Shrink | RegularFloat | NoStomp | DigEverything | RegularPickups ; Special attributes
+  .db CanRun | Shrink | RegularFloat | NoStomp | DigEverything | RegularPickups | RegularThrow  ; Special attributes
 
 DaisyStats:
 	.db $00 ; Pick-up Speed, frame 1/6 - pulling
@@ -342,7 +342,7 @@ DaisyStats:
 	.db $B3 ; Jump Speed, running - with object
 	.db $E0 ; Jump Speed - in quicksand
 	.db $3C ; Floating Time
-	.db $07 ; Gravity without Jump button pressed
+	.db $FF ; Gravity without Jump button pressed
 	.db $04 ; Gravity with Jump button pressed
 	.db $08 ; Gravity in quicksand
 	.db $18 ; Running Speed, right - no object
@@ -351,7 +351,7 @@ DaisyStats:
 	.db $E8 ; Running Speed, left - no object
 	.db $EB ; Running Speed, left - with object
 	.db $FC ; Running Speed, left - in quicksand
-  .db CanRun | Shrink | UpwardFloat | NoStomp | RegularDig | RegularPickups ; Special attributes
+  .db CanRun | Shrink | UpwardFloat | NoStomp | RegularDig | RegularPickups | RegularThrow ; Special attributes
 
 MerioStats:
 	.db $00 ; Pick-up Speed, frame 1/6 - pulling
@@ -377,7 +377,7 @@ MerioStats:
 	.db $E8 ; Running Speed, left - no object
 	.db $E8 ; Running Speed, left - with object
 	.db $FC ; Running Speed, left - in quicksand
-  .db CanRun | Shrink | RegularFloat | StompEnemies | RegularDig | RegularPickups ; Special attributes
+  .db CanRun | Shrink | RegularFloat | StompEnemies | RegularDig | RegularPickups | RegularThrow ; Special attributes
 
 
 GarfieldStats:
@@ -404,7 +404,7 @@ GarfieldStats:
 	.db $E8 ; Running Speed, left - no object
 	.db $EA ; Running Speed, left - with object
 	.db $FC ; Running Speed, left - in quicksand
-  .db CanRun | Shrink | RegularFloat | NoStomp | RegularDig | RandomizePickups  ; Special attributes
+  .db CanRun | Shrink | RegularFloat | NoStomp | RegularDig | RandomizePickups | RegularThrow   ; Special attributes
 
 BirdoStats:
 	.db $00 ; Pick-up Speed, frame 1/6 - pulling
@@ -430,7 +430,7 @@ BirdoStats:
 	.db $E8 ; Running Speed, left - no object
 	.db $EB ; Running Speed, left - with object
 	.db $FC ; Running Speed, left - in quicksand
-  .db CanRun | Shrink | UpwardFloat | NoStomp | RegularDig | RegularPickups ; Special attributes
+  .db CanRun | Shrink | UpwardFloat | NoStomp | RegularDig | RegularPickups | RegularThrow  ; Special attributes
 
 RosalinaStats:
 	.db $00 ; Pick-up Speed, frame 1/6 - pulling
@@ -456,7 +456,7 @@ RosalinaStats:
 	.db $E8 ; Running Speed, left - no object
 	.db $EB ; Running Speed, left - with object
 	.db $FC ; Running Speed, left - in quicksand
-  .db CanRun | Shrink | UpwardFloat | NoStomp | RegularDig | RegularPickups ; Special attributes
+  .db CanRun | Shrink | UpwardFloat | NoStomp | RegularDig | RegularPickups | RegularThrow  ; Special attributes
 
 ; Used to be 3 bytes only. But working with something that isn't a power of 2 fucking sucks
 CharacterPaletteDefaultTable:
