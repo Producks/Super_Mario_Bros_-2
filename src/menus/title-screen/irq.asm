@@ -30,13 +30,18 @@ FirstIRQ:
   STA MMC3_IRQEnable
 
 LoadFirstIRQParams:
+  LDA #$F3
+  STA MMC3_BankSelect
+  LDA #CHRBank_BackgroundGrass + 1
+  STA MMC3_BankData
+
   LDA PPUCTRLForIRQ
   LDX XPositionFirstIRQ
   LDY #$08 ; Loop to wait
   JSR WaitSubRoutineIRQ
-  NOP
-  NOP
-  NOP
+;  NOP
+;  NOP
+;  NOP
 
 ; Magic happen here!
   STX PPUSCROLL ; X Position
@@ -125,20 +130,3 @@ WaitSubRoutineIRQ:
   DEY
   BNE WaitSubRoutineIRQ
   RTS
-
-
-; ------------------------------------------------------------
-; Desc:
-;       This is used to skip the fist frame glitch happening.
-;       It also setup the func pointer to enter the regular
-;       loop.       
-; ------------------------------------------------------------
-DoNothingIRQ:
-  LDA #<FirstIRQ
-  STA FuncLoTemp
-  LDA #>FirstIRQ
-  STA FuncHiTemp ; Setup next IRQ subroutine for next frame
-
-  STA MMC3_IRQDisable ; acknowledge the IRQ by disabling it
-
-  JMP Exit_IRQ

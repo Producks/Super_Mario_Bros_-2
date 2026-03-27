@@ -148,6 +148,13 @@ SetBankNametbleTitleScreen:
   DEY
   BPL -
 
+  LDA #<FirstIRQ
+  STA FuncLoTemp
+  LDA #>FirstIRQ
+  STA FuncHiTemp ; Setup next IRQ subroutine for next frame
+
+  CLI ; Enable IRQ
+
   LDA #RTS_OPCODE
   STA FadeOptionalFuncOP
   LDA #FadeIn
@@ -157,10 +164,3 @@ SetBankNametbleTitleScreen:
 	LDA #Music1_Title
 	STA MusicQueue1
   JSR WaitForNMI_Menu
-
-  LDA #<FirstIRQ
-  STA FuncLoTemp
-  LDA #>FirstIRQ
-  STA FuncHiTemp ; Setup next IRQ subroutine for next frame
-
-  CLI ; Enable IRQ
