@@ -17,7 +17,7 @@ GameplayInputFuncLoTable:
 
 TitleScreenPPUDataPointers:
 	.dw PPUBuffer_301
-	.dw TitleLayout
+	.dw DecodedLevelData
   .dw PPU_PaletteBuffer
   .dw MenuBorder
   .dw MenuFirstOption ; To speed up the transition

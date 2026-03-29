@@ -47,7 +47,7 @@ InitMemoryLoop3:
 ; Unpack
   LDA #$00
   STA MMC3_BankSelect
-  LDA #$BC
+  LDA #CHRBank_TitleScreenBG1 + 2
   STA MMC3_BankData
 
   LDX #$04
