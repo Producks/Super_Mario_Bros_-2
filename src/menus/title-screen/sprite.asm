@@ -43,15 +43,15 @@ SpriteTitleScreenDMAInitTable:
   .db $7D, $9D, $00, $30
 
 ; Veggie
-  .db $60, $A1, $02, $C0
-  .db $60, $A3, $02, $C8
-  .db $60, $A5, $02, $D0
-  .db $60, $A7, $02, $D8
+  .db $60, $A1, $02, $C8
+  .db $60, $A3, $02, $D0
+  .db $60, $A5, $02, $D8
+  .db $60, $A7, $02, $E0
 
-  .db $70, $A9, $02, $C0
-  .db $70, $AB, $02, $C8
-  .db $70, $AD, $02, $D0
-  .db $70, $AF, $02, $D8
+  .db $70, $A9, $02, $C8
+  .db $70, $AB, $02, $D0
+  .db $70, $AD, $02, $D8
+  .db $70, $AF, $02, $E0
 
 ; Cursor option menu
   .db $F8, $C1, $00, $10

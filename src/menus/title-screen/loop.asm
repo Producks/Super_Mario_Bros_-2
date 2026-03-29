@@ -244,8 +244,8 @@ TitleScreen_Option:
   LDA #$FF
   STA PPUScrollXMirror
   JSR HideAllSprites
-  LDA #CHRBank_FontTitleScreen
-  STA SpriteCHR1
+;  LDA #CHRBank_FontTitleScreen
+;  STA SpriteCHR1
   LDA #$00
   STA CursorLocation
   JMP CreateCursor_TitleScreen_Option
@@ -347,10 +347,10 @@ DumpOptionsLoop:
   LSR Player2JoypadHeld
   BCS YesOptions
 NoOptions:
-  LDA #$18
+  LDA #$78
   STA PPUBuffer_301, X
   INX
-  LDA #$17
+  LDA #$77
   STA PPUBuffer_301, X
   INX
   LDA #$FB
@@ -358,13 +358,13 @@ NoOptions:
   INX
   BNE LoopCheckYesNo
 YesOptions:
-  LDA #$2C
+  LDA #$5C
   STA PPUBuffer_301, X
   INX
-  LDA #$0E
+  LDA #$6E
   STA PPUBuffer_301, X
   INX
-  LDA #$1B
+  LDA #$7B
   STA PPUBuffer_301, X
   INX
 LoopCheckYesNo:
