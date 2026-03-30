@@ -3469,7 +3469,12 @@ EnemyBehavior_Bomb_Explode:
 	STA EnemyState, X
 	LDA #$20
 	STA ObjectTimer1, X
-	STA SkyFlashTimer
+  LDA SettingsTitleScreen
+  AND #BombFlash
+  BEQ +
+  LDA #$20
+  STA SkyFlashTimer
++
 	LDA #DPCM_DoorOpenBombBom
 	STA DPCMQueue
 	LSR A
@@ -12420,6 +12425,12 @@ POWQuakeOffsets:
 	.db $03
 	.db $00
 	.db $FD
+
+SkyFlashColors:
+	.db $26
+	.db $22
+	.db $2A
+	.db $26
 
 ; =============== S U B R O U T I N E =======================================
 

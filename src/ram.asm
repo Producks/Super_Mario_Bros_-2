@@ -2323,7 +2323,8 @@ PlayerTwoCharacterPaletteRamTable = $7FA0
 ItemCarryYOffsetsRAM = $7FE0
 
 ; $7FFC-$7FFF
-SkyFlashColors = $7FFC
+SkyFlashBool = $7FFC
+;SkyFlashColors = $7FFC
 
 MMC3_BankSelect = $8000
 MMC3_BankData = $8001

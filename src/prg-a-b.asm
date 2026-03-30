@@ -327,17 +327,16 @@ loc_BANKA_8493:
 	CPY #$FF
 	BNE loc_BANKA_8493
 
-	; This data is copied, but doesn't appear to be used. Its original purpose is not obvious.
-  LDA SettingsTitleScreen
-  AND #BombFlash
-  TAY
-  LDX #$03
-SkyFlashDump:
-  LDA SkyFlashColorsNoFlash, Y
-  STA SkyFlashColors, X
-  INY
-  DEX
-  BPL SkyFlashDump
+;  LDA SettingsTitleScreen
+;  AND #BombFlash
+;  TAY
+;  LDX #$03
+;SkyFlashDump:
+;  LDA SkyFlashColorsNoFlash, Y
+;  STA SkyFlashColors, X
+;  INY
+;  DEX
+;  BPL SkyFlashDump
 
 loc_BANKA_84A0:
 ;	LDA MysteryData14439, Y
