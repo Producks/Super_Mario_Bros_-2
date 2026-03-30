@@ -327,23 +327,7 @@ loc_BANKA_8493:
 	CPY #$FF
 	BNE loc_BANKA_8493
 
-;  LDA SettingsTitleScreen
-;  AND #BombFlash
-;  TAY
-;  LDX #$03
-;SkyFlashDump:
-;  LDA SkyFlashColorsNoFlash, Y
-;  STA SkyFlashColors, X
-;  INY
-;  DEX
-;  BPL SkyFlashDump
-
 loc_BANKA_84A0:
-;	LDA MysteryData14439, Y
-;	STA MysteryData14439_RAM, Y
-;	DEY
-;	BPL loc_BANKA_84A0
-
 	; Copy object collision hitbox table
 	;
 	; The fact that it's in RAM is taken advantage of to programmatically change
