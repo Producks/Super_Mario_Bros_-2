@@ -3,12 +3,18 @@
 
 GameplayInputFuncHiTable:
   .db >SoloMode
+  .db >SoloMode
+  .db >SoloMode
+  .db >SoloMode
   .db >TraditionalMode
   .db >TagMode
   .db >OnePlayerTwoControllers
   .db >RunTimerChaos
 
 GameplayInputFuncLoTable:
+  .db <SoloMode
+  .db <SoloMode
+  .db <SoloMode
   .db <SoloMode
   .db <TraditionalMode
   .db <TagMode

@@ -2,7 +2,13 @@ OptionSelectLoop:
   LDA Player1JoypadPress
   AND #ControllerInput_Start | #ControllerInput_A ;  A or Start will select the option the user want
   BEQ ReadInputOptionMenuCheckDirection
-  JMP OptionSelectQuit
+  LDY OptionSelectModeIndex
+  LDA OptionSelectConfirmLo, Y
+  STA byte_RAM_0
+  LDA OptionSelectConfirmHi, Y
+  STA byte_RAM_1
+  LDY #$00
+  JMP (byte_RAM_0)
 
 ReadInputOptionMenuCheckDirection:
   LDA Player1JoypadPress
@@ -21,6 +27,7 @@ ReadInputOptionMenuCheckRight:
   INC CursorLocation
   JMP UpdateCursorModeSelect
 ;  JSR UpdateGFXMenuOption
+
 FrameUpdateModeSelectLoop:
   JSR FrameUpdateOptionSelect
   JSR WaitForNMI_Menu
@@ -28,7 +35,9 @@ FrameUpdateModeSelectLoop:
 
 UpdateCursorModeSelect:
   LDA CursorLocation
-  AND #$03
+  LDY OptionSelectModeIndex
+  AND AND_TableOptionSelect, Y
+  ORA OR_TableOptionSelect, Y
   STA CursorLocation
   JSR TransitionContextWindowMode
   JMP FrameUpdateModeSelectLoop
@@ -99,3 +108,40 @@ TransitionContextWindowMode:
   LDA #$01
   JSR ColorFade
   RTS
+
+PlayerModeConfirm:
+  LDA CursorLocation
+  CMP #$03
+  BNE UpdateModeMenu
+  INC OptionSelectModeIndex
+  BEQ UpdateModeMenu
+
+WorldModeConfirm:
+  LDA CursorLocation
+  STA SpecialWorld
+
+UpdateModeMenu:
+  STA PrevCursorLocation
+  INC OptionSelectModeIndex
+  LDY OptionSelectModeIndex
+  LDA OR_TableOptionSelect, Y
+  STA CursorLocation
+  JSR TransitionContextWindowMode
+  JMP FrameUpdateModeSelectLoop
+
+AND_TableOptionSelect:
+  .db $01, $03, $07, $0B
+
+OR_TableOptionSelect:
+  .db $00, $02, $04, $08
+
+OptionSelectConfirmLo:
+  .db #<WorldModeConfirm
+  .db #<PlayerModeConfirm
+  .db #<OptionSelectQuit
+  .db #<OptionSelectQuit
+OptionSelectConfirmHi:
+  .db #>WorldModeConfirm
+  .db #>PlayerModeConfirm
+  .db #>OptionSelectQuit
+  .db #>OptionSelectQuit

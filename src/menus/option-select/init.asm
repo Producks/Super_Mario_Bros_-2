@@ -37,6 +37,7 @@ OptionSelectInit:
 
   LDA #$00
   STA CursorLocation ; Setup cursor right away
+  STA OptionSelectModeIndex
 
   JSR InitContextWindow_OptionSelect
 

@@ -24,37 +24,61 @@ SetCharacter_OAM_Palette:
   RTS
 
 ;
-; Check game mode
-; Check which player is playing
-;
+; Print the text at the bottom of the character select
+; Variation with 1-2P mode
 PrintTextCharSelect:
   LDY byte_RAM_300
   LDA #$23
   STA PPUBuffer_301, Y
   INY
+  LDA GamePlayMode
+  CMP #$04
+  BMI DisplayOnePlayerTextCharSelect
+
+DisplayTwoPlayerTextCharSelect:
+  LDA #$68
+  STA PPUBuffer_301, Y
+  INY
+  LDA #$10
+  STA PPUBuffer_301, Y
+  INY
+
+  LDX #$02 ; PlayerText
+  JSR PrintWordCharSelect
+
+  JSR PrintCurrentPlayerNumberCharacterSelect
+
+  LDX #$04
+  JSR PrintWordCharSelect
+  JMP +
+
+DisplayOnePlayerTextCharSelect:
   LDA #$66
   STA PPUBuffer_301, Y
   INY
-;  LDA #$10
   LDA #$15
   STA PPUBuffer_301, Y
   INY
 
-  LDX #$05
+  LDX #$05 ; SelectText
   JSR PrintWordCharSelect
 
-  LDX #$03
+  LDX #$03 ; CharacterText
   JSR PrintWordCharSelect
 
-  LDX #$01
-  JSR PrintWordCharSelect ; ; bug bug check here late to fix ovefrflow
+  JSR PrintCurrentPlayerNumberCharacterSelect
 
++
   LDA #$00
   STA PPUBuffer_301, Y
 
   STY byte_RAM_300
 
   RTS
+
+PrintCurrentPlayerNumberCharacterSelect:
+  LDX CurrentPlayer
+  JMP PrintWordCharSelect
 
 PrintWordCharSelect:
   LDA WordListIndexCharSelect, X

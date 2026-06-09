@@ -6,13 +6,14 @@ OptionSelectQuit:
   LDA #FadeOut
   JSR ColorFade
 
-  LDX CursorLocation
-  INX
+  LDA CursorLocation
+  SEC
+  SBC #$04
+  TAX
   STX GamePlayMode
 
 CleanupBeforeCharacterSelect:
 ; Set the gameplay function before wiping out the memory
-  LDX GamePlayMode
   LDA GameplayInputFuncLoTable, X
   STA FuncPointerLo
   LDA GameplayInputFuncHiTable, X

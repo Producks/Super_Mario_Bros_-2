@@ -71,6 +71,7 @@ BreakStartLevelLoop:
 
 MarioSnoringLoopCounter: ; counts down snore loops before moving to the next animation sequence
 TitleScreenPPUAddrHi:
+OptionSelectModeIndex:
 PlayerXHi:
 	.dsb 1 ; $0014
 MarioSnoringFrameIndex: ; index in frame lookup table
@@ -2265,8 +2266,10 @@ ObjectCollisionHitboxHeight_RAM = $7E3C
 ObjectCollisionHitboxWidth_RAM = $7E28
 
 ; ~~~~~~~~~~~~~~~
-; $7E50-7E7E Free
+; $7E50-7E7D Free
 ; ~~~~~~~~~~~~~~~
+
+SpecialWorld = $7E7E ; 1 byte
 
 FlyingCarpetAcceleration_RAM = $7E7F ; 4 bytes
 
@@ -2324,6 +2327,7 @@ ItemCarryYOffsetsRAM = $7FE0
 
 ; $7FFC-$7FFF
 SkyFlashBool = $7FFC
+;GamePlayMode = $7FFD
 ;SkyFlashColors = $7FFC
 
 MMC3_BankSelect = $8000

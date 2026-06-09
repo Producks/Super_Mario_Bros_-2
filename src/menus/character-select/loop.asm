@@ -52,6 +52,16 @@ CheckConfirmation:
   AND #ControllerInput_A
   BEQ CharacterSelectMenuLoop
 
+CheckForSecondChar_OR_Player:
+  LDY GamePlayMode
+  LDA Bool_TwoPickModeTable, Y
+  BEQ CharSelectDone
+  LDA CurrentPlayer
+  BNE CharSelectDone
+  INC CurrentPlayer
+  JSR PrintTextCharSelect
+  JMP CharacterSelectMenuLoop
+
 CharSelectDone:
   LDA #SoundEffect1_1UP
   STA SoundEffectQueue1

@@ -369,11 +369,6 @@ OnePlayerFourGFX:
   .db $FF
 
 OnePlayerFiveGFX:
- ; .db $49, $6E
- ; .db $21, $2D, $02, $94, $95
- ; .db $21, $2F, $49, $6E
- ; .db $21, $38, $04, $8C, $8D, $6E, $6E
- ; .db $FF
   .db $18
   .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $94, $95, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $8C, $8D, $6E, $6E
   .db $FF
@@ -498,21 +493,23 @@ TwoPlayerBottomLinesGFX:
 ContextWindowModePalette:
 TraditionalPalette:
   .db $0F, $35, $25, $06, $0F, $35, $25, $0F
+  .db $0F, $35, $25, $06, $0F, $35, $25, $0F
 
 TagTeamPalette:
+  .db $0F, $31, $21, $01, $0F, $31, $21, $0F
   .db $0F, $31, $21, $01, $0F, $31, $21, $0F
 
 SharedControlPalette:
   .db $0F, $39, $29, $09, $0F, $39, $29, $0F
+  .db $0F, $39, $29, $09, $0F, $39, $29, $0F
+  .db $0F, $39, $29, $09, $0F, $39, $29, $0F
+  .db $0F, $39, $29, $09, $0F, $39, $29, $0F
 
 ChaosSwapPalette:
   .db $0F, $3D, $2D, $00, $0F, $3D, $2D, $0F
-
-PaletteTableOptionSelect:
-  .db $0F, $35, $25, $05 ; 2P Traditional
-  .db $0F, $31, $21, $01 ; 2P Tag Team
-  .db $0F, $39, $29, $09 ; 2P Shared
-  .db $0F, $3D, $2D, $00 ; 2P Chaos
+  .db $0F, $3D, $2D, $00, $0F, $3D, $2D, $0F
+  .db $0F, $3D, $2D, $00, $0F, $3D, $2D, $0F
+  .db $0F, $3D, $2D, $00, $0F, $3D, $2D, $0F
 
 EmptyLinesOptionSelect:
   .db $58, $6E, $FF
@@ -560,6 +557,113 @@ OptionSelectLoTable:
   .db <TwoPlayerThirteenGFX
   .db <TwoPlayerBottomLinesGFX
 
+; One Player
+  .db <OnePlayerTopGFX
+  .db <OnePlayerBottomGFX
+  .db <OnePlayerTwoGFX
+  .db <OnePlayerThirdGFX
+  .db <OnePlayerFourGFX
+  .db <OnePlayerFiveGFX
+  .db <OnePlayerSixGFX
+  .db <OnePlayerSevenGFX
+  .db <OnePlayerEightGFX
+  .db <OnePlayerNineGFX
+  .db <OnePlayerTenGFX
+  .db <OnePlayerElevenGFX
+  .db <OnePlayerTwelveGFX
+  .db <OnePlayerThirteenGFX
+  .db <OnePlayerBottomLinesGFX
+  .db <OnePlayerBottomLinesGFX
+
+; Two Player
+  .db <TwoPlayerTopGFX
+  .db <TwoPlayerBottomGFX
+  .db <EmptyLinesOptionSelect
+  .db <TwoPlayerLineTwoGFX
+  .db <TwoPlayerLineThreeGFX
+  .db <TwoPlayerLineFourGFX
+  .db <TwoPlayerLineFiveGFX
+  .db <TwoPlayerLineSixGFX
+  .db <TwoPlayerLineSevenGFX
+  .db <TwoPlayerLineEightGFX
+  .db <TwoPlayerLineNineGFX
+  .db <EmptyLinesOptionSelect
+  .db <TwoPlayerLineElevenGFX
+  .db <TwoPlayerLineTwelveGFX
+  .db <TwoPlayerThirteenGFX
+  .db <TwoPlayerBottomLinesGFX
+
+; Traditional Section
+  .db <TradionalTopGFX
+  .db <TradionalBottomGFX
+  .db <TradionalFirstLineGFX
+  .db <EmptyLinesOptionSelect
+  .db <TraditionalThirdLineGFX
+  .db <EmptyLinesOptionSelect
+  .db <TraditionalFithLineGFX
+  .db <EmptyLinesOptionSelect
+  .db <TraditionalSeventhLineGFX
+  .db <TraditionalEightLineGFX
+  .db <TraditionalNinhtLineGFX
+  .db <TraditionalTenthLineGFX
+  .db <TraditionalEleventhLineGFX
+  .db <TraditionalTwelfthLineGFX
+  .db <TraditionalThirteenthLineGFX
+  .db <TraditionalFourteenthLineGFX
+
+; Tag Team
+  .db <TagTeamTopGFX
+  .db <TagTeamBottomGFX
+  .db <TagTeamFirstLineGFX
+  .db <TagTeamSecondLineGFX
+  .db <TagTeamThirdLineGFX
+  .db <TagTeamFourthLineGFX
+  .db <TagTeamFithLineGFX
+  .db <TagTeamSixthLineGFX
+  .db <EmptyLinesOptionSelect
+  .db <TagTeamEightLineGFX
+  .db <EmptyLinesOptionSelect
+  .db <TagTeamTenthLineGFX
+  .db <EmptyLinesOptionSelect
+  .db <TagTeamTwelfthLineGFX
+  .db <EmptyLinesOptionSelect
+  .db <TagTeamFourteenthLineGFX
+
+; Shared control
+  .db <SharedTopGFX
+  .db <SharedBottomGFX
+  .db <SharedOneGFX
+  .db <SharedTwoGFX
+  .db <SharedThreeGFX
+  .db <SharedFourGFX
+  .db <SharedFiveGFX
+  .db <SharedSixGFX
+  .db <SharedSevenGFX
+  .db <SharedEightGFX
+  .db <SharedNineGFX
+  .db <SharedTenGFX
+  .db <SharedElevenGFX
+  .db <SharedTwelveGFX
+  .db <SharedThirteenGFX
+  .db <SharedFourteenGFX
+
+; Chaos Swap
+  .db <ChaosTopGFX
+  .db <ChaosBottomGFX
+  .db <ChaosOneGFX
+  .db <ChaosTwoGFX
+  .db <ChaosThreeGFX
+  .db <ChaosFourGFX
+  .db <ChaosFiveGFX
+  .db <ChaosSixGFX
+  .db <ChaosSevenGFX
+  .db <ChaosEightGFX
+  .db <ChaosNineGFX
+  .db <ChaosTenGFX
+  .db <ChaosElevenGFX
+  .db <ChaosTwelveGFX
+  .db <ChaosThirteenGFX
+  .db <ChaosFourteenGFX
 
 ; Traditional Section
   .db <TradionalTopGFX
@@ -671,6 +775,114 @@ OptionSelectHiTable:
   .db >TwoPlayerThirteenGFX
   .db >TwoPlayerBottomLinesGFX
 
+; One Player
+  .db >OnePlayerTopGFX
+  .db >OnePlayerBottomGFX
+  .db >OnePlayerTwoGFX
+  .db >OnePlayerThirdGFX
+  .db >OnePlayerFourGFX
+  .db >OnePlayerFiveGFX
+  .db >OnePlayerSixGFX
+  .db >OnePlayerSevenGFX
+  .db >OnePlayerEightGFX
+  .db >OnePlayerNineGFX
+  .db >OnePlayerTenGFX
+  .db >OnePlayerElevenGFX
+  .db >OnePlayerTwelveGFX
+  .db >OnePlayerThirteenGFX
+  .db >OnePlayerBottomLinesGFX
+  .db >OnePlayerBottomLinesGFX
+
+; Two Player
+  .db >TwoPlayerTopGFX
+  .db >TwoPlayerBottomGFX
+  .db >EmptyLinesOptionSelect
+  .db >TwoPlayerLineTwoGFX
+  .db >TwoPlayerLineThreeGFX
+  .db >TwoPlayerLineFourGFX
+  .db >TwoPlayerLineFiveGFX
+  .db >TwoPlayerLineSixGFX
+  .db >TwoPlayerLineSevenGFX
+  .db >TwoPlayerLineEightGFX
+  .db >TwoPlayerLineNineGFX
+  .db >EmptyLinesOptionSelect
+  .db >TwoPlayerLineElevenGFX
+  .db >TwoPlayerLineTwelveGFX
+  .db >TwoPlayerThirteenGFX
+  .db >TwoPlayerBottomLinesGFX
+
+; Traditional Section
+  .db >TradionalTopGFX
+  .db >TradionalBottomGFX
+  .db >TradionalFirstLineGFX
+  .db >EmptyLinesOptionSelect
+  .db >TraditionalThirdLineGFX
+  .db >EmptyLinesOptionSelect
+  .db >TraditionalFithLineGFX
+  .db >EmptyLinesOptionSelect
+  .db >TraditionalSeventhLineGFX
+  .db >TraditionalEightLineGFX
+  .db >TraditionalNinhtLineGFX
+  .db >TraditionalTenthLineGFX
+  .db >TraditionalEleventhLineGFX
+  .db >TraditionalTwelfthLineGFX
+  .db >TraditionalThirteenthLineGFX
+  .db >TraditionalFourteenthLineGFX
+
+; Tag Team
+  .db >TagTeamTopGFX
+  .db >TagTeamBottomGFX
+  .db >TagTeamFirstLineGFX
+  .db >TagTeamSecondLineGFX
+  .db >TagTeamThirdLineGFX
+  .db >TagTeamFourthLineGFX
+  .db >TagTeamFithLineGFX
+  .db >TagTeamSixthLineGFX
+  .db >EmptyLinesOptionSelect
+  .db >TagTeamEightLineGFX
+  .db >EmptyLinesOptionSelect
+  .db >TagTeamTenthLineGFX
+  .db >EmptyLinesOptionSelect
+  .db >TagTeamTwelfthLineGFX
+  .db >EmptyLinesOptionSelect
+  .db >TagTeamFourteenthLineGFX
+
+; Shared control
+  .db >SharedTopGFX
+  .db >SharedBottomGFX
+  .db >SharedOneGFX
+  .db >SharedTwoGFX
+  .db >SharedThreeGFX
+  .db >SharedFourGFX
+  .db >SharedFiveGFX
+  .db >SharedSixGFX
+  .db >SharedSevenGFX
+  .db >SharedEightGFX
+  .db >SharedNineGFX
+  .db >SharedTenGFX
+  .db >SharedElevenGFX
+  .db >SharedTwelveGFX
+  .db >SharedThirteenGFX
+  .db >SharedFourteenGFX
+
+; Chaos Swap
+  .db >ChaosTopGFX
+  .db >ChaosBottomGFX
+  .db >ChaosOneGFX
+  .db >ChaosTwoGFX
+  .db >ChaosThreeGFX
+  .db >ChaosFourGFX
+  .db >ChaosFiveGFX
+  .db >ChaosSixGFX
+  .db >ChaosSevenGFX
+  .db >ChaosEightGFX
+  .db >ChaosNineGFX
+  .db >ChaosTenGFX
+  .db >ChaosElevenGFX
+  .db >ChaosTwelveGFX
+  .db >ChaosThirteenGFX
+  .db >ChaosFourteenGFX
+
 ; Traditional Section
   .db >TradionalTopGFX
   .db >TradionalBottomGFX
@@ -745,4 +957,7 @@ OptionSelectHiTable:
 
 
 CHRBankModeSelect:
-  .db CHR_Mode_OnePlayer, CHR_Mode_TwoPlayer, CHR_Mode_Traditional, CHR_Mode_TagTeam, CHR_Mode_SharedControl, CHR_Mode_Chaos
+  .db CHR_Mode_OnePlayer, CHR_Mode_TwoPlayer
+  .db CHR_Mode_OnePlayer, CHR_Mode_TwoPlayer
+  .db CHR_Mode_Traditional, CHR_Mode_TagTeam, CHR_Mode_SharedControl, CHR_Mode_Chaos
+  .db CHR_Mode_Traditional, CHR_Mode_TagTeam, CHR_Mode_SharedControl, CHR_Mode_Chaos
