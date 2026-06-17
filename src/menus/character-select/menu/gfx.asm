@@ -197,7 +197,7 @@ EraseDescriptionLineOne:
   .db $2A, $E6, $54, $FB
 
 EraseDescriptionLineTwo:
-  .db $2B, $26, $54, $FB, $00
+  .db $2B, $26, $54, $FB
 
 EraseDescriptionLineThree:
   .db $2B, $66, $54, $FB, $00

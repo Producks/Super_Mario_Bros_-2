@@ -94,10 +94,7 @@ FadeInColorsCharacterEditorMenu:
 	BPL -
 
 ; Set palette sprite fade in
-  LDA CursorLocation
-  ASL A
-  ASL A
-  TAY
+  JSR GetPlayerCharacterIndexPalette_CharacterSelect
   LDX #$00
 -
   LDA PlayerOneCharacterPaletteRamTable, Y

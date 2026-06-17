@@ -117,10 +117,7 @@ DumpCharacterSpritesSelect:
   RTS
 
 SetCharacterPaletteSlotTwo:
-  LDA CursorLocation
-  ASL A
-  ASL A
-  TAY
+  JSR GetPlayerCharacterIndexPalette_CharacterSelect
   LDX #$00
 -
   LDA PlayerOneCharacterPaletteRamTable, Y
@@ -131,6 +128,32 @@ SetCharacterPaletteSlotTwo:
   BNE -
   LDA #$02
   STA ScreenUpdateIndex
+  RTS
+
+
+InputReaderCharacterSelect:
+  LDA CurrentPlayer
+  BEQ +
+  LDA Player2JoypadPress
+  STA Player1JoypadPress
+  LDA Player2JoypadHeld
+  STA Player1JoypadHeld
++
+  RTS
+
+
+; Check the current player and give you the correct index
+; for the palette
+GetPlayerCharacterIndexPalette_CharacterSelect:
+  LDA CursorLocation
+  ASL A
+  ASL A
+  LDY CurrentPlayer
+  BEQ +
+  CLC
+  ADC #$40
++
+  TAY
   RTS
 
 ; End of helpers

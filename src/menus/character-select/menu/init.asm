@@ -4,7 +4,6 @@ MenuCharacterSelectInit:
 
   JSR HideAllSprites
 
-
 ; Load the name
   LDY CursorLocation
   LDA CharacterNameLo, Y
@@ -41,6 +40,7 @@ MenuCharacterSelectInit:
   JSR DumpTextLine
   JSR DumpTextLine
 
+; Load the current CHR Bank
   LDA CursorLocation
   ASL A
   TAY
@@ -50,7 +50,7 @@ MenuCharacterSelectInit:
   LDA #$3E
   STA SpriteCHR1
 
-; lol saving like 2 bytes over a table
+; Load the current CHR bank from the character select. lol saving like 2 bytes over a table
   LDY #$FF
   LDA CursorLocation
 -
@@ -100,4 +100,3 @@ MenuCharacterSelectInit:
 
   LDA #$00
   STA FuncLoTemp ; Hold sub menu cursor
-

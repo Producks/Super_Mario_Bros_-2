@@ -8,6 +8,8 @@ PaletteEditorInit:
   JMP UpdateCursorPaletteEditor
 
 PaletteEditorCharacterSelectLoop:
+  JSR InputReaderCharacterSelect
+
   LDA Player1JoypadPress
   AND #ControllerInput_Left
   BEQ +
@@ -67,7 +69,7 @@ EditColorInit:
   STA DpadHeldTimer
 
 EditColorLoop:
-
+  JSR InputReaderCharacterSelect
 ; Check held state
   LDA Player1JoypadHeld
   AND #ControllerInput_Left | ControllerInput_Right

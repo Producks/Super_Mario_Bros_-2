@@ -9,3 +9,6 @@
 .include "src/menus/title-screen/quit.asm"
 
 .include "src/menus/title-screen/irq.asm"
+
+
+.include "src/menus/title-screen/option-menu/main.asm"

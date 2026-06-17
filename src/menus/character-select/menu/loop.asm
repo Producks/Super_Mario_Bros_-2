@@ -1,6 +1,8 @@
 CharacterEditorMenuLoop:
   JSR WaitForNMI
 
+  JSR InputReaderCharacterSelect
+
   LDA Player1JoypadPress
   AND #ControllerInput_Down
   BEQ CheckUPCharacterSelectMenu
@@ -48,10 +50,7 @@ CheckACharacterSelectMenu:
 RestoreDefaultPaletteCharacterEditor:
   LDA #SoundEffect1_EnemyHit
   STA SoundEffectQueue1
-  LDA CursorLocation
-  ASL A
-  ASL A
-  TAY
+  JSR GetPlayerCharacterIndexPalette_CharacterSelect
   LDX #$00
 -
   LDA CharacterPaletteDefaultTable, Y

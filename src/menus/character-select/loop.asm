@@ -2,6 +2,8 @@
 CharacterSelectMenuLoop:
 	JSR WaitForNMI_TurnOnPPU
 
+  JSR InputReaderCharacterSelect
+
   LDA Player1JoypadPress
   AND #ControllerInput_Select
   BEQ NormalLoopCharacterSelect
@@ -60,6 +62,7 @@ CheckForSecondChar_OR_Player:
   BNE CharSelectDone
   INC CurrentPlayer
   JSR PrintTextCharSelect
+  JSR WaitForNMI ; temp TODO remove
   JMP CharacterSelectMenuLoop
 
 CharSelectDone:
