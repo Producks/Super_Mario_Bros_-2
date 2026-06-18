@@ -33,6 +33,9 @@ CleanupZeroOut:
   STA CurrentCharacter
   STA CurrentCharacterPTwo ; Zero out ram for characters incase there left overs
 
+; Tell the character select menu to dump the palette in ram
+  INC DumpCharacterPaletteRamBool
+
 ; Set random number
   LDA TitleScreenSeedCounter
   BNE SetSeedCounter

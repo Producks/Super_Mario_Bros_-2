@@ -539,7 +539,7 @@ PreStartLevel:
 DoCharacterSelectMenu:
 	LDA #PRGBank_A_B
 	JSR ChangeMappedPRGBank
-  JSR CharacterSelectMenuAB
+  JSR CharacterSelectMenuInit
   RTS
 
 IncreaseBrightnessPalette:

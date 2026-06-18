@@ -10,6 +10,97 @@ MultiplyBy16:
   RTS
 
 ;
+; Set which character accordin to which player and the cursor location
+;
+SetCharacterFromCursor:
+  LDY PlayerPickingCharacterSelect
+  LDA CursorLocation
+  STA CurrentcharacterPOne, Y
+  RTS
+
+; byte_ram_1 and byte_ram_0 are pointing to where to dump the data
+; X = Point to which player is currently dumping
+;DumpCarryCharacterRam:
+;  LDA PlayerOneCarryStats
+;  STA ItemCarryYOffsetsRAM
+;  LDA PlayerOneCarryStats + 1
+;  STA ItemCarryYOffsetsRAM + $0E
+;  LDA PlayerOneCarryStats + 2
+;  STA ItemCarryYOffsetsRAM + $07
+;  LDA PlayerOneCarryStats + 3
+;  STA ItemCarryYOffsetsRAM + $15
+
+DumpPaletteStatsInRamLo_Write:
+  .db #<PlayerOnePaletteRam
+  .db #<PlayerTwoPaletteRam
+
+DumpPaletteStatsInRamLo_Read:
+  .db #<PlayerOneCharacterPaletteRamTable
+  .db #<PlayerTwoCharacterPaletteRamTable
+
+; Dump palette in ram
+; FuncLo and Funchi point to where we read from
+; byte_ram_1 and byte_ram_0 are pointing to where to dump the data
+; X = Point to which player is currently dumping
+DumpCharacterPaletteInRam:
+; Load where we are dumping from
+  LDA DumpPaletteStatsInRamLo_Write, X
+  STA byte_RAM_0
+  LDA #>PlayerOnePaletteRam ; Should be Fixed to $7F
+  STA byte_RAM_1
+
+; Load where we are reading from
+  LDA DumpPaletteStatsInRamLo_Read, X
+  STA FuncLoTemp
+  LDA #>PlayerTwoCharacterPaletteRamTable ; Should be fixed to #$7F
+  STA FuncHiTemp
+
+  LDA CurrentcharacterPOne, X
+	ASL A
+	ASL A
+  CLC
+  ADC FuncLoTemp
+  STA FuncLoTemp
+
+  LDY #$00
+CopyPaletteInRAMLoop:
+  LDA (FuncLoTemp), Y
+  STA (byte_RAM_0), Y
+  INY
+  CPY #$04
+  BNE CopyPaletteInRAMLoop
+  RTS
+
+DumpCharacterStatsInRamLo:
+  .db #<PlayerOneStatsRam
+  .db #<PlayerTwoStatsRam
+
+; Dump Character Stats
+; byte_ram_1 and byte_ram_0 are pointing to where to dump the data
+; X = Point to which player is currently dumping
+DumpCharacterStatsInRam:
+; Load where we're dumping the data
+  LDA DumpCharacterStatsInRamLo, X
+  STA byte_RAM_0
+  LDA #>PlayerOneStatsRam ; Should be fixed to #$7F
+  STA byte_RAM_1
+; Load stats PTR with the X offset
+  LDY CurrentcharacterPOne, X
+  LDA CharacterStatsLo, Y
+  STA FuncLoTemp
+  LDA CharacterStatsHi, Y
+  STA FuncHiTemp
+; Setup index for the loop
+  LDY #$00
+CopyPlayerOneStatsLoop:
+  LDA (FuncLoTemp), Y
+  STA (byte_RAM_0), Y
+  INY
+  CPY #kCharacterStatsTotal
+  BCC CopyPlayerOneStatsLoop
+  RTS
+
+;
 ; X = Value to set
 ;
 SetCharacter_OAM_Palette:
@@ -148,12 +239,30 @@ GetPlayerCharacterIndexPalette_CharacterSelect:
   LDA CursorLocation
   ASL A
   ASL A
-  LDY CurrentPlayer
+  LDY PlayerPickingCharacterSelect
   BEQ +
   CLC
   ADC #$40
 +
   TAY
+  RTS
+
+; Set character pick pose
+SetCharacterPickPose:
+  LDA CursorLocation
+  JSR MultiplyBy16
+  TAY
+  LDX #$03
+-
+  LDA SpriteDMAArea + 1, Y
+  EOR #$20
+  STA SpriteDMAArea + 1, Y
+  INY
+  INY
+  INY
+  INY
+  DEX
+  BPL -
   RTS
 
 ; End of helpers

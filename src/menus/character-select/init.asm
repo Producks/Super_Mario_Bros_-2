@@ -1,22 +1,10 @@
-; ------------------------------------------------------------
-; Gameplay Mode information:
-; 0 = Solo mode, SinglePick
-; 1 = Traditional, DoublePick
-; 2 = Tag Mode, DoublePick
-; 3 = Shared Control, SinglePick
-; 4 = Chaos mode, DoublePick
-; ------------------------------------------------------------
-
-; Changing data around would make it so I can use bitshift operation
-; But this will do for now
-CharSelectDoublePickTable:
-  .db SinglePick, DoublePick, DoublePick, SinglePick, DoublePick
-
-CharacterSelectMenuAB:
+; Regular character menu init
+CharacterSelectMenuInit:
 	JSR WaitForNMI
 
 	LDA #$00
 	STA PPUMASK
+  STA PlayerPickingCharacterSelect
 	JSR DisableNMI
 
 ; Set CHR bank character select
@@ -33,8 +21,8 @@ CharacterSelectMenuAB:
 	LDA #CHRBank_CharacterSelectBG2
 	STA BackgroundCHR2
 
-;	JSR CopyCharacterStatsAndStuff
-
+  LDA DumpCharacterPaletteRamBool
+  BEQ DumpCharacterSelectPalette
 ; Dump static palette table
   LDY #$7F
 DumpStaticPaletteTableLoop:
@@ -42,6 +30,8 @@ DumpStaticPaletteTableLoop:
   STA PlayerOneCharacterPaletteRamTable, Y
   DEY
   BPL DumpStaticPaletteTableLoop
+  LDA #$00
+  STA DumpCharacterPaletteRamBool
 
 ; Temp... TODO dump option instead
 DumpCharacterSelectPalette:
@@ -54,16 +44,6 @@ DumpCharacterSelectPaletteLoop:
 	BNE DumpCharacterSelectPaletteLoop
 
 	JSR ResetScreenForTitleCard
-
-;	LDA CharacterSelectBankSwitch
-;	CMP #$A5
-;	BEQ loc_BANKF_E2B2
-;
-;	LDA #PRGBank_A_B
-;	JSR ChangeMappedPRGBank
-;
-;	LDA #$A5
-;	STA CharacterSelectBankSwitch BUG BUG if it break
 
 	JSR EnableNMI
 
@@ -93,22 +73,9 @@ DumpCharacterSelectPaletteLoop:
 
 	JSR WaitForNMI
 
-;
-; Init cursor location, determine by what last character was picked
-  LDY CurrentcharacterPOne
-  LDA RealCursorIndexTable, Y
+; Init cursor location with the first player
+  LDA CurrentcharacterPOne
   STA CursorLocation
-  LDY CurrentCharacterPTwo
-  LDA RealCursorIndexTable, Y
-  STA CursorLocationPTwo
-  LDA #$FF
-  STA CurrentcharacterPOne
-  STA CurrentCharacterPTwo
-
-; Maybe update this in the future TODO
-  LDY GamePlayMode
-  LDA CharSelectDoublePickTable, Y
-  STA TwoPlayerCharacterSelect
 
 ; Black out palettes & dump new palette
   LDY #$1F

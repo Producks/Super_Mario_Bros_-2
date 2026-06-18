@@ -58,9 +58,26 @@ CheckForSecondChar_OR_Player:
   LDY GamePlayMode
   LDA Bool_TwoPickModeTable, Y
   BEQ CharSelectDone
-  LDA CurrentPlayer
+  LDA PlayerPickingCharacterSelect
   BNE CharSelectDone
-  INC CurrentPlayer
+; Set player one stuff before we move on to player 2
+  JSR SetCharacterFromCursor
+  LDA #SoundEffect1_CherryGet
+  STA SoundEffectQueue1
+  JSR SetCharacterPickPose
+
+  LDA #$30
+  JSR DelayFrames
+
+  JSR SetCharacterPickPose ; Restore the initinal pose
+  LDX #$00
+  JSR SetCharacter_OAM_Palette ; Restore back the palette to 0
+
+; Init player 2 stuff
+  INC PlayerPickingCharacterSelect
+  LDA CurrentCharacterPTwo
+  STA CursorLocation
+
   JSR PrintTextCharSelect
   JSR WaitForNMI ; temp TODO remove
   JMP CharacterSelectMenuLoop

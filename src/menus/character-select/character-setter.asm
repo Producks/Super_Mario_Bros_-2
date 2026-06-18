@@ -1,37 +1,17 @@
-; Set current character according to cursor location
-  LDA CursorLocation
-  STA CurrentCharacter ; Set current character
-  STA CurrentcharacterPOne
-  LDA CursorLocationPTwo
-  STA CurrentCharacterPTwo
+  JSR SetCharacterFromCursor
 
-  LDY CursorLocation
-  LDA CharacterStatsLo, Y
-  STA FuncLoTemp
-  LDA CharacterStatsHi, Y
-  STA FuncHiTemp
+; Copy both player stats
+  LDX #$00
+-
+  JSR DumpCharacterStatsInRam
+  JSR DumpCharacterPaletteInRam
+  DEX
+  BPL -
 
-; Copy character stats
-  LDY #$00
-CopyPlayerOneStatsLoop:
-  LDA (FuncLoTemp), Y
-  STA PlayerOneStatsRam, Y
-  STA CharacterStatsRAM, Y
-  INY
-  CPY #kCharacterStatsTotal
-  BCC CopyPlayerOneStatsLoop
-
-CopyPlayerOnePalette:
-	LDA CurrentcharacterPOne
-	ASL A
-	ASL A
-	TAY
-	LDX #$00
-CopyPlayerOnePaletteLoop:
-  LDA PlayerOneCharacterPaletteRamTable, Y
-  STA PlayerOnePaletteRam, X
-  STA RestorePlayerPalette0, X
-  INY
-  INX
-  CPX #$04
-  BNE CopyPlayerOnePaletteLoop
+; Copy current player stats in ram
+  LDX CurrentPlayer
+  LDA #<CharacterStatsRAM
+  STA byte_RAM_0
+  LDA #>CharacterStatsRAM
+  STA byte_RAM_1
+  JSR DumpCharacterStatsInRam

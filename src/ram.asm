@@ -867,7 +867,6 @@ CurrentcharacterPOne:
 ; unused? written but never read
 ; FOR RENT
 CurrentCharacterPTwo:
-PreviousCharacter:
 	.dsb 1 ; $0404
 ; unused? written but never read
 PreviousWorld:
@@ -1136,7 +1135,6 @@ BossBeaten:
 	.dsb 1 ; $04b8
 SwarmType:
 	.dsb 1 ; $04b9
-TwoPlayerCharacterSelect:
 ; FOR RENT
 	.dsb 1 ; $04ba
 ; FOR RENT
@@ -2327,6 +2325,8 @@ ItemCarryYOffsetsRAM = $7FE0
 
 ; $7FFC-$7FFF
 SkyFlashBool = $7FFC
+DumpCharacterPaletteRamBool = $7FFD
+PlayerPickingCharacterSelect = $7FFE
 ;GamePlayMode = $7FFD
 ;SkyFlashColors = $7FFC
 
