@@ -527,6 +527,87 @@ BirdoPaletteAlt:
 RosalinaPaletteAlt:
   .db $0F, $08, $13, $36
 
+CarryYOffsetsStats:
+	.db $FA ; Mario CarryYOffsetBigLo
+	.db $02 ; Mario CarryYOffsetSmallLo
+	.db $FF ; Mario CarryYOffsetBigHi
+	.db $00 ; Mario CarryYOffsetSmallHi
+
+	.db $F7 ; Luigi CarryYOffsetBigLo
+	.db $FF ; Luigi CarryYOffsetSmallLo
+	.db $FF ; Luigi CarryYOffsetBigHi
+	.db $FF ; Luigi CarryYOffsetSmallHi
+
+	.db $FC ; Toad CarryYOffsetBigLo
+	.db $04 ; Toad CarryYOffsetSmallLo
+	.db $FF ; Toad CarryYOffsetBigHi
+	.db $00 ; Toad CarryYOffsetSmallHi
+
+	.db $F6 ; Princess CarryYOffsetBigLo
+	.db $FE ; Princess CarryYOffsetSmallLo
+	.db $FF ; Princess CarryYOffsetBigHi
+	.db $FF ; Princess CarryYOffsetSmallHi
+
+  .db $FA ; Imajin CarryYOffsetBigLo
+  .db $FA ; Imajin CarryYOffsetSmallLo
+  .db $FF ; Imajin CarryYOffsetBigHi
+  .db $FF ; Imajin CarryYOffsetSmallHi
+
+  .db $FA ; Mama CarryYOffsetBigLo
+  .db $FA ; Mama CarryYOffsetSmallLo
+  .db $FF ; Mama CarryYOffsetBigHi
+	.db $FF ; Mama CarryYOffsetSmallHi
+
+	.db $FF ; Papa CarryYOffsetBigLo
+	.db $FA ; Papa CarryYOffsetSmallLo
+	.db $FA ; Papa CarryYOffsetBigHi
+	.db $FF ; Papa CarryYOffsetSmallHi
+
+	.db $FA ; Lina CarryYOffsetBigLo
+	.db $FA ; Lina CarryYOffsetSmallLo
+	.db $FF ; Lina CarryYOffsetBigHi
+	.db $FF ; Lina CarryYOffsetSmallHi
+
+  .db $FA ; Wario CarryYOffsetBigLo
+  .db $02 ; Wario CarryYOffsetSmallLo
+  .db $FF ; Wario CarryYOffsetBigHi
+  .db $00 ; Wario CarryYOffsetSmallHi
+
+  .db $F7 ; Waluigi CarryYOffsetBigLo
+  .db $FF ; Waluigi CarryYOffsetSmallLo
+  .db $FF ; Waluigi CarryYOffsetBigHi
+  .db $FF ; Waluigi CarryYOffsetSmallHi
+
+	.db $FC ; Toadette CarryYOffsetBigLo
+	.db $04 ; Toadette CarryYOffsetSmallLo
+	.db $FF ; Toadette CarryYOffsetBigHi
+	.db $00 ; Toadette CarryYOffsetSmallHi
+
+  .db $FA ; Daisy CarryYOffsetBigLo
+	.db $FA ; Daisy CarryYOffsetSmallLo
+	.db $FF ; Daisy CarryYOffsetBigHi
+	.db $FF ; Daisy CarryYOffsetSmallHi
+
+	.db $FA ; Merio CarryYOffsetBigLo
+	.db $02 ; Merio CarryYOffsetSmallLo
+	.db $FF ; Merio CarryYOffsetBigHi
+	.db $00 ; Merio CarryYOffsetSmallHi
+
+	.db $F7 ; Garfield CarryYOffsetBigLo
+	.db $FF ; Garfield CarryYOffsetSmallLo
+	.db $FF ; Garfield CarryYOffsetBigHi
+	.db $FF ; Garfield CarryYOffsetSmallHi
+
+	.db $F7 ; Birdo CarryYOffsetBigLo
+	.db $FF ; Birdo CarryYOffsetSmallLo
+	.db $FF ; Birdo CarryYOffsetBigHi
+	.db $FF ; Birdo CarryYOffsetSmallHi
+
+	.db $F6 ; Rosalina CarryYOffsetBigLo
+	.db $FE ; Rosalina CarryYOffsetSmallLo
+	.db $FF ; Rosalina CarryYOffsetBigHi
+	.db $FF ; Rosalina CarryYOffsetSmallHi
+
 PlayerSelectMarioSprites1:
 	.db $2E, $00, $48
 	.db $2E, $02, $50

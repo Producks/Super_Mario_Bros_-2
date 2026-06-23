@@ -48,29 +48,9 @@ IFDEF RESET_CHR_LATCH
 	INC ResetCHRLatch
 ENDIF
 
-	LDY #$1B
-AreaInitialization_CarryYOffsetLoop:
-	; Copy the global carrying Y offsets to memory
-	; These are used for every character for different frames of the pickup animation
-	LDA ItemCarryYOffsets, Y
-	STA ItemCarryYOffsetsRAM, Y
-	DEY
-	BPL AreaInitialization_CarryYOffsetLoop
-
 IFDEF CONTROLLER_2_DEBUG
 	JSR CopyCarryYOffsets
 ENDIF
-
-	; Copy the character-specific FINAL carrying heights into memory
-	LDY CurrentCharacter
-	LDA CarryYOffsetBigLo, Y
-	STA ItemCarryYOffsetsRAM
-	LDA CarryYOffsetSmallLo, Y
-	STA ItemCarryYOffsetsRAM + $07
-	LDA CarryYOffsetBigHi, Y
-	STA ItemCarryYOffsetsRAM + $0E
-	LDA CarryYOffsetSmallHi, Y
-	STA ItemCarryYOffsetsRAM + $15
 
 	LDA #$B6
 	STA PseudoRNGSeed
@@ -11741,38 +11721,6 @@ EnemyBehavior_Hoopstar_CheckBackgroundTile_Loop:
 
 EnemyBehavior_Hoopstar_CheckBackgroundTile_Exit:
 	RTS
-
-
-ItemCarryYOffsets:
-	.db $F9
-	.db $FF
-	.db $00
-	.db $08
-	.db $0C
-	.db $18
-	.db $1A
-	.db $01
-	.db $06
-	.db $0A
-	.db $0C
-	.db $18
-	.db $1A
-	.db $1C
-	.db $FF
-	.db $FF
-	.db $00
-	.db $00
-	.db $00
-	.db $00
-	.db $00
-	.db $00
-	.db $00
-	.db $00
-	.db $00
-	.db $00
-	.db $00
-	.db $00
-
 
 ; =============== S U B R O U T I N E =======================================
 

@@ -307,10 +307,6 @@ MysteryData14439:
 ; god knows what else.
 ;
 CopyCharacterStatsAndStuff:
-IFDEF CONTROLLER_2_DEBUG
-	JSR CopyCharacterStats
-ENDIF
-
 	LDY #$B6
 loc_BANKA_8486:
 	LDA BonusChanceReel1Order, Y
@@ -572,9 +568,46 @@ CopyCharacterStats_Loop:
 	RTS
 ENDIF
 
+ItemCarryYOffsets:
+	.db $F9
+	.db $FF
+	.db $00
+	.db $08
+	.db $0C
+	.db $18
+	.db $1A
+	.db $01
+	.db $06
+	.db $0A
+	.db $0C
+	.db $18
+	.db $1A
+	.db $1C
+	.db $FF
+	.db $FF
+	.db $00
+	.db $00
+	.db $00
+	.db $00
+	.db $00
+	.db $00
+	.db $00
+	.db $00
+	.db $00
+	.db $00
+	.db $00
+	.db $00
 
-IFDEF DEBUG
-	.include "src/extras/debug-a.asm"
-ENDIF
+CopyStuff:
+	LDY #$1B
+AreaInitialization_CarryYOffsetLoop:
+	; Copy the global carrying Y offsets to memory
+	; These are used for every character for different frames of the pickup animation
+	LDA ItemCarryYOffsets, Y
+	STA ItemCarryYOffsetsRAM, Y
+	DEY
+	BPL AreaInitialization_CarryYOffsetLoop
+
+  RTS
 
 .include "src/menus/character-select/main.asm"

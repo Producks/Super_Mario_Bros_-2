@@ -18,17 +18,33 @@ SetCharacterFromCursor:
   STA CurrentcharacterPOne, Y
   RTS
 
+PlayerOneCarryStatsLo_Write:
+  .db #<PlayerOneCarryStats
+  .db #<PlayerTwoCarryStats
+
+; FuncLo and Funchi point to where we read from
 ; byte_ram_1 and byte_ram_0 are pointing to where to dump the data
 ; X = Point to which player is currently dumping
-;DumpCarryCharacterRam:
-;  LDA PlayerOneCarryStats
-;  STA ItemCarryYOffsetsRAM
-;  LDA PlayerOneCarryStats + 1
-;  STA ItemCarryYOffsetsRAM + $0E
-;  LDA PlayerOneCarryStats + 2
-;  STA ItemCarryYOffsetsRAM + $07
-;  LDA PlayerOneCarryStats + 3
-;  STA ItemCarryYOffsetsRAM + $15
+DumpCarryCharacterInRam:
+  LDA PlayerOneCarryStatsLo_Write, X
+  STA byte_RAM_0
+
+SetRead_DumpCarryCharacterRam:
+  LDA CurrentcharacterPOne, X ; Load current character
+  STX byte_RAM_2 ; Stash x to restore it later
+  ASL A
+  ASL A
+  TAX
+  LDY #$00
+-
+  LDA CarryYOffsetsStats, X
+  STA (byte_RAM_0), Y
+  INY
+  INX
+  CPY #$04
+  BNE -
+  LDX byte_RAM_2 ; Restore X
+  RTS
 
 DumpPaletteStatsInRamLo_Write:
   .db #<PlayerOnePaletteRam
@@ -50,6 +66,7 @@ DumpCharacterPaletteInRam:
   STA byte_RAM_1
 
 ; Load where we are reading from
+SetLoad_DumpCharacterPaletteInRam:
   LDA DumpPaletteStatsInRamLo_Read, X
   STA FuncLoTemp
   LDA #>PlayerTwoCharacterPaletteRamTable ; Should be fixed to #$7F
@@ -84,6 +101,7 @@ DumpCharacterStatsInRam:
   STA byte_RAM_0
   LDA #>PlayerOneStatsRam ; Should be fixed to #$7F
   STA byte_RAM_1
+SetLoad_DumpCharacterStatsInRam:
 ; Load stats PTR with the X offset
   LDY CurrentcharacterPOne, X
   LDA CharacterStatsLo, Y
