@@ -259,122 +259,6 @@ loc_BANKA_83AB:
 locret_BANKA_83C8:
 	RTS
 
-; End of function DrawTitleCardWorldImage
-
-;
-; What is this for? It gets copied to RAM and then...that's all.
-;
-; In Doki Doki Panic, this data loads on the level/character select screen, but doesn't seem to be
-; used for anything there either. Will we ever unravel this mystery?
-;
-MysteryData14439:
-	.db $DF
-	.db $EF
-	.db $F7
-	.db $FB
-
-	.db $00
-	.db $FF
-	.db $FF
-	.db $FF
-
-	.db $AF
-	.db $D7
-	.db $EB
-	.db $F5
-
-	.db $FB
-	.db $F7
-	.db $EF
-	.db $DF
-
-	.db $00
-	.db $FF
-	.db $FF
-	.db $FF
-
-	.db $F5
-	.db $EB
-	.db $D7
-	.db $AF
-
-
-;
-; This copies the selected character's stats
-; into memory for use later, but also a bunch
-; of other unrelated crap like the
-; Bonus Chance slot reels (???) and
-; god knows what else.
-;
-CopyCharacterStatsAndStuff:
-	LDY #$B6
-loc_BANKA_8486:
-	LDA BonusChanceReel1Order, Y
-	STA SlotMachineReelOrder1RAM, Y
-	DEY
-	CPY #$FF
-	BNE loc_BANKA_8486
-
-	LDY #$63
-loc_BANKA_8493:
-	LDA TitleCardText, Y
-	STA PPUBuffer_TitleCardText, Y
-	DEY
-	CPY #$FF
-	BNE loc_BANKA_8493
-
-loc_BANKA_84A0:
-	; Copy object collision hitbox table
-	;
-	; The fact that it's in RAM is taken advantage of to programmatically change
-	; the hitbox for Hawkmouth after picking up the crystal.
-	LDY #$4F
-loc_BANKA_84AB:
-	LDA ObjectCollisionHitboxLeft, Y
-	STA ObjectCollisionHitboxLeft_RAM, Y
-	DEY
-	BPL loc_BANKA_84AB
-
-	; Copy flying carpet acceleration table
-	LDY #$03
-loc_BANKA_84B6:
-	LDA FlyingCarpetAcceleration, Y
-	STA FlyingCarpetAcceleration_RAM, Y
-	DEY
-	BPL loc_BANKA_84B6
-
-	; Copy object collision type table
-	;
-	; The fact that it's in RAM is used to toggle the Boss Hawkmouth between an
-	; object and an enemy.
-	LDY #$49
-loc_BANKA_84C1:
-	LDA EnemyPlayerCollisionTable, Y
-	STA EnemyPlayerCollisionTable_RAM, Y
-	DEY
-	BPL loc_BANKA_84C1
-
-	; Copy end of level door PPU data to RAM
-	;
-	; The fact that it's in RAM is actually taken advantage of when defeating Clawgrip, since the
-	; door needs to be drawn in a slightly different spot.
-	LDY #$20
-loc_BANKA_84CC:
-	LDA EndOfLevelDoor, Y
-	STA PPUBuffer_EndOfLevelDoor, Y
-	DEY
-	BPL loc_BANKA_84CC
-
-	; Copy Wart's OAM address table
-	LDY #$06
-loc_BANKA_84D7:
-	LDA WartOAMOffsets, Y
-	STA WartOAMOffsets_RAM, Y
-	DEY
-	BPL loc_BANKA_84D7
-
-	RTS
-
 SkyFlashColorsNoFlash:
 	.db $26
 	.db $26
@@ -553,20 +437,99 @@ UnusedText_Blank214D:
 	.db $FB, $FB, $FB, $FB, $FB, $FB
 	.db $00
 
-IFDEF CONTROLLER_2_DEBUG
 ;
-; Copies all character stats to RAM for hot-swapping the current character
+; ## Object vertical collision bounding box
 ;
-CopyCharacterStats:
-	LDX #(MysteryData14439 - StatOffsets - 1)
-CopyCharacterStats_Loop:
-	LDA StatOffsets, X
-	STA StatOffsetsRAM, X
-	DEX
-	BPL CopyCharacterStats_Loop
+; These hitboxes are copied to RAM and used when determining collision between objects. This allows
+; the hitboxes to change dynamically, which is used when Hawkmouth (offset $0B) opens and closes.
+;
+ObjectCollisionHitboxLeft:
+	.db $02 ; $00
+	.db $02 ; $01
+	.db $03 ; $02
+	.db $00 ; $03
+	.db $03 ; $04
+	.db $03 ; $05
+	.db $F8 ; $06
+	.db $00 ; $07
+	.db $03 ; $08
+	.db $01 ; $09
+	.db $F3 ; $0A
+	.db $04 ; $0B
+	.db $03 ; $0C
+	.db $03 ; $0D
+	.db $03 ; $0E
+	.db $F2 ; $0F
+	.db $03 ; $10
+	.db $03 ; $11
+	.db $05 ; $12
+	.db $03 ; $13
 
-	RTS
-ENDIF
+ObjectCollisionHitboxTop:
+	.db $0B ; $00
+	.db $10 ; $01
+	.db $03 ; $02
+	.db $00 ; $03
+	.db $03 ; $04
+	.db $03 ; $05
+	.db $F8 ; $06
+	.db $00 ; $07
+	.db $09 ; $08
+	.db $04 ; $09
+	.db $03 ; $0A
+	.db $03 ; $0B
+	.db $0E ; $0C
+	.db $03 ; $0D
+	.db $03 ; $0E
+	.db $03 ; $0F
+	.db $F6 ; $10
+	.db $0C ; $11
+	.db $02 ; $12
+	.db $03 ; $13
+
+ObjectCollisionHitboxWidth:
+	.db $0B ; $00
+	.db $0B ; $01
+	.db $09 ; $02
+	.db $10 ; $03
+	.db $09 ; $04
+	.db $19 ; $05
+	.db $20 ; $06
+	.db $20 ; $07
+	.db $03 ; $08
+	.db $1E ; $09
+	.db $19 ; $0A
+	.db $08 ; $0B
+	.db $09 ; $0C
+	.db $09 ; $0D
+	.db $09 ; $0E
+	.db $18 ; $0F
+	.db $09 ; $10
+	.db $1A ; $11
+	.db $06 ; $12
+	.db $15 ; $13
+
+ObjectCollisionHitboxHeight:
+	.db $16 ; $00
+	.db $11 ; $01
+	.db $0D ; $02
+	.db $10 ; $03
+	.db $1A ; $04
+	.db $19 ; $05
+	.db $24 ; $06
+	.db $10 ; $07
+	.db $03 ; $08
+	.db $04 ; $09
+	.db $2D ; $0A
+	.db $30 ; $0B
+	.db $0F ; $0C
+	.db $2E ; $0D
+	.db $3E ; $0E
+	.db $1E ; $0F
+	.db $28 ; $10
+	.db $13 ; $11
+	.db $48 ; $12
+	.db $26 ; $13
 
 ItemCarryYOffsets:
 	.db $F9
@@ -598,7 +561,86 @@ ItemCarryYOffsets:
 	.db $00
 	.db $00
 
-CopyStuff:
+;
+; This copies the selected character's stats
+; into memory for use later, but also a bunch
+; of other unrelated crap like the
+; Bonus Chance slot reels (???) and
+; god knows what else.
+;
+CopyGeneralData_Mutable:
+	LDY #$63
+loc_BANKA_8493:
+	LDA TitleCardText, Y
+	STA PPUBuffer_TitleCardText, Y
+	DEY
+	CPY #$FF
+	BNE loc_BANKA_8493
+
+	; Copy flying carpet acceleration table
+	LDY #$03
+loc_BANKA_84B6:
+	LDA FlyingCarpetAcceleration, Y
+	STA FlyingCarpetAcceleration_RAM, Y
+	DEY
+	BPL loc_BANKA_84B6
+
+	; Copy object collision type table
+	;
+	; The fact that it's in RAM is used to toggle the Boss Hawkmouth between an
+	; object and an enemy.
+	LDY #$49
+loc_BANKA_84C1:
+	LDA EnemyPlayerCollisionTable, Y
+	STA EnemyPlayerCollisionTable_RAM, Y
+	DEY
+	BPL loc_BANKA_84C1
+
+	; Copy end of level door PPU data to RAM
+	;
+	; The fact that it's in RAM is actually taken advantage of when defeating Clawgrip, since the
+	; door needs to be drawn in a slightly different spot.
+	LDY #$20
+loc_BANKA_84CC:
+	LDA EndOfLevelDoor, Y
+	STA PPUBuffer_EndOfLevelDoor, Y
+	DEY
+	BPL loc_BANKA_84CC
+
+	; Copy Wart's OAM address table
+	LDY #$06
+loc_BANKA_84D7:
+	LDA WartOAMOffsets, Y
+	STA WartOAMOffsets_RAM, Y
+	DEY
+	BPL loc_BANKA_84D7
+
+	RTS
+
+
+; Only copied once
+CopyGeneralData_NonMutable:
+; Copy bonus chance wheel
+	LDY #$B6
+loc_BANKA_8486:
+	LDA BonusChanceReel1Order, Y
+	STA SlotMachineReelOrder1RAM, Y
+	DEY
+	CPY #$FF
+	BNE loc_BANKA_8486
+
+; Copy object collision hitbox table
+;
+; The fact that it's in RAM is taken advantage of to programmatically change
+; the hitbox for Hawkmouth after picking up the crystal.
+; Whatever get modify in ram by sprites here get modified by the init function of the hawkmouth. So it's fine being here
+	LDY #$4F
+loc_BANKA_84AB:
+	LDA ObjectCollisionHitboxLeft, Y
+	STA ObjectCollisionHitboxLeft_RAM, Y
+	DEY
+	BPL loc_BANKA_84AB
+
 	LDY #$1B
 AreaInitialization_CarryYOffsetLoop:
 	; Copy the global carrying Y offsets to memory
@@ -611,3 +653,7 @@ AreaInitialization_CarryYOffsetLoop:
   RTS
 
 .include "src/menus/character-select/main.asm"
+
+.include "src/menus/title-screen/main.asm"
+
+.include "src/menus/option-select/main.asm"

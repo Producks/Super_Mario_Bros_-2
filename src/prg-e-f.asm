@@ -415,7 +415,7 @@ SetCurrentCharacterCard:
   LDA CurrentcharacterPOne, Y ; Added setter here, BUG BUG check in the future if this cover all cases
   STA CurrentCharacter
 
-	JSR CopyCharacterStatsAndStuff
+	JSR CopyGeneralData_Mutable
 
 	JSR EnableNMI
 
@@ -462,7 +462,7 @@ PreStartLevel:
 	LDA #PRGBank_A_B
 	JSR ChangeMappedPRGBank
 
-	JSR CopyCharacterStatsAndStuff
+	JSR CopyGeneralData_Mutable
 
 	JSR EnableNMI
 
@@ -557,7 +557,7 @@ StartGame:
 
 ;	LDA #PRGBank_0_1
 ;	STA GameMilestoneCounter
-  LDA #PRGBank_C_D
+	LDA #PRGBank_A_B
 	JSR ChangeMappedPRGBank
 
 	JSR TitleScreen ; The whole title screen is a subroutine, lol
@@ -2722,101 +2722,6 @@ VerticalTileCollisionHitboxY:
 	.db $03, $30, $18, $18 ; $38
 	.db $FF, $10, $08, $08 ; $3C
 	.db $09, $0A, $08, $08 ; $40
-
-;
-; ## Object vertical collision bounding box
-;
-; These hitboxes are copied to RAM and used when determining collision between objects. This allows
-; the hitboxes to change dynamically, which is used when Hawkmouth (offset $0B) opens and closes.
-;
-ObjectCollisionHitboxLeft:
-	.db $02 ; $00
-	.db $02 ; $01
-	.db $03 ; $02
-	.db $00 ; $03
-	.db $03 ; $04
-	.db $03 ; $05
-	.db $F8 ; $06
-	.db $00 ; $07
-	.db $03 ; $08
-	.db $01 ; $09
-	.db $F3 ; $0A
-	.db $04 ; $0B
-	.db $03 ; $0C
-	.db $03 ; $0D
-	.db $03 ; $0E
-	.db $F2 ; $0F
-	.db $03 ; $10
-	.db $03 ; $11
-	.db $05 ; $12
-	.db $03 ; $13
-
-ObjectCollisionHitboxTop:
-	.db $0B ; $00
-	.db $10 ; $01
-	.db $03 ; $02
-	.db $00 ; $03
-	.db $03 ; $04
-	.db $03 ; $05
-	.db $F8 ; $06
-	.db $00 ; $07
-	.db $09 ; $08
-	.db $04 ; $09
-	.db $03 ; $0A
-	.db $03 ; $0B
-	.db $0E ; $0C
-	.db $03 ; $0D
-	.db $03 ; $0E
-	.db $03 ; $0F
-	.db $F6 ; $10
-	.db $0C ; $11
-	.db $02 ; $12
-	.db $03 ; $13
-
-ObjectCollisionHitboxWidth:
-	.db $0B ; $00
-	.db $0B ; $01
-	.db $09 ; $02
-	.db $10 ; $03
-	.db $09 ; $04
-	.db $19 ; $05
-	.db $20 ; $06
-	.db $20 ; $07
-	.db $03 ; $08
-	.db $1E ; $09
-	.db $19 ; $0A
-	.db $08 ; $0B
-	.db $09 ; $0C
-	.db $09 ; $0D
-	.db $09 ; $0E
-	.db $18 ; $0F
-	.db $09 ; $10
-	.db $1A ; $11
-	.db $06 ; $12
-	.db $15 ; $13
-
-ObjectCollisionHitboxHeight:
-	.db $16 ; $00
-	.db $11 ; $01
-	.db $0D ; $02
-	.db $10 ; $03
-	.db $1A ; $04
-	.db $19 ; $05
-	.db $24 ; $06
-	.db $10 ; $07
-	.db $03 ; $08
-	.db $04 ; $09
-	.db $2D ; $0A
-	.db $30 ; $0B
-	.db $0F ; $0C
-	.db $2E ; $0D
-	.db $3E ; $0E
-	.db $1E ; $0F
-	.db $28 ; $10
-	.db $13 ; $11
-	.db $48 ; $12
-	.db $26 ; $13
-
 
 NextSpriteFlickerSlot:
 	DEC SpriteFlickerSlot

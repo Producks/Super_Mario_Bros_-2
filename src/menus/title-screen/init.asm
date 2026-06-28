@@ -40,8 +40,8 @@ InitMemoryLoop3:
   INY
   BNE InitMemoryLoop3
 
-; Restore bank C/D after the memory got zero'd out
-  LDA #PRGBank_C_D
+; Restore bank A/B after the memory got zero'd out
+  LDA #PRGBank_A_B
   STA MMC3PRGBankTemp
 
 ; Unpack
