@@ -30,7 +30,7 @@ FirstIRQ:
   STA MMC3_IRQEnable
 
 LoadFirstIRQParams:
-  LDA #$F3
+  LDA #$B3
   STA MMC3_BankSelect
   LDA #CHRBank_BackgroundGrass + 1
   STA MMC3_BankData

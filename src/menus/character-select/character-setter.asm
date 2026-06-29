@@ -1,5 +1,4 @@
   JSR SetCharacterFromCursor
-  JSR CopyGeneralData_NonMutable ; TODO remove this to place this better
 
 ; Copy both player stats
   LDX #$01

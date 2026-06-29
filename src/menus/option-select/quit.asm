@@ -55,5 +55,7 @@ SetSeedCounter:
   BNE QuitCleanup
   LDA #$01
   STA CurrentPlayer
+
 QuitCleanup:
-	JMP HideAllSprites
+	JSR HideAllSprites
+  JMP CopyGeneralData_NonMutable ; Copy stuff that isn't mutable so we only have to copy it once.
