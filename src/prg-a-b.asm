@@ -569,14 +569,6 @@ ItemCarryYOffsets:
 ; god knows what else.
 ;
 CopyGeneralData_Mutable:
-	LDY #$63
-loc_BANKA_8493:
-	LDA TitleCardText, Y
-	STA PPUBuffer_TitleCardText, Y
-	DEY
-	CPY #$FF
-	BNE loc_BANKA_8493
-
 	; Copy flying carpet acceleration table
 	LDY #$03
 loc_BANKA_84B6:
@@ -620,6 +612,14 @@ loc_BANKA_84D7:
 
 ; Only copied once
 CopyGeneralData_NonMutable:
+	LDY #$63
+loc_BANKA_8493:
+	LDA TitleCardText, Y
+	STA PPUBuffer_TitleCardText, Y
+	DEY
+	CPY #$FF
+	BNE loc_BANKA_8493
+
 ; Copy bonus chance wheel
 	LDY #$B6
 loc_BANKA_8486:

@@ -444,11 +444,7 @@ DisplayLevelTitleCardAndMore_TitleCardPaletteLoop:
 
 	; Pause for the title card
 	LDA #$50
-	STA byte_RAM_2
-PreLevelTitleCard_PauseLoop:
-	JSR WaitForNMI
-	DEC byte_RAM_2
-	BPL PreLevelTitleCard_PauseLoop
+  JSR DelayFrames
 
 PreStartLevel:
 	JSR SetStack100Gameplay

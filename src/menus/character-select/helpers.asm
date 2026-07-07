@@ -186,8 +186,7 @@ DisplayOnePlayerTextCharSelect:
   RTS
 
 PrintCurrentPlayerNumberCharacterSelect:
-  LDX CurrentPlayer
-  JMP PrintWordCharSelect
+  LDX PlayerPickingCharacterSelect
 
 PrintWordCharSelect:
   LDA WordListIndexCharSelect, X
