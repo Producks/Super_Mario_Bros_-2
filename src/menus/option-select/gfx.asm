@@ -488,6 +488,122 @@ TwoPlayerBottomLinesGFX:
   .db $18
   .db $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9
   .db $FF
+
+ClassicLineOneGFX:
+  .db $46, $6E
+  .db $20, $6A, $0B, $4A, $6E, $21, $26, $20, $2C, $2C, $25, $21, $6E, $4D
+  .db $20, $75, $47, $6E
+  .db $FF
+ClassicLineTwoGFX:
+  .db $46, $6E
+  .db $20, $8A, $12, $4B, $6E, $31, $36, $30, $3C, $3C, $35, $31, $6E, $4C, $6E, $6E, $6E, $6E, $6E, $6E, $6E
+  .db $FF
+ClassicLineThreeGFX:
+  .db $18
+  .db $6E, $6E, $0D, $12, $01, $6E, $15, $16, $03, $02, $03, $05, $00, $04, $6E, $04, $01, $18, $01, $04, $07, $1F, $6E, $6E
+  .db $FF
+ClassicLineFourGFX:
+ClassicLineFiveGFX:
+  .db $06, $80, $81, $82, $81, $82, $83
+  .db $21, $0A, $4C, $6E
+  .db $21, $16, $06, $8E, $8F, $6E, $6E, $6E, $6E
+  .db $FF
+ClassicLineSixGFX:
+  .db $18
+  .db $90, $91, $92, $91, $92, $93
+  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E
+  .db $8E, $8F, $6E, $6E, $9E, $9F, $6E, $6E, $6E, $6E
+  .db $FF
+ClassicLineSevenGFX:
+  .db $18
+  .db $90, $91, $92, $91, $92, $93
+  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E
+  .db $9E, $9F, $6E, $6E, $AE, $AF, $6E, $6E, $6E, $6E
+  .db $FF
+ClassicLineEightGFX:
+ClassicLineNineGFX:
+  .db $18
+  .db $90, $91, $92, $91, $92, $93
+  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E
+  .db $AE, $AF, $6E, $6E, $AE, $AF, $6E, $6E, $6E, $6E
+  .db $FF
+ClassicLineTenGFX:
+  .db $18
+  .db $90, $91, $A0, $A1, $92, $93
+  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E
+  .db $AE, $AF, $6E, $6E, $AE, $AF, $6E, $6E, $6E, $6E
+  .db $FF
+ClassicLineElevelGFX:
+  .db $18
+  .db $90, $91, $B0, $B1, $92, $93
+  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E
+  .db $AE, $AF, $6E, $6E, $AE, $AF, $6E, $6E, $6E, $6E
+  .db $FF
+ClassicLineTwelveGFX:
+  .db $18
+  .db $90, $91, $A2, $A3, $92, $93
+  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E
+  .db $AE, $AF, $6E, $6E, $AE, $AF
+  .db $AC, $AD
+  .db $6E, $6E
+  .db $FF
+ClassicLineThirteenGFX:
+  .db $18
+  .db $90, $91, $B2, $B3, $92, $93
+  .db $6E, $6E, $6E, $6E
+  .db $C9, $D9
+  .db $6E, $6E
+  .db $AE, $AF
+  .db $C9, $D9
+  .db $AE, $AF
+  .db $BC, $BD
+  .db $6E, $6E
+  .db $FF
+ClassicLineFourteenthGFX:
+  .db $18
+  .db $AA, $AB
+  .db $AA, $AB
+  .db $AA, $AB
+  .db $AA, $AB
+  .db $AA, $AB
+  .db $AA, $AB
+  .db $AA, $AB
+  .db $AA, $AB
+  .db $AA, $AB
+  .db $AA, $AB
+  .db $AA, $AB
+  .db $AA, $AB
+  .db $FF
+ClassicLineBottomGFX:
+  .db $18
+  .db $BA, $BB
+  .db $BA, $BB
+  .db $BA, $BB
+  .db $BA, $BB
+  .db $BA, $BB
+  .db $BA, $BB
+  .db $BA, $BB
+  .db $BA, $BB
+  .db $BA, $BB
+  .db $BA, $BB
+  .db $BA, $BB
+  .db $BA, $BB
+  .db $FF
+ClassicLineSandGFX:
+  .db $18
+  .db $BE, $BF
+  .db $BE, $BF
+  .db $BE, $BF
+  .db $BE, $BF
+  .db $BE, $BF
+  .db $BE, $BF
+  .db $BE, $BF
+  .db $BE, $BF
+  .db $BE, $BF
+  .db $BE, $BF
+  .db $BE, $BF
+  .db $BE, $BF
+  .db $FF
 ; end of GFX
 
 ContextWindowModePalette:
@@ -557,23 +673,23 @@ OptionSelectLoTable:
   .db <TwoPlayerThirteenGFX
   .db <TwoPlayerBottomLinesGFX
 
-; One Player
-  .db <OnePlayerTopGFX
-  .db <OnePlayerBottomGFX
-  .db <OnePlayerTwoGFX
-  .db <OnePlayerThirdGFX
-  .db <OnePlayerFourGFX
-  .db <OnePlayerFiveGFX
-  .db <OnePlayerSixGFX
-  .db <OnePlayerSevenGFX
-  .db <OnePlayerEightGFX
-  .db <OnePlayerNineGFX
-  .db <OnePlayerTenGFX
-  .db <OnePlayerElevenGFX
-  .db <OnePlayerTwelveGFX
-  .db <OnePlayerThirteenGFX
-  .db <OnePlayerBottomLinesGFX
-  .db <OnePlayerBottomLinesGFX
+; Classic
+  .db <ClassicLineOneGFX
+  .db <ClassicLineTwoGFX
+  .db <ClassicLineThreeGFX
+  .db <EmptyLinesOptionSelect
+  .db <ClassicLineFiveGFX
+  .db <ClassicLineSixGFX
+  .db <ClassicLineSevenGFX
+  .db <ClassicLineEightGFX
+  .db <ClassicLineNineGFX
+  .db <ClassicLineTenGFX
+  .db <ClassicLineElevelGFX
+  .db <ClassicLineTwelveGFX
+  .db <ClassicLineThirteenGFX
+  .db <ClassicLineFourteenthGFX
+  .db <ClassicLineBottomGFX
+  .db <ClassicLineSandGFX
 
 ; Two Player
   .db <TwoPlayerTopGFX
@@ -775,23 +891,23 @@ OptionSelectHiTable:
   .db >TwoPlayerThirteenGFX
   .db >TwoPlayerBottomLinesGFX
 
-; One Player
-  .db >OnePlayerTopGFX
-  .db >OnePlayerBottomGFX
-  .db >OnePlayerTwoGFX
-  .db >OnePlayerThirdGFX
-  .db >OnePlayerFourGFX
-  .db >OnePlayerFiveGFX
-  .db >OnePlayerSixGFX
-  .db >OnePlayerSevenGFX
-  .db >OnePlayerEightGFX
-  .db >OnePlayerNineGFX
-  .db >OnePlayerTenGFX
-  .db >OnePlayerElevenGFX
-  .db >OnePlayerTwelveGFX
-  .db >OnePlayerThirteenGFX
-  .db >OnePlayerBottomLinesGFX
-  .db >OnePlayerBottomLinesGFX
+; Classic
+  .db >ClassicLineOneGFX
+  .db >ClassicLineTwoGFX
+  .db >ClassicLineThreeGFX
+  .db >EmptyLinesOptionSelect
+  .db >ClassicLineFiveGFX
+  .db >ClassicLineSixGFX
+  .db >ClassicLineSevenGFX
+  .db >ClassicLineEightGFX
+  .db >ClassicLineNineGFX
+  .db >ClassicLineTenGFX
+  .db >ClassicLineElevelGFX
+  .db >ClassicLineTwelveGFX
+  .db >ClassicLineThirteenGFX
+  .db >ClassicLineFourteenthGFX
+  .db >ClassicLineBottomGFX
+  .db >ClassicLineSandGFX
 
 ; Two Player
   .db >TwoPlayerTopGFX
