@@ -1,0 +1,12 @@
+diff --git a/src/prg-e-f.asm b/src/prg-e-f.asm
+index 811035b..abca1b3 100644
+--- a/src/prg-e-f.asm
++++ b/src/prg-e-f.asm
+@@ -200,7 +200,6 @@ JumpToTableAfterJump:
+ BlackAndWhitePalette:
+ 	.db $0F, $30, $30, $0F
+ 
+-
+ SetBlackAndWhitePalette:
+ 	LDA PPUSTATUS
+ 	LDA #$3F

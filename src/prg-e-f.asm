@@ -200,7 +200,6 @@ JumpToTableAfterJump:
 BlackAndWhitePalette:
 	.db $0F, $30, $30, $0F
 
-
 SetBlackAndWhitePalette:
 	LDA PPUSTATUS
 	LDA #$3F
