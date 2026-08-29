@@ -484,191 +484,219 @@ OnePlayerBottomLinesGFX:
   RepeatUnpack $10, $F0
 
 TwoPlayerTopGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $4A, $6E, $2D, $2F, $29, $6E, $2A, $26, $20, $45, $23, $2B, $6E, $4D, $6E, $6E, $6E, $6E, $6E
-  .db $FF
+  RepeatUnpack $05, $6E
+  RegularUnpack +
+    .db $4A, $6E, $2D, $2F, $29, $6E, $2A, $26, $20, $45, $23, $2B, $6E, $4D
+  +
+  RepeatUnpack $05, $6E
+
 TwoPlayerBottomGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $4B, $6E, $3D, $3F, $39, $6E, $3A, $36, $30, $46, $33, $3B, $6E, $4C, $6E, $6E, $6E, $6E, $6E
-  .db $FF
+  RepeatUnpack $05, $6E
+  RegularUnpack +
+    .db $4B, $6E, $3D, $3F, $39, $6E, $3A, $36, $30, $46, $33, $3B, $6E, $4C
+  +
+  RepeatUnpack $05, $6E
 
 TwoPlayerLineTwoGFX:
-  .db $07, $6E, $6E, $6E, $8A, $8B, $8C, $8D
-  .db $20, $EB, $51, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $6E, $8A, $8B, $8C, $8D
+  +
+  RepeatUnpack $11, $6E
 
 TwoPlayerLineThreeGFX:
-  .db $18
-  .db $6E, $6E, $6E, $9A, $9B, $9C, $9D, $6E, $6E, $6E, $90, $91, $92, $93, $6E, $6E, $6E, $6E, $8A, $8B, $8C, $8D, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $6E, $9A, $9B, $9C, $9D, $6E, $6E, $6E, $90, $91, $92, $93
+  +
+  RepeatUnpack $04, $6E
+  RegularUnpack +
+    .db $8A, $8B, $8C, $8D, $6E, $6E
+  +
 
 TwoPlayerLineFourGFX:
-  .db $18
-  .db $6E, $6E, $6E, $AA, $AB, $AC, $AD, $6E, $6E, $6E, $A0, $A1, $A2, $A3, $6E, $6E, $6E, $6E, $9A, $9B, $9C, $9D, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $6E, $AA, $AB, $AC, $AD, $6E, $6E, $6E, $A0, $A1, $A2, $A3
+  +
+  RepeatUnpack $04, $6E
+  RegularUnpack +
+    .db $9A, $9B, $9C, $9D, $6E, $6E
+  +
 
 TwoPlayerLineFiveGFX:
-  .db $18
-  .db $6E, $6E, $6E, $BA, $BB, $BC, $BD, $6E, $6E, $6E, $B0, $B1, $B2, $B3, $6E, $6E, $6E, $6E, $AA, $AB, $AC, $AD, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $6E, $BA, $BB, $BC, $BD, $6E, $6E, $6E, $B0, $B1, $B2, $B3
+  +
+  RepeatUnpack $04, $6E
+  RegularUnpack +
+    .db $AA, $AB, $AC, $AD, $6E, $6E
+  +
 
 TwoPlayerLineSixGFX:
-  .db $18
-  .db $6E, $6E, $8E, $8F, $6E, $6E, $6E, $88, $89, $88, $89, $88, $89, $88, $89, $88, $89, $6E, $BA, $BB, $BC, $BD, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $8E, $8F, $6E, $6E, $6E
+  +
+  RepeatDoubleUnpack $05, $88, $89
+  RegularUnpack +
+    .db $6E, $BA, $BB, $BC, $BD, $6E, $6E
+  +
 
 TwoPlayerLineSevenGFX:
-  .db $18
-  .db $6E, $6E, $9E, $9F, $6E, $6E, $6E, $98, $99, $98, $99, $98, $99, $98, $99, $98, $99, $6E, $6E, $94, $95, $96, $97, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $9E, $9F, $6E, $6E, $6E
+  +
+  RepeatDoubleUnpack $05, $98, $99
+  RegularUnpack +
+    .db $6E, $6E, $94, $95, $96, $97, $6E
+  +
 
 TwoPlayerLineEightGFX:
-  .db $06, $6E, $6E, $AE, $AF, $CA, $CB
-  .db $21, $AA, $4D, $6E
-  .db $21, $B7, $05, $A4, $A5, $A6, $A7, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $AE, $AF, $CA, $CB
+  +
+  RepeatUnpack $0D, $6E
+  RegularUnpack +
+    .db $A4, $A5, $A6, $A7, $6E
+  +
 
 TwoPlayerLineNineGFX:
-  .db $06, $6E, $6E, $BE, $BF, $DA, $DB
-  .db $21, $CA, $4D, $6E
-  .db $21, $D7, $05, $B4, $B5, $B6, $B7, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $BE, $BF, $DA, $DB
+  +
+  RepeatUnpack $0D, $6E
+  RegularUnpack +
+    .db $B4, $B5, $B6, $B7, $6E
+  +
 
 TwoPlayerLineElevenGFX:
-  .db $18
-  .db $6E, $C8, $6E, $C8, $6E, $C8, $6E, $C8, $6E, $C8, $6E, $C8, $6E, $C8, $6E, $C8, $6E, $C8, $6E, $C8, $6E, $C8, $6E, $C8
-  .db $FF
+  RepeatDoubleUnpack $0C, $6E, $C8
 
 TwoPlayerLineTwelveGFX:
-  .db $18
-  .db $6E, $D8, $6E, $D8, $6E, $D8, $6E, $D8, $6E, $D8, $6E, $D8, $6E, $D8, $6E, $D8, $6E, $D8, $6E, $D8, $6E, $D8, $6E, $D8
-  .db $FF
+  RepeatDoubleUnpack $0C, $6E, $D8
 
 TwoPlayerThirteenGFX:
-  .db $18
-  .db $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8
-  .db $FF
+  RegularUnpack +
+    .db $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8
+  +
 
 TwoPlayerBottomLinesGFX:
-  .db $18
-  .db $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9
-  .db $FF
+  RegularUnpack +
+    .db $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9, $A8, $A9, $B8, $B9
+  +
 
 ClassicLineOneGFX:
-  .db $46, $6E
-  .db $20, $6A, $0B, $4A, $6E, $21, $26, $20, $2C, $2C, $25, $21, $6E, $4D
-  .db $20, $75, $47, $6E
-  .db $FF
+  RepeatUnpack $06, $6E
+  RegularUnpack +
+    .db $4A, $6E, $21, $26, $20, $2C, $2C, $25, $21, $6E, $4D
+  +
+  RepeatUnpack $07, $6E
+
 ClassicLineTwoGFX:
-  .db $46, $6E
-  .db $20, $8A, $12, $4B, $6E, $31, $36, $30, $3C, $3C, $35, $31, $6E, $4C, $6E, $6E, $6E, $6E, $6E, $6E, $6E
-  .db $FF
+  RepeatUnpack $06, $6E
+  RegularUnpack +
+    .db $4B, $6E, $31, $36, $30, $3C, $3C, $35, $31, $6E, $4C
+  +
+  RepeatUnpack $07, $6E
+
 ClassicLineThreeGFX:
-  .db $18
-  .db $6E, $6E, $0D, $12, $01, $6E, $15, $16, $03, $02, $03, $05, $00, $04, $6E, $04, $01, $18, $01, $04, $07, $1F, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $0D, $12, $01, $6E, $15, $16, $03, $02, $03, $05, $00, $04, $6E, $04, $01, $18, $01, $04, $07, $1F, $6E, $6E
+  +
+
 ClassicLineFourGFX:
 ClassicLineFiveGFX:
-  .db $06, $80, $81, $82, $81, $82, $83
-  .db $21, $0A, $4C, $6E
-  .db $21, $16, $06, $8E, $8F, $6E, $6E, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $80, $81, $82, $81, $82, $83
+  +
+  RepeatUnpack $0C, $6E
+  RegularUnpack +
+    .db $8E, $8F
+  +
+  RepeatUnpack $04, $6E
+
 ClassicLineSixGFX:
-  .db $18
+  RegularUnpack +
   .db $90, $91, $92, $91, $92, $93
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E
-  .db $8E, $8F, $6E, $6E, $9E, $9F, $6E, $6E, $6E, $6E
-  .db $FF
+  +
+  RepeatUnpack $08, $6E
+  RegularUnpack +
+    .db $8E, $8F, $6E, $6E, $9E, $9F
+  +
+  RepeatUnpack $04, $6E
+
 ClassicLineSevenGFX:
-  .db $18
-  .db $90, $91, $92, $91, $92, $93
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E
-  .db $9E, $9F, $6E, $6E, $AE, $AF, $6E, $6E, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $90, $91, $92, $91, $92, $93
+  +
+  RepeatUnpack $08, $6E
+  RegularUnpack +
+    .db $9E, $9F, $6E, $6E, $AE, $AF
+  +
+  RepeatUnpack $04, $6E
+
 ClassicLineEightGFX:
 ClassicLineNineGFX:
-  .db $18
-  .db $90, $91, $92, $91, $92, $93
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E
-  .db $AE, $AF, $6E, $6E, $AE, $AF, $6E, $6E, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $90, $91, $92, $91, $92, $93
+  +
+  RepeatUnpack $08, $6E
+  RegularUnpack +
+    .db $AE, $AF, $6E, $6E, $AE, $AF
+  +
+  RepeatUnpack $04, $6E
+
 ClassicLineTenGFX:
-  .db $18
-  .db $90, $91, $A0, $A1, $92, $93
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E
-  .db $AE, $AF, $6E, $6E, $AE, $AF, $6E, $6E, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $90, $91, $A0, $A1, $92, $93
+  +
+  RepeatUnpack $08, $6E
+  RegularUnpack +
+    .db $AE, $AF, $6E, $6E, $AE, $AF
+  +
+  RepeatUnpack $04, $6E
+
 ClassicLineElevelGFX:
-  .db $18
-  .db $90, $91, $B0, $B1, $92, $93
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E
-  .db $AE, $AF, $6E, $6E, $AE, $AF, $6E, $6E, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $90, $91, $B0, $B1, $92, $93
+  +
+  RepeatUnpack $08, $6E
+  RegularUnpack +
+    .db $AE, $AF, $6E, $6E, $AE, $AF
+  +
+  RepeatUnpack $04, $6E
+
 ClassicLineTwelveGFX:
-  .db $18
-  .db $90, $91, $A2, $A3, $92, $93
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E
-  .db $AE, $AF, $6E, $6E, $AE, $AF
-  .db $AC, $AD
-  .db $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $90, $91, $A2, $A3, $92, $93
+  +
+  RepeatUnpack $08, $6E
+  RegularUnpack +
+    .db $AE, $AF, $6E, $6E, $AE, $AF
+    .db $AC, $AD
+    .db $6E, $6E
+  +
+
 ClassicLineThirteenGFX:
-  .db $18
-  .db $90, $91, $B2, $B3, $92, $93
-  .db $6E, $6E, $6E, $6E
-  .db $C9, $D9
-  .db $6E, $6E
-  .db $AE, $AF
-  .db $C9, $D9
-  .db $AE, $AF
-  .db $BC, $BD
-  .db $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $90, $91, $B2, $B3, $92, $93
+  +
+  RepeatUnpack $04, $6E
+  RegularUnpack +
+    .db $C9, $D9
+    .db $6E, $6E
+    .db $AE, $AF
+    .db $C9, $D9
+    .db $AE, $AF
+    .db $BC, $BD
+    .db $6E, $6E
+  +
+
 ClassicLineFourteenthGFX:
-  .db $18
-  .db $AA, $AB
-  .db $AA, $AB
-  .db $AA, $AB
-  .db $AA, $AB
-  .db $AA, $AB
-  .db $AA, $AB
-  .db $AA, $AB
-  .db $AA, $AB
-  .db $AA, $AB
-  .db $AA, $AB
-  .db $AA, $AB
-  .db $AA, $AB
-  .db $FF
+  RepeatDoubleUnpack $0C, $AA, $AB
+
 ClassicLineBottomGFX:
-  .db $18
-  .db $BA, $BB
-  .db $BA, $BB
-  .db $BA, $BB
-  .db $BA, $BB
-  .db $BA, $BB
-  .db $BA, $BB
-  .db $BA, $BB
-  .db $BA, $BB
-  .db $BA, $BB
-  .db $BA, $BB
-  .db $BA, $BB
-  .db $BA, $BB
-  .db $FF
+  RepeatDoubleUnpack $0C, $bA, $BB
+
 ClassicLineSandGFX:
-  .db $18
-  .db $BE, $BF
-  .db $BE, $BF
-  .db $BE, $BF
-  .db $BE, $BF
-  .db $BE, $BF
-  .db $BE, $BF
-  .db $BE, $BF
-  .db $BE, $BF
-  .db $BE, $BF
-  .db $BE, $BF
-  .db $BE, $BF
-  .db $BE, $BF
-  .db $FF
+  RepeatDoubleUnpack $0C, $BE, $BF
 ; end of GFX
 
 ContextWindowModePalette:
