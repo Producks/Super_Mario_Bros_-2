@@ -52,9 +52,9 @@ AttributeOptionMenu:
 ; Turn Base
 MenuFirstOption:
 TradionalTopGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $4A, $6E, $2D, $2B, $20, $22, $25, $2D, $25, $29, $28, $20, $26, $6E, $4D, $6E, $6E, $6E, $6E
-  .db $FF
+;  .db #RepeatUnpack | $05, $6E
+;  .db #RegularUnpack | $0F, $4A, $6E, $2D, $2B, $20, $22, $25, $2D, $25, $29, $28, $20, $26, $6E, $4D
+;  .db #RepeatUnpack | $04, $6E
 
 TradionalBottomGFX:
   .db $18
@@ -262,14 +262,12 @@ SharedFourteenGFX:
 ; Chaos Swap
 MenuFourthOption:
 ChaosTopGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $4A, $6E, $21, $2E, $20, $29, $2C, $EE, $2C, $2F, $20, $2A, $6E, $4D, $6E, $6E, $6E, $6E, $6E
-  .db $FF
+;  .db #RegularUnpack | $18
+;  .db $6E, $6E, $6E, $6E, $6E, $4A, $6E, $21, $2E, $20, $29, $2C, $EE, $2C, $2F, $20, $2A, $6E, $4D, $6E, $6E, $6E, $6E, $6E
 
 ChaosBottomGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $4B, $6E, $31, $3E, $30, $39, $3C, $EE, $3C, $3F, $30, $3A, $6E, $4C, $6E, $6E, $6E, $6E, $6E
-  .db $FF
+;  .db #RegularUnpack | $18
+;  .db $6E, $6E, $6E, $6E, $6E, $4B, $6E, $31, $3E, $30, $39, $3C, $EE, $3C, $3F, $30, $3A, $6E, $4C, $6E, $6E, $6E, $6E, $6E
 
 ChaosOneGFX:
   .db $18
@@ -342,81 +340,148 @@ ChaosFourteenGFX:
   .db $FF
 
 OnePlayerTopGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $4A, $6E, $29, $28, $23, $6E, $2A, $26, $20, $45, $23, $2B, $6E, $4D, $6E, $6E, $6E, $6E, $6E
-  .db $FF
+  RepeatUnpack $05, $6E
+  RegularUnpack +
+    .db $4A, $6E, $29, $28, $23, $6E, $2A, $26, $20, $45, $23, $2B, $6E, $4D
+  +
+  RepeatUnpack $05, $6E
+
 OnePlayerBottomGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $4B, $6E, $39, $38, $33, $6E, $3A, $36, $30, $46, $33, $3B, $6E, $4C, $6E, $6E, $6E, $6E, $6E
-  .db $FF
+  RepeatUnpack $05, $6E
+  RegularUnpack +
+    .db $4B, $6E, $39, $38, $33, $6E, $3A, $36, $30, $46, $33, $3B, $6E, $4C
+  +
+  RepeatUnpack $05, $6E
 
 OnePlayerTwoGFX:
-  .db $48, $6E
-  .db $20, $CC, $03, $86, $87, $88
-  .db $20, $CF, $4D, $6E
-  .db $FF
+  RepeatUnpack $08, $6E
+  RegularUnpack +
+    .db $86, $87, $88
+  +
+  RepeatUnpack $0D, $6E
 
 OnePlayerThirdGFX:
-  .db $0E
-  .db $6E, $6E, $6E, $A8, $A9, $6E, $6E, $6E, $96, $97, $98, $6E, $86, $88
-  .db $20, $F2, $4A, $6E
-  .db $FF
+  RepeatUnpack $03, $6E
+  RegularUnpack +
+    .db $A8, $A9, $6E, $6E, $6E, $96, $97, $98, $6E, $86, $88
+  +
+  RepeatUnpack $0A, $6E
 
 OnePlayerFourGFX:
-  .db $0E
-  .db $6E, $6E, $6E, $B8, $B9, $6E, $6E, $6E, $6E, $84, $85, $6E, $96, $98
-  .db $21, $12, $4A, $6E
-  .db $FF
+  RepeatUnpack $03, $6E
+  RegularUnpack +
+    .db $B8, $B9
+  +
+  RepeatUnpack $04, $6E
+  RegularUnpack +
+    .db $84, $85, $6E, $96, $98
+  +
+  RepeatUnpack $0A, $6E
 
 OnePlayerFiveGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $94, $95, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $8C, $8D, $6E, $6E
-  .db $FF
+  RepeatUnpack $09, $6E
+  RegularUnpack +
+    .db $94, $95
+  +
+  RepeatUnpack $09, $6E
+  RegularUnpack +
+    .db $8C, $8D, $6E, $6E
+  +
 
 OnePlayerSixGFX:
-  .db $18
-  .db $6E, $6E, $6E, $A6, $A7, $6E, $6E, $6E, $6E, $A4, $A5, $6E, $6E, $6E, $E1, $E2, $6E, $6E, $6E, $6E, $9C, $9D, $6E, $6E
-  .db $FF
+  RepeatUnpack $03, $6E
+  RegularUnpack +
+    .db $A6, $A7
+  +
+  RepeatUnpack $04, $6E
+  RegularUnpack +
+    .db $A4, $A5
+  +
+  RepeatUnpack $03, $6E
+  RegularUnpack +
+    .db $E1, $E2
+  +
+  RepeatUnpack $04, $6E
+  RegularUnpack +
+    .db $9C, $9D, $6E, $6E
+  +
 
 OnePlayerSevenGFX:
-  .db $10, $6E, $6E, $6E, $B6, $B7, $6E, $6E, $6E, $6E, $B4, $B5, $6E, $6E, $6E, $F1, $F2
-  .db $21, $74, $48, $6E
-  .db $FF
+  RepeatUnpack $03, $6E
+  RegularUnpack +
+    .db $B6, $B7
+  +
+  RepeatUnpack $04, $6E
+  RegularUnpack +
+    .db $B4, $B5, $6E, $6E, $6E, $F1, $F2
+  +
+  RepeatUnpack $08, $6E
 
 OnePlayerEightGFX:
-  .db $06, $6E, $6E, $80, $81, $82, $83
-  .db $21, $8A, $52, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $80, $81, $82, $83
+  +
+  RepeatUnpack $12, $6E
 
 OnePlayerNineGFX:
-  .db $06, $6E, $6E, $90, $91, $92, $93
-  .db $21, $AA, $52, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $90, $91, $92, $93
+  +
+  RepeatUnpack $12, $6E
 
 OnePlayerTenGFX:
-  .db $08, $6E, $6E, $90, $91, $92, $93, $C9, $D9
-  .db $21, $CC, $50, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $90, $91, $92, $93, $C9, $D9
+  +
+  RepeatUnpack $10, $6E
 
 OnePlayerElevenGFX:
-  .db $08, $80, $81, $82, $81, $82, $81, $82, $83
-  .db $21, $EC, $50, $6E
-  .db $FF
+  RegularUnpack +
+    .db $80
+  +
+  RepeatDoubleUnpack $03, $81, $82
+  RegularUnpack +
+    .db $83
+  +
+  RepeatUnpack $10, $6E
 
 OnePlayerTwelveGFX:
-  .db $11, $90, $91, $92, $91, $92, $91, $92, $93, $6E, $6E, $6E, $6E, $6E, $89, $8A, $8A, $8B
-  .db $22, $15, $47, $6E
-  .db $FF
+  RegularUnpack +
+    .db $90
+  +
+  RepeatDoubleUnpack $03, $91, $92
+  RegularUnpack +
+    .db $93
+  +
+  RepeatUnpack $05, $6E
+  RegularUnpack +
+    .db $89, $8A, $8A, $8B
+  +
+  RepeatUnpack $07, $6E
 
 OnePlayerThirteenGFX:
-  .db $11, $90, $91, $92, $91, $92, $91, $92, $93, $E0, $E0, $E0, $E0, $E0, $99, $9A, $9A, $9B
-  .db $22, $35, $47, $E0
-  .db $FF
+  RegularUnpack +
+    .db $90
+  +
+  RepeatDoubleUnpack $03, $91, $92
+  RegularUnpack +
+    .db $93
+  +
+  RepeatUnpack $05, $E0
+  RegularUnpack +
+    .db $99, $9A, $9A, $9B
+  +
+  RepeatUnpack $07, $E0
 
 OnePlayerBottomLinesGFX:
-  .db $18
-  .db $90, $91, $92, $91, $92, $91, $92, $93, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0
-  .db $FF
+  RegularUnpack +
+    .db $90
+  +
+  RepeatDoubleUnpack $03, $91, $92
+  RegularUnpack +
+    .db $93
+  +
+  RepeatUnpack $10, $F0
 
 TwoPlayerTopGFX:
   .db $18
@@ -607,12 +672,14 @@ ClassicLineSandGFX:
 ; end of GFX
 
 ContextWindowModePalette:
-TraditionalPalette:
+OnePlayerPalette:
   .db $0F, $35, $25, $06, $0F, $35, $25, $0F
-  .db $0F, $35, $25, $06, $0F, $35, $25, $0F
-
-TagTeamPalette:
+TwoPlayerPalette:
   .db $0F, $31, $21, $01, $0F, $31, $21, $0F
+
+TraditionalPalette:
+TagTeamPalette:
+  .db $0F, $35, $25, $06, $0F, $35, $25, $0F
   .db $0F, $31, $21, $01, $0F, $31, $21, $0F
 
 SharedControlPalette:
@@ -628,7 +695,8 @@ ChaosSwapPalette:
   .db $0F, $3D, $2D, $00, $0F, $3D, $2D, $0F
 
 EmptyLinesOptionSelect:
-  .db $58, $6E, $FF
+  RepeatUnpack $18, $6E
+;  .db #RepeatUnpack | $18, $6E
 
 TileMapFirstOptionSelect:
   .db $20, $20, $20, $20, $21, $21, $21, $21, $21, $21, $21, $21, $22, $22, $22, $22

@@ -111,3 +111,16 @@ MACRO musicHeader noteLengthLabel, square2, triangle, square1, noise, dpcm
 		ENDIF
 	ENDIF
 ENDM
+
+; Macro for unpacking option-select graphics
+MACRO RegularUnpack label
+ 	.db (label - $ - 1)
+ENDM
+
+MACRO RepeatUnpack Length Tile
+  .db $40 | Length, Tile
+ENDM
+
+MACRO RepeatDoubleUnpack Length TileOne TileTwo
+  .db $80 | Length, TileOne, TileTwo
+ENDM

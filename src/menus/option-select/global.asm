@@ -99,25 +99,75 @@ LoadContextLine_OptionSelect:
 
   LDX byte_RAM_300 ; Load where we are in the buffer
 
-  LDA TileMapFirstOptionSelect, Y
+  LDA TileMapFirstOptionSelect, Y ; Load option
   STA PPUBuffer_301, X
   INX
   LDA TileMapSecondOptionselect, Y
   STA PPUBuffer_301, X
   INX
+  LDA #$18
+  STA PPUBuffer_301, X
+  STA byte_RAM_2 ; Set a counter of 18. When we reach 0 it mean we finished the line
+  INX
 
   LDY #$00
--
-  LDA (byte_RAM_0), Y
+Load_New_Option_Unpack_Line_Option_Select:
+  LDA (byte_RAM_0), Y ; Load type of unpacking + length
+  STA byte_RAM_3
+  AND #$3F ; Get the length of what we are working with XX00 0000
+  STA byte_RAM_4
+  INY
+  BIT byte_RAM_3
+  BMI Unpack_Compressed_Repeat_Double ; Branch if bit 7 is set
+  BVS Unpack_Compressed_Repeat_Regular_Option_Select ; Branch if bit 6 is set
+
+Regular_Unpack_Load_Tile_Option_Select:
+  LDA (byte_RAM_0), Y ; Get the tile ID
   STA PPUBuffer_301, X
-  CMP #$FF
-  BEQ +
   INX
   INY
-  BNE -
-+
+  DEC byte_RAM_2 ; Decrease global counter for the line
+  BEQ Unpacking_Line_Done ; If 0 we're done
+  DEC byte_RAM_4 ; Decrease counter for the instruction length
+  BNE Regular_Unpack_Load_Tile_Option_Select ; Loop back if we aren't done
+  BEQ Load_New_Option_Unpack_Line_Option_Select ; Get a new option since we aren't done
+
+Unpacking_Line_Done:
   LDA #$00
   STA PPUBuffer_301, X ; Set terminating 0
   STX byte_RAM_300
   INC RowDrawingOptionSelect
   RTS
+
+Unpack_Compressed_Repeat_Regular_Option_Select:
+  LDA (byte_RAM_0), Y ; Get the tile ID
+-
+  STA PPUBuffer_301, X
+  INX
+  DEC byte_RAM_2
+  BEQ Unpacking_Line_Done
+  DEC byte_RAM_4
+  BNE -
+  INY
+  BNE Load_New_Option_Unpack_Line_Option_Select
+
+Unpack_Compressed_Repeat_Double:
+  LDA (byte_RAM_0), Y ; Get the tile ID
+  STA byte_RAM_5
+  INY
+  LDA (byte_RAM_0), Y ; Get the second tile ID
+  STA byte_RAM_6
+-
+  LDA byte_RAM_5
+  STA PPUBuffer_301, X
+  INX
+  LDA byte_RAM_6
+  STA PPUBuffer_301, X
+  INX
+  DEC byte_RAM_2
+  DEC byte_RAM_2
+  BEQ Unpacking_Line_Done
+  DEC byte_RAM_4
+  BNE -
+  INY
+  BNE Load_New_Option_Unpack_Line_Option_Select
