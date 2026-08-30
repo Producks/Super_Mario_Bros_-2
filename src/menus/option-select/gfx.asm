@@ -52,132 +52,189 @@ AttributeOptionMenu:
 ; Turn Base
 MenuFirstOption:
 TradionalTopGFX:
-;  .db #RepeatUnpack | $05, $6E
-;  .db #RegularUnpack | $0F, $4A, $6E, $2D, $2B, $20, $22, $25, $2D, $25, $29, $28, $20, $26, $6E, $4D
-;  .db #RepeatUnpack | $04, $6E
+  RepeatUnpack $05, $6E
+  RegularUnpack +
+    .db $4A, $6E, $2D, $2B, $20, $22, $25, $2D, $25, $29, $28, $20, $26, $6E, $4D
+  +
+  RepeatUnpack $04, $6E
 
 TradionalBottomGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $4B, $6E, $3D, $3B, $30, $32, $35, $3D, $35, $39, $38, $30, $36, $6E, $4C, $6E, $6E, $6E, $6E
-  .db $FF
+  RepeatUnpack $05, $6E
+  RegularUnpack +
+    .db $4B, $6E, $3D, $3B, $30, $32, $35, $3D, $35, $39, $38, $30, $36, $6E, $4C
+  +
+  RepeatUnpack $04, $6E
 
 ; Players take turns;
 TradionalFirstLineGFX:
-  .db $18
-  .db $6E, $0A, $04, $00, $19, $01, $16, $07, $6E, $17, $00, $13, $01, $6E, $17, $08, $16, $05, $07, $0F, $6E, $6E, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $0A, $04, $00, $19, $01, $16, $07, $6E, $17, $00, $13, $01, $6E, $17, $08, $16, $05, $07, $0F
+  +
+  RepeatUnpack $04, $6E
 
 TraditionalThirdLineGFX:
-  .db $18
-  .db $6E, $11, $01, $00, $17, $12, $0E, $6E, $09, $00, $16, $06, $03, $05, $02, $0E, $6E, $15, $16, $6E, $6E, $6E, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $11, $01, $00, $17, $12, $0E, $6E, $09, $00, $16, $06, $03, $05, $02, $0E, $6E, $15, $16
+  +
+  RepeatUnpack $05, $6E
 
 TraditionalFithLineGFX:
-  .db $18
-  .db $6E, $04, $01, $18, $01, $04, $6E, $10, $15, $14, $06, $04, $01, $17, $03, $15, $05, $6E, $07, $09, $00, $06, $07, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $04, $01, $18, $01, $04, $6E, $10, $15, $14, $06, $04, $01, $17, $03, $15, $05, $6E, $07, $09, $00, $06, $07, $6E
+  +
 
 TraditionalSeventhLineGFX:
-  .db $18
-  .db $6E, $17, $12, $01, $6E, $10, $08, $16, $16, $01, $05, $17, $6E, $06, $04, $00, $19, $01, $16, $1E, $6E, $6E, $84, $85
-  .db $FF
+  RegularUnpack +
+    .db $6E, $17, $12, $01, $6E, $10, $08, $16, $16, $01, $05, $17, $6E, $06, $04, $00, $19, $01, $16, $1E, $6E, $6E, $84, $85
+  +
 
 TraditionalEightLineGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $87, $88, $6E, $6E, $9E, $9F, $6E, $94, $95
-  .db $FF
+  RepeatUnpack $0F, $6E
+  RegularUnpack +
+    .db $87, $88, $6E, $6E, $9E, $9F, $6E, $94, $95
+  +
 
 TraditionalNinhtLineGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $82, $83, $6E, $6E, $97, $98, $6E, $6E, $AE, $AF, $6E, $A4, $A5
-  .db $FF
+  RepeatUnpack $0B, $6E
+  RegularUnpack +
+    .db $82, $83, $6E, $6E, $97, $98, $6E, $6E, $AE, $AF, $6E, $A4, $A5
+  +
 
 TraditionalTenthLineGFX:
-  .db $18
-  .db $6E, $6E, $6E, $80, $81, $6E, $6E, $6E, $6E, $6E, $6E, $92, $93, $6E, $6E, $A7, $A8, $6E, $6E, $BE, $BF, $6E, $B4, $B5
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $6E, $80, $81
+  +
+  RepeatUnpack $06, $6E
+  RegularUnpack +
+    .db $92, $93, $6E, $6E, $A7, $A8, $6E, $6E, $BE, $BF, $6E, $B4, $B5
+  +
 
 TraditionalEleventhLineGFX:
-  .db $18
-  .db $6E, $6E, $B0, $90, $91, $B1, $6E, $6E, $6E, $6E, $6E, $A2, $A3, $6E, $6E, $A7, $A8, $6E, $6E, $CA, $CB, $6E, $6E, $86
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $B0, $90, $91, $B1
+  +
+  RepeatUnpack $05, $6E
+  RegularUnpack +
+    .db $A2, $A3, $6E, $6E, $A7, $A8, $6E, $6E, $CA, $CB, $6E, $6E, $86
+  +
 
 TraditionalTwelfthLineGFX:
-  .db $18
-  .db $6E, $6E, $6E, $A0, $A1, $6E, $6E, $6E, $C9, $D9, $6E, $B2, $B3, $6E, $6E, $A7, $A8, $6E, $6E, $DA, $DB, $6E, $6E, $96
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $6E, $A0, $A1, $6E, $6E, $6E, $C9, $D9, $6E, $B2, $B3, $6E, $6E, $A7, $A8, $6E, $6E, $DA, $DB, $6E, $6E, $96
+  +
 
 TraditionalThirteenthLineGFX:
-  .db $18
-  .db $8A, $8B, $8A, $C8, $C8, $8B, $8A, $8B, $8A, $8B, $8A, $8B, $8A, $8B, $8A, $8B, $8A, $8B, $8A, $8B, $8A, $8B, $8A, $8B
-  .db $FF
+  RegularUnpack +
+    .db $8A, $8B, $8A, $C8, $C8
+  +
+  RepeatDoubleUnpack $09, $8B, $8A
+  RegularUnpack +
+    .db $8B
+  +
 
 TraditionalFourteenthLineGFX:
-  .db $18
-  .db $9A, $9B, $9A, $D8, $D8, $9B, $9A, $9B, $9A, $9B, $9A, $9B, $9A, $9B, $9A, $9B, $9A, $9B, $9A, $9B, $9A, $9B, $9A, $9B
-  .db $FF
+  RegularUnpack +
+    .db $9A, $9B, $9A, $D8, $D8
+  +
+  RepeatDoubleUnpack $09, $9B, $9A
+  RegularUnpack +
+    .db $9B
+  +
 
 ; Tag Team
 MenuSecondOption:
 TagTeamTopGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $4A, $6E, $2D, $20, $24, $6E, $2D, $23, $20, $27, $6E, $4D, $6E, $6E, $6E, $6E, $6E, $6E
-  .db $FF
+  RepeatUnpack $06, $6E
+  RegularUnpack +
+    .db $4A, $6E, $2D, $20, $24, $6E, $2D, $23, $20, $27, $6E, $4D
+  +
+  RepeatUnpack $06, $6E
 
 TagTeamBottomGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $4B, $6E, $3D, $30, $34, $6E, $3D, $33, $30, $37, $6E, $4C, $6E, $6E, $6E, $6E, $6E, $6E
-  .db $FF
+  RepeatUnpack $06, $6E
+  RegularUnpack +
+    .db $4B, $6E, $3D, $30, $34, $6E, $3D, $33, $30, $37, $6E, $4C
+  +
+  RepeatUnpack $06, $6E
 
 TagTeamFirstLineGFX:
-  .db $18
-  .db $6E, $80, $90, $CC, $CD, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $80, $91, $C6, $C7, $6E, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $80, $90, $CC, $CD
+  +
+  RepeatUnpack $0C, $6E
+  RegularUnpack +
+    .db $80, $91, $C6, $C7, $6E, $6E, $6E
+  +
 
 TagTeamSecondLineGFX:
-  .db $18
-  .db $6E, $6E, $6E, $DC, $DD, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $D6, $D7, $6E, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $6E, $DC, $DD
+  +
+  RepeatUnpack $0E , $6E
+  RegularUnpack +
+    .db $D6, $D7, $6E, $6E, $6E
+  +
 
 TagTeamThirdLineGFX:
-  .db $18
-  .db $6E, $6E, $6E, $EC, $ED, $6E, $6E, $A2, $6E, $8C, $8D, $8E, $8D, $8F, $9C, $6E, $A2, $6E, $6E, $E6, $E7, $6E, $6E, $6E
-  .db $FF
+  RegularUnpack+
+    .db $6E, $6E, $6E, $EC, $ED, $6E, $6E, $A2, $6E, $8C, $8D, $8E, $8D, $8F, $9C, $6E, $A2, $6E, $6E, $E6, $E7, $6E, $6E, $6E
+  +
 
 TagTeamFourthLineGFX:
-  .db $18
-  .db $6E, $6E, $6E, $FC, $FD, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $F6, $F7, $6E, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $6E, $FC, $FD
+  +
+  RepeatUnpack $0E, $6E
+  RegularUnpack +
+    .db $F6, $F7, $6E, $6E, $6E
+  +
 
 TagTeamFithLineGFX:
-  .db $18
-  .db $6E, $A0, $A1, $A0, $A1, $A0, $A1, $6E, $6E, $A3, $A4, $A5, $A6, $9D, $9E, $6E, $6E, $A0, $A1, $A0, $A1, $A0, $A1, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E
+  +
+  RepeatDoubleUnpack $03, $A0, $A1
+  RegularUnpack +
+    .db $6E, $6E, $A3, $A4, $A5, $A6, $9D, $9E, $6E, $6E
+  +
+  RepeatDoubleUnpack $03, $A0, $A1
+  RegularUnpack +
+    .db $6E
+  +
 
 TagTeamSixthLineGFX:
-  .db $18
-  .db $6E, $B0, $B1, $B0, $B1, $B0, $B1, $6E, $6E, $B3, $B4, $B5, $B6, $AD, $AE, $6E, $6E, $B0, $B1, $B0, $B1, $B0, $B1, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E
+  +
+  RepeatDoubleUnpack $03, $B0, $B1
+  RegularUnpack +
+    .db $6E, $6E, $B3, $B4, $B5, $B6, $AD, $AE, $6E, $6E
+  +
+  RepeatDoubleUnpack $03, $B0, $B1
+  RegularUnpack +
+    .db $6E
+  +
 
 TagTeamEightLineGFX:
-  .db $18
+  RegularUnpack +
   .db $6E, $0A, $16, $01, $07, $07, $6E, $07, $01, $04, $01, $10, $17, $6E, $17, $15, $6E, $07, $09, $00, $06, $6E, $6E, $6E
-  .db $FF
+  +
 
 TagTeamTenthLineGFX:
-  .db $18
-  .db $6E, $06, $04, $00, $19, $01, $16, $07, $6E, $14, $03, $11, $2E, $02, $00, $14, $01, $1E, $6E, $0B, $05, $04, $19, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $06, $04, $00, $19, $01, $16, $07, $6E, $14, $03, $11, $2E, $02, $00, $14, $01, $1E, $6E, $0B, $05, $04, $19, $6E
+  +
 
 TagTeamTwelfthLineGFX:
-  .db $18
-  .db $6E, $17, $12, $01, $6E, $10, $08, $16, $16, $01, $05, $17, $6E, $06, $04, $00, $19, $01, $16, $6E, $10, $00, $05, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $17, $12, $01, $6E, $10, $08, $16, $16, $01, $05, $17, $6E, $06, $04, $00, $19, $01, $16, $6E, $10, $00, $05, $6E
+  +
 
 TagTeamFourteenthLineGFX:
-  .db $18
-  .db $6E, $17, $16, $03, $02, $02, $01, $16, $6E, $00, $6E, $07, $09, $00, $06, $1E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $17, $16, $03, $02, $02, $01, $16, $6E, $00, $6E, $07, $09, $00, $06, $1E
+  +
+  RepeatUnpack $08, $6E
 
 MenuThirdOption:
 SharedTopGFX:
