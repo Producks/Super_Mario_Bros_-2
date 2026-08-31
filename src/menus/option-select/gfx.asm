@@ -238,163 +238,234 @@ TagTeamFourteenthLineGFX:
 
 MenuThirdOption:
 SharedTopGFX:
-  .db $18
-  .db $6E, $6E, $6E, $4A, $EE, $2C, $2E, $20, $2B, $23, $22, $EE, $21, $29, $28, $2D, $2B, $29, $26, $EE, $4D, $6E, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $6E, $4A, $EE, $2C, $2E, $20, $2B, $23, $22, $EE, $21, $29, $28, $2D, $2B, $29, $26, $EE, $4D, $6E, $6E, $6E
+  +
+
 SharedBottomGFX:
-  .db $18
-  .db $6E, $6E, $6E, $4B, $EE, $3C, $3E, $30, $3B, $33, $32, $EE, $31, $39, $38, $3D, $3B, $39, $36, $EE, $4C, $6E, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $6E, $4B, $EE, $3C, $3E, $30, $3B, $33, $32, $EE, $31, $39, $38, $3D, $3B, $39, $36, $EE, $4C, $6E, $6E, $6E
+  +
 
 SharedOneGFX:
-  .db $18
-  .db $6E, $1A, $15, $17, $12, $6E, $06, $04, $00, $19, $01, $16, $07, $6E, $10, $15, $05, $17, $16, $15, $04, $6E, $A6, $A7
-  .db $FF
+  RegularUnpack +
+    .db $6E, $1A, $15, $17, $12, $6E, $06, $04, $00, $19, $01, $16, $07, $6E, $10, $15, $05, $17, $16, $15, $04, $6E, $A6, $A7
+  +
 
 SharedTwoGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $B6, $B7
-  .db $FF
+  RepeatUnpack $16, $6E
+  RegularUnpack +
+    .db $B6, $B7
+  +
 
 SharedThreeGFX:
-  .db $18
-  .db $6E, $17, $12, $01, $6E, $07, $00, $14, $01, $6E, $10, $12, $00, $16, $00, $10, $17, $01, $16, $1E, $6E, $6E, $DE, $DF
-  .db $FF
+  RegularUnpack +
+    .db $6E, $17, $12, $01, $6E, $07, $00, $14, $01, $6E, $10, $12, $00, $16, $00, $10, $17, $01, $16, $1E, $6E, $6E, $DE, $DF
+  +
 
 SharedFourGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $CE, $CF
-  .db $FF
+  RepeatUnpack $16, $6E
+  RegularUnpack +
+    .db $CE, $CF
+  +
 
 SharedFiveGFX:
-  .db $18
-  .db $6E, $0A, $04, $00, $19, $01, $16, $6E, $2D, $3E, $6E, $1B, $03, $16, $01, $10, $17, $03, $15, $05, $07, $1E, $DE, $DF
-  .db $FF
+  RegularUnpack +
+    .db $6E, $0A, $04, $00, $19, $01, $16, $6E, $2D, $3E, $6E, $1B, $03, $16, $01, $10, $17, $03, $15, $05, $07, $1E, $DE, $DF
+  +
 
 SharedSixGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $80, $81, $6E, $6E, $82, $83, $6E, $6E, $6E, $6E, $6E, $6E, $84, $85
-  .db $FF
+  RepeatUnpack $0A, $6E
+  RegularUnpack +
+    .db $80, $81, $6E, $6E, $82, $83
+  +
+  RepeatUnpack $06, $6E
+  RegularUnpack +
+    .db $84, $85
+  +
 
 SharedSevenGFX:
-  .db $18
-  .db $6E, $6E, $AC, $AD, $8E, $8E, $8E, $8F, $6E, $6E, $90, $91, $6E, $6E, $92, $93, $6E, $6E, $86, $87, $6E, $6E, $94, $95
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $AC, $AD, $8E, $8E, $8E, $8F, $6E, $6E, $90, $91, $6E, $6E, $92, $93, $6E, $6E, $86, $87, $6E, $6E, $94, $95
+  +
 
 SharedEightGFX:
-  .db $18
-  .db $6E, $6E, $BC, $BD, $AE, $AF, $BE, $BF, $6E, $6E, $A0, $A1, $6E, $6E, $A2, $A3, $6E, $6E, $96, $97, $6E, $6E, $A4, $A5
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $BC, $BD, $AE, $AF, $BE, $BF, $6E, $6E, $A0, $A1, $6E, $6E, $A2, $A3, $6E, $6E, $96, $97, $6E, $6E, $A4, $A5
+  +
 
 SharedNineGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $B0, $B0, $6E, $6E, $B0, $B0, $6E, $6E, $B0, $B0, $6E, $6E, $B0, $B0
-  .db $FF
+  RepeatUnpack $0A, $6E
+  RegularUnpack +
+    .db $B0, $B0, $6E, $6E, $B0, $B0, $6E, $6E, $B0, $B0, $6E, $6E, $B0, $B0
+  +
 
 SharedTenGFX:
-  .db $18
-  .db $6E, $0A, $04, $00, $19, $01, $16, $6E, $3D, $3E, $6E, $0C, $1F, $1A, $1E, $6E, $6E, $6E, $6E, $6E, $8A, $8B, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $0A, $04, $00, $19, $01, $16, $6E, $3D, $3E, $6E, $0C, $1F, $1A, $1E
+  +
+  RepeatUnpack $05, $6E
+  RegularUnpack +
+    .db $8A, $8B, $6E, $6E
+  +
 
 SharedElevenGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $80, $81, $6E, $6E, $6E, $6E, $88, $89, $6E, $6E, $9A, $9B, $6E, $6E
-  .db $FF
+  RepeatUnpack $0A, $6E
+  RegularUnpack +
+    .db $80, $81
+  +
+  RepeatUnpack $04, $6E
+  RegularUnpack +
+    .db $88, $89, $6E, $6E, $9A, $9B, $6E, $6E
+  +
 
 SharedTwelveGFX:
-  .db $18
-  .db $6E, $6E, $8C, $8D, $8E, $8E, $8E, $8F, $6E, $6E, $90, $91, $6E, $E8, $E9, $6E, $98, $99, $6E, $6E, $AA, $AB, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $8C, $8D, $8E, $8E, $8E, $8F, $6E, $6E, $90, $91, $6E, $E8, $E9, $6E, $98, $99, $6E, $6E, $AA, $AB, $6E, $6E
+  +
 
 SharedThirteenGFX:
-  .db $18
-  .db $6E, $6E, $9C, $9D, $AE, $AF, $9E, $9F, $6E, $6E, $B1, $B2, $6E, $F8, $F9, $6E, $A8, $A9, $6E, $6E, $BA, $BB, $C8, $C8
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $9C, $9D, $AE, $AF, $9E, $9F, $6E, $6E, $B1, $B2, $6E, $F8, $F9, $6E, $A8, $A9, $6E, $6E, $BA, $BB, $C8, $C8
+  +
 
 SharedFourteenGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $B3, $B4, $6E, $6E, $C9, $D9, $B8, $B9, $C9, $D9, $6E, $6E, $D8, $D8
-  .db $FF
+  RepeatUnpack $0A, $6E
+  RegularUnpack +
+    .db $B3, $B4, $6E, $6E, $C9, $D9, $B8, $B9, $C9, $D9, $6E, $6E, $D8, $D8
+  +
 
 ; Chaos Swap
 MenuFourthOption:
 ChaosTopGFX:
-;  .db #RegularUnpack | $18
-;  .db $6E, $6E, $6E, $6E, $6E, $4A, $6E, $21, $2E, $20, $29, $2C, $EE, $2C, $2F, $20, $2A, $6E, $4D, $6E, $6E, $6E, $6E, $6E
+  RepeatUnpack $05, $6E
+  RegularUnpack +
+    .db $4A, $6E, $21, $2E, $20, $29, $2C, $EE, $2C, $2F, $20, $2A, $6E, $4D
+  +
+  RepeatUnpack $05, $6E
 
 ChaosBottomGFX:
-;  .db #RegularUnpack | $18
-;  .db $6E, $6E, $6E, $6E, $6E, $4B, $6E, $31, $3E, $30, $39, $3C, $EE, $3C, $3F, $30, $3A, $6E, $4C, $6E, $6E, $6E, $6E, $6E
+  RepeatUnpack $05, $6E
+  RegularUnpack +
+    .db $4B, $6E, $31, $3E, $30, $39, $3C, $EE, $3C, $3F, $30, $3A, $6E, $4C
+  +
+  RepeatUnpack $05, $6E
 
 ChaosOneGFX:
-  .db $18
-  .db $6E, $1C, $09, $00, $06, $07, $6E, $06, $04, $00, $19, $01, $16, $07, $6E, $6E, $6E, $85, $86, $6E, $83, $93, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $1C, $09, $00, $06, $07, $6E, $06, $04, $00, $19, $01, $16, $07, $6E, $6E, $6E, $85, $86, $6E, $83, $93, $6E, $6E
+  +
 
 ChaosTwoGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $95, $96, $6E, $6E, $6E, $6E, $6E
-  .db $FF
+  RepeatUnpack $11, $6E
+  RegularUnpack +
+    .db $95, $96
+  +
+  RepeatUnpack $05, $6E
 
 ChaosThreeGFX:
-  .db $18
-  .db $6E, $00, $17, $6E, $16, $00, $05, $11, $15, $14, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $A5, $A6, $6E, $6E, $6E, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $00, $17, $6E, $16, $00, $05, $11, $15, $14
+  +
+  RepeatUnpack $07, $6E
+  RegularUnpack +
+    .db $A5, $A6
+  +
+  RepeatUnpack $05, $6E
 
 ChaosFourGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $C0, $C1, $C2, $C3, $6E, $6E, $6E, $6E, $6E, $C0, $C2, $C3
-  .db $FF
+  RepeatUnpack $0C, $6E
+  RegularUnpack +
+    .db $C0, $C1, $C2, $C3
+  +
+  RepeatUnpack $05, $6E
+  RegularUnpack +
+    .db $C0, $C2, $C3
+  +
 
 ChaosFiveGFX:
-  .db $18
-  .db $6E, $03, $05, $17, $01, $16, $18, $00, $04, $07, $1E, $6E, $D0, $D1, $D2, $D3, $C8, $C8, $C8, $C8, $C8, $D0, $D2, $D3
-  .db $FF
+  RegularUnpack +
+    .db $6E, $03, $05, $17, $01, $16, $18, $00, $04, $07, $1E, $6E, $D0, $D1, $D2, $D3
+  +
+  RepeatUnpack $05, $C8
+  RegularUnpack +
+    .db $D0, $D2, $D3
+  +
 
 ChaosSixGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $82, $6E, $6E, $6E, $6E, $6E
-  .db $FF
+  RepeatUnpack $12, $6E
+  RegularUnpack +
+    .db $82
+  +
+  RepeatUnpack $05, $6E
 
 ChaosSevenGFX:
-  .db $18
-  .db $6E, $0D, $15, $6E, $09, $00, $16, $05, $03, $05, $02, $07, $1E, $6E, $6E, $6E, $A0, $A1, $6E, $C4, $C5, $6E, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $0D, $15, $6E, $09, $00, $16, $05, $03, $05, $02, $07, $1E, $6E, $6E, $6E, $A0, $A1, $6E, $C4, $C5
+  +
+  RepeatUnpack $03, $6E
 
 ChaosEightGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $B0, $B1, $6E, $D4, $D5, $6E, $6E, $6E
-  .db $FF
+  RepeatUnpack $10, $6E
+  RegularUnpack +
+    .db $B0, $B1, $6E, $D4, $D5
+  +
+  RepeatUnpack $03, $6E
 
 ChaosNineGFX:
-  .db $18
-  .db $6E, $1D, $15, $15, $11, $6E, $04, $08, $10, $13, $84, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $82, $6E, $6E, $6E, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $1D, $15, $15, $11, $6E, $04, $08, $10, $13, $84
+  +
+  RepeatUnpack $07, $6E
+  RegularUnpack +
+    .db $82
+  +
+  RepeatUnpack $05, $6E
 
 ChaosTenGFX:
-  .db $18
-  .db $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $6E, $87, $88, $6E, $83, $94, $6E, $6E
-  .db $FF
+  RepeatUnpack $11, $6E
+  RegularUnpack +
+    .db $87, $88
+    .db $6E, $83, $94, $6E, $6E
+  +
 
 ChaosElevenGFX:
-  .db $18
-  .db $6E, $6E, $8A, $8B, $B5, $6E, $6E, $8C, $8D, $8E, $8F, $6E, $6E, $6E, $6E, $6E, $6E, $97, $98, $6E, $6E, $6E, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $6E, $8A, $8B, $B5, $6E, $6E, $8C, $8D, $8E, $8F
+  +
+  RepeatUnpack  $06, $6E
+  RegularUnpack +
+    .db $97, $98
+  +
+  RepeatUnpack  $05, $6E
 
 ChaosTwelveGFX:
-  .db $18
-  .db $6E, $99, $9A, $9B, $B6, $6E, $6E, $9C, $9D, $9E, $9F, $6E, $6E, $6E, $6E, $6E, $6E, $A7, $A8, $6E, $6E, $6E, $6E, $6E
-  .db $FF
+  RegularUnpack +
+    .db $6E, $99, $9A, $9B, $B6, $6E, $6E, $9C, $9D, $9E, $9F
+  +
+  RepeatUnpack $06, $6E
+  RegularUnpack +
+    .db $A7, $A8
+  +
+  RepeatUnpack $05, $6E
 
 ChaosThirteenGFX:
-  .db $18
-  .db $6E, $A9, $AA, $AB, $B7, $6E, $6E, $AC, $AD, $AE, $AF, $6E, $C0, $C1, $C2, $C3, $6E, $6E, $6E, $6E, $6E, $C0, $C2, $C3
-  .db $FF
+  RegularUnpack +
+    .db $6E, $A9, $AA, $AB, $B7, $6E, $6E, $AC, $AD, $AE, $AF, $6E, $C0, $C1, $C2, $C3
+  +
+  RepeatUnpack $05, $6E
+  RegularUnpack +
+    .db $C0, $C2, $C3
+  +
 
 ChaosFourteenGFX:
-  .db $18
-  .db $6E, $B9, $BA, $BB, $B8, $6E, $6E, $BC, $BD, $BE, $BF, $6E, $D0, $D1, $D2, $D3, $C8, $C8, $C8, $C8, $C8, $D0, $D2, $D3
-  .db $FF
+  RegularUnpack +
+    .db $6E, $B9, $BA, $BB, $B8, $6E, $6E, $BC, $BD, $BE, $BF, $6E, $D0, $D1, $D2, $D3
+  +
+  RepeatUnpack $05, $C8
+  RegularUnpack +
+    .db $D0, $D2, $D3
+  +
 
 OnePlayerTopGFX:
   RepeatUnpack $05, $6E
