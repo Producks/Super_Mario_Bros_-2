@@ -71,11 +71,8 @@ InitContextWindow_OptionSelect:
 
 ; Dump all the content in memory so I can use it easily later on
 LoadNew_PTR_OptionSelect:
-  LDA CursorLocation
-  ASL A
-  ASL A
-  ASL A
-  ASL A
+  LDY CursorLocation
+  LDA PointerTableOptionSelectStartingIndex, Y
   TAY
   LDX #$00
 -

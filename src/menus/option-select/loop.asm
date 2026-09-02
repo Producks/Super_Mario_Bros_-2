@@ -43,6 +43,11 @@ UpdateCursorModeSelect:
   LDY OptionSelectModeIndex
   AND AND_TableOptionSelect, Y
   ORA OR_TableOptionSelect, Y
+  CMP #$07 ; Check for roll over since there only 3 menu...
+  BNE +
+  LDA PrevCursorLocation
+  EOR #$02 ; Flip the bit
++
   STA CursorLocation
   JSR TransitionContextWindowMode
   JMP FrameUpdateModeSelectLoop

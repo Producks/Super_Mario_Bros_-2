@@ -861,13 +861,18 @@ ChaosSwapPalette:
 
 EmptyLinesOptionSelect:
   RepeatUnpack $18, $6E
-;  .db #RepeatUnpack | $18, $6E
 
 TileMapFirstOptionSelect:
   .db $20, $20, $20, $20, $21, $21, $21, $21, $21, $21, $21, $21, $22, $22, $22, $22
 
 TileMapSecondOptionselect:
   .db $64, $84, $C4, $E4, $04, $24, $44, $64, $84, $A4, $C4, $E4, $04, $24, $44, $64
+
+PointerTableOptionSelectStartingIndex:
+  .db $00, $10
+  .db $20, $30
+  .db $40, $50, $60, $FF ; $FF is a dead byte but I end up saving space for not holding 32 values
+  .db $70, $80, $90, $A0
 
 OptionSelectLoTable:
 ; One Player
@@ -978,24 +983,6 @@ OptionSelectLoTable:
   .db <EmptyLinesOptionSelect
   .db <TagTeamFourteenthLineGFX
 
-; Shared control One
-  .db <SharedTopGFX
-  .db <SharedBottomGFX
-  .db <SharedOneGFX
-  .db <SharedTwoGFX
-  .db <SharedThreeGFX
-  .db <SharedFourGFX
-  .db <SharedFiveGFX
-  .db <SharedSixGFX
-  .db <SharedSevenGFX
-  .db <SharedEightGFX
-  .db <SharedNineGFX
-  .db <SharedTenGFX
-  .db <SharedElevenGFX
-  .db <SharedTwelveGFX
-  .db <SharedThirteenGFX
-  .db <SharedFourteenGFX
-
 ; Chaos Swap One
   .db <ChaosTopGFX
   .db <ChaosBottomGFX
@@ -1013,6 +1000,24 @@ OptionSelectLoTable:
   .db <ChaosTwelveGFX
   .db <ChaosThirteenGFX
   .db <ChaosFourteenGFX
+
+;; Shared control One
+;  .db <SharedTopGFX
+;  .db <SharedBottomGFX
+;  .db <SharedOneGFX
+;  .db <SharedTwoGFX
+;  .db <SharedThreeGFX
+;  .db <SharedFourGFX
+;  .db <SharedFiveGFX
+;  .db <SharedSixGFX
+;  .db <SharedSevenGFX
+;  .db <SharedEightGFX
+;  .db <SharedNineGFX
+;  .db <SharedTenGFX
+;  .db <SharedElevenGFX
+;  .db <SharedTwelveGFX
+;  .db <SharedThirteenGFX
+;  .db <SharedFourteenGFX
 
 ; Traditional Section Two
   .db <TradionalTopGFX
@@ -1196,24 +1201,6 @@ OptionSelectHiTable:
   .db >EmptyLinesOptionSelect
   .db >TagTeamFourteenthLineGFX
 
-; Shared control One
-  .db >SharedTopGFX
-  .db >SharedBottomGFX
-  .db >SharedOneGFX
-  .db >SharedTwoGFX
-  .db >SharedThreeGFX
-  .db >SharedFourGFX
-  .db >SharedFiveGFX
-  .db >SharedSixGFX
-  .db >SharedSevenGFX
-  .db >SharedEightGFX
-  .db >SharedNineGFX
-  .db >SharedTenGFX
-  .db >SharedElevenGFX
-  .db >SharedTwelveGFX
-  .db >SharedThirteenGFX
-  .db >SharedFourteenGFX
-
 ; Chaos Swap One
   .db >ChaosTopGFX
   .db >ChaosBottomGFX
@@ -1231,6 +1218,25 @@ OptionSelectHiTable:
   .db >ChaosTwelveGFX
   .db >ChaosThirteenGFX
   .db >ChaosFourteenGFX
+
+;; Shared control One
+;  .db >SharedTopGFX
+;  .db >SharedBottomGFX
+;  .db >SharedOneGFX
+;  .db >SharedTwoGFX
+;  .db >SharedThreeGFX
+;  .db >SharedFourGFX
+;  .db >SharedFiveGFX
+;  .db >SharedSixGFX
+;  .db >SharedSevenGFX
+;  .db >SharedEightGFX
+;  .db >SharedNineGFX
+;  .db >SharedTenGFX
+;  .db >SharedElevenGFX
+;  .db >SharedTwelveGFX
+;  .db >SharedThirteenGFX
+;  .db >SharedFourteenGFX
+
 
 ; Traditional Section Two
   .db >TradionalTopGFX
@@ -1304,9 +1310,8 @@ OptionSelectHiTable:
   .db >ChaosThirteenGFX
   .db >ChaosFourteenGFX
 
-
 CHRBankModeSelect:
   .db CHR_Mode_OnePlayer, CHR_Mode_TwoPlayer
   .db CHR_Mode_OnePlayer, CHR_Mode_TwoPlayer
-  .db CHR_Mode_Traditional, CHR_Mode_TagTeam, CHR_Mode_SharedControl, CHR_Mode_Chaos
+  .db CHR_Mode_Traditional, CHR_Mode_TagTeam, CHR_Mode_Chaos, CHR_Mode_SharedControl
   .db CHR_Mode_Traditional, CHR_Mode_TagTeam, CHR_Mode_SharedControl, CHR_Mode_Chaos
