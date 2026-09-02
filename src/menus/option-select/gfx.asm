@@ -5,8 +5,8 @@
 OptionMenuBackgroundPalettes:
 	.db $0F, $13, $02, $30
 	.db $0F, $30, $26, $0F
-	.db $0F, $35, $25, $06 ; Border
-	.db $0F, $35, $25, $0F ; Text part of the screen
+	.db $0F, $35, $15, $06 ; Border
+	.db $0F, $35, $15, $0F ; Text part of the screen
 
 OptionMenuSpritePalettes:
 	.db $0F, $30, $16, $02
@@ -838,25 +838,30 @@ ClassicLineSandGFX:
 
 ContextWindowModePalette:
 OnePlayerPalette:
-  .db $0F, $35, $25, $06, $0F, $35, $25, $0F
+  .db $0F, $35, $15, $06, $0F, $35, $15, $0F
 TwoPlayerPalette:
   .db $0F, $31, $21, $01, $0F, $31, $21, $0F
-
-TraditionalPalette:
-TagTeamPalette:
+ClassicPalette:
   .db $0F, $35, $25, $06, $0F, $35, $25, $0F
+SpecialPalette:
   .db $0F, $31, $21, $01, $0F, $31, $21, $0F
+TraditionalOnePalette:
+  .db $0F, $39, $29, $09, $0F, $39, $29, $0F
+TagTeamOnePalette:
+  .db $0F, $39, $29, $09, $0F, $39, $29, $0F
+ChaosOnePalette:
+  .db $0F, $39, $29, $09, $0F, $39, $29, $0F
 
-SharedControlPalette:
-  .db $0F, $39, $29, $09, $0F, $39, $29, $0F
-  .db $0F, $39, $29, $09, $0F, $39, $29, $0F
-  .db $0F, $39, $29, $09, $0F, $39, $29, $0F
-  .db $0F, $39, $29, $09, $0F, $39, $29, $0F
+; padding...
+  .db $0F, $3D, $2D, $00, $0F, $3D, $2D, $0F
 
-ChaosSwapPalette:
+TraditionaTwolPalette:
+  .db $0F, $39, $29, $09, $0F, $39, $29, $0F
+TagTeamTwoPalette:
   .db $0F, $3D, $2D, $00, $0F, $3D, $2D, $0F
+SharedControlTwoPalette:
   .db $0F, $3D, $2D, $00, $0F, $3D, $2D, $0F
-  .db $0F, $3D, $2D, $00, $0F, $3D, $2D, $0F
+ChaosSwapTwoPalette:
   .db $0F, $3D, $2D, $00, $0F, $3D, $2D, $0F
 
 EmptyLinesOptionSelect:
