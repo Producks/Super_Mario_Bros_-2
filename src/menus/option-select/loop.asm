@@ -1,5 +1,10 @@
 OptionSelectLoop:
   LDA Player1JoypadPress
+  AND #ControllerInput_B
+  BEQ +
+  JMP RewindOptionSelect 
++
+  LDA Player1JoypadPress
   AND #ControllerInput_Start | #ControllerInput_A ;  A or Start will select the option the user want
   BEQ ReadInputOptionMenuCheckDirection
   LDY OptionSelectModeIndex
@@ -109,16 +114,17 @@ TransitionContextWindowMode:
   JSR ColorFade
   RTS
 
-PlayerModeConfirm:
-  LDA CursorLocation
-  CMP #$03
-  BNE UpdateModeMenu
-  INC OptionSelectModeIndex
-  BEQ UpdateModeMenu
-
 WorldModeConfirm:
   LDA CursorLocation
   STA SpecialWorld
+  LDY PlayerCount
+  BEQ UpdateModeMenu
+  INC OptionSelectModeIndex
+  BNE UpdateModeMenu
+
+PlayerModeConfirm:
+  LDA CursorLocation
+  STA PlayerCount
 
 UpdateModeMenu:
   STA PrevCursorLocation
@@ -129,6 +135,24 @@ UpdateModeMenu:
   JSR TransitionContextWindowMode
   JMP FrameUpdateModeSelectLoop
 
+RewindOptionSelect:
+  LDY OptionSelectModeIndex
+  BEQ +
+  LDA Rewind_TableOptionSelect, Y
+  STA OptionSelectModeIndex
+  TAY
+  LDA CursorLocation
+  STA PrevCursorLocation
+  LDA OR_TableOptionSelect, Y
+  STA CursorLocation
+  JSR TransitionContextWindowMode
++
+  JMP FrameUpdateModeSelectLoop
+
+
+Rewind_TableOptionSelect:
+  .db $00, $00, $01, $01
+
 AND_TableOptionSelect:
   .db $01, $03, $07, $0B
 
@@ -136,12 +160,12 @@ OR_TableOptionSelect:
   .db $00, $02, $04, $08
 
 OptionSelectConfirmLo:
-  .db #<WorldModeConfirm
   .db #<PlayerModeConfirm
+  .db #<WorldModeConfirm
   .db #<OptionSelectQuit
   .db #<OptionSelectQuit
 OptionSelectConfirmHi:
-  .db #>WorldModeConfirm
   .db #>PlayerModeConfirm
+  .db #>WorldModeConfirm
   .db #>OptionSelectQuit
   .db #>OptionSelectQuit

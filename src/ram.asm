@@ -2264,8 +2264,10 @@ ObjectCollisionHitboxHeight_RAM = $7E3C
 ObjectCollisionHitboxWidth_RAM = $7E28
 
 ; ~~~~~~~~~~~~~~~
-; $7E50-7E7D Free
+; $7E50-7E7C Free
 ; ~~~~~~~~~~~~~~~
+
+PlayerCount = $7E7D ; 1 byte
 
 SpecialWorld = $7E7E ; 1 byte
 

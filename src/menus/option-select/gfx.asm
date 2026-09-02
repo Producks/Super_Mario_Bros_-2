@@ -68,13 +68,13 @@ TradionalBottomGFX:
 ; Players take turns;
 TradionalFirstLineGFX:
   RegularUnpack +
-    .db $6E, $0A, $04, $00, $19, $01, $16, $07, $6E, $17, $00, $13, $01, $6E, $17, $08, $16, $05, $07, $0F
+    .db $6E, $0A, $04, $00, $19, $01, $16, $07, $6E, $17, $00, $13, $01, $6E, $17, $08, $16, $05, $07, $1E
   +
   RepeatUnpack $04, $6E
 
 TraditionalThirdLineGFX:
   RegularUnpack +
-    .db $6E, $11, $01, $00, $17, $12, $0E, $6E, $09, $00, $16, $06, $03, $05, $02, $0E, $6E, $15, $16
+    .db $6E, $1B, $01, $00, $17, $12, $0E, $6E, $09, $00, $16, $06, $03, $05, $02, $0E, $6E, $15, $16
   +
   RepeatUnpack $05, $6E
 
@@ -157,6 +157,15 @@ TagTeamBottomGFX:
   +
   RepeatUnpack $06, $6E
 
+TagTeamFirstLinePlayerOneGFX:
+  RegularUnpack +
+    .db $6E, $BC, $90, $CC, $CD
+  +
+  RepeatUnpack $0C, $6E
+  RegularUnpack +
+    .db $BC, $91, $C6, $C7, $6E, $6E, $6E
+  +
+
 TagTeamFirstLineGFX:
   RegularUnpack +
     .db $6E, $80, $90, $CC, $CD
@@ -222,7 +231,7 @@ TagTeamEightLineGFX:
 
 TagTeamTenthLineGFX:
   RegularUnpack +
-    .db $6E, $06, $04, $00, $19, $01, $16, $07, $6E, $14, $03, $11, $2E, $02, $00, $14, $01, $1E, $6E, $0B, $05, $04, $19, $6E
+    .db $6E, $06, $04, $00, $19, $01, $16, $07, $6E, $14, $03, $11, $4F, $02, $00, $14, $01, $1E, $6E, $0B, $05, $04, $19, $6E
   +
 
 TagTeamTwelfthLineGFX:
@@ -271,7 +280,7 @@ SharedFourGFX:
 
 SharedFiveGFX:
   RegularUnpack +
-    .db $6E, $0A, $04, $00, $19, $01, $16, $6E, $2D, $3E, $6E, $1B, $03, $16, $01, $10, $17, $03, $15, $05, $07, $1E, $DE, $DF
+    .db $6E, $0A, $04, $00, $19, $01, $16, $6E, $4E, $5F, $6E, $1B, $03, $16, $01, $10, $17, $03, $15, $05, $07, $1E, $DE, $DF
   +
 
 SharedSixGFX:
@@ -302,7 +311,7 @@ SharedNineGFX:
 
 SharedTenGFX:
   RegularUnpack +
-    .db $6E, $0A, $04, $00, $19, $01, $16, $6E, $3D, $3E, $6E, $0C, $1F, $1A, $1E
+    .db $6E, $0A, $04, $00, $19, $01, $16, $6E, $5E, $5F, $6E, $0C, $B5, $1A, $1E
   +
   RepeatUnpack $05, $6E
   RegularUnpack +
@@ -401,7 +410,7 @@ ChaosSixGFX:
 
 ChaosSevenGFX:
   RegularUnpack +
-    .db $6E, $0D, $15, $6E, $09, $00, $16, $05, $03, $05, $02, $07, $1E, $6E, $6E, $6E, $A0, $A1, $6E, $C4, $C5
+    .db $6E, $A4, $15, $6E, $09, $00, $16, $05, $03, $05, $02, $07, $1E, $6E, $6E, $6E, $A0, $A1, $6E, $C4, $C5
   +
   RepeatUnpack $03, $6E
 
@@ -933,7 +942,7 @@ OptionSelectLoTable:
   .db <TwoPlayerThirteenGFX
   .db <TwoPlayerBottomLinesGFX
 
-; Traditional Section
+; Traditional Section One
   .db <TradionalTopGFX
   .db <TradionalBottomGFX
   .db <TradionalFirstLineGFX
@@ -951,10 +960,10 @@ OptionSelectLoTable:
   .db <TraditionalThirteenthLineGFX
   .db <TraditionalFourteenthLineGFX
 
-; Tag Team
+; Tag Team One
   .db <TagTeamTopGFX
   .db <TagTeamBottomGFX
-  .db <TagTeamFirstLineGFX
+  .db <TagTeamFirstLinePlayerOneGFX
   .db <TagTeamSecondLineGFX
   .db <TagTeamThirdLineGFX
   .db <TagTeamFourthLineGFX
@@ -969,7 +978,7 @@ OptionSelectLoTable:
   .db <EmptyLinesOptionSelect
   .db <TagTeamFourteenthLineGFX
 
-; Shared control
+; Shared control One
   .db <SharedTopGFX
   .db <SharedBottomGFX
   .db <SharedOneGFX
@@ -987,7 +996,7 @@ OptionSelectLoTable:
   .db <SharedThirteenGFX
   .db <SharedFourteenGFX
 
-; Chaos Swap
+; Chaos Swap One
   .db <ChaosTopGFX
   .db <ChaosBottomGFX
   .db <ChaosOneGFX
@@ -1005,7 +1014,7 @@ OptionSelectLoTable:
   .db <ChaosThirteenGFX
   .db <ChaosFourteenGFX
 
-; Traditional Section
+; Traditional Section Two
   .db <TradionalTopGFX
   .db <TradionalBottomGFX
   .db <TradionalFirstLineGFX
@@ -1023,7 +1032,7 @@ OptionSelectLoTable:
   .db <TraditionalThirteenthLineGFX
   .db <TraditionalFourteenthLineGFX
 
-; Tag Team
+; Tag Team Two
   .db <TagTeamTopGFX
   .db <TagTeamBottomGFX
   .db <TagTeamFirstLineGFX
@@ -1041,7 +1050,7 @@ OptionSelectLoTable:
   .db <EmptyLinesOptionSelect
   .db <TagTeamFourteenthLineGFX
 
-; Shared control
+; Shared control Two
   .db <SharedTopGFX
   .db <SharedBottomGFX
   .db <SharedOneGFX
@@ -1059,7 +1068,7 @@ OptionSelectLoTable:
   .db <SharedThirteenGFX
   .db <SharedFourteenGFX
 
-; Chaos Swap
+; Chaos Swap Two
   .db <ChaosTopGFX
   .db <ChaosBottomGFX
   .db <ChaosOneGFX
@@ -1151,7 +1160,7 @@ OptionSelectHiTable:
   .db >TwoPlayerThirteenGFX
   .db >TwoPlayerBottomLinesGFX
 
-; Traditional Section
+; Traditional Section One
   .db >TradionalTopGFX
   .db >TradionalBottomGFX
   .db >TradionalFirstLineGFX
@@ -1169,10 +1178,10 @@ OptionSelectHiTable:
   .db >TraditionalThirteenthLineGFX
   .db >TraditionalFourteenthLineGFX
 
-; Tag Team
+; Tag Team One
   .db >TagTeamTopGFX
   .db >TagTeamBottomGFX
-  .db >TagTeamFirstLineGFX
+  .db >TagTeamFirstLinePlayerOneGFX
   .db >TagTeamSecondLineGFX
   .db >TagTeamThirdLineGFX
   .db >TagTeamFourthLineGFX
@@ -1187,7 +1196,7 @@ OptionSelectHiTable:
   .db >EmptyLinesOptionSelect
   .db >TagTeamFourteenthLineGFX
 
-; Shared control
+; Shared control One
   .db >SharedTopGFX
   .db >SharedBottomGFX
   .db >SharedOneGFX
@@ -1205,7 +1214,7 @@ OptionSelectHiTable:
   .db >SharedThirteenGFX
   .db >SharedFourteenGFX
 
-; Chaos Swap
+; Chaos Swap One
   .db >ChaosTopGFX
   .db >ChaosBottomGFX
   .db >ChaosOneGFX
@@ -1223,7 +1232,7 @@ OptionSelectHiTable:
   .db >ChaosThirteenGFX
   .db >ChaosFourteenGFX
 
-; Traditional Section
+; Traditional Section Two
   .db >TradionalTopGFX
   .db >TradionalBottomGFX
   .db >TradionalFirstLineGFX
@@ -1241,7 +1250,7 @@ OptionSelectHiTable:
   .db >TraditionalThirteenthLineGFX
   .db >TraditionalFourteenthLineGFX
 
-; Tag Team
+; Tag Team Two
   .db >TagTeamTopGFX
   .db >TagTeamBottomGFX
   .db >TagTeamFirstLineGFX
@@ -1259,7 +1268,7 @@ OptionSelectHiTable:
   .db >EmptyLinesOptionSelect
   .db >TagTeamFourteenthLineGFX
 
-; Shared control
+; Shared control Two
   .db >SharedTopGFX
   .db >SharedBottomGFX
   .db >SharedOneGFX
@@ -1277,7 +1286,7 @@ OptionSelectHiTable:
   .db >SharedThirteenGFX
   .db >SharedFourteenGFX
 
-; Chaos Swap
+; Chaos Swap Two
   .db >ChaosTopGFX
   .db >ChaosBottomGFX
   .db >ChaosOneGFX
