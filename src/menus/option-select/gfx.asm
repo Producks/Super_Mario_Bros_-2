@@ -245,6 +245,18 @@ TagTeamFourteenthLineGFX:
   +
   RepeatUnpack $08, $6E
 
+TagTeamBottomLinePOne:
+  RepeatUnpack $18, $F3
+
+TagTeamBottomPElevenLinePOne:
+  RepeatUnpack $18, $E3
+
+TagTeamCharacterLinePOne:
+  RegularUnpack +
+  .db $6E, $10, $12, $00, $16, $00, $10, $17, $01, $16, $07, $6E, $14, $03, $11, $4F, $02, $00, $14, $01, $1E
+  +
+  RepeatUnpack $03, $6E
+
 MenuThirdOption:
 SharedTopGFX:
   RegularUnpack +
@@ -365,6 +377,13 @@ ChaosOneGFX:
     .db $6E, $1C, $09, $00, $06, $07, $6E, $06, $04, $00, $19, $01, $16, $07, $6E, $6E, $6E, $85, $86, $6E, $83, $93, $6E, $6E
   +
 
+ChaosPOneOneGFX:
+  RegularUnpack +
+    .db $6E, $1C, $09, $00, $06, $07, $6E
+    .db $10, $12, $00, $16, $00, $10, $17, $01, $16, $07
+    .db $85, $86, $6E, $B4, $93, $6E, $6E
+  +
+
 ChaosTwoGFX:
   RepeatUnpack $11, $6E
   RegularUnpack +
@@ -436,6 +455,13 @@ ChaosTenGFX:
   RegularUnpack +
     .db $87, $88
     .db $6E, $83, $94, $6E, $6E
+  +
+
+ChaosTenPOneGFX:
+  RepeatUnpack $11, $6E
+  RegularUnpack +
+    .db $87, $88
+    .db $6E, $B4, $94, $6E, $6E
   +
 
 ChaosElevenGFX:
@@ -834,23 +860,151 @@ ClassicLineBottomGFX:
 
 ClassicLineSandGFX:
   RepeatDoubleUnpack $0C, $BE, $BF
+
+TraditionalPlayerOneDescLine:
+  RegularUnpack +
+    .db $6E
+    .db $0D, $12, $01, $6E
+    .db $15, $16, $03, $02, $03, $05, $00, $04
+    .db $6E
+    .db $02, $00, $14, $01
+    .db $6E
+    .db $14, $15, $11, $01
+    .db $6E
+  +
+
+TraditionalPOneStarTop:
+  RepeatUnpack $04, $6E
+  RegularUnpack +
+    .db $8E
+    .db $6E, $6E
+    .db $8E
+    .db $6E, $6E, $6E
+    .db $8F
+    .db $6E, $6E
+    .db $8E
+    .db $6E, $6E
+    .db $8F
+    .db $6E
+    .db $8E
+    .db $6E
+    .db $6E
+    .db $8F
+    .db $6E
+  +
+
+TraditionalPOneStarMidle:
+  RegularUnpack +
+    .db $6E
+    .db $8E
+    .db $6E
+    .db $8F
+    .db $6E
+    .db $8E
+    .db $6E, $6E, $6E
+    .db $8F
+    .db $6E, $6E
+    .db $8E
+    .db $6E, $6E, $6E
+    .db $8E
+    .db $6E, $6E, $6E
+    .db $8E
+    .db $6E
+    .db $8E
+    .db $6E
+  +
+
+TraditionalPOneStarBottom:
+  RegularUnpack +
+    .db $8E
+    .db $6E
+    .db $8F
+  +
+  RepeatUnpack $05, $6E
+  RegularUnpack +
+    .db $8E
+  +
+  RepeatUnpack $06, $6E
+  RegularUnpack +
+    .db $8E, $6E, $8F
+  +
+  RepeatUnpack $06, $6E
+
+TraditionalPlayerOneBottom:
+  RepeatDoubleUnpack $03, $AA, $AB
+  RepeatDoubleUnpack $02, $E4, $F4
+  RepeatDoubleUnpack $07, $AA, $AB
+
+TraditionalPlayerOneTopPyramid:
+  RegularUnpack +
+    .db $6E, $6E, $89, $BA
+  +
+  RepeatUnpack $0D, $6E
+  RegularUnpack +
+    .db $B6, $B7
+  +
+  RepeatUnpack $05, $6E
+
+TraditionalPlayerOnePartOnePyramid:
+  RegularUnpack +
+    .db $6E, $6E, $99, $BB
+  +
+  RepeatUnpack $0C, $6E
+  RegularUnpack +
+    .db $B6, $B8, $7E, $B7
+  +
+  RepeatUnpack $04, $6E
+
+TraditionalPlayerOnePartTwoPyramid:
+  RegularUnpack +
+    .db $6E, $6E, $92, $93
+  +
+  RepeatUnpack $0B, $6E
+  RegularUnpack +
+    .db $B6, $B8, $B8, $7E, $7E, $B7
+  +
+  RepeatUnpack $03, $6E
+
+TraditionalPlayerOnePartThreePyramid
+  RegularUnpack +
+    .db $6E, $6E, $A2, $A3, $6E, $6E, $6E, $CC, $CD, $6E, $6E, $6E, $6E
+    .db $B6
+    .db $A9
+    .db $B8, $B8, $B8
+    .db $7E, $7E, $7E
+    .db $B7
+    .db $6E, $6E
+  +
+
+TraditionalPlayerOnePartBottomPyramid:
+  RegularUnpack +
+    .db $6E, $6E, $B2, $B3, $6E, $6E, $6E, $DC, $DD
+    .db $6E, $6E, $6E
+    .db $B6, $B8, $7E, $B9
+    .db $B8, $B8
+  +
+  RepeatUnpack $04, $7E
+  RegularUnpack +
+    .db $B7, $6E
+  +
+
 ; end of GFX
 
 ContextWindowModePalette:
 OnePlayerPalette:
   .db $0F, $35, $15, $06, $0F, $35, $15, $0F
 TwoPlayerPalette:
-  .db $0F, $31, $21, $01, $0F, $31, $21, $0F
+  .db $0F, $34, $24, $04, $0F, $34, $24, $0F
 ClassicPalette:
-  .db $0F, $35, $25, $06, $0F, $35, $25, $0F
+  .db $0F, $38, $28, $08, $0F, $38, $28, $0F
 SpecialPalette:
   .db $0F, $31, $21, $01, $0F, $31, $21, $0F
 TraditionalOnePalette:
-  .db $0F, $39, $29, $09, $0F, $39, $29, $0F
+  .db $0F, $37, $27, $07, $0F, $37, $27, $0F
 TagTeamOnePalette:
-  .db $0F, $39, $29, $09, $0F, $39, $29, $0F
+  .db $0F, $31, $21, $01, $0F, $31, $21, $0F
 ChaosOnePalette:
-  .db $0F, $39, $29, $09, $0F, $39, $29, $0F
+  .db $0F, $30, $10, $00, $0F, $30, $10, $0F
 
 ; padding...
   .db $0F, $3D, $2D, $00, $0F, $3D, $2D, $0F
@@ -858,11 +1012,11 @@ ChaosOnePalette:
 TraditionaTwolPalette:
   .db $0F, $39, $29, $09, $0F, $39, $29, $0F
 TagTeamTwoPalette:
-  .db $0F, $3D, $2D, $00, $0F, $3D, $2D, $0F
+  .db $0F, $31, $21, $01, $0F, $31, $21, $0F
 SharedControlTwoPalette:
   .db $0F, $3D, $2D, $00, $0F, $3D, $2D, $0F
 ChaosSwapTwoPalette:
-  .db $0F, $3D, $2D, $00, $0F, $3D, $2D, $0F
+  .db $0F, $10, $00, $2D, $0F, $10, $00, $0F
 
 EmptyLinesOptionSelect:
   RepeatUnpack $18, $6E
@@ -955,20 +1109,20 @@ OptionSelectLoTable:
 ; Traditional Section One
   .db <TradionalTopGFX
   .db <TradionalBottomGFX
-  .db <TradionalFirstLineGFX
+  .db <TraditionalPlayerOneDescLine
   .db <EmptyLinesOptionSelect
-  .db <TraditionalThirdLineGFX
+  .db <TraditionalPOneStarTop
+  .db <TraditionalPOneStarMidle
+  .db <TraditionalPOneStarBottom
   .db <EmptyLinesOptionSelect
-  .db <TraditionalFithLineGFX
   .db <EmptyLinesOptionSelect
-  .db <TraditionalSeventhLineGFX
-  .db <TraditionalEightLineGFX
-  .db <TraditionalNinhtLineGFX
-  .db <TraditionalTenthLineGFX
-  .db <TraditionalEleventhLineGFX
-  .db <TraditionalTwelfthLineGFX
-  .db <TraditionalThirteenthLineGFX
-  .db <TraditionalFourteenthLineGFX
+  .db <TraditionalPlayerOneTopPyramid
+  .db <TraditionalPlayerOnePartOnePyramid
+  .db <TraditionalPlayerOnePartTwoPyramid
+  .db <TraditionalPlayerOnePartThreePyramid
+  .db <TraditionalPlayerOnePartBottomPyramid
+  .db <TraditionalPlayerOneBottom
+  .db <TraditionalPlayerOneBottom
 
 ; Tag Team One
   .db <TagTeamTopGFX
@@ -982,16 +1136,16 @@ OptionSelectLoTable:
   .db <EmptyLinesOptionSelect
   .db <TagTeamEightLineGFX
   .db <EmptyLinesOptionSelect
-  .db <TagTeamTenthLineGFX
+  .db <TagTeamCharacterLinePOne
   .db <EmptyLinesOptionSelect
-  .db <TagTeamTwelfthLineGFX
   .db <EmptyLinesOptionSelect
-  .db <TagTeamFourteenthLineGFX
+  .db <TagTeamBottomPElevenLinePOne
+  .db <TagTeamBottomLinePOne
 
 ; Chaos Swap One
   .db <ChaosTopGFX
   .db <ChaosBottomGFX
-  .db <ChaosOneGFX
+  .db <ChaosPOneOneGFX
   .db <ChaosTwoGFX
   .db <ChaosThreeGFX
   .db <ChaosFourGFX
@@ -1000,7 +1154,7 @@ OptionSelectLoTable:
   .db <ChaosSevenGFX
   .db <ChaosEightGFX
   .db <ChaosNineGFX
-  .db <ChaosTenGFX
+  .db <ChaosTenPOneGFX
   .db <ChaosElevenGFX
   .db <ChaosTwelveGFX
   .db <ChaosThirteenGFX
@@ -1173,20 +1327,20 @@ OptionSelectHiTable:
 ; Traditional Section One
   .db >TradionalTopGFX
   .db >TradionalBottomGFX
-  .db >TradionalFirstLineGFX
+  .db >TraditionalPlayerOneDescLine
   .db >EmptyLinesOptionSelect
-  .db >TraditionalThirdLineGFX
+  .db >TraditionalPOneStarTop
+  .db >TraditionalPOneStarMidle
+  .db >TraditionalPOneStarBottom
   .db >EmptyLinesOptionSelect
-  .db >TraditionalFithLineGFX
   .db >EmptyLinesOptionSelect
-  .db >TraditionalSeventhLineGFX
-  .db >TraditionalEightLineGFX
-  .db >TraditionalNinhtLineGFX
-  .db >TraditionalTenthLineGFX
-  .db >TraditionalEleventhLineGFX
-  .db >TraditionalTwelfthLineGFX
-  .db >TraditionalThirteenthLineGFX
-  .db >TraditionalFourteenthLineGFX
+  .db >TraditionalPlayerOneTopPyramid
+  .db >TraditionalPlayerOnePartOnePyramid
+  .db >TraditionalPlayerOnePartTwoPyramid
+  .db >TraditionalPlayerOnePartThreePyramid
+  .db >TraditionalPlayerOnePartBottomPyramid
+  .db >TraditionalPlayerOneBottom
+  .db >TraditionalPlayerOneBottom
 
 ; Tag Team One
   .db >TagTeamTopGFX
@@ -1200,16 +1354,16 @@ OptionSelectHiTable:
   .db >EmptyLinesOptionSelect
   .db >TagTeamEightLineGFX
   .db >EmptyLinesOptionSelect
-  .db >TagTeamTenthLineGFX
+  .db >TagTeamCharacterLinePOne
   .db >EmptyLinesOptionSelect
-  .db >TagTeamTwelfthLineGFX
   .db >EmptyLinesOptionSelect
-  .db >TagTeamFourteenthLineGFX
+  .db >TagTeamBottomPElevenLinePOne
+  .db >TagTeamBottomLinePOne
 
 ; Chaos Swap One
   .db >ChaosTopGFX
   .db >ChaosBottomGFX
-  .db >ChaosOneGFX
+  .db >ChaosPOneOneGFX
   .db >ChaosTwoGFX
   .db >ChaosThreeGFX
   .db >ChaosFourGFX
@@ -1218,7 +1372,7 @@ OptionSelectHiTable:
   .db >ChaosSevenGFX
   .db >ChaosEightGFX
   .db >ChaosNineGFX
-  .db >ChaosTenGFX
+  .db >ChaosTenPOneGFX
   .db >ChaosElevenGFX
   .db >ChaosTwelveGFX
   .db >ChaosThirteenGFX
