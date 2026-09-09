@@ -1160,24 +1160,6 @@ OptionSelectLoTable:
   .db <ChaosThirteenGFX
   .db <ChaosFourteenGFX
 
-;; Shared control One
-;  .db <SharedTopGFX
-;  .db <SharedBottomGFX
-;  .db <SharedOneGFX
-;  .db <SharedTwoGFX
-;  .db <SharedThreeGFX
-;  .db <SharedFourGFX
-;  .db <SharedFiveGFX
-;  .db <SharedSixGFX
-;  .db <SharedSevenGFX
-;  .db <SharedEightGFX
-;  .db <SharedNineGFX
-;  .db <SharedTenGFX
-;  .db <SharedElevenGFX
-;  .db <SharedTwelveGFX
-;  .db <SharedThirteenGFX
-;  .db <SharedFourteenGFX
-
 ; Traditional Section Two
   .db <TradionalTopGFX
   .db <TradionalBottomGFX
@@ -1251,7 +1233,6 @@ OptionSelectLoTable:
   .db <ChaosFourteenGFX
 
 OptionSelectHiTable:
-
 ; One Player
   .db >OnePlayerTopGFX
   .db >OnePlayerBottomGFX
@@ -1377,25 +1358,6 @@ OptionSelectHiTable:
   .db >ChaosTwelveGFX
   .db >ChaosThirteenGFX
   .db >ChaosFourteenGFX
-
-;; Shared control One
-;  .db >SharedTopGFX
-;  .db >SharedBottomGFX
-;  .db >SharedOneGFX
-;  .db >SharedTwoGFX
-;  .db >SharedThreeGFX
-;  .db >SharedFourGFX
-;  .db >SharedFiveGFX
-;  .db >SharedSixGFX
-;  .db >SharedSevenGFX
-;  .db >SharedEightGFX
-;  .db >SharedNineGFX
-;  .db >SharedTenGFX
-;  .db >SharedElevenGFX
-;  .db >SharedTwelveGFX
-;  .db >SharedThirteenGFX
-;  .db >SharedFourteenGFX
-
 
 ; Traditional Section Two
   .db >TradionalTopGFX
