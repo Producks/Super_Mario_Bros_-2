@@ -1,0 +1,86 @@
+   0.025645033s  INFO prepare_target{force=false package_id=level_data_handler v0.1.0 (/home/dave/Super_Mario_Bros_-2/tools/level_data_handler) target="level_data_handler"}: cargo::core::compiler::fingerprint: fingerprint error for level_data_handler v0.1.0 (/home/dave/Super_Mario_Bros_-2/tools/level_data_handler)/Check { test: false }/TargetInner { name: "level_data_handler", doc: true, ..: with_path("/home/dave/Super_Mario_Bros_-2/tools/level_data_handler/src/main.rs", Edition2024) }
+   0.025702966s  INFO prepare_target{force=false package_id=level_data_handler v0.1.0 (/home/dave/Super_Mario_Bros_-2/tools/level_data_handler) target="level_data_handler"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/dave/Super_Mario_Bros_-2/tools/level_data_handler/target/debug/.fingerprint/level_data_handler-e31f11baf83ddfe5/bin-level_data_handler`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: cargo_util::paths::read_bytes
+   1: cargo_util::paths::read
+   2: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   3: cargo::core::compiler::fingerprint::prepare_target
+   4: cargo::core::compiler::compile
+   5: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   6: cargo::ops::cargo_compile::compile_with_exec
+   7: cargo::ops::cargo_compile::compile
+   8: cargo::commands::check::exec
+   9: <cargo::cli::Exec>::exec
+  10: cargo::main
+  11: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  12: std::rt::lang_start::<()>::{closure#0}
+  13: <&dyn core::ops::function::Fn<(), Output = i32> + core::panic::unwind_safe::RefUnwindSafe + core::marker::Sync as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/core/src/ops/function.rs:287:21
+  14: std::panicking::catch_unwind::do_call::<&dyn core::ops::function::Fn<(), Output = i32> + core::panic::unwind_safe::RefUnwindSafe + core::marker::Sync, i32>
+             at /rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/std/src/panicking.rs:576:43
+  15: std::panicking::catch_unwind::<i32, &dyn core::ops::function::Fn<(), Output = i32> + core::panic::unwind_safe::RefUnwindSafe + core::marker::Sync>
+             at /rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/std/src/panicking.rs:544:19
+  16: std::panic::catch_unwind::<&dyn core::ops::function::Fn<(), Output = i32> + core::panic::unwind_safe::RefUnwindSafe + core::marker::Sync, i32>
+             at /rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/std/src/panic.rs:359:14
+  17: std::rt::lang_start_internal::{closure#0}
+             at /rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/std/src/rt.rs:175:24
+  18: std::panicking::catch_unwind::do_call::<std::rt::lang_start_internal::{closure#0}, isize>
+             at /rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/std/src/panicking.rs:576:43
+  19: std::panicking::catch_unwind::<isize, std::rt::lang_start_internal::{closure#0}>
+             at /rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/std/src/panicking.rs:544:19
+  20: std::panic::catch_unwind::<std::rt::lang_start_internal::{closure#0}, isize>
+             at /rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/std/src/panic.rs:359:14
+  21: std::rt::lang_start_internal
+             at /rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/std/src/rt.rs:171:5
+  22: main
+  23: <unknown>
+  24: __libc_start_main
+  25: <unknown>
+   0.052668000s  INFO prepare_target{force=false package_id=level_data_handler v0.1.0 (/home/dave/Super_Mario_Bros_-2/tools/level_data_handler) target="level_data_handler"}: cargo::core::compiler::fingerprint: fingerprint error for level_data_handler v0.1.0 (/home/dave/Super_Mario_Bros_-2/tools/level_data_handler)/Check { test: true }/TargetInner { name: "level_data_handler", doc: true, ..: with_path("/home/dave/Super_Mario_Bros_-2/tools/level_data_handler/src/main.rs", Edition2024) }
+   0.052723275s  INFO prepare_target{force=false package_id=level_data_handler v0.1.0 (/home/dave/Super_Mario_Bros_-2/tools/level_data_handler) target="level_data_handler"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/dave/Super_Mario_Bros_-2/tools/level_data_handler/target/debug/.fingerprint/level_data_handler-b8ca40b68dcc10db/test-bin-level_data_handler`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: cargo_util::paths::read_bytes
+   1: cargo_util::paths::read
+   2: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   3: cargo::core::compiler::fingerprint::prepare_target
+   4: cargo::core::compiler::compile
+   5: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   6: cargo::ops::cargo_compile::compile_with_exec
+   7: cargo::ops::cargo_compile::compile
+   8: cargo::commands::check::exec
+   9: <cargo::cli::Exec>::exec
+  10: cargo::main
+  11: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  12: std::rt::lang_start::<()>::{closure#0}
+  13: <&dyn core::ops::function::Fn<(), Output = i32> + core::panic::unwind_safe::RefUnwindSafe + core::marker::Sync as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/core/src/ops/function.rs:287:21
+  14: std::panicking::catch_unwind::do_call::<&dyn core::ops::function::Fn<(), Output = i32> + core::panic::unwind_safe::RefUnwindSafe + core::marker::Sync, i32>
+             at /rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/std/src/panicking.rs:576:43
+  15: std::panicking::catch_unwind::<i32, &dyn core::ops::function::Fn<(), Output = i32> + core::panic::unwind_safe::RefUnwindSafe + core::marker::Sync>
+             at /rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/std/src/panicking.rs:544:19
+  16: std::panic::catch_unwind::<&dyn core::ops::function::Fn<(), Output = i32> + core::panic::unwind_safe::RefUnwindSafe + core::marker::Sync, i32>
+             at /rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/std/src/panic.rs:359:14
+  17: std::rt::lang_start_internal::{closure#0}
+             at /rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/std/src/rt.rs:175:24
+  18: std::panicking::catch_unwind::do_call::<std::rt::lang_start_internal::{closure#0}, isize>
+             at /rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/std/src/panicking.rs:576:43
+  19: std::panicking::catch_unwind::<isize, std::rt::lang_start_internal::{closure#0}>
+             at /rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/std/src/panicking.rs:544:19
+  20: std::panic::catch_unwind::<std::rt::lang_start_internal::{closure#0}, isize>
+             at /rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/std/src/panic.rs:359:14
+  21: std::rt::lang_start_internal
+             at /rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/std/src/rt.rs:171:5
+  22: main
+  23: <unknown>
+  24: __libc_start_main
+  25: <unknown>
+    Checking level_data_handler v0.1.0 (/home/dave/Super_Mario_Bros_-2/tools/level_data_handler)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.11s

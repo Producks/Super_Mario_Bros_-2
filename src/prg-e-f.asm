@@ -1507,7 +1507,8 @@ SlotMachineTextFlashIndex:
 
 
 NoCoinsForSlotMachine:
-	JSR Delay80Frames
+	LDA #$50
+  JSR DelayFrames
 
 IFDEF EXPAND_MUSIC
 	; Need $08 to loop correctly, but want to preserve addresses
@@ -1537,11 +1538,6 @@ loc_BANKF_E938:
 	BPL loc_BANKF_E92A
 
 	JMP GoToNextLevel
-
-
-Delay80Frames:
-	LDA #$50
-	BNE DelayFrames
 
 Delay160Frames:
 	LDA #$A0
@@ -2056,7 +2052,7 @@ NMI_Waiting:
 ; This is due to sluggishness in the game loop itself.
 ;
 NMI:
-	PHP
+	PHP ; Remove
 	PHA
 	TXA
 	PHA
@@ -4070,7 +4066,7 @@ IFDEF ENABLE_TILE_ATTRIBUTES_TABLE
 ; * bit 1: whether right side is solid
 ; * bit 0: whether left side is solid
 ;
-TileCollisionAttributesTable:
+ CollisionAttributesTable:
 	.db %00000000 ; $00
 	.db %11110000 ; $01
 	.db %11110000 ; $02
@@ -5560,7 +5556,6 @@ SetSwapFuncChaos:
   STA FuncPointerHi
   RTS
 
-
 ; ------------------------------------------------------------
 ; It's swapping time! Also restore the func pointer to the 
 ; timer func instead.      
@@ -5830,17 +5825,6 @@ LoadCelebrationSceneBackgroundCHR:
 	LDA #CHRBank_CelebrationBG2
 	STA BackgroundCHR2
 	RTS
-
-
-;LoadCharacterSelectCHRBanks:
-;	LDA #CHRBank_CharacterSelectSprites
-;	STA SpriteCHR1
-;	LDA #CHRBank_CharacterSelectBG1
-;	STA BackgroundCHR1
-;	LDA #CHRBank_CharacterSelectBG2
-;	STA BackgroundCHR2
-;	RTS
-
 
 TitleCardCHRBanks:
 	.db CHRBank_TitleCardGrass
