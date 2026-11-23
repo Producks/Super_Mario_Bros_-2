@@ -159,7 +159,6 @@ BonusChanceSnifitSprite:
 	.db $5F, $03, $01, $60
 
 TitleCardPalettes:
-	.db $3F, $00, $20 ; PPU data
 	.db $38, $30, $1A, $0F
 	.db $38, $38, $0F, $0F
 	.db $38, $17, $17, $38
@@ -168,7 +167,6 @@ TitleCardPalettes:
 	.db $38, $37, $27, $06
 	.db $38, $25, $36, $06
 	.db $38, $12, $36, $01
-	.db $00
 
 BonusChanceSpritePalettes:
 	.db $0F, $37, $16, $0F
@@ -420,15 +418,6 @@ SetCurrentCharacterCard:
 
 	JSR HideAllSprites
 
-	LDY #$23
-DisplayLevelTitleCardAndMore_TitleCardPaletteLoop:
-	LDA TitleCardPalettes, Y
-	STA PPUBuffer_TitleCardPalette, Y
-	DEY
-	BPL DisplayLevelTitleCardAndMore_TitleCardPaletteLoop
-
-	LDA #ScreenUpdateBuffer_RAM_TitleCardPalette ; Then tell it to dump that into the PPU
-	STA ScreenUpdateIndex
 	JSR WaitForNMI
 
 	LDA #ScreenUpdateBuffer_TitleCardLeftover
@@ -439,11 +428,28 @@ DisplayLevelTitleCardAndMore_TitleCardPaletteLoop:
 
 	JSR WaitForNMI_TurnOnPPU
 
+	LDY #$1F
+DisplayLevelTitleCardAndMore_TitleCardPaletteLoop:
+	LDA TitleCardPalettes, Y
+	STA PaletteFadeOutBuffer, Y
+	DEY
+	BPL DisplayLevelTitleCardAndMore_TitleCardPaletteLoop
+
+  LDA #RTS_OPCODE ; TODO check if RTS is already set...
+  STA FadeOptionalFuncOP
+
+  LDA #FadeIn
+  JSR ColorFade
+
 	JSR RestorePlayerToFullHealth
 
 	; Pause for the title card
 	LDA #$50
   JSR DelayFrames
+
+  JSR BlackOutDSTPaletterBuffer
+  LDA #FadeOut
+  JSR ColorFade
 
 PreStartLevel:
 	JSR SetStack100Gameplay
@@ -480,7 +486,7 @@ IncreaseBrightnessPaletteLoop:
   BNE BrightnessAddition
   LDA PaletteFadeOutBuffer, X
   AND #$0F
-  BPL SetBrightnessResult
+  BPL SetBrightnessResult ; always branch
 BrightnessAddition:
   CMP PaletteFadeOutBuffer, X
   BEQ DecreaseBrightnessLoop
@@ -491,7 +497,7 @@ SetBrightnessResult:
 DecreaseBrightnessLoop:
   DEX
   BPL IncreaseBrightnessPaletteLoop
-  BCS +
+  BMI +
 
 DecreaseBrightnessPalette:
   LDX #$1F
@@ -508,7 +514,7 @@ SetResultDecDecBrightness:
 DecLoopDecreaseBrightness:
   DEX
   BPL DecreaseBrightnessPaletteLoop
-  BCS +
+  BMI +
 
 ColorFade:
   STA FadeType
