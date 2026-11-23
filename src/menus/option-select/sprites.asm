@@ -1,14 +1,14 @@
 SpritesOptionSelectTable:
 
 ; Top left corner sprites to hide the top part of rendering
-  .db $00, $F4, $00, $00
-  .db $00, $F4, $00, $00
-  .db $00, $F4, $00, $00
-  .db $00, $F4, $00, $00
-  .db $00, $F4, $00, $00
-  .db $00, $F4, $00, $00
-  .db $00, $F4, $00, $00
-  .db $00, $F4, $00, $00
+  .db $00, $EA, $00, $00
+  .db $00, $EA, $00, $00
+  .db $00, $EA, $00, $00
+  .db $00, $EA, $00, $00
+  .db $00, $EA, $00, $00
+  .db $00, $EA, $00, $00
+  .db $00, $EA, $00, $00
+  .db $00, $EA, $00, $00
 
 ; Scroll down left 2 sprites
 	.db $1F, $01, $30, $44
